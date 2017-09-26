@@ -1,44 +1,18 @@
 import React from 'react'
+var InputComponent = require('./InputComponent.js');
 
 export default class Registration extends React.Component{
   constructor(props) {
           super(props);
   }
 
-  render(){
+  render: function(){
     return(
       <div>
         <center>
         <div>Registration Page</div>
         <form>
-          <input
-            text = "Email"
-            type = "text"
-            errorMessage = "email is invalid"
-            emptyMessage = "email can't be empty"
-          />
-
-          <input
-            text = "password"
-            type = "text"
-            errorMessage = "password is invalid"
-            emptyMessage = "password can't be empty"
-          />
-          
-          <input
-            text = "First Name"
-            type = "text"
-            errorMessage = "First name is invalid"
-            emptyMessage = "First name can't be empty"
-          />
-          
-          <input
-            text = "Last Name"
-            type = "text"
-            errorMessage = "Last name is invalid"
-            emptyMessage = "Last name can't be empty"
-          />
-
+          <InputComponent/>
           <button
             type = "submit"
             className = "button button_wide"
