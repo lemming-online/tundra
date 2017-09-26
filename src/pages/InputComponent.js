@@ -1,20 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function InputComponent() {
+function InputComponent(props) {
   return (
     <div>
-      <label>{this.props.title}</label>
+      <label htmlFor={props.title}>{props.title}</label>
       <input
-        id={this.props.title}
+        id={props.title}
         className="input"
         type="text"
-        placeholder={this.props.title}
+        placeholder={props.title}
         autoComplete="off"
-        onChange={this.props.onChange}
+        onChange={props.onChange}
         style={{ display: 'block' }}
       />
     </div>
   );
 }
+
+InputComponent.propTypes = {
+  title: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default InputComponent;
