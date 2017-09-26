@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import InputComponent from './pages/InputComponent';
+import RegistrationPage from './pages/RegistrationPage';
 
-ReactDOM.render(<InputComponent/>, document.getElementById('root'));
+ReactDOM.render(<RegistrationPage/>, document.getElementById('root'));
 registerServiceWorker();

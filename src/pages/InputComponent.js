@@ -6,6 +6,7 @@ class InputComponent extends React.Component{
       <div>
         <input
           className="input"
+          type="text"
           placeHolder="placeHolder"
           autocomplete="off"
         />
