@@ -3,7 +3,7 @@ import React from 'react';
 function InputComponent() {
   return (
     <div>
-      <label htmlFor={this.props.title}>{this.props.title}</label>
+      <label>{this.props.title}</label>
       <input
         id={this.props.title}
         className="input"
