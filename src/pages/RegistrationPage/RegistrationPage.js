@@ -8,37 +8,43 @@ class RegistrationPage extends React.Component {
     this.state = {
       email: '',
       password: '',
-      firstName: '',
-      lastName: '',
+      first_name: '',
+      last_name: '',
     };
   }
 
   handleChange = (event) => {
     const newState = {};
-    console.log('before:');
-    console.log(newState);
+    console.log(event); 
     // makes function reusuable, use name attribute as key to set
     newState[event.target.name] = event.target.value;
     this.setState(newState);
-    console.log('after:');
-    console.log(newState);
   };
-  
 
   registerUser = () => {
     console.log('registerUser');
-    fetch('https://api.lemming.online/users', {
+    //fetch('https://api.lemming.online/users', {
+    fetch('http://0.0.0.0:5050/users', {
       method: 'POST',
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
+        "Accept": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email: this.state.email,
         password: this.state.password,
-        firstName: this.state.firstName,
-        lastName: this.state.lastName
+        first_name: this.state.firstName,
+        last_name: this.state.lastName
       })
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      console.log('hello world');
+      console.log(responseJson.id);
+      return responseJson;
+    })
+    .catch((error) => {
+      console.error(error);
     });
   }
 
@@ -47,10 +53,10 @@ class RegistrationPage extends React.Component {
       <div>
         <center>
         <form onSubmit = {this.registerUser}>
-          <InputComponent title="Email" onChange={this.handleChange} />
-          <InputComponent title="Password" onChange={this.handleChange} />
-          <InputComponent title="First Name" onChange={this.handleChange} />
-          <InputComponent title="Last Name" onChange={this.handleChange} />
+          <InputComponent title='Email' name='email' onChange={this.handleChange}/>
+          <InputComponent title='Password' name='password' onChange={this.handleChange}/>
+          <InputComponent title='First Name' name='first_name' onChange={this.handleChange}/>
+          <InputComponent title='Last Name' name='last_name' onChange={this.handleChange}/>
           <button>Register</button>
         </form>
         </center>

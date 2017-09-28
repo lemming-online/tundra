@@ -7,6 +7,7 @@ function InputComponent(props) {
       <label htmlFor={props.title}>{props.title}</label>
       <input
         id={props.title}
+        name={props.name}
         className="input"
         type="text"
         placeholder={props.title}
