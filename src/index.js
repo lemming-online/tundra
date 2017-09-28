@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import RegistrationPage from './pages/RegistrationPage';
+import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
 
 ReactDOM.render(<RegistrationPage />, document.getElementById('root'));
