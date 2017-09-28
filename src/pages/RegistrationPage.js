@@ -19,7 +19,7 @@ class RegistrationPage extends React.Component {
     const newState = {};
     console.log('before:');
     console.log(newState);
-    // makes function reusuable, use name attribute as key to set
+    // makes function re-usable, use name attribute as key to set
     newState[event.target.name] = event.target.value;
     this.setState(newState);
     console.log('after:');
@@ -34,7 +34,7 @@ class RegistrationPage extends React.Component {
           <InputComponent title="Password" onChange={this.handleChange} />
           <InputComponent title="First Name" onChange={this.handleChange} />
           <InputComponent title="Last Name" onChange={this.handleChange} />
-          <button>Register</button>
+          <button className="button is-primary">Register</button>
         </center>
       </div>
     );
