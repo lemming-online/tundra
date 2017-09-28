@@ -34,7 +34,7 @@ class RegistrationPage extends React.Component {
           <InputComponent title="Password" onChange={this.handleChange} />
           <InputComponent title="First Name" onChange={this.handleChange} />
           <InputComponent title="Last Name" onChange={this.handleChange} />
-          <button>Register</button>
+          <button className="button is-primary">Register</button>
         </center>
       </div>
     );
