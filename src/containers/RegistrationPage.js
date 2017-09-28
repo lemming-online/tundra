@@ -1,5 +1,5 @@
 import React from 'react';
-import InputComponent from './InputComponent';
+import InputComponent from '../components/InputComponent';
 
 class RegistrationPage extends React.Component {
   constructor() {
