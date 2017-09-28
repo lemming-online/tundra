@@ -33,8 +33,8 @@ class RegistrationPage extends React.Component {
       body: JSON.stringify({
         email: this.state.email,
         password: this.state.password,
-        first_name: this.state.firstName,
-        last_name: this.state.lastName
+        first_name: this.state.first_name,
+        last_name: this.state.last_name
       })
     })
     .then((response) => response.json())
