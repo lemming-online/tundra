@@ -21,14 +21,18 @@ class RegistrationPage extends React.Component {
     this.setState(newState);
   };
 
-  registerUser = () => {
+  registerUser = (e) => {
+    //makes the form not add params to the url on submit
+    e.preventDefault();
+
     console.log('registerUser');
+
     //fetch('https://api.lemming.online/users', {
     fetch('http://0.0.0.0:5050/users', {
       method: 'POST',
       headers: {
         "Accept": "application/json",
-        "Content-Type": "application/json",
+        "Content-Type": 'application/json' 
       },
       body: JSON.stringify({
         email: this.state.email,
@@ -37,10 +41,15 @@ class RegistrationPage extends React.Component {
         last_name: this.state.last_name
       })
     })
-    .then((response) => response.json())
+    .then((response) => {
+      console.log('space travel baby');
+      console.log(response.json());
+      return response.json()
+      }
+    )
     .then((responseJson) => {
       console.log('hello world');
-      console.log(responseJson.id);
+      console.log(responseJson.data);
       return responseJson;
     })
     .catch((error) => {
