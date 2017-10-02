@@ -31,12 +31,10 @@ class RegistrationPage extends React.Component {
       <div className="container">
         <InputComponent title="Email" onChange={this.handleChange} />
         <InputComponent title="Password" onChange={this.handleChange} />
-        <InputComponent title="First Name" onChange={this.handleChange} />
-        <InputComponent title="Last Name" onChange={this.handleChange} />
 
         <div className="field">
           <div className="control">
-            <button className="button is-primary">Register</button>
+            <button className="button is-primary">Login</button>
           </div>
         </div>
       </div>
