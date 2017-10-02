@@ -27,8 +27,8 @@ class RegistrationPage extends React.Component {
 
     console.log('registerUser');
 
-    //fetch('https://api.lemming.online/users', {
-    fetch('http://0.0.0.0:5050/users', {
+    fetch('https://api.lemming.online/users', {
+    //fetch('http://0.0.0.0:5050/users', {
       method: 'POST',
       headers: {
         "Accept": "application/json",
@@ -37,19 +37,17 @@ class RegistrationPage extends React.Component {
       body: JSON.stringify({
         email: this.state.email,
         password: this.state.password,
-        first_name: this.state.first_name,
-        last_name: this.state.last_name
+        display_name: this.state.first_name + ' ' + this.state.last_name
       })
     })
     .then((response) => {
-      console.log('space travel baby');
-      console.log(response.json());
+      console.log(response.json.data);
       return response.json()
       }
     )
     .then((responseJson) => {
       console.log('hello world');
-      console.log(responseJson.data);
+      console.log(responseJson);
       return responseJson;
     })
     .catch((error) => {
