@@ -15,15 +15,17 @@
   transform: translateZ(0);
   -webkit-animation-name: shimmerlarge;
   animation-name: shimmerlarge;
-  -webkit-animation-duration: 4s;
-  animation-duration: 5s;
+  -webkit-animation-duration: 6s;
+  animation-duration: 6s;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  -webkit-animation-delay: 0.4s;
-  animation-delay: 0.4s;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
   -webkit-animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
   animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
   overflow: hidden;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 .image-lemming-logo-bg {
