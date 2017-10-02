@@ -8,33 +8,64 @@ class RegistrationPage extends React.Component {
     this.state = {
       email: '',
       password: '',
-      firstName: '',
-      lastName: '',
+      first_name: '',
+      last_name: '',
     };
-    // fixes scope of this
-    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = (event) => {
     const newState = {};
-    console.log('before:');
-    console.log(newState);
-    // makes function re-usable, use name attribute as key to set
+    console.log(event); 
+    // makes function reusuable, use name attribute as key to set
     newState[event.target.name] = event.target.value;
     this.setState(newState);
-    console.log('after:');
-    console.log(newState);
   };
+
+  registerUser = (e) => {
+    //makes the form not add params to the url on submit
+    e.preventDefault();
+
+    console.log('registerUser');
+
+    fetch('https://api.lemming.online/users', {
+    //fetch('http://0.0.0.0:5050/users', {
+      method: 'POST',
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": 'application/json' 
+      },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+        display_name: this.state.first_name + ' ' + this.state.last_name
+      })
+    })
+    .then((response) => {
+      console.log(response.json.data);
+      return response.json()
+      }
+    )
+    .then((responseJson) => {
+      console.log('hello world');
+      console.log(responseJson);
+      return responseJson;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
 
   render() {
     return (
       <div>
         <center>
-          <InputComponent title="Email" onChange={this.handleChange} />
-          <InputComponent title="Password" onChange={this.handleChange} />
-          <InputComponent title="First Name" onChange={this.handleChange} />
-          <InputComponent title="Last Name" onChange={this.handleChange} />
-          <button className="button is-primary">Register</button>
+        <form onSubmit = {this.registerUser}>
+          <InputComponent title='Email' name='email' onChange={this.handleChange}/>
+          <InputComponent title='Password' name='password' onChange={this.handleChange}/>
+          <InputComponent title='First Name' name='first_name' onChange={this.handleChange}/>
+          <InputComponent title='Last Name' name='last_name' onChange={this.handleChange}/>
+          <button>Register</button>
+        </form>
         </center>
       </div>
     );
