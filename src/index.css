@@ -5,3 +5,12 @@ body {
     Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol";
 }
+
+.header {
+  background-color: #242424;
+}
+
+.header .navbar-item,
+.header .navbar-link {
+  color: white;
+}

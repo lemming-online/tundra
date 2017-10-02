@@ -2,7 +2,7 @@
 tundra is the main frontend component for the [lemming.online](https://github.com/lemming-online) project.
 
 ## requirements
-tundra requires [node], which we recommend you install using your system package manager.
+tundra requires node, which we recommend you install using your system package manager.
 
 ## dev installation
 ```
