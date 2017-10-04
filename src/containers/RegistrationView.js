@@ -1,7 +1,7 @@
 import React from 'react';
 import InputComponent from '../components/InputComponent';
 
-class RegistrationPage extends React.Component {
+class RegistrationView extends React.Component {
   constructor() {
     super();
 
@@ -56,22 +56,25 @@ class RegistrationPage extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <form onSubmit={this.registerUser}>
-          <InputComponent title="Email" name="email" onChange={this.handleChange} />
-          <InputComponent title="Password" name="password" onChange={this.handleChange} />
-          <InputComponent title="First Name" name="first_name" onChange={this.handleChange} />
-          <InputComponent title="Last Name" name="last_name" onChange={this.handleChange} />
+      <section className="section">
+        <div className="container">
+          <h1 className="title">Register</h1>
+          <form onSubmit={this.registerUser}>
+            <InputComponent title="Email" name="email" onChange={this.handleChange} />
+            <InputComponent title="Password" name="password" onChange={this.handleChange} />
+            <InputComponent title="First Name" name="first_name" onChange={this.handleChange} />
+            <InputComponent title="Last Name" name="last_name" onChange={this.handleChange} />
 
-          <div className="field">
-            <div className="control">
-              <button className="button is-primary">Register</button>
+            <div className="field">
+              <div className="control">
+                <button className="button is-primary">Register</button>
+              </div>
             </div>
-          </div>
-        </form>
-      </div>
+          </form>
+        </div>
+      </section>
     );
   }
 }
 
-export default RegistrationPage;
+export default RegistrationView;

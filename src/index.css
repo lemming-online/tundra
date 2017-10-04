@@ -6,11 +6,7 @@ body {
     "Segoe UI Symbol";
 }
 
-.header {
-  background-color: #242424;
-}
-
 .header .navbar-item,
 .header .navbar-link {
-  color: white;
+  color: #222222;
 }

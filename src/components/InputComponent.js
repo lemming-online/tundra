@@ -24,6 +24,7 @@ function InputComponent(props) {
 InputComponent.propTypes = {
   title: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default InputComponent;
