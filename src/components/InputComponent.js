@@ -6,17 +6,16 @@ function InputComponent(props) {
     <div>
       <div className="field">
         <label htmlFor={props.title}>{props.title}</label>
-        <div className="control">
-          <input
-            id={props.title}
-            className="input"
-            type="text"
-            placeholder={props.title}
-            autoComplete="off"
-            onChange={props.onChange}
-            style={{ display: 'block' }}
-          />
-        </div>
+        <input
+          id={props.title}
+          name={props.name}
+          className="input"
+          type="text"
+          placeholder={props.title}
+          autoComplete="off"
+          onChange={props.onChange}
+          style={{ display: 'block' }}
+        />
       </div>
     </div>
   );
