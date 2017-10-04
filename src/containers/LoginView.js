@@ -8,58 +8,67 @@ class LoginView extends React.Component {
     this.state = {
       email: '',
       password: '',
-      firstName: '',
-      lastName: '',
     };
-    // fixes scope of this
-    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = (event) => {
     const newState = {};
-    console.log('before:');
-    console.log(newState);
-    // makes function re-usable, use name attribute as key to set
+    console.log(event);
+    // makes function reusuable, use name attribute as key to set
     newState[event.target.name] = event.target.value;
     this.setState(newState);
-    console.log('after:');
-    console.log(newState);
+  };
+
+  registerUser = (e) => {
+    // makes the form not add params to the url on submit
+    e.preventDefault();
+
+    console.log('registerUser');
+
+    fetch('https://api.lemming.online/users', {
+      // fetch('http://0.0.0.0:5050/users', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+      }),
+    })
+      .then((response) => {
+        console.log(response.json.data);
+        return response.json();
+      })
+      .then((responseJson) => {
+        console.log('hello world');
+        console.log(responseJson);
+        return responseJson;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   render() {
     return (
-      <section className="section">
-        <div className="container">
-          <div className="tile is-ancestor">
-            <div className="tile is-parent">
-              <div className="tile is-child box">
-                <h1 className="title">Login</h1>
-                <form onSubmit={this.loginUser}>
-                  <InputComponent title="Email" name="email" onChange={this.handleChange} />
-                  <InputComponent title="Password" name="password" onChange={this.handleChange} />
+      <div className="tile is-child box">
+        <h1 className="title">Login</h1>
+        <form onSubmit={this.loginUser}>
+          <InputComponent title="Email" name="email" onChange={this.handleChange} />
+          <InputComponent title="Password" name="password" onChange={this.handleChange} />
 
-                  <div className="field">
-                    <div className="control">
-                      <button className="button is-primary">Register</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div className="tile is-parent">
-              <div className="tile is-child box">
-                <p className="title">Sign Up</p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat
-                  pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat
-                  gravida libero rhoncus ut. Morbi maximus, leo sit amet vehicula eleifend, nunc dui
-                  porta orci, quis semper odio felis ut quam.
-                </p>
-              </div>
-            </div>
+          <div className="field is-grouped is-grouped-right">
+            <p className="control">
+              <a className="button is-primary">Submit</a>
+            </p>
+            <p className="control">
+              <a className="button is-light">Cancel</a>
+            </p>
           </div>
-        </div>
-      </section>
+        </form>
+      </div>
     );
   }
 }
