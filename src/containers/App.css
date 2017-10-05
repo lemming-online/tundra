@@ -1,13 +1,13 @@
-.App {
-  text-align: center;
-}
-.App-header {
-  background-color: #222;
-  height: 120px;
-  padding: 50px;
+.header {
+  height: 100px;
+  padding: 0px;
   color: white;
 }
 
 .App-intro {
   font-size: large;
+}
+
+.navbar-item img {
+  max-height: 3.5rem;
 }
