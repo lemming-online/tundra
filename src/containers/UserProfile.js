@@ -5,18 +5,21 @@ class UserProfile extends React.Component {
 	constructor(props){
     super(props);
     this.state = {
-      filesToBeSent:[],
+      profilePicture: ""
     }
   }
 
+  //onDrop takes arrays of files as arams
 	onDrop = (acceptedFiles, rejectedFiles) => {
-		//arrays of files
-		var filesToBeSent = [];
-		//send only the first file uploaded if they use a group
-    filesToBeSent.push(acceptedFiles[0]);
-    this.setState({filesToBeSent}); 
+		if (acceptedFiles.length > 0) {
+			//send only the first file uploaded if they use a group
+			var filesToBeSent = acceptedFiles[0];
+	    
+	    //make api call to send image up to server
+	    //after promise returns, set the state of profilePicture to URI returned
 
-		console.log(acceptedFiles);
+			console.log(acceptedFiles[0]);
+		}
 	}
 
 	render() {
