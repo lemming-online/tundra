@@ -2,7 +2,6 @@ import React from 'react';
 import Dropzone from 'react-dropzone'
 import InputComponent from '../components/InputComponent';
 
-
 class UserProfile extends React.Component {
 	constructor(props){
     super(props);
@@ -24,15 +23,16 @@ class UserProfile extends React.Component {
   };
 
   //onDrop takes arrays of files as arams
-	onDrop = (acceptedFiles, rejectedFiles) => {
-		if (acceptedFiles.length > 0) {
+	onDrop = (acceptedFile, rejectedFiles) => {
+		if (acceptedFile.length > 0) {
 			//send only the first file uploaded if they use a group
-			var filesToBeSent = acceptedFiles[0];
+		  var photo = new FormData();
+			photo.append('photo', acceptedFile);
 	    
 	    //make api call to send image up to server
 	    //after promise returns, set the state of profilePicture to URI returned
 
-			console.log(filesToBeSent);
+			console.log(acceptedFile[0].preview);
 		}
 	}
 
@@ -51,21 +51,19 @@ class UserProfile extends React.Component {
         display_name: `${this.state.first_name} ${this.state.last_name}`,
       }),
     })
-      .then((response) => {
-        console.log(response.json.data);
-        return response.json();
-      })
-      .then((responseJson) => {
-        console.log('hello world');
-        console.log(responseJson);
-        return responseJson;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-
+    .then((response) => {
+      console.log(response.json.data);
+      return response.json();
+    })
+    .then((responseJson) => {
+      console.log('hello world');
+      console.log(responseJson);
+      return responseJson;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 	}
-
 
 	//see first name and last name
 	//change their email and password
@@ -74,7 +72,7 @@ class UserProfile extends React.Component {
       <div className="tile is-child box">
         <h1 className="title">Student Name Will Go Here</h1>
 	      <div>
-	        <Dropzone onDrop={(files) => this.onDrop(files)}>
+	        <Dropzone multiple={false} accept='image/*' onDrop={(files) => this.onDrop(files)}>
 	          <div>Drag and drop a picture of yourself!</div>
 	        </Dropzone>
         </div>
