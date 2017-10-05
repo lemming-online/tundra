@@ -2,6 +2,7 @@ import React from 'react';
 import LoginView from './LoginView';
 import RegistrationView from './RegistrationView';
 import PasswordResetView from './PasswordResetView';
+import UserProfile from './UserProfile';
 
 function SignInUpPage() {
   return (
@@ -18,6 +19,11 @@ function SignInUpPage() {
         <div className="tile is-ancestor">
           <div className="tile is-parent">
             <PasswordResetView />
+          </div>
+        </div>
+        <div className="tile is-ancestor">
+          <div className="tile is-parent">
+            <UserProfile />
           </div>
         </div>
       </div>

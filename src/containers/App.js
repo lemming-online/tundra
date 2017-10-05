@@ -11,7 +11,6 @@ function App() {
       <HeaderComponent />
       <SignInUpPage />
       <StuffList />
-      <UserProfile />
     </div>
   );
 }
