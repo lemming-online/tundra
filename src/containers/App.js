@@ -1,14 +1,13 @@
 import React from 'react';
 import HeaderComponent from '../components/HeaderComponent';
 import './App.css';
+import SignInUpPage from './SignInUpPage';
 
 function App() {
   return (
     <div className="App">
       <HeaderComponent />
-      <p className="App-intro">
-        To get started, edit <code>src/App.js</code> and save to reload.
-      </p>
+      <SignInUpPage />
     </div>
   );
 }

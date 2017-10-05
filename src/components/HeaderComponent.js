@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../images/lemming-nocirc.png';
 
 function HeaderComponent() {
   return (
@@ -6,7 +7,7 @@ function HeaderComponent() {
       <div className="container">
         <div className="navbar-brand">
           <a className="navbar-item" href="https://lemming.online">
-            <span>Lemming online</span>
+            <img src={logo} alt="Lemming" />
           </a>
 
           <button className="button navbar-burger">
@@ -18,9 +19,9 @@ function HeaderComponent() {
 
         <div className="navbar-menu">
           <div className="navbar-end">
-            <a className="navbar-item">Home</a>
-            <a className="navbar-item">My Profile</a>
-            <a className="navbar-item">Settings</a>
+            <a className="navbar-item">Link A</a>
+            <a className="navbar-item">Link B</a>
+            <a className="navbar-item">Link C</a>
           </div>
         </div>
       </div>
