@@ -19,15 +19,14 @@ class LoginView extends React.Component {
     this.setState(newState);
   };
 
-  registerUser = (e) => {
+  loginUser = (e) => {
     // makes the form not add params to the url on submit
     e.preventDefault();
 
     console.log('registerUser');
 
-    fetch('https://api.lemming.online/users', {
-      // fetch('http://0.0.0.0:5050/users', {
-      method: 'GET',
+    fetch('https://requestb.in/1ibu5cc1', {
+      method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -36,6 +35,7 @@ class LoginView extends React.Component {
         email: this.state.email,
         password: this.state.password,
       }),
+      mode: 'no-cors',
     })
       .then((response) => {
         console.log(response.json.data);
@@ -57,15 +57,17 @@ class LoginView extends React.Component {
         <h1 className="title">Login</h1>
         <form onSubmit={this.loginUser}>
           <InputComponent title="Email" name="email" onChange={this.handleChange} />
-          <InputComponent title="Password" name="password" onChange={this.handleChange} />
+          <InputComponent
+            title="Password"
+            name="password"
+            type="password"
+            onChange={this.handleChange}
+          />
 
           <div className="field is-grouped is-grouped-right">
-            <p className="control">
-              <a className="button is-primary">Submit</a>
-            </p>
-            <p className="control">
-              <a className="button is-light">Cancel</a>
-            </p>
+            <div className="control">
+              <button className="button is-primary">Log In</button>
+            </div>
           </div>
         </form>
       </div>

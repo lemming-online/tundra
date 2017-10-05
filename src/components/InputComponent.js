@@ -26,7 +26,7 @@ function InputComponent(props) {
           id={props.title}
           name={props.name}
           className="input"
-          type="text"
+          type={props.type}
           autoComplete="off"
           onChange={props.onChange}
           style={{ display: 'block' }}
@@ -40,6 +40,11 @@ InputComponent.propTypes = {
   title: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+};
+
+InputComponent.defaultProps = {
+  type: 'text',
 };
 
 export default InputComponent;

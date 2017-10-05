@@ -28,7 +28,6 @@ class RegistrationView extends React.Component {
     console.log('registerUser');
 
     fetch('https://api.lemming.online/users', {
-      // fetch('http://0.0.0.0:5050/users', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -60,7 +59,18 @@ class RegistrationView extends React.Component {
         <h1 className="title">Register</h1>
         <form onSubmit={this.registerUser}>
           <InputComponent title="Email" name="email" onChange={this.handleChange} />
-          <InputComponent title="Password" name="password" onChange={this.handleChange} />
+          <InputComponent
+            title="Password"
+            name="password"
+            type="password"
+            onChange={this.handleChange}
+          />
+          <InputComponent
+            title="Confirm Password"
+            name="confirm_password"
+            type="password"
+            onChange={this.handleChange}
+          />
           <InputComponent title="First Name" name="first_name" onChange={this.handleChange} />
           <InputComponent title="Last Name" name="last_name" onChange={this.handleChange} />
 
