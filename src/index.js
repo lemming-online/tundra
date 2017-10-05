@@ -1,7 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore';
 import '../node_modules/bulma/css/bulma.css';
 import './index.css';
 import App from './containers/App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = configureStore();
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root'),
+);

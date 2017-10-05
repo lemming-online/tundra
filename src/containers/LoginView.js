@@ -23,7 +23,7 @@ class LoginView extends React.Component {
     // makes the form not add params to the url on submit
     e.preventDefault();
 
-    console.log('registerUser');
+    console.log('loginUser');
 
     fetch('https://requestb.in/1ibu5cc1', {
       method: 'POST',
