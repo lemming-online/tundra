@@ -17,6 +17,11 @@ class stuffList extends React.Component {
   render() {
     return (
       <div className="container box">
+        <p>
+          This demo is to showcase work done with Redux. Redux will eventually be our event
+          dispatcher.<br />
+          <br />
+        </p>
         {this.props.stuffs.length > 0 ? this.renderData() : <div className="">No Data</div>}
       </div>
     );
