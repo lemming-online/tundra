@@ -18,11 +18,16 @@ class PasswordResetView extends React.Component {
     this.setState(newState);
   };
 
+  sendReset = (e) => {
+    e.preventDefault();
+    //make api call to send link to email
+  }
+
   render() {
     return (
       <div className="tile is-child box">
         <h1 className="title">Forgot your Password?</h1>
-        <form>
+        <form onSubmit={this.sendReset}>
           <InputComponent title="Email" name="email" onChange={this.handleChange} />
           <div className="field">
             <div className="control">
