@@ -9,15 +9,15 @@ import UserCourseOverview from './UserCourseOverview';
 function App() {
   return (
     <div className="App">
-      <HeaderComponent />
       <section className="hero is-dark">
         <div className="hero-body">
           <div className="container">
-            <h1 className="title">Lemming React Component Demo</h1>
+            <h1 className="title">Lemming Front-End Component Demo</h1>
             <h2 className="subtitle">For Sprint 1</h2>
           </div>
         </div>
       </section>
+      <HeaderComponent />
       <SignInUpPage />
       <GuestLoginView />
       <StuffList />
