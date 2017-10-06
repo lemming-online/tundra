@@ -28,10 +28,10 @@ class UserProfile extends React.Component {
         body: image,
         mode: 'cors',
       })
-        .then((response) => {
-          console.log(response);
-          console.log('image posted pre json');
-          return response;
+        .then(response => response.json())
+        .then((responseJSON) => {
+          this.setState({ profilePicture: responseJSON.image });
+          console.log(`Success! Your photo is here: ${responseJSON.image}`);
         })
         .catch((error) => {
           console.error(error);
@@ -82,26 +82,30 @@ class UserProfile extends React.Component {
   // change their email and password
   render() {
     return (
-      <div className="tile is-child box">
-        <h1 className="title">Student Name Will Go Here</h1>
-        <div>
-          <Dropzone multiple={false} accept="image/*" onDrop={files => this.onDrop(files)}>
-            <center>Drag and drop a picture of yourself!</center>
-          </Dropzone>
+      <div className="tile is-parent box is-7">
+        <div className="tile is-child is-4">
+          <h1 className="title">Update Profile</h1>
+          <div>
+            <Dropzone multiple={false} accept="image/*" onDrop={files => this.onDrop(files)}>
+              <img src={this.state.profilePicture} alt="user profile" />
+            </Dropzone>
+          </div>
+          <h1 className="title subtitle">John Doe</h1>
         </div>
-        <h1 className="title">Wanna change anything?</h1>
-        <div>
-          <form onSubmit={this.updateUser}>
-            <InputComponent title="First Name" name="first_name" onChange={this.handleChange} />
-            <InputComponent title="Last Name" name="last_name" onChange={this.handleChange} />
-            <InputComponent title="Password" name="password" onChange={this.handleChange} />
-            <InputComponent title="Email" name="email" onChange={this.handleChange} />
-            <div className="field">
-              <div className="control">
-                <button className="button is-primary">Update Settings</button>
+        <div className="tile is-child">
+          <div>
+            <form onSubmit={this.updateUser}>
+              <InputComponent title="First Name" name="first_name" onChange={this.handleChange} />
+              <InputComponent title="Last Name" name="last_name" onChange={this.handleChange} />
+              <InputComponent title="Password" name="password" onChange={this.handleChange} />
+              <InputComponent title="Email" name="email" onChange={this.handleChange} />
+              <div className="field">
+                <div className="control">
+                  <button className="button is-primary">Update Settings</button>
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     );
