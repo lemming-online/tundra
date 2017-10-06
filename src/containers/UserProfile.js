@@ -40,24 +40,26 @@ class UserProfile extends React.Component {
 	onDrop = (acceptedFile, rejectedFiles) => {
 		if (acceptedFile.length > 0) {
 		  var photo = new FormData();
-			photo.append('photo', acceptedFile);
-			console.log('photo:');
+		  //console.log(acceptedFile);
+			photo.append('file', acceptedFile);
 			console.log(photo);
 
-			var photo64 = this.toDataURL(photo, (dataUrl) => {
-			 console.log('RESULT: ', dataUrl)
-			 return dataUrl;
-			});
+			// var photo64 = this.toDataURL(acceptedFile, (dataUrl) => {
+			//  console.log('RESULT: ', dataUrl)
+			//  return dataUrl;
+			// });
+
+			//console.log(acceptedFile);
 
 			//make api call to send image up to server
-			fetch('https://api.lemming.online/user/59d6d3829f8e4e00ae0dba68/set_photo', {
+			fetch('https://api.lemming.online/users/59d6d3829f8e4e00ae0dba68/set_photo', {
 	      method: 'POST',
 	      headers: {
 	        Accept: 'application/json',
 	        'Content-Type': 'application/json',
 	      },
 	      body: JSON.stringify({
-	        photo: photo64
+	        photo: photo
 	      })
 	    })
 	    .then((response) => {
