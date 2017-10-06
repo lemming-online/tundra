@@ -21,11 +21,6 @@ function SignInUpPage() {
             <PasswordResetView />
           </div>
         </div>
-        <div className="tile is-ancestor">
-          <div className="tile is-parent">
-            <UserProfile />
-          </div>
-        </div>
       </div>
     </section>
   );

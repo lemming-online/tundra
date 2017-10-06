@@ -1,7 +1,7 @@
 import * as types from './actionTypes';
 
 function url() {
-  return 'http://echo.jsontest.com/stuff/jay';
+  return 'http://echo.jsontest.com/stuff/hello_world';
 }
 
 export function receiveStuff(json) {

@@ -82,26 +82,28 @@ class UserProfile extends React.Component {
   // change their email and password
   render() {
     return (
-      <div className="tile is-child box">
-        <h1 className="title">Student Name Will Go Here</h1>
-        <div>
-          <Dropzone multiple={false} accept="image/*" onDrop={files => this.onDrop(files)}>
-            <center>Drag and drop a picture of yourself!</center>
-          </Dropzone>
-        </div>
-        <h1 className="title">Wanna change anything?</h1>
-        <div>
-          <form onSubmit={this.updateUser}>
-            <InputComponent title="First Name" name="first_name" onChange={this.handleChange} />
-            <InputComponent title="Last Name" name="last_name" onChange={this.handleChange} />
-            <InputComponent title="Password" name="password" onChange={this.handleChange} />
-            <InputComponent title="Email" name="email" onChange={this.handleChange} />
-            <div className="field">
-              <div className="control">
-                <button className="button is-primary">Update Settings</button>
+      <div className="section">
+        <div className="container box">
+          <h1 className="title">Student Name Will Go Here</h1>
+          <div>
+            <Dropzone multiple={false} accept="image/*" onDrop={files => this.onDrop(files)}>
+              <center>Drag and drop a picture of yourself!</center>
+            </Dropzone>
+          </div>
+          <h1 className="title">Wanna change anything?</h1>
+          <div>
+            <form onSubmit={this.updateUser}>
+              <InputComponent title="First Name" name="first_name" onChange={this.handleChange} />
+              <InputComponent title="Last Name" name="last_name" onChange={this.handleChange} />
+              <InputComponent title="Password" name="password" onChange={this.handleChange} />
+              <InputComponent title="Email" name="email" onChange={this.handleChange} />
+              <div className="field">
+                <div className="control">
+                  <button className="button is-primary">Update Settings</button>
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     );
