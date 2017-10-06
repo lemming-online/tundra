@@ -2,6 +2,7 @@ import React from 'react';
 import LoginView from './LoginView';
 import RegistrationView from './RegistrationView';
 import PasswordResetView from './PasswordResetView';
+import UserProfile from './UserProfile';
 
 function SignInUpPage() {
   return (

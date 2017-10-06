@@ -5,6 +5,7 @@ import SignInUpPage from './SignInUpPage';
 import StuffList from '../components/StuffList';
 import GuestLoginView from './GuestLoginView';
 import UserCourseOverview from './UserCourseOverview';
+import UserProfile from './UserProfile';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <GuestLoginView />
       <StuffList />
       <UserCourseOverview />
+      <UserProfile />
     </div>
   );
 }
