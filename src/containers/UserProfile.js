@@ -3,7 +3,7 @@ import Dropzone from 'react-dropzone'
 import InputComponent from '../components/InputComponent';
 
 class UserProfile extends React.Component {
-	constructor(props){
+	constructor(props) {
     super(props);
     this.state = {
     	email: '',
@@ -22,15 +22,57 @@ class UserProfile extends React.Component {
     this.setState(newState);
   };
 
+  toDataURL = (url, callback) => {
+	  var xhr = new XMLHttpRequest();
+	  xhr.onload = function() {
+	    var reader = new FileReader();
+	    reader.onloadend = function() {
+	      callback(reader.result);
+	    }
+	    reader.readAsDataURL(xhr.response);
+	  };
+	  xhr.open('GET', url);
+	  xhr.responseType = 'blob';
+	  xhr.send();
+	};
+
   //onDrop takes arrays of files as arams
 	onDrop = (acceptedFile, rejectedFiles) => {
 		if (acceptedFile.length > 0) {
-			//send only the first file uploaded if they use a group
 		  var photo = new FormData();
 			photo.append('photo', acceptedFile);
-	    
-	    //make api call to send image up to server
-	    //after promise returns, set the state of profilePicture to URI returned
+			console.log('photo:');
+			console.log(photo);
+
+			var photo64 = this.toDataURL(photo, (dataUrl) => {
+			 console.log('RESULT: ', dataUrl)
+			 return dataUrl;
+			});
+
+			//make api call to send image up to server
+			fetch('https://api.lemming.online/user/59d6d3829f8e4e00ae0dba68/set_photo', {
+	      method: 'POST',
+	      headers: {
+	        Accept: 'application/json',
+	        'Content-Type': 'application/json',
+	      },
+	      body: JSON.stringify({
+	        photo: photo64
+	      })
+	    })
+	    .then((response) => {
+	      console.log('image posted pre json');
+	      return response.json();
+	    })
+	    .then((responseJson) => {
+	      //after promise returns, set the state of profilePicture to URI returned
+	      console.log('image posted');
+	      console.log(responseJson);
+	      return responseJson;
+	    })
+	    .catch((error) => {
+	      console.error(error);
+	    });
 
 			console.log(acceptedFile[0].preview);
 		}
@@ -73,7 +115,7 @@ class UserProfile extends React.Component {
         <h1 className="title">Student Name Will Go Here</h1>
 	      <div>
 	        <Dropzone multiple={false} accept='image/*' onDrop={(files) => this.onDrop(files)}>
-	          <div>Drag and drop a picture of yourself!</div>
+	          <center>Drag and drop a picture of yourself!</center>
 	        </Dropzone>
         </div>
         <h1 className="title">Wanna change anything?</h1>
