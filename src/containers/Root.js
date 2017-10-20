@@ -2,19 +2,21 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import App from './App';
+import HeaderComponent from '../components/HeaderComponent';
 import HomePage from './HomePage';
 import SignInUpPage from './SignInUpPage';
 
 const Root = (store, props) => (
   <Provider store={store}>
     <Router {...props}>
-      <Switch>
-        <Route path="/demo" component={App} />
-        <Route path="/home" component={HomePage} />
-        <Route path="/signin" component={SignInUpPage} />
-        <Route path="/" component={SignInUpPage} />
-      </Switch>
+      <div>
+        <HeaderComponent />
+        <Switch>
+          <Route path="/home" component={HomePage} />
+          <Route path="/signin" component={SignInUpPage} />
+          <Route path="/" component={SignInUpPage} />
+        </Switch>
+      </div>
     </Router>
   </Provider>
 );

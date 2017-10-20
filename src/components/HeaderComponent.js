@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../images/lemming-nocirc.png';
 
 function HeaderComponent() {
@@ -19,9 +20,8 @@ function HeaderComponent() {
 
         <div className="navbar-menu">
           <div className="navbar-end">
-            <a className="navbar-item">Link A</a>
-            <a className="navbar-item">Link B</a>
-            <a className="navbar-item">Link C</a>
+            <Link to="/home" className="navbar-item">Home</Link>
+            <Link to="/signin" className="navbar-item">Signin</Link>
           </div>
         </div>
       </div>
