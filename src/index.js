@@ -1,16 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import '../node_modules/bulma/css/bulma.css';
 import './index.css';
-import App from './containers/App';
+
+import Root from './containers/Root';
 
 const store = configureStore();
 
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <Root store={store} />,
   document.getElementById('root'),
 );
