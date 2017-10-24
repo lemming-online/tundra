@@ -1,11 +1,11 @@
 import React from 'react';
-import UserProfile from './UserProfile';
 
 function HomePage() {
+  // const { isAuthenticated } = this.props;
   return (
     <section className="section">
       <div className="container">
-        <UserProfile />
+        <h1 className="title">Welcome to Lemming. Please login.</h1>
       </div>
     </section>
   );

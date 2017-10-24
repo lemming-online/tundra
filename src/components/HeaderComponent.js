@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../images/lemming-nocirc.png';
 
 function HeaderComponent() {
+  // const { dispatch, isAuthenticated, errorMessage } = this.props;
   return (
     <nav className="navbar header" aria-label="main navigation">
       <div className="container">
@@ -20,8 +21,12 @@ function HeaderComponent() {
 
         <div className="navbar-menu">
           <div className="navbar-end">
-            <Link to="/home" className="navbar-item">Home</Link>
-            <Link to="/signin" className="navbar-item">Signin</Link>
+            <Link to="/" className="navbar-item">
+              Home
+            </Link>
+            <Link to="/signin" className="navbar-item">
+              Signin
+            </Link>
           </div>
         </div>
       </div>
