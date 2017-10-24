@@ -6,15 +6,14 @@ import HeaderComponent from '../components/HeaderComponent';
 import HomePage from './HomePage';
 import SignInUpPage from './SignInUpPage';
 
-const Root = (store, props) => (
-  <Provider store={store}>
+const Root = props => (
+  <Provider store={props.store}>
     <Router {...props}>
       <div>
         <HeaderComponent />
         <Switch>
-          <Route path="/home" component={HomePage} />
-          <Route path="/signin" component={SignInUpPage} />
-          <Route path="/" component={SignInUpPage} />
+          <Route path="/login" component={SignInUpPage} />
+          <Route path="/" component={HomePage} />
         </Switch>
       </div>
     </Router>

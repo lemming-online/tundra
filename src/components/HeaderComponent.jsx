@@ -24,8 +24,11 @@ function HeaderComponent() {
             <Link to="/" className="navbar-item">
               Home
             </Link>
-            <Link to="/signin" className="navbar-item">
-              Signin
+            <Link to="/login" className="navbar-item">
+              Log In
+            </Link>
+            <Link to="/logout" className="navbar-item">
+              Log Out
             </Link>
           </div>
         </div>
