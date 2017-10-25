@@ -30,6 +30,9 @@ function HeaderComponent() {
             <Link to="/logout" className="navbar-item">
               Log Out
             </Link>
+            <Link to="/user" className="navbar-item">
+              User
+            </Link>
           </div>
         </div>
       </div>

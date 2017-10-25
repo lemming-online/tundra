@@ -8,9 +8,10 @@ class LoginApi {
       body: JSON.stringify(credentials),
     });
 
-    return fetch(request)
-      .then(response => response.json())
-      .catch(error => error);
+    return fetch(request).then(response => response.json());
+    // .catch((error) => {
+    //   throw error;
+    // });
   }
 }
 
