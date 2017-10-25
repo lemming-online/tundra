@@ -9,6 +9,8 @@ class LoginApi {
     });
 
     return fetch(request).then(response => response.json());
+    //  TODO: investigate this. does the error get thrown up?
+    //  how is it handled by the calling function?
     // .catch((error) => {
     //   throw error;
     // });

@@ -1,11 +1,11 @@
 import * as types from './actionTypes';
 import loginApi from '../api/loginApi';
 
-export function loginSuccess() {
+function loginSuccess() {
   return { type: types.LOG_IN_SUCCESS };
 }
 
-export function loginFailure() {
+function loginFailure() {
   return { type: types.LOG_IN_FAILURE };
 }
 
