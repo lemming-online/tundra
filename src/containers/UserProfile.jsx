@@ -14,7 +14,7 @@ class UserProfile extends React.Component {
     };
   }
 
-  // onDrop takes arrays of files as arams
+  // onDrop takes arrays of files as params
   onDrop = (acceptedFile) => {
     if (acceptedFile.length > 0) {
       const image = new FormData();
