@@ -1,5 +1,8 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import InputComponent from '../components/InputComponent';
+import * as registrationActions from '../actions/registrationActions';
 
 class RegistrationView extends React.Component {
   constructor() {
@@ -60,4 +63,10 @@ class RegistrationView extends React.Component {
   }
 }
 
-export default RegistrationView;
+// TODO: figure out what this mapDispatchToProps, bindActionCreators is
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(registrationActions, dispatch),
+  };
+}
+export default connect(null, mapDispatchToProps)(RegistrationView);
