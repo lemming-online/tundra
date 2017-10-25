@@ -24,3 +24,8 @@ export function logInUser(credentials) {
       });
   };
 }
+
+export function logOutUser() {
+  localStorage.removeItem('jwt');
+  return { type: types.LOG_OUT };
+}

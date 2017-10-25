@@ -8,11 +8,12 @@ import SignInUpPage from './SignInUpPage';
 import UserProfile from './UserProfile';
 
 // TODO: Abstract this out somewhere
-function requireAuth() {
-  return !localStorage.jwt;
+function isAuthenticated() {
+  // this !! thing seems weird, but read about it here: http://shrt.nutt.men/!!
+  return !!localStorage.jwt;
 }
 
-// FIXME: add store to props
+// FIXME: add store to proptypes
 const Root = props => (
   <Provider store={props.store}>
     <Router {...props}>
@@ -24,7 +25,7 @@ const Root = props => (
           <Route
             exact
             path="/user"
-            render={() => (requireAuth() ? <Redirect to="/" /> : <UserProfile />)}
+            render={() => (isAuthenticated() ? <UserProfile /> : <Redirect to="/login" />)}
           />
           <Route path="/" component={HomePage} />
         </Switch>
