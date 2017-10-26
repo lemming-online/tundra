@@ -1,6 +1,4 @@
 import React from 'react';
-// eslint-disable-next-line
-import DraftCSS from 'draft-js';
 
 import SessionEditorComponent from '../components/SessionEditorComponent';
 
