@@ -1,6 +1,7 @@
 import React from 'react';
 import { Editor, EditorState } from 'draft-js';
 
+
 class SessionEditorComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -9,7 +10,9 @@ class SessionEditorComponent extends React.Component {
   }
   render() {
     return (
-      <Editor editorState={this.state.editorState} onChange={this.onChange} />
+      <div className="session-editor notification">
+        <Editor editorState={this.state.editorState} onChange={this.onChange} />
+      </div>
     );
   }
 }
