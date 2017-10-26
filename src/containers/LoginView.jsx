@@ -38,7 +38,7 @@ class LoginView extends React.Component {
     return (
       <div className="tile is-child box">
         <h1 className="title">Login</h1>
-        <form onSubmit={this.loginUser}>
+        <form>
           <InputComponent title="Email" name="email" onChange={this.onChange} />
           <InputComponent
             title="Password"

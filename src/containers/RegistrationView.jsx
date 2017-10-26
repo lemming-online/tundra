@@ -16,9 +16,6 @@ class RegistrationView extends React.Component {
         last_name: '',
       },
     };
-
-    // this.onChange = this.onChange.bind(this);
-    // this.onSave = this.onSave.bind(this);
   }
 
   onSave = (event) => {
