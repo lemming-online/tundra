@@ -9,10 +9,11 @@ function registrationFailure() {
   return { type: types.REGISTER_FAILURE };
 }
 
+// need to say export default to avoid linting issues
 export function registerUser(credentials) {
   return function goRegisterApi(dispatch) {
     return registerApi
-      .registerUser(credentials)
+      .register(credentials)
       .then((response) => {
         console.log(response);
         dispatch(registrationSuccess());
@@ -22,4 +23,8 @@ export function registerUser(credentials) {
         throw error;
       });
   };
+}
+
+export function lol() {
+  return 'hello world';
 }

@@ -5,8 +5,8 @@ import InputComponent from '../components/InputComponent';
 import * as registrationActions from '../actions/registrationActions';
 
 class RegistrationView extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       credentials: {
@@ -16,6 +16,9 @@ class RegistrationView extends React.Component {
         last_name: '',
       },
     };
+
+    // this.onChange = this.onChange.bind(this);
+    // this.onSave = this.onSave.bind(this);
   }
 
   onSave = (event) => {
