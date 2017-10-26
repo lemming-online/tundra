@@ -11,14 +11,11 @@ class RegistrationApi {
       body: JSON.stringify(credentials),
     });
 
-    fetch(request)
+    return fetch(request)
       .then(response => response.json())
-      .then((responseJson) => {
-        console.log(responseJson);
-        return responseJson;
-      })
+      .then(responseJson => responseJson)
       .catch((error) => {
-        console.log(error);
+        throw error;
       });
   }
 }
