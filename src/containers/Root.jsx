@@ -1,17 +1,13 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import HeaderComponent from '../components/HeaderComponent';
 import HomePage from './HomePage';
 import SignInUpPage from './SignInUpPage';
 import UserProfile from './UserProfile';
-
-// TODO: Abstract this out somewhere
-function isAuthenticated() {
-  // this !! thing seems weird, but read about it here: http://shrt.nutt.men/!!
-  return !!localStorage.jwt;
-}
+import SessionPage from './SessionPage';
+import PrivateRoute from '../components/PrivateRoute';
 
 // FIXME: add store to proptypes
 const Root = props => (
@@ -21,12 +17,8 @@ const Root = props => (
         <HeaderComponent />
         <Switch>
           <Route path="/login" component={SignInUpPage} />
-          {/* TODO: Make this into its own component like <PrivateRoute */}
-          <Route
-            exact
-            path="/user"
-            render={() => (isAuthenticated() ? <UserProfile /> : <Redirect to="/login" />)}
-          />
+          <PrivateRoute path="/user" component={UserProfile} />
+          <PrivateRoute path="/session/:sessionID" component={SessionPage} />
           <Route path="/" component={HomePage} />
         </Switch>
       </div>
