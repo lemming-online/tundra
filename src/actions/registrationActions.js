@@ -9,7 +9,7 @@ function registrationFailure() {
   return { type: types.REGISTER_FAILURE };
 }
 
-export function registerUser(credentials) {
+export default function registerUser(credentials) {
   return function goRegisterApi(dispatch) {
     return registerApi
       .register(credentials)
@@ -22,9 +22,4 @@ export function registerUser(credentials) {
         throw error;
       });
   };
-}
-
-// exporting multiple functions makes the linter play nice
-export function makeLinterPlayNice() {
-  console.log('make linter play nice');
 }

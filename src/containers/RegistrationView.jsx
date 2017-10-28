@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import InputComponent from '../components/InputComponent';
-import * as registrationActions from '../actions/registrationActions';
+import registerUser from '../actions/registrationActions';
 
 class RegistrationView extends React.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class RegistrationView extends React.Component {
 
   onSave = (event) => {
     event.preventDefault();
-    this.props.actions.registerUser(this.state.credentials);
+    this.props.registerUser(this.state.credentials);
   };
 
   onChange = (event) => {
@@ -66,7 +66,10 @@ class RegistrationView extends React.Component {
 // TODO: figure out what this mapDispatchToProps, bindActionCreators is
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(registrationActions, dispatch),
+    actions: bindActionCreators(registerUser, dispatch),
+    registerUser: (credentials) => {
+      dispatch(registerUser(credentials));
+    },
   };
 }
 export default connect(null, mapDispatchToProps)(RegistrationView);
