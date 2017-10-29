@@ -1,82 +1,60 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import InputComponent from '../components/InputComponent';
+import registerUser from '../actions/registrationActions';
 
 class RegistrationView extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      email: '',
-      password: '',
-      first_name: '',
-      last_name: '',
+      credentials: {
+        email: '',
+        password: '',
+        first_name: '',
+        last_name: '',
+      },
     };
   }
 
-  handleChange = (event) => {
-    const newState = {};
-    console.log(event);
-    // makes function reusuable, use name attribute as key to set
-    newState[event.target.name] = event.target.value;
-    this.setState(newState);
+  onSave = (event) => {
+    event.preventDefault();
+    this.props.registerUser(this.state.credentials);
   };
 
-  registerUser = (e) => {
-    // makes the form not add params to the url on submit
-    e.preventDefault();
-
-    console.log('registerUser');
-
-    fetch('https://api.lemming.online/users', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password,
-        display_name: `${this.state.first_name} ${this.state.last_name}`,
-      }),
-    })
-      .then((response) => {
-        console.log(response.json.data);
-        return response.json();
-      })
-      .then((responseJson) => {
-        console.log('hello world');
-        console.log(responseJson);
-        return responseJson;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  onChange = (event) => {
+    const nextCredentials = this.state.credentials;
+    nextCredentials[event.target.name] = event.target.value;
+    return this.setState({ credentials: nextCredentials });
   };
 
   render() {
     return (
       <div className="tile is-child box">
         <h1 className="title">Register</h1>
-        <form onSubmit={this.registerUser}>
-          <InputComponent title="Email" name="email" onChange={this.handleChange} />
+        <form>
+          <InputComponent title="Email" name="email" onChange={this.onChange} />
           <InputComponent
             title="Password"
             name="password"
             type="password"
-            onChange={this.handleChange}
+            onChange={this.onChange}
           />
           <InputComponent
             title="Confirm Password"
             name="confirm_password"
             type="password"
-            onChange={this.handleChange}
+            onChange={this.onChange}
           />
-          <InputComponent title="First Name" name="first_name" onChange={this.handleChange} />
-          <InputComponent title="Last Name" name="last_name" onChange={this.handleChange} />
+          <InputComponent title="First Name" name="first_name" onChange={this.onChange} />
+          <InputComponent title="Last Name" name="last_name" onChange={this.onChange} />
 
           <div className="field">
             <div className="control">
-              <button className="button is-primary">Register</button>
+              <button onClick={this.onSave} className="button is-primary">
+                Register
+              </button>
             </div>
           </div>
         </form>
@@ -85,4 +63,13 @@ class RegistrationView extends React.Component {
   }
 }
 
-export default RegistrationView;
+// TODO: figure out what this mapDispatchToProps, bindActionCreators is
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(registerUser, dispatch),
+    registerUser: (credentials) => {
+      dispatch(registerUser(credentials));
+    },
+  };
+}
+export default connect(null, mapDispatchToProps)(RegistrationView);
