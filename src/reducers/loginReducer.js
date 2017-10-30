@@ -8,7 +8,10 @@ const INITIAL_STATE = {
 };
 
 export default function loginReducer(state = INITIAL_STATE, action) {
-  const payload = jwtDecode(localStorage.jwt);
+  let payload = '';
+  if (localStorage.jwt != null) {
+    payload = jwtDecode(localStorage.jwt);
+  }
   switch (action.type) {
     case types.LOG_IN_SUCCESS:
       console.log('Login successful.');
