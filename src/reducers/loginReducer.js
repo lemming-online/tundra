@@ -8,18 +8,16 @@ const INITIAL_STATE = {
 };
 
 export default function loginReducer(state = INITIAL_STATE, action) {
-  const payload = JSON.stringify(jwtDecode(localStorage.jwt));
+  const payload = jwtDecode(localStorage.jwt);
   switch (action.type) {
     case types.LOG_IN_SUCCESS:
       console.log('Login successful.');
-      console.log(`payload: ${payload}`);
-      console.log(`state: ${JSON.stringify(state)}`);
       return {
         // ...state == the non explicitly stated parts of the state
         ...state,
         isAuthenticated: true,
-        firstName: localStorage.jwt.fnm,
-        lastName: localStorage.jwt.lnm,
+        firstName: payload.fnm,
+        lastName: payload.lnm,
       };
 
     case types.LOG_IN_FAILURE:
