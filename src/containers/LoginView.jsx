@@ -6,6 +6,14 @@ import { connect } from 'react-redux';
 import * as loginActions from '../actions/loginActions';
 import InputComponent from '../components/InputComponent';
 
+function WarningBanner(props) {
+  if (!props.warn) {
+    return null;
+  }
+
+  return <div className="notification is-danger">{props.warn}</div>;
+}
+
 class LoginView extends React.Component {
   constructor(props) {
     super(props);
@@ -38,6 +46,7 @@ class LoginView extends React.Component {
     return (
       <div className="tile is-child box">
         <h1 className="title">Login</h1>
+        <WarningBanner warn={this.props.loginMessage} />
         <form>
           <InputComponent title="Email" name="email" onChange={this.onChange} />
           <InputComponent
@@ -60,9 +69,20 @@ class LoginView extends React.Component {
   }
 }
 // TODO: figure out what this mapDispatchToProps, bindActionCreators is
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     actions: bindActionCreators(loginActions, dispatch),
+//   };
+// }
+// export default connect(null, mapDispatchToProps)(LoginView);
+
+function mapStateToProps(state) {
+  return { loginMessage: state.loginReducer.loginMessage };
+}
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(loginActions, dispatch),
   };
 }
-export default connect(null, mapDispatchToProps)(LoginView);
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginView);

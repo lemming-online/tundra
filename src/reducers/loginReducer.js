@@ -5,6 +5,8 @@ const INITIAL_STATE = {
   isAuthenticated: false,
   firstName: '',
   lastName: '',
+  loginError: false,
+  loginMessage: '',
 };
 
 export default function loginReducer(state = INITIAL_STATE, action) {
@@ -26,7 +28,13 @@ export default function loginReducer(state = INITIAL_STATE, action) {
 
     case types.LOG_IN_FAILURE:
       console.log('Login failed.');
-      return INITIAL_STATE;
+      return {
+        // ...state == the non explicitly stated parts of the state
+        ...state,
+        loginError: true,
+        loginMessage: "Oops! We couldn't log you in. Please try again.",
+      };
+    // return INITIAL_STATE;
 
     case types.LOG_OUT:
       console.log('Log out.');
