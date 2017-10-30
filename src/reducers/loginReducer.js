@@ -9,7 +9,8 @@ const INITIAL_STATE = {
 
 export default function loginReducer(state = INITIAL_STATE, action) {
   let payload = '';
-  if (localStorage.jwt != null && localStorage.jwt !== undefined) {
+  // FIXME: may not need this in the future. better error handling when jwt is set would be good.
+  if (localStorage.jwt != null && localStorage.jwt !== 'undefined') {
     payload = jwtDecode(localStorage.jwt);
   }
   switch (action.type) {

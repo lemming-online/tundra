@@ -14,6 +14,7 @@ export function logInUser(credentials) {
     return loginApi
       .login(credentials)
       .then((response) => {
+        console.log(response);
         localStorage.setItem('jwt', response.token);
         dispatch(loginSuccess());
       })

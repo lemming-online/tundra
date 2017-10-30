@@ -13,9 +13,9 @@ class LoginApi {
     return fetch(request)
       .then((response) => {
         if (!response.ok) {
-          console.log(response);
           throw Error(response);
         }
+        return response.json();
       })
       .catch((error) => {
         throw error;
