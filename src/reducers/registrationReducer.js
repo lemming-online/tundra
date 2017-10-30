@@ -1,7 +1,11 @@
-import initialState from './initialState';
 import * as types from '../actions/actionTypes';
 
-export default function registrationReducer(state = initialState.isAuthenticated, action) {
+const INITIAL_STATE = {
+  firstName: '',
+  lastName: '',
+};
+
+export default function registrationReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case types.REGISTER_SUCCESS:
       console.log('Registration successful.');
