@@ -9,7 +9,7 @@ const INITIAL_STATE = {
 
 export default function loginReducer(state = INITIAL_STATE, action) {
   let payload = '';
-  if (localStorage.jwt != null) {
+  if (localStorage.jwt != null && localStorage.jwt !== undefined) {
     payload = jwtDecode(localStorage.jwt);
   }
   switch (action.type) {
