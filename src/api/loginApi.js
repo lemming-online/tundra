@@ -8,12 +8,18 @@ class LoginApi {
       body: JSON.stringify(credentials),
     });
 
-    return fetch(request).then(response => response.json());
     //  TODO: investigate this. does the error get thrown up?
     //  how is it handled by the calling function?
-    // .catch((error) => {
-    //   throw error;
-    // });
+    return fetch(request)
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response);
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        throw error;
+      });
   }
 }
 

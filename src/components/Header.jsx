@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import * as loginActions from '../actions/loginActions';
 import logo from '../images/lemming-nocirc.png';
 
-class HeaderComponent extends React.Component {
+class Header extends React.Component {
   // const { dispatch, isAuthenticated, errorMessage } = this.props;
   constructor(props) {
     super();
@@ -59,7 +59,7 @@ class HeaderComponent extends React.Component {
   }
 }
 
-HeaderComponent.propTypes = {
+Header.propTypes = {
   actions: PropTypes.object.isRequired,
 };
 
@@ -72,4 +72,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

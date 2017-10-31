@@ -63,7 +63,6 @@ class RegistrationView extends React.Component {
   }
 }
 
-// TODO: figure out what this mapDispatchToProps, bindActionCreators is
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(registerUser, dispatch),

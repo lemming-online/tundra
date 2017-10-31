@@ -12,8 +12,30 @@ class RegistrationApi {
     });
 
     return fetch(request)
-      .then(response => response.json())
-      .then(responseJson => responseJson)
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response);
+        }
+        return response.json();
+      })
+      .then((responseJson) => {
+        // TODO: add good comments to explain this
+        const postActivation = new Request('https://api.lemming.online/activation', {
+          method: 'POST',
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+          body: JSON.stringify({ email: responseJson.email }),
+        });
+        return fetch(postActivation);
+      })
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response);
+        }
+        return response.json();
+      })
       .catch((error) => {
         throw error;
       });

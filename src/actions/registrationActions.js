@@ -11,15 +11,15 @@ function registrationFailure() {
 
 export default function registerUser(credentials) {
   return function goRegisterApi(dispatch) {
-    return registerApi
-      .register(credentials)
-      .then((response) => {
-        console.log(response);
-        dispatch(registrationSuccess());
-      })
-      .catch((error) => {
-        dispatch(registrationFailure());
-        throw error;
-      });
+    return (
+      registerApi
+        .register(credentials)
+        .then(dispatch(registrationSuccess()))
+        // TODO: add thens here
+        .catch((error) => {
+          console.error(error);
+          dispatch(registrationFailure());
+        })
+    );
   };
 }

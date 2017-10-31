@@ -13,14 +13,13 @@ export function logInUser(credentials) {
   return function goLoginApi(dispatch) {
     return loginApi
       .login(credentials)
-      .then((response) => {
-        console.log(response);
-        localStorage.setItem('jwt', response.token);
+      .then((responseJson) => {
+        localStorage.setItem('jwt', responseJson.token);
         dispatch(loginSuccess());
       })
       .catch((error) => {
+        console.error(error);
         dispatch(loginFailure());
-        throw error;
       });
   };
 }
