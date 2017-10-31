@@ -9,8 +9,13 @@ function loginFailure() {
   return { type: types.LOG_IN_FAILURE };
 }
 
+function fetchLogin() {
+  return { type: types.LOG_IN_FETCH };
+}
+
 export function logInUser(credentials) {
   return function goLoginApi(dispatch) {
+    dispatch(fetchLogin());
     return loginApi
       .login(credentials)
       .then((responseJson) => {
