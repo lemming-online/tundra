@@ -51,7 +51,10 @@ class LoginView extends React.Component {
           {/* TODO: figure out if we need submit or button */}
           <div className="field is-grouped is-grouped-right">
             <div className="control">
-              <button onClick={this.onSave} className="button is-primary">
+              <button
+                onClick={this.onSave}
+                className={`button is-primary ${this.props.loading ? 'is-loading' : ''}`}
+              >
                 Log In
               </button>
             </div>
@@ -63,7 +66,10 @@ class LoginView extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { loginMessage: state.loginReducer.loginMessage };
+  return {
+    loginMessage: state.loginReducer.loginMessage,
+    loading: state.loginReducer.loading,
+  };
 }
 function mapDispatchToProps(dispatch) {
   return {
