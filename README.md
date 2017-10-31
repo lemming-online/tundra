@@ -1,4 +1,4 @@
-# tundra
+# tundra [![Build Status](https://travis-ci.org/lemming-online/tundra.svg?branch=master)](https://travis-ci.org/lemming-online/tundra)
 tundra is the main frontend component for the [lemming.online](https://github.com/lemming-online) project.
 
 ## requirements
