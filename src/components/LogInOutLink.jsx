@@ -10,7 +10,6 @@ function LogInOutLink(props) {
     event.preventDefault();
     props.actions.logOutUser();
   }
-  // this.logOut = logOut.bind(this);
 
   if (props.logged_in) {
     return (
