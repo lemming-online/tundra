@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import HeaderComponent from '../components/HeaderComponent';
+import Header from '../components/Header';
 import HomePage from './HomePage';
 import SignInUpPage from './SignInUpPage';
 import UserProfile from './UserProfile';
@@ -18,7 +18,7 @@ const Root = props => (
   <Provider store={props.store}>
     <Router {...props}>
       <div>
-        <HeaderComponent />
+        <Header />
         <Switch>
           <Route path="/login" component={SignInUpPage} />
           {/* TODO: Make this into its own component like <PrivateRoute */}

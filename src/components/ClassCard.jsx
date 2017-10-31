@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function ClassCardComponent(props) {
+function ClassCard(props) {
   return (
     <a href="/">
       <div className="card">
@@ -23,9 +23,9 @@ function ClassCardComponent(props) {
   );
 }
 
-ClassCardComponent.propTypes = {
+ClassCard.propTypes = {
   title: PropTypes.string.isRequired,
   member_role: PropTypes.string.isRequired,
 };
 
-export default ClassCardComponent;
+export default ClassCard;

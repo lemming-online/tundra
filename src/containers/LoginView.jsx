@@ -5,14 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as loginActions from '../actions/loginActions';
 import InputComponent from '../components/InputComponent';
-
-function WarningBanner(props) {
-  if (!props.warn) {
-    return null;
-  }
-
-  return <div className="notification is-danger">{props.warn}</div>;
-}
+import WarningNotification from '../components/WarningNotification';
 
 class LoginView extends React.Component {
   constructor(props) {
@@ -26,7 +19,7 @@ class LoginView extends React.Component {
       },
     };
 
-    // TODO: remove these binds?
+    // TODO: are these binds needed?
     this.onChange = this.onChange.bind(this);
     this.onSave = this.onSave.bind(this);
   }
@@ -46,7 +39,7 @@ class LoginView extends React.Component {
     return (
       <div className="tile is-child box">
         <h1 className="title">Login</h1>
-        <WarningBanner warn={this.props.loginMessage} />
+        <WarningNotification warn={this.props.loginMessage} />
         <form>
           <InputComponent title="Email" name="email" onChange={this.onChange} />
           <InputComponent
@@ -68,13 +61,6 @@ class LoginView extends React.Component {
     );
   }
 }
-// TODO: figure out what this mapDispatchToProps, bindActionCreators is
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     actions: bindActionCreators(loginActions, dispatch),
-//   };
-// }
-// export default connect(null, mapDispatchToProps)(LoginView);
 
 function mapStateToProps(state) {
   return { loginMessage: state.loginReducer.loginMessage };
