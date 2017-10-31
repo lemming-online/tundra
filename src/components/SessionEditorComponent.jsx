@@ -1,7 +1,6 @@
 import React from 'react';
 import { Editor, EditorState } from 'draft-js';
 
-
 class SessionEditorComponent extends React.Component {
   constructor(props) {
     super(props);
