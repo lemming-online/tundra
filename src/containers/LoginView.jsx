@@ -1,6 +1,6 @@
 import React from 'react';
 // FIXME: specify proper prop-types
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as loginActions from '../actions/loginActions';
