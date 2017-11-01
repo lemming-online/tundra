@@ -41,7 +41,7 @@ class Header extends React.Component {
                   <figure className="image is-32x32 ">
                     <img
                       alt="user profile pic"
-                      src="https://bulma.io/images/placeholders/128x128.png"
+                      src="https://lemming-user-images.s3.amazonaws.com/59f8a51538be3200b858cf44?AWSAccessKeyId=AKIAJ2ZY6IXB7ROLPEBA&Signature=P%2BJXvqIyqxH5eRwFUa%2BDwuxJM48%3D&Expires=1509564924"
                       className="is-circle"
                     />
                   </figure>

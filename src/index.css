@@ -18,3 +18,9 @@ body {
   border-radius: 50%;
   max-width: 95%;
 }
+
+.uid {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
+    monospace;
+  font-size: 10pt;
+}
