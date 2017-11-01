@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   lastName: '',
   loginError: false,
   loginMessage: '',
+  loading: false,
 };
 
 export default function loginReducer(state = INITIAL_STATE, action) {
@@ -16,11 +17,20 @@ export default function loginReducer(state = INITIAL_STATE, action) {
     payload = jwtDecode(localStorage.jwt);
   }
   switch (action.type) {
+    case types.LOG_IN_FETCH:
+      console.log('Login fetch.');
+      return {
+        // ...state == the non explicitly stated parts of the state
+        ...state,
+        loading: true,
+      };
+
     case types.LOG_IN_SUCCESS:
       console.log('Login successful.');
       return {
         // ...state == the non explicitly stated parts of the state
         ...state,
+        loading: false,
         isAuthenticated: true,
         firstName: payload.fnm,
         lastName: payload.lnm,
@@ -31,6 +41,7 @@ export default function loginReducer(state = INITIAL_STATE, action) {
       return {
         // ...state == the non explicitly stated parts of the state
         ...state,
+        loading: false,
         loginError: true,
         loginMessage: "Oops! We couldn't log you in. Please try again.",
       };
