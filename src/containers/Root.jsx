@@ -16,6 +16,9 @@ const Root = props => (
       <div>
         <Header />
         <Switch>
+          {/* TODO: /ankit route is just for testing, 
+          need to make sure to get rid of before merge master */}
+          <Route path="/ankit" component={SessionPage} />
           <Route path="/login" component={SignInUpPage} />
           <PrivateRoute path="/user" component={UserProfile} />
           <PrivateRoute path="/session/:sessionID" component={SessionPage} />
