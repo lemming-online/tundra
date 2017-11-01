@@ -22,8 +22,6 @@ class AnnouncementForm extends React.Component {
   onSubmit = () => {
     console.log(this.state.announcement.content);
     this.props.submitAnnouncement(this.state.announcement.content);
-    // this.props.actions.logInUser(this.state.announcement);
-    // onSave call the action that will create announcements
   };
 
   onCancel = () => {
@@ -50,7 +48,6 @@ class AnnouncementForm extends React.Component {
         </button>
 
         <div id="announcement-form-popup" className={`${modalActive}`}>
-          <h1>{this.props.popup}</h1>
           <div className="modal-background" />
           <section className="section">
             <div className="container box">
