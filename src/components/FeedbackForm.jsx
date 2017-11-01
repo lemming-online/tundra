@@ -27,7 +27,7 @@ class FeedbackForm extends React.Component {
   }
 
   onSubmit = () => {
-    console.log(this.state.announcement.content);
+    console.log(this.state.feedback.content);
     this.props.feedbackSuccess();
   };
 
