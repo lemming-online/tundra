@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import InputComponent from '../components/InputComponent';
+import createAnnouncement from '../actions/announcementActions';
 
 class AnnouncementForm extends React.Component {
   constructor(props) {
@@ -23,6 +26,12 @@ class AnnouncementForm extends React.Component {
     // onSave call the action that will create announcements
   };
 
+  onSelect = () => {
+    this.props.createAnnouncement(this.state.announcement);
+    this.forceUpdate();
+  };
+
+  // keeps track of text changes
   onChange = (event) => {
     const nextAnnouncement = this.state.announcement;
     nextAnnouncement[event.target.name] = event.target.value;
@@ -30,22 +39,47 @@ class AnnouncementForm extends React.Component {
   };
 
   render() {
+    const className = this.props.popup ? 'modal is-active' : 'modal';
     return (
-      <section className="section">
-        <div className="container box">
-          <InputComponent title="Announcement" />
+      <div>
+        <button className="button is-primary" onClick={this.onSelect}>
+          {className}
+        </button>
 
-          <div className="field is-grouped is-grouped-right">
-            <div className="control">
-              <button onClick={this.onSave} className="button is-primary">
-                Make Announcement
-              </button>
+        <div id="announcement-form-popup" className={`button is-primary ${className}`}>
+          <h1>{this.props.popup}</h1>
+          <div className="modal-background" />
+          <section className="section">
+            <div className="container box">
+              <InputComponent name="content" title="New Announcement" onChange={this.onChange} />
+              <div className="field is-grouped is-grouped-right">
+                <div className="control">
+                  <button onClick={this.onSave} className="button is-primary">
+                    Create
+                  </button>
+                </div>
+              </div>
+              <button className="modal-close" />
             </div>
-          </div>
+          </section>
         </div>
-      </section>
+      </div>
     );
   }
 }
 
-export default AnnouncementForm;
+function mapStateToProps(state) {
+  return {
+    popup: state.loginReducer.popup,
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(createAnnouncement, dispatch),
+    createAnnouncement: (announcement) => {
+      dispatch(createAnnouncement(announcement));
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AnnouncementForm);
