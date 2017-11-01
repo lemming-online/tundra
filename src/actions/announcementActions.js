@@ -26,3 +26,10 @@ export function closeAnnouncement(announcement) {
     console.log(`closing popup: ${announcement}`);
   };
 }
+
+export function announcementFailure() {
+  return function goFailAnnouncement(dispatch) {
+    dispatch(createAnnouncementFailure());
+    console.log('announcement failed');
+  };
+}
