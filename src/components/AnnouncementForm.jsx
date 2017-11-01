@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import InputComponent from '../components/InputComponent';
-import createAnnouncement from '../actions/announcementActions';
+import { createAnnouncement, closeAnnouncement } from '../actions/announcementActions';
 
 class AnnouncementForm extends React.Component {
   constructor(props) {
@@ -17,18 +17,21 @@ class AnnouncementForm extends React.Component {
 
     // TODO: are these binds needed?
     this.onChange = this.onChange.bind(this);
-    this.onSave = this.onSave.bind(this);
   }
 
-  onSave = (event) => {
-    event.preventDefault();
+  onSubmit = () => {
+    console.log(this.state.announcement.content);
+    this.props.submitAnnouncement(this.state.announcement.content);
     // this.props.actions.logInUser(this.state.announcement);
     // onSave call the action that will create announcements
   };
 
+  onCancel = () => {
+    this.props.closeAnnouncement(this.state.announcement.content);
+  };
+
   onSelect = () => {
-    this.props.createAnnouncement(this.state.announcement);
-    this.forceUpdate();
+    this.props.createAnnouncement(this.state.announcement.content);
   };
 
   // keeps track of text changes
@@ -43,7 +46,7 @@ class AnnouncementForm extends React.Component {
     return (
       <div>
         <button className="button is-primary" onClick={this.onSelect}>
-          {modalActive}
+          Create Announcement
         </button>
 
         <div id="announcement-form-popup" className={`${modalActive}`}>
@@ -54,8 +57,11 @@ class AnnouncementForm extends React.Component {
               <InputComponent name="content" title="New Announcement" onChange={this.onChange} />
               <div className="field is-grouped is-grouped-right">
                 <div className="control">
-                  <button onClick={this.onSave} className="button is-primary">
+                  <button onClick={this.onSubmit} className="button is-primary">
                     Create
+                  </button>
+                  <button onClick={this.onCancel} className="button is-primary">
+                    Cancel
                   </button>
                 </div>
               </div>
@@ -78,6 +84,12 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(createAnnouncement, dispatch),
     createAnnouncement: (announcement) => {
       dispatch(createAnnouncement(announcement));
+    },
+    submitAnnouncement: (announcement) => {
+      dispatch(closeAnnouncement(announcement));
+    },
+    closeAnnouncement: (announcement) => {
+      dispatch(closeAnnouncement(announcement));
     },
   };
 }

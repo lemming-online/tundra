@@ -12,14 +12,17 @@ function createAnnouncementFailure() {
   return { type: types.CREATE_ANNOUNCEMENT_FAILURE };
 }
 
-export default function createAnnouncement(announcement) {
+export function createAnnouncement(announcement) {
   return function goCreateAnnouncement(dispatch) {
     dispatch(announcementInProgress());
     console.log('After dispatch AnnouncementInProgress :)');
     console.log(`your announcement: ${announcement}`);
-    // dispatch(createAnnouncementSuccess());
-    // console.log('After dispatch createAnnouncementSuccess');
-    // console.log(`your announcement: ${announcement}`);
-    // send dispatch signal
+  };
+}
+
+export function closeAnnouncement(announcement) {
+  return function goCloseAnnouncementPopup(dispatch) {
+    dispatch(createAnnouncementSuccess());
+    console.log(`closing popup: ${announcement}`);
   };
 }
