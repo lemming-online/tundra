@@ -20,6 +20,17 @@ const Root = props => (
           need to make sure to get rid of before merge master */}
           <Route path="/ankit" component={SessionPage} />
           <Route path="/login" component={SignInUpPage} />
+          {/* TODO: Make this into its own component like <PrivateRoute */}
+          <Route
+            exact
+            path="/user"
+            render={() =>
+              (props.store.getState().loginReducer.isAuthenticated ? (
+                <UserProfile />
+              ) : (
+                <Redirect to="/login" />
+              ))}
+          />
           <PrivateRoute path="/user" component={UserProfile} />
           <PrivateRoute path="/session/:sessionID" component={SessionPage} />
           <Route path="/" component={HomePage} />
