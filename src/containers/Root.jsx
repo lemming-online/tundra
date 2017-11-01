@@ -6,6 +6,8 @@ import Header from '../components/Header';
 import HomePage from './HomePage';
 import SignInUpPage from './SignInUpPage';
 import UserProfile from './UserProfile';
+import SessionPage from './SessionPage';
+import PrivateRoute from '../components/PrivateRoute';
 
 // FIXME: add store to proptypes
 const Root = props => (
@@ -26,6 +28,8 @@ const Root = props => (
                 <Redirect to="/login" />
               ))}
           />
+          <PrivateRoute path="/user" component={UserProfile} />
+          <PrivateRoute path="/session/:sessionID" component={SessionPage} />
           <Route path="/" component={HomePage} />
         </Switch>
       </div>

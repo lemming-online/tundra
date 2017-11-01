@@ -5,7 +5,9 @@
   "homepage": "https://lemming-online.github.io/tundra",
   "dependencies": {
     "bulma": "^0.5.3",
+    "draft-js": "^0.10.4",
     "jwt-decode": "^2.2.0",
+    "draft-js": "^0.10.4",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
