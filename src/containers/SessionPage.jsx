@@ -2,6 +2,8 @@ import React from 'react';
 
 import SessionEditorComponent from '../components/SessionEditorComponent';
 import AnnouncementForm from '../components/AnnouncementForm';
+// eslint-disable-next-line
+import DraftCSS from 'draft-js';
 
 function SessionPage() {
   return (
