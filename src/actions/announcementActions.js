@@ -17,9 +17,9 @@ export default function createAnnouncement(announcement) {
     dispatch(announcementInProgress());
     console.log('After dispatch AnnouncementInProgress :)');
     console.log(`your announcement: ${announcement}`);
-    dispatch(createAnnouncementSuccess());
-    console.log('After dispatch createAnnouncementSuccess');
-    console.log(`your announcement: ${announcement}`);
+    // dispatch(createAnnouncementSuccess());
+    // console.log('After dispatch createAnnouncementSuccess');
+    // console.log(`your announcement: ${announcement}`);
     // send dispatch signal
   };
 }

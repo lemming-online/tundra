@@ -39,14 +39,14 @@ class AnnouncementForm extends React.Component {
   };
 
   render() {
-    const className = this.props.popup ? 'modal is-active' : 'modal';
+    const modalActive = this.props.popup ? 'modal is-active' : 'modal';
     return (
       <div>
         <button className="button is-primary" onClick={this.onSelect}>
-          {className}
+          {modalActive}
         </button>
 
-        <div id="announcement-form-popup" className={`button is-primary ${className}`}>
+        <div id="announcement-form-popup" className={`${modalActive}`}>
           <h1>{this.props.popup}</h1>
           <div className="modal-background" />
           <section className="section">
@@ -70,7 +70,7 @@ class AnnouncementForm extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    popup: state.loginReducer.popup,
+    popup: state.announcementReducer.popup,
   };
 }
 function mapDispatchToProps(dispatch) {
