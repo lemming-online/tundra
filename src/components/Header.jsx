@@ -7,6 +7,7 @@ import logo from '../images/lemming-nocirc.png';
 class Header extends React.Component {
   constructor(props) {
     super();
+    // TODO: Investigate fixing this
     // We had to bind the this keyword for our logOut function in our constructor
     // function, since we're working with ES6 component definitions.
     // More info: http://shrt.nutt.men/react-binding
@@ -35,9 +36,27 @@ class Header extends React.Component {
                 Home
               </Link>
               <LogInOutLink />
-              <Link to="/user" className="navbar-item">
-                User
-              </Link>
+              <div className="navbar-item has-dropdown is-hoverable">
+                <a className="navbar-link">
+                  <figure className="image is-32x32 ">
+                    <img
+                      alt="user profile pic"
+                      src="https://bulma.io/images/placeholders/128x128.png"
+                      className="is-circle"
+                    />
+                  </figure>
+                </a>
+
+                <div className="navbar-dropdown is-right">
+                  <Link to="/user" className="navbar-item">
+                    My Profile
+                  </Link>
+
+                  <LogInOutLink />
+                  <hr className="navbar-divider" />
+                  <div className="navbar-item">Version 0.6.0</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
