@@ -55,7 +55,7 @@ class LoginView extends React.Component {
                 onClick={this.onSave}
                 className={`button is-primary ${this.props.loading ? 'is-loading' : ''}`}
               >
-                Log In {console.log(this.props.loading ? 'is-loading' : '')}
+                Log In
               </button>
             </div>
           </div>
