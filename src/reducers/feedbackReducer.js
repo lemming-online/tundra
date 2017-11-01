@@ -25,17 +25,9 @@ export default function loginReducer(state = INITIAL_STATE, action) {
       return INITIAL_STATE;
 
     case types.DROPDOWN_SELECTED:
-      console.log('Selected Dropdown menu');
       return {
         ...state,
-        dropdown: true,
-      };
-
-    case types.DROPDOWN_UNSELECTED:
-      console.log('Feedback failed to be created');
-      return {
-        ...state,
-        dropdown: false,
+        dropdown: !state.dropdown,
       };
 
     default:

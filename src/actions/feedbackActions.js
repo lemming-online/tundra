@@ -16,10 +16,6 @@ function selectDropDown() {
   return { type: types.DROPDOWN_SELECTED };
 }
 
-function unselectDropDown() {
-  return { type: types.DROPDOWN_UNSELECTED };
-}
-
 export function feedbackSuccess() {
   return function goFeedbackSuccess(dispatch) {
     dispatch(createFeedbackSuccess());
@@ -41,11 +37,5 @@ export function feedbackFailure() {
 export function dropdownSelected() {
   return function goSelectDropdown(dispatch) {
     dispatch(selectDropDown());
-  };
-}
-
-export function dropdownUnselected() {
-  return function goUnselectDropdown(dispatch) {
-    dispatch(unselectDropDown());
   };
 }

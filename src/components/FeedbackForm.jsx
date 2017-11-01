@@ -8,7 +8,6 @@ import {
   feedbackInProgress,
   feedbackFailure,
   dropdownSelected,
-  dropdownUnselected,
 } from '../actions/feedbackActions';
 
 class FeedbackForm extends React.Component {
@@ -41,7 +40,6 @@ class FeedbackForm extends React.Component {
   };
 
   onPress = () => {
-    console.log('pressing onPress function');
     this.props.dropdownSelected();
   };
 
@@ -113,9 +111,6 @@ function mapDispatchToProps(dispatch) {
     },
     dropdownSelected: () => {
       dispatch(dropdownSelected());
-    },
-    dropdownUnselected: () => {
-      dispatch(dropdownUnselected());
     },
   };
 }

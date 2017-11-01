@@ -15,7 +15,11 @@ function DropDownMenu(props) {
       </div>
       <div className="dropdown-menu" id="dropdown-menu" role="menu">
         <div className="dropdown-content">
-          {props.list.map(item => <a className="dropdown-item">{item}</a>)}
+          {props.list.map(item => (
+            <a key={item} className="dropdown-item">
+              {item}
+            </a>
+          ))}
         </div>
       </div>
     </div>
