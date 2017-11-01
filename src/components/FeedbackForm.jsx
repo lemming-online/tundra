@@ -3,7 +3,13 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import InputComponent from '../components/InputComponent';
 import DropDownMenu from '../components/DropDownMenu';
-import { feedbackSuccess, feedbackInProgress, feedbackFailure } from '../actions/feedbackActions';
+import {
+  feedbackSuccess,
+  feedbackInProgress,
+  feedbackFailure,
+  dropdownSelected,
+  dropdownUnselected,
+} from '../actions/feedbackActions';
 
 class FeedbackForm extends React.Component {
   constructor(props) {
@@ -34,6 +40,11 @@ class FeedbackForm extends React.Component {
     this.props.feedbackInProgress();
   };
 
+  onPress = () => {
+    console.log('pressing onPress function');
+    this.props.dropdownSelected();
+  };
+
   // keeps track of text changes
   onChange = (event) => {
     const nextFeedback = this.state.feedback;
@@ -41,15 +52,9 @@ class FeedbackForm extends React.Component {
     return this.setState({ feedback: nextFeedback });
   };
 
-  onPress = () => {
-    const nextFeedback = this.state.feedback;
-    const isPressed = nextFeedback.pressed;
-    nextFeedback.pressed = !isPressed;
-    return this.setState({ feedback: nextFeedback });
-  };
-
   render() {
     const modalActive = this.props.popup ? 'modal is-active' : 'modal';
+
     const listOfInstructors = ['ankit', 'jay', 'jeremy', 'matt'];
     return (
       <div>
@@ -61,7 +66,9 @@ class FeedbackForm extends React.Component {
           <div className="modal-background" />
           <section className="section">
             <div className="container box">
-              <DropDownMenu list={listOfInstructors} onPress={this.onPress} />
+              <div onClick={this.onPress}>
+                <DropDownMenu list={listOfInstructors} isDroppedDown={this.props.dropdown} />
+              </div>
               <InputComponent
                 name="content"
                 title="Enter your feedback here"
@@ -89,6 +96,7 @@ class FeedbackForm extends React.Component {
 function mapStateToProps(state) {
   return {
     popup: state.feedbackReducer.popup,
+    dropdown: state.feedbackReducer.dropdown,
   };
 }
 function mapDispatchToProps(dispatch) {
@@ -102,6 +110,12 @@ function mapDispatchToProps(dispatch) {
     },
     feedbackFailure: () => {
       dispatch(feedbackFailure());
+    },
+    dropdownSelected: () => {
+      dispatch(dropdownSelected());
+    },
+    dropdownUnselected: () => {
+      dispatch(dropdownUnselected());
     },
   };
 }

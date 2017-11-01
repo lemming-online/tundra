@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function DropDownMenu(props) {
-  // const isDroppedDown = this.props.dropdown ? 'dropdown is-active' : 'dropdown';
+  const isDroppedDown = props.isDroppedDown ? 'dropdown is-active' : 'dropdown';
   return (
-    <div className="dropdown is-active">
+    <div className={isDroppedDown}>
       <div className="dropdown-trigger">
         <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
           <span>Select your Instructor</span>
@@ -24,6 +24,7 @@ function DropDownMenu(props) {
 
 DropDownMenu.propTypes = {
   list: PropTypes.array.isRequired,
+  isDroppedDown: PropTypes.bool.isRequired,
 };
 
 export default DropDownMenu;
