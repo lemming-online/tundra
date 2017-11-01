@@ -10,9 +10,7 @@ function SessionPage() {
     <section className="section">
       <div className="container">
         <h1 className="title">Section Name</h1>
-        <div className="announcement form">
-          <AnnouncementForm />
-        </div>
+        <AnnouncementForm />
 
         <section className="section">
           <div className="container box">
