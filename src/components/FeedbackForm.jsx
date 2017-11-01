@@ -2,15 +2,18 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import InputComponent from '../components/InputComponent';
-import { createAnnouncement, closeAnnouncement } from '../actions/announcementActions';
+import DropDownMenu from '../components/DropDownMenu';
+import { feedbackSuccess, feedbackInProgress, feedbackFailure } from '../actions/feedbackActions';
 
-class AnnouncementForm extends React.Component {
+class FeedbackForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      announcement: {
+      feedback: {
+        instructors: [],
         content: '',
+        pressed: false,
       },
     };
 
@@ -20,41 +23,54 @@ class AnnouncementForm extends React.Component {
 
   onSubmit = () => {
     console.log(this.state.announcement.content);
-    this.props.submitAnnouncement(this.state.announcement.content);
+    this.props.feedbackSuccess();
   };
 
   onCancel = () => {
-    this.props.closeAnnouncement(this.state.announcement.content);
+    this.props.feedbackFailure();
   };
 
   onSelect = () => {
-    this.props.createAnnouncement(this.state.announcement.content);
+    this.props.feedbackInProgress();
   };
 
   // keeps track of text changes
   onChange = (event) => {
-    const nextAnnouncement = this.state.announcement;
-    nextAnnouncement[event.target.name] = event.target.value;
-    return this.setState({ announcement: nextAnnouncement });
+    const nextFeedback = this.state.feedback;
+    nextFeedback[event.target.name] = event.target.value;
+    return this.setState({ feedback: nextFeedback });
+  };
+
+  onPress = () => {
+    const nextFeedback = this.state.feedback;
+    const isPressed = nextFeedback.pressed;
+    nextFeedback.pressed = !isPressed;
+    return this.setState({ feedback: nextFeedback });
   };
 
   render() {
     const modalActive = this.props.popup ? 'modal is-active' : 'modal';
+    const listOfInstructors = ['ankit', 'jay', 'jeremy', 'matt'];
     return (
       <div>
         <button className="button is-primary" onClick={this.onSelect}>
-          Create Announcement
+          Submit Feedback
         </button>
 
         <div id="announcement-form-popup" className={`${modalActive}`}>
           <div className="modal-background" />
           <section className="section">
             <div className="container box">
-              <InputComponent name="content" title="New Announcement" onChange={this.onChange} />
+              <DropDownMenu list={listOfInstructors} onPress={this.onPress} />
+              <InputComponent
+                name="content"
+                title="Enter your feedback here"
+                onChange={this.onChange}
+              />
               <div className="field is-grouped is-grouped-right">
                 <div className="control">
                   <button onClick={this.onSubmit} className="button is-primary">
-                    Create
+                    Submit
                   </button>
                   <button onClick={this.onCancel} className="button is-primary">
                     Cancel
@@ -72,22 +88,22 @@ class AnnouncementForm extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    popup: state.announcementReducer.popup,
+    popup: state.feedbackReducer.popup,
   };
 }
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(createAnnouncement, dispatch),
-    createAnnouncement: (announcement) => {
-      dispatch(createAnnouncement(announcement));
+    actions: bindActionCreators(feedbackSuccess, dispatch),
+    feedbackSuccess: () => {
+      dispatch(feedbackSuccess());
     },
-    submitAnnouncement: (announcement) => {
-      dispatch(closeAnnouncement(announcement));
+    feedbackInProgress: () => {
+      dispatch(feedbackInProgress());
     },
-    closeAnnouncement: (announcement) => {
-      dispatch(closeAnnouncement(announcement));
+    feedbackFailure: () => {
+      dispatch(feedbackFailure());
     },
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AnnouncementForm);
+export default connect(mapStateToProps, mapDispatchToProps)(FeedbackForm);

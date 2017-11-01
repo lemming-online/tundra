@@ -2,6 +2,7 @@ import React from 'react';
 
 import SessionEditorComponent from '../components/SessionEditorComponent';
 import AnnouncementForm from '../components/AnnouncementForm';
+import FeedbackForm from '../components/FeedbackForm';
 // eslint-disable-next-line
 import DraftCSS from 'draft-js';
 
@@ -24,6 +25,7 @@ function SessionPage() {
             </div>
           </div>
         </section>
+        <FeedbackForm />
       </div>
     </section>
   );
