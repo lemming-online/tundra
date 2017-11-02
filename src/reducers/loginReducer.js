@@ -1,8 +1,15 @@
 import jwtDecode from 'jwt-decode';
 import * as types from '../actions/actionTypes';
 
+function isAuth() {
+  if (localStorage.jwt != null && localStorage.jwt !== 'undefined') {
+    return true;
+  }
+  return false;
+}
+
 const INITIAL_STATE = {
-  isAuthenticated: false,
+  isAuthenticated: isAuth(),
   firstName: '',
   lastName: '',
   loginError: false,
