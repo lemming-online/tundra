@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import LogInOutLink from './LogInOutLink';
 import logo from '../images/lemming-nocirc.png';
+import userBlank from '../images/user-blank.png';
 
 class Header extends React.Component {
   constructor(props) {
@@ -39,11 +40,7 @@ class Header extends React.Component {
               <div className="navbar-item has-dropdown is-hoverable">
                 <a className="navbar-link">
                   <figure className="image is-32x32 ">
-                    <img
-                      alt="user profile pic"
-                      src="https://lemming-user-images.s3.amazonaws.com/59f8a51538be3200b858cf44?AWSAccessKeyId=AKIAJ2ZY6IXB7ROLPEBA&Signature=P%2BJXvqIyqxH5eRwFUa%2BDwuxJM48%3D&Expires=1509564924"
-                      className="is-circle"
-                    />
+                    <img alt="user profile pic" src={userBlank} className="is-circle" />
                   </figure>
                 </a>
 
@@ -54,7 +51,7 @@ class Header extends React.Component {
 
                   <LogInOutLink />
                   <hr className="navbar-divider" />
-                  <div className="navbar-item">Version 0.6.0</div>
+                  <div className="navbar-item">About Lemming</div>
                 </div>
               </div>
             </div>
