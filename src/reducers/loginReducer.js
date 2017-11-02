@@ -12,6 +12,7 @@ const INITIAL_STATE = {
   isAuthenticated: isAuth(),
   firstName: '',
   lastName: '',
+  id: '',
   loginError: false,
   loginMessage: '',
   loading: false,
@@ -41,6 +42,7 @@ export default function loginReducer(state = INITIAL_STATE, action) {
         isAuthenticated: true,
         firstName: payload.fnm,
         lastName: payload.lnm,
+        id: payload.uid,
       };
 
     case types.LOG_IN_FAILURE:
