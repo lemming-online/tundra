@@ -8,10 +8,6 @@ function announcementInProgress() {
   return { type: types.CREATING_ANNOUNCEMENT };
 }
 
-function createAnnouncementFailure() {
-  return { type: types.CREATE_ANNOUNCEMENT_FAILURE };
-}
-
 export function createAnnouncement(announcement) {
   return function goCreateAnnouncement(dispatch) {
     dispatch(announcementInProgress());
