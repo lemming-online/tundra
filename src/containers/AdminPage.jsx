@@ -1,6 +1,9 @@
 import React from 'react';
 // eslint-disable-next-line
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import InputComponent from '../components/InputComponent';
+import createSection from '../actions/sectionActions';
 
 class AdminPage extends React.Component {
   constructor(props) {
@@ -20,6 +23,8 @@ class AdminPage extends React.Component {
   onSave = (event) => {
     event.preventDefault();
     // hit api to create section (class)
+    console.log(`we in this: ${this.props.id}`);
+    this.props.createSection(this.state.details, this.props.id);
   };
 
   onChange = (event) => {
@@ -58,4 +63,18 @@ class AdminPage extends React.Component {
   }
 }
 
-export default AdminPage;
+function mapStateToProps(state) {
+  return {
+    id: state.loginReducer.id,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(createSection, dispatch),
+    createSection: (credentials) => {
+      createSection(createSection(credentials));
+    },
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(AdminPage);
