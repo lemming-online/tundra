@@ -17,22 +17,30 @@ class SessionEditorComponent extends React.Component {
     return this.setState({ question: nextQuestion });
   };
 
-  onSubmit = () => {
+  onSubmit = (e) => {
+    e.preventDefault();
     console.log(this.state.question.questionField);
     // push question to api through a session editor api class
+    this.formRef.reset(); // resets the form to be empty
   };
 
   render() {
     return (
       <div>
-        <InputComponent
-          title="What do you need help with?"
-          name="questionField"
-          onChange={this.onChange}
-        />
-        <button onClick={this.onSubmit} className={'button is-primary'}>
-          Submit
-        </button>
+        <form
+          ref={(form) => {
+            this.formRef = form;
+          }}
+        >
+          <InputComponent
+            title="What do you need help with?"
+            name="questionField"
+            onChange={this.onChange}
+          />
+          <button onClick={this.onSubmit} className={'button is-primary'}>
+            Submit Request
+          </button>
+        </form>
       </div>
     );
   }
