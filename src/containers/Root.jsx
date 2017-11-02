@@ -7,6 +7,7 @@ import HomePage from './HomePage';
 import SignInUpPage from './SignInUpPage';
 import UserProfile from './UserProfile';
 import SessionPage from './SessionPage';
+import AdminPage from './AdminPage';
 import PrivateRoute from '../components/PrivateRoute';
 
 // FIXME: add store to proptypes
@@ -17,6 +18,7 @@ const Root = props => (
         <Header />
         <Switch>
           <Route path="/login" component={SignInUpPage} />
+          <Route path="/admin" component={AdminPage} />
           {/* TODO: Make this into its own component like <PrivateRoute */}
           <Route
             exact
