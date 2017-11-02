@@ -14,6 +14,12 @@ export default function registrationReducer(state = INITIAL_STATE, action) {
         sectionsCreatedCount: count,
       };
 
+    case types.SECTION_FAILURE:
+      console.log('section failure');
+      return {
+        ...state,
+      };
+
     default:
       return state;
   }

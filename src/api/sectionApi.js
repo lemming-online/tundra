@@ -1,6 +1,9 @@
 class SectionApi {
   static createSection(details, id) {
-    const request = new Request('http://api.lemming.online/sections', {
+    console.log(`print id in api call: ${id}`);
+    console.log('print details: ');
+    console.log(details);
+    const request = new Request('https://api.lemming.online/sections', {
       method: 'POST',
       headers: new Headers({
         'Content-Type': 'application/json',
@@ -14,6 +17,8 @@ class SectionApi {
         if (!response.ok) {
           throw Error(response);
         }
+        console.log('from api: ');
+        console.log(response.json());
         return response.json();
       })
       .catch((error) => {

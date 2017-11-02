@@ -22,9 +22,8 @@ class AdminPage extends React.Component {
 
   onSave = (event) => {
     event.preventDefault();
-    // hit api to create section (class)
-    console.log(`we in this: ${this.props.id}`);
-    this.props.createSection(this.state.details, this.props.id);
+    const mentorId = this.props.id;
+    this.props.createSection(this.state.details, mentorId);
   };
 
   onChange = (event) => {
@@ -72,8 +71,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(createSection, dispatch),
-    createSection: (credentials) => {
-      createSection(createSection(credentials));
+    createSection: (details, id) => {
+      dispatch(createSection(details, id));
     },
   };
 }

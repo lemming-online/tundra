@@ -5,6 +5,10 @@ function createSectionAction() {
   return { type: types.CREATE_SECTION };
 }
 
+function sectionFailureAction() {
+  return { type: types.SECTION_FAILURE };
+}
+
 export default function createSection(details, id) {
   return function goCreateSection(dispatch) {
     return sectionApi
@@ -16,6 +20,7 @@ export default function createSection(details, id) {
       })
       .catch((error) => {
         console.error(error);
+        dispatch(sectionFailureAction());
       });
   };
 }
