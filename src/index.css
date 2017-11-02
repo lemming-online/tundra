@@ -13,3 +13,14 @@ body {
 .header .navbar-link {
   color: #222222;
 }
+
+.is-circle {
+  border-radius: 50%;
+  max-width: 90%;
+}
+
+.uid {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
+    monospace;
+  font-size: 10pt;
+}

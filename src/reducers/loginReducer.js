@@ -15,6 +15,8 @@ const INITIAL_STATE = {
   loginError: false,
   loginMessage: '',
   loading: false,
+  uid: '',
+  email: '',
 };
 
 export default function loginReducer(state = INITIAL_STATE, action) {
@@ -41,6 +43,8 @@ export default function loginReducer(state = INITIAL_STATE, action) {
         isAuthenticated: true,
         firstName: payload.fnm,
         lastName: payload.lnm,
+        email: payload.sub,
+        uid: payload.uid,
       };
 
     case types.LOG_IN_FAILURE:

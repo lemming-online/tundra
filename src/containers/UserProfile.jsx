@@ -1,6 +1,9 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import InputComponent from '../components/InputComponent';
+import * as loginActions from '../actions/loginActions';
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -23,10 +26,13 @@ class UserProfile extends React.Component {
       console.log(image);
 
       // make api call to send image up to server
-      fetch('https://api.lemming.online/users/59d6d3829f8e4e00ae0dba68/set_image', {
+      fetch(`https://api.lemming.online/users/${this.props.uid}/set_image`, {
         method: 'POST',
         body: image,
         mode: 'cors',
+        headers: new Headers({
+          Authorization: `Bearer ${localStorage.jwt}`,
+        }),
       })
         .then(response => response.json())
         .then((responseJSON) => {
@@ -90,7 +96,8 @@ class UserProfile extends React.Component {
               <img src={this.state.profilePicture} alt="user profile" />
             </Dropzone>
           </div>
-          <h1 className="title subtitle">John Doe</h1>
+          <h1 className="title subtitle">{`${this.props.firstName} ${this.props.lastName}`}</h1>
+          <span className="uid">{`${this.props.uid}`}</span>
         </div>
         <div className="tile is-child">
           <div>
@@ -112,4 +119,18 @@ class UserProfile extends React.Component {
   }
 }
 
-export default UserProfile;
+function mapStateToProps(state) {
+  return {
+    uid: state.loginReducer.uid,
+    firstName: state.loginReducer.firstName,
+    lastName: state.loginReducer.lastName,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(loginActions, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
