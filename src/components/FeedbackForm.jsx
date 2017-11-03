@@ -4,12 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import InputComponent from '../components/InputComponent';
 import DropDownMenu from '../components/DropDownMenu';
-import {
-  feedbackSuccess,
-  feedbackInProgress,
-  feedbackFailure,
-  dropdownSelected,
-} from '../actions/feedbackActions';
+import { feedbackSuccess, feedbackInProgress, dropdownSelected } from '../actions/feedbackActions';
 
 class FeedbackForm extends React.Component {
   constructor(props) {
@@ -39,7 +34,7 @@ class FeedbackForm extends React.Component {
   };
 
   onCancel = () => {
-    this.props.feedbackFailure();
+    // this.props.feedbackFailure();
   };
 
   onSelect = () => {
