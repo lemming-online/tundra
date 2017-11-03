@@ -1,14 +1,10 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import InputComponent from '../components/InputComponent';
 import DropDownMenu from '../components/DropDownMenu';
-import {
-  feedbackSuccess,
-  feedbackInProgress,
-  feedbackFailure,
-  dropdownSelected,
-} from '../actions/feedbackActions';
+import { feedbackSuccess, feedbackInProgress, dropdownSelected } from '../actions/feedbackActions';
 
 class FeedbackForm extends React.Component {
   constructor(props) {
@@ -16,9 +12,8 @@ class FeedbackForm extends React.Component {
 
     this.state = {
       feedback: {
-        instructors: [],
         content: '',
-        pressed: false,
+        instructorToSendTo: '',
       },
     };
 
@@ -28,11 +23,18 @@ class FeedbackForm extends React.Component {
 
   onSubmit = () => {
     console.log(this.state.feedback.content);
-    this.props.feedbackSuccess();
+    const sessionID = this.props.match.params.sessionID;
+    console.log(`sessionID: ${sessionID}`);
+    this.props.feedbackSuccess(
+      this.state.feedback.content,
+      sessionID,
+      this.state.feedback.instructorToSendTo,
+      localStorage.jwt,
+    );
   };
 
   onCancel = () => {
-    this.props.feedbackFailure();
+    // this.props.feedbackFailure();
   };
 
   onSelect = () => {
@@ -50,10 +52,17 @@ class FeedbackForm extends React.Component {
     return this.setState({ feedback: nextFeedback });
   };
 
+  onClick1 = (e, item) => {
+    console.log(`item: ${item}`);
+    const nextFeedback = this.state.feedback;
+    nextFeedback.instructorToSendTo = item;
+    return this.setState({ nextFeedback });
+  };
+
   render() {
     const modalActive = this.props.popup ? 'modal is-active' : 'modal';
 
-    const listOfInstructors = ['ankit', 'jay', 'jeremy', 'matt'];
+    const listOfInstructors = ['59fb49383be55800b7b03545', 'ankit', 'jay', 'jeremy', 'matt'];
     return (
       <div>
         <button className="button is-primary" onClick={this.onSelect}>
@@ -65,7 +74,11 @@ class FeedbackForm extends React.Component {
           <section className="section">
             <div className="container box">
               <div onClick={this.onPress}>
-                <DropDownMenu list={listOfInstructors} isDroppedDown={this.props.dropdown} />
+                <DropDownMenu
+                  list={listOfInstructors}
+                  isDroppedDown={this.props.dropdown}
+                  onClick={this.onClick1}
+                />
               </div>
               <InputComponent
                 name="content"
@@ -95,19 +108,17 @@ function mapStateToProps(state) {
   return {
     popup: state.feedbackReducer.popup,
     dropdown: state.feedbackReducer.dropdown,
+    id: state.loginReducer.uid,
   };
 }
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(feedbackSuccess, dispatch),
-    feedbackSuccess: () => {
-      dispatch(feedbackSuccess());
+    feedbackSuccess: (content, sessionID, instructorToSendTo, jwt) => {
+      dispatch(feedbackSuccess(content, sessionID, instructorToSendTo, jwt));
     },
     feedbackInProgress: () => {
       dispatch(feedbackInProgress());
-    },
-    feedbackFailure: () => {
-      dispatch(feedbackFailure());
     },
     dropdownSelected: () => {
       dispatch(dropdownSelected());
@@ -115,4 +126,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FeedbackForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FeedbackForm));
