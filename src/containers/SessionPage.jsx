@@ -12,6 +12,24 @@ function SessionPage() {
     <section className="section">
       <div className="container">
         <h1 className="title">CS 456</h1>
+        <nav className="breadcrumb" aria-label="breadcrumbs">
+          <ul>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/">Class Sessions</a>
+            </li>
+            <li>
+              <a href="/">CS 456</a>
+            </li>
+            <li className="is-active">
+              <a href="/" aria-current="page">
+                November 3, 2017
+              </a>
+            </li>
+          </ul>
+        </nav>
         <AnnouncementForm />
 
         <section className="section">

@@ -23,9 +23,9 @@ class Header extends React.Component {
       <nav className="navbar header" aria-label="main navigation">
         <div className="container">
           <div className="navbar-brand">
-            <a className="navbar-item" href="https://lemming.online">
-              <img src={logo} alt="Lemming" />
-            </a>
+            <Link className="navbar-item" to="/">
+              <img src={logo} alt="Lemming logo" />
+            </Link>
 
             <button className="button navbar-burger">
               <span />
