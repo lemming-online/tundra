@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function ClassCard(props) {
+function CourseCard(props) {
   return (
     <div className="tile is-ancestor is-4">
       <div className="tile is-parent">
@@ -18,9 +18,9 @@ function ClassCard(props) {
   );
 }
 
-ClassCard.propTypes = {
+CourseCard.propTypes = {
   title: PropTypes.string.isRequired,
   member_role: PropTypes.string.isRequired,
 };
 
-export default ClassCard;
+export default CourseCard;

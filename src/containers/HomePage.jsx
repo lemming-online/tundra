@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as loginActions from '../actions/loginActions';
-import ClassCard from '../components/ClassCard';
+import CourseCard from '../components/CourseCard';
 
 function loggedInPage(props) {
   return (
@@ -21,7 +21,7 @@ function loggedInPage(props) {
             </li>
           </ul>
         </nav>
-        <ClassCard />
+        <CourseCard />
       </div>
     </section>
   );

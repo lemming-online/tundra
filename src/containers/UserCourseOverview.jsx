@@ -1,5 +1,5 @@
 import React from 'react';
-import ClassCard from '../components/ClassCard';
+import CourseCard from '../components/CourseCard';
 
 class UserCourseOverview extends React.Component {
   constructor() {
@@ -25,10 +25,10 @@ class UserCourseOverview extends React.Component {
           <h1 className="title">Course Memberships</h1>
           <div className="columns">
             <div className="column">
-              <ClassCard title="CS 407-001" member_role="Student" />
+              <CourseCard title="CS 407-001" member_role="Student" />
             </div>
             <div className="column">
-              <ClassCard title="SOC 455-002" member_role="Mentor" />
+              <CourseCard title="SOC 455-002" member_role="Mentor" />
             </div>
 
             <div className="column" />
