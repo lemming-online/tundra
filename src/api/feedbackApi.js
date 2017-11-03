@@ -12,7 +12,7 @@ class FeedbackApi {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${jwt}`,
         }),
-        body: JSON.stringify(message),
+        body: JSON.stringify({ body: message }),
       },
     );
 

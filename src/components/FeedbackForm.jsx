@@ -17,9 +17,7 @@ class FeedbackForm extends React.Component {
 
     this.state = {
       feedback: {
-        instructors: [],
         content: '',
-        pressed: false,
         instructorToSendTo: '',
       },
     };
@@ -33,7 +31,7 @@ class FeedbackForm extends React.Component {
     const sessionID = this.props.match.params.sessionID;
     console.log(`sessionID: ${sessionID}`);
     this.props.feedbackSuccess(
-      { body: this.state.feedback.content },
+      this.state.feedback.content,
       sessionID,
       this.state.feedback.instructorToSendTo,
       localStorage.jwt,
@@ -69,7 +67,7 @@ class FeedbackForm extends React.Component {
   render() {
     const modalActive = this.props.popup ? 'modal is-active' : 'modal';
 
-    const listOfInstructors = ['59fb6c873be55800b8991b1a', 'ankit', 'jay', 'jeremy', 'matt'];
+    const listOfInstructors = ['59fb49383be55800b7b03545', 'ankit', 'jay', 'jeremy', 'matt'];
     return (
       <div>
         <button className="button is-primary" onClick={this.onSelect}>
