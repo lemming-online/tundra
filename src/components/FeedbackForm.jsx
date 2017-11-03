@@ -33,9 +33,10 @@ class FeedbackForm extends React.Component {
     const sessionID = this.props.match.params.sessionID;
     console.log(`sessionID: ${sessionID}`);
     this.props.feedbackSuccess(
-      this.state.feedback.content,
+      { body: this.state.feedback.content },
       sessionID,
       this.state.feedback.instructorToSendTo,
+      localStorage.jwt,
     );
   };
 
@@ -120,8 +121,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(feedbackSuccess, dispatch),
-    feedbackSuccess: (content, sessionID, instructorToSendTo) => {
-      dispatch(feedbackSuccess(content, sessionID, instructorToSendTo));
+    feedbackSuccess: (content, sessionID, instructorToSendTo, jwt) => {
+      dispatch(feedbackSuccess(content, sessionID, instructorToSendTo, jwt));
     },
     feedbackInProgress: () => {
       dispatch(feedbackInProgress());

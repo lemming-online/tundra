@@ -17,11 +17,11 @@ function selectDropDown() {
   return { type: types.DROPDOWN_SELECTED };
 }
 
-export function feedbackSuccess(content, sessionId, mentorId) {
+export function feedbackSuccess(content, sessionId, mentorId, jwt) {
   return function goFeedbackSuccess(dispatch) {
     console.log(`Action -- content: ${content} sessionID: ${sessionId} mentorID: ${mentorId}`);
     return feedbackApi
-      .sendFeedback(content, sessionId, mentorId)
+      .sendFeedback(content, sessionId, mentorId, jwt)
       .then((responseJson) => {
         console.log(responseJson);
         dispatch(createFeedbackSuccess());
