@@ -3,23 +3,18 @@ import PropTypes from 'prop-types';
 
 function ClassCard(props) {
   return (
-    <a href="/">
-      <div className="card">
-        <div className="card-content">
-          <div className="media">
-            <div className="media-left">
-              <figure className="image is-48x48">
-                <img src="https://i.imgur.com/LRrz4oo.png" alt="Placeholder" />
-              </figure>
-            </div>
-            <div className="media-content">
-              <p className="title is-4">{props.title} </p>
-              <p className="subtitle is-6">{props.member_role}</p>
-            </div>
+    <div className="tile is-ancestor is-4">
+      <div className="tile is-parent">
+        <article className="tile is-child box">
+          <div className="content">
+            <p className="title">
+              <a href="/">Course Name</a>
+            </p>
+            <p className="subtitle">Professor Soandso</p>
           </div>
-        </div>
+        </article>
       </div>
-    </a>
+    </div>
   );
 }
 

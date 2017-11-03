@@ -2,12 +2,26 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as loginActions from '../actions/loginActions';
+import ClassCard from '../components/ClassCard';
 
 function loggedInPage(props) {
   return (
     <section className="section">
       <div className="container">
         <h1 className="title">Welcome to Lemming, {`${props.firstName}`}! </h1>
+        <nav className="breadcrumb" aria-label="breadcrumbs">
+          <ul>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li className="is-active">
+              <a href="/" aria-current="page">
+                Your Courses
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <ClassCard />
       </div>
     </section>
   );
