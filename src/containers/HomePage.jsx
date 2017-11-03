@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as loginActions from '../actions/loginActions';
 import CourseCard from '../components/CourseCard';
+import QuestionCard from '../components/QuestionCard';
 
 function loggedInPage(props) {
   return (
@@ -22,6 +23,7 @@ function loggedInPage(props) {
           </ul>
         </nav>
         <CourseCard />
+        <QuestionCard />
       </div>
     </section>
   );

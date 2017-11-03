@@ -8,9 +8,14 @@ function CourseCard(props) {
         <article className="tile is-child box">
           <div className="content">
             <p className="title">
-              <a href="/">Course Name</a>
+              <a href="/">What is my question?</a>
             </p>
-            <p className="subtitle">Professor Soandso</p>
+            <p>
+              If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't
+              anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on
+              the Internet tend to repeat predefined chunks as necessary, making this the first true
+              generator on the Internet?
+            </p>
           </div>
         </article>
       </div>
