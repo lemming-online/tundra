@@ -15,11 +15,6 @@ function SessionPage() {
         <section className="section">
           <div className="container box">
             <div className="control">
-              <input
-                className="input is-large"
-                type="text"
-                placeholder="What do you need help with?"
-              />
               <SessionEditorComponent />
             </div>
           </div>
