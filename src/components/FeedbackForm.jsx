@@ -10,6 +10,7 @@ import {
   feedbackFailure,
   dropdownSelected,
 } from '../actions/feedbackActions';
+import feedbackApi from '../api/feedbackApi';
 
 class FeedbackForm extends React.Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class FeedbackForm extends React.Component {
         instructors: [],
         content: '',
         pressed: false,
+        instructorToSendTo: '',
       },
     };
 
@@ -37,8 +39,14 @@ class FeedbackForm extends React.Component {
   };
 
   onSelect = () => {
-    console.log(this.props.match.params.sessionID);
     this.props.feedbackInProgress();
+    const sessionID = this.props.match.params.sessionID;
+    console.log(`sessionID: ${sessionID}`);
+    feedbackApi.sendFeedback(
+      this.state.feedback.content,
+      sessionID,
+      this.state.feedback.instructorToSendTo,
+    );
   };
 
   onPress = () => {
@@ -50,6 +58,13 @@ class FeedbackForm extends React.Component {
     const nextFeedback = this.state.feedback;
     nextFeedback[event.target.name] = event.target.value;
     return this.setState({ feedback: nextFeedback });
+  };
+
+  onClick1 = (e, item) => {
+    console.log(`item: ${item}`);
+    const nextFeedback = this.state.feedback;
+    nextFeedback.instructorToSendTo = item;
+    return this.setState({ nextFeedback });
   };
 
   render() {
@@ -67,7 +82,11 @@ class FeedbackForm extends React.Component {
           <section className="section">
             <div className="container box">
               <div onClick={this.onPress}>
-                <DropDownMenu list={listOfInstructors} isDroppedDown={this.props.dropdown} />
+                <DropDownMenu
+                  list={listOfInstructors}
+                  isDroppedDown={this.props.dropdown}
+                  onClick={this.onClick1}
+                />
               </div>
               <InputComponent
                 name="content"

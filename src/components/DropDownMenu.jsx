@@ -16,7 +16,11 @@ function DropDownMenu(props) {
       <div className="dropdown-menu" id="dropdown-menu" role="menu">
         <div className="dropdown-content">
           {props.list.map(item => (
-            <a key={item} className="dropdown-item">
+            <a
+              key={item}
+              className="dropdown-item is-hoverable"
+              onClick={e => props.onClick(e, item)}
+            >
               {item}
             </a>
           ))}
