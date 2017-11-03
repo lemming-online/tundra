@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import InputComponent from '../components/InputComponent';
 import DropDownMenu from '../components/DropDownMenu';
 import { feedbackSuccess, feedbackInProgress, dropdownSelected } from '../actions/feedbackActions';
