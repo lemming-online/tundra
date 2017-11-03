@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 // import PropTypes from 'prop-types';
 import LogInOutLink from './LogInOutLink';
+import UserDropdown from './UserDropdown';
 import logo from '../images/lemming-nocirc.png';
-import userBlank from '../images/user-blank.png';
+import * as loginActions from '../actions/loginActions';
 
 class Header extends React.Component {
   constructor(props) {
@@ -12,7 +15,7 @@ class Header extends React.Component {
     // We had to bind the this keyword for our logOut function in our constructor
     // function, since we're working with ES6 component definitions.
     // More info: http://shrt.nutt.men/react-binding
-    // this.logOut = this.logOut.bind(this);
+    // this.isAuthenticated = this.props.isAuthenticated;
   }
 
   render() {
@@ -37,23 +40,7 @@ class Header extends React.Component {
                 Home
               </Link>
               <LogInOutLink />
-              <div className="navbar-item has-dropdown is-hoverable">
-                <a className="navbar-link">
-                  <figure className="image is-32x32 ">
-                    <img alt="user profile pic" src={userBlank} className="is-circle" />
-                  </figure>
-                </a>
-
-                <div className="navbar-dropdown is-right">
-                  <Link to="/user" className="navbar-item">
-                    My Profile
-                  </Link>
-
-                  <LogInOutLink />
-                  <hr className="navbar-divider" />
-                  <div className="navbar-item">About Lemming</div>
-                </div>
-              </div>
+              <UserDropdown />
             </div>
           </div>
         </div>
@@ -62,4 +49,13 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+function mapStateToProps(state) {
+  return { isAuthenticated: state.loginReducer.isAuthenticated };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(loginActions, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
