@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
 function CourseCard(props) {
@@ -8,14 +9,9 @@ function CourseCard(props) {
         <article className="tile is-child box">
           <div className="content">
             <p className="title">
-              <a href="/">What is my question?</a>
+              <Link to="/session/59fb8a073be55800b7b03546">My project won&apos;t compile</Link>
             </p>
-            <p>
-              If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't
-              anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on
-              the Internet tend to repeat predefined chunks as necessary, making this the first true
-              generator on the Internet?
-            </p>
+            <p>I need some help because javac won&apos;t compile my Main.class.</p>
           </div>
         </article>
       </div>
