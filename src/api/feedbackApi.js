@@ -1,7 +1,7 @@
 class FeedbackApi {
   static sendFeedback(message, sectionID, mentorID) {
-    console.log(message);
-    console.log(`sectionID: ${sectionID} mentorID: ${mentorID}`);
+    console.log(`content - API: ${message}`);
+    console.log(`sectionID - API: ${sectionID} mentorID: ${mentorID}`);
 
     const request = new Request(
       `https://api.lemming.online/sections/${sectionID}/mentors/${mentorID}/feedback`,

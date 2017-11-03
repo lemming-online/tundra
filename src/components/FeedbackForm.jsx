@@ -10,7 +10,6 @@ import {
   feedbackFailure,
   dropdownSelected,
 } from '../actions/feedbackActions';
-import feedbackApi from '../api/feedbackApi';
 
 class FeedbackForm extends React.Component {
   constructor(props) {
@@ -31,7 +30,13 @@ class FeedbackForm extends React.Component {
 
   onSubmit = () => {
     console.log(this.state.feedback.content);
-    this.props.feedbackSuccess();
+    const sessionID = this.props.match.params.sessionID;
+    console.log(`sessionID: ${sessionID}`);
+    this.props.feedbackSuccess(
+      this.state.feedback.content,
+      sessionID,
+      this.state.feedback.instructorToSendTo,
+    );
   };
 
   onCancel = () => {
@@ -40,13 +45,6 @@ class FeedbackForm extends React.Component {
 
   onSelect = () => {
     this.props.feedbackInProgress();
-    const sessionID = this.props.match.params.sessionID;
-    console.log(`sessionID: ${sessionID}`);
-    feedbackApi.sendFeedback(
-      this.state.feedback.content,
-      sessionID,
-      this.state.feedback.instructorToSendTo,
-    );
   };
 
   onPress = () => {
@@ -122,14 +120,11 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(feedbackSuccess, dispatch),
-    feedbackSuccess: () => {
-      dispatch(feedbackSuccess());
+    feedbackSuccess: (content, sessionID, instructorToSendTo) => {
+      dispatch(feedbackSuccess(content, sessionID, instructorToSendTo));
     },
     feedbackInProgress: () => {
       dispatch(feedbackInProgress());
-    },
-    feedbackFailure: () => {
-      dispatch(feedbackFailure());
     },
     dropdownSelected: () => {
       dispatch(dropdownSelected());
