@@ -1,5 +1,4 @@
 import React from 'react';
-import InputComponent from '../components/InputComponent';
 import SessionEditorComponent from '../components/SessionEditorComponent';
 import AnnouncementForm from '../components/AnnouncementForm';
 import FeedbackForm from '../components/FeedbackForm';

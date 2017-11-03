@@ -14,7 +14,6 @@ export default function createSection(details, id) {
     return sectionApi
       .createSection(details, id)
       .then((responseJson) => {
-        console.log('hello success af');
         console.log(responseJson);
         dispatch(createSectionAction());
       })

@@ -22,7 +22,7 @@ class AdminPage extends React.Component {
 
   onSave = (event) => {
     event.preventDefault();
-    const mentorId = this.props.id;
+    const mentorId = localStorage.jwt;
     this.props.createSection(this.state.details, mentorId);
   };
 

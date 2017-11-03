@@ -15,7 +15,7 @@ export default function registrationReducer(state = INITIAL_STATE, action) {
       };
 
     case types.SECTION_FAILURE:
-      console.log('section failure');
+      console.log('Section creation failure.');
       return {
         ...state,
       };
