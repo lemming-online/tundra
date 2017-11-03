@@ -1,6 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import InputComponent from '../components/InputComponent';
 import DropDownMenu from '../components/DropDownMenu';
 import {
@@ -36,6 +37,7 @@ class FeedbackForm extends React.Component {
   };
 
   onSelect = () => {
+    console.log(this.props.match.params.sessionID);
     this.props.feedbackInProgress();
   };
 
@@ -53,7 +55,7 @@ class FeedbackForm extends React.Component {
   render() {
     const modalActive = this.props.popup ? 'modal is-active' : 'modal';
 
-    const listOfInstructors = ['ankit', 'jay', 'jeremy', 'matt'];
+    const listOfInstructors = ['59fb6c873be55800b8991b1a', 'ankit', 'jay', 'jeremy', 'matt'];
     return (
       <div>
         <button className="button is-primary" onClick={this.onSelect}>
@@ -95,6 +97,7 @@ function mapStateToProps(state) {
   return {
     popup: state.feedbackReducer.popup,
     dropdown: state.feedbackReducer.dropdown,
+    id: state.loginReducer.uid,
   };
 }
 function mapDispatchToProps(dispatch) {
@@ -115,4 +118,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FeedbackForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FeedbackForm));
