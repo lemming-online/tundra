@@ -60,7 +60,11 @@ export default function loginReducer(state = INITIAL_STATE, action) {
 
     case types.LOG_OUT:
       console.log('Log out.');
-      return INITIAL_STATE;
+      return {
+        // ...state == the non explicitly stated parts of the state
+        ...state,
+        isAuthenticated: false,
+      };
 
     default:
       return state;
