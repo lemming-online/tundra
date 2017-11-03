@@ -22,8 +22,8 @@ class AdminPage extends React.Component {
 
   onSave = (event) => {
     event.preventDefault();
-    const mentorId = localStorage.jwt;
-    this.props.createSection(this.state.details, mentorId);
+    const jwt = localStorage.jwt;
+    this.props.createSection(this.state.details, jwt);
   };
 
   onChange = (event) => {
@@ -64,7 +64,7 @@ class AdminPage extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    id: state.loginReducer.id,
+    id: state.loginReducer.uid,
   };
 }
 
