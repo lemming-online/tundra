@@ -20,7 +20,7 @@ function LogInOutLink(props) {
   }
   return (
     <Link to="/login" className="navbar-item">
-      Log In
+      Log In/Register
     </Link>
   );
 }

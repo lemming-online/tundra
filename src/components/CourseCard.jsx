@@ -9,9 +9,9 @@ function CourseCard(props) {
         <article className="tile is-child box">
           <div className="content">
             <p className="title">
-              <Link to="/session/59fb8a073be55800b7b03546">CS 456</Link>
+              <Link to="/session/59fb8a073be55800b7b03546">CS 407</Link>
             </p>
-            <p className="subtitle">Professor Kardashian</p>
+            <p className="subtitle">Professor Dunsmore</p>
           </div>
         </article>
       </div>

@@ -11,7 +11,7 @@ function SessionPage() {
   return (
     <section className="section">
       <div className="container">
-        <h1 className="title">CS 456</h1>
+        <h1 className="title">CS 407</h1>
         <nav className="breadcrumb" aria-label="breadcrumbs">
           <ul>
             <li>
@@ -21,11 +21,11 @@ function SessionPage() {
               <a href="/">Class Sessions</a>
             </li>
             <li>
-              <a href="/">CS 456</a>
+              <a href="/">CS 407</a>
             </li>
             <li className="is-active">
               <a href="/" aria-current="page">
-                November 3, 2017
+                November 3, 2017 | 12:30pm-2:20pm
               </a>
             </li>
           </ul>

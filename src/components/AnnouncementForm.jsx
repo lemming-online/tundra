@@ -43,7 +43,7 @@ class AnnouncementForm extends React.Component {
     const modalActive = this.props.popup ? 'modal is-active' : 'modal';
     return (
       <div>
-        <button className="button is-primary" onClick={this.onSelect}>
+        <button className="button is-info" onClick={this.onSelect}>
           Create Announcement
         </button>
 
