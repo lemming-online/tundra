@@ -52,14 +52,15 @@ class Header extends React.Component {
           <div
             className={`navbar-menu ${this.state.navToggle ? 'is-active' : ''}`}
             onMouseLeave={this.toggleNav}
+            onScroll={this.toggleNav}
           >
             <div className="navbar-end">
               <Link to="/" className="navbar-item">
                 Home
               </Link>
-              <LogInOutLink />
-              <UserDropdown />
+              <LogInOutLink loginOnly />
             </div>
+            <UserDropdown />
           </div>
         </div>
       </nav>

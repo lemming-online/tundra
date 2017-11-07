@@ -11,6 +11,17 @@ function LogInOutLink(props) {
     props.actions.logOutUser();
   }
 
+  if (props.loginOnly) {
+    if (props.logged_in) {
+      return null;
+    }
+    return (
+      <Link to="/login" className="navbar-item">
+        Log In/Register
+      </Link>
+    );
+  }
+
   if (props.logged_in) {
     return (
       <Link to="/logout" onClick={logOut} className="navbar-item">
