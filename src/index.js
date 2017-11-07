@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import configureStore from './store/configureStore';
 import '../node_modules/bulma/css/bulma.css';
+import '../node_modules/animate.css/animate.min.css';
 import './index.css';
 
 import Root from './containers/Root';

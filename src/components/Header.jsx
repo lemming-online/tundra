@@ -49,7 +49,10 @@ class Header extends React.Component {
             </button>
           </div>
 
-          <div className={`navbar-menu ${this.state.navToggle ? 'is-active' : ''}`}>
+          <div
+            className={`navbar-menu ${this.state.navToggle ? 'is-active' : ''}`}
+            onMouseLeave={this.toggleNav}
+          >
             <div className="navbar-end">
               <Link to="/" className="navbar-item">
                 Home
