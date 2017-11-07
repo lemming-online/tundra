@@ -10,12 +10,23 @@ import * as loginActions from '../actions/loginActions';
 
 class Header extends React.Component {
   constructor(props) {
-    super();
+    super(props);
+
     // TODO: Investigate fixing this
     // We had to bind the this keyword for our logOut function in our constructor
     // function, since we're working with ES6 component definitions.
     // More info: http://shrt.nutt.men/react-binding
     // this.isAuthenticated = this.props.isAuthenticated;
+
+    this.state = {
+      navToggle: false,
+    };
+
+    this.toggleNav = this.toggleNav.bind(this);
+  }
+
+  toggleNav() {
+    return this.setState({ navToggle: !this.state.navToggle });
   }
 
   render() {
@@ -27,14 +38,18 @@ class Header extends React.Component {
               <img src={logo} alt="Lemming logo" />
             </Link>
 
-            <button className="button navbar-burger">
+            {/* TODO: toggle is-active */}
+            <button
+              className={`button navbar-burger ${this.state.navToggle ? 'is-active' : ''}`}
+              onClick={this.toggleNav}
+            >
               <span />
               <span />
               <span />
             </button>
           </div>
 
-          <div className="navbar-menu">
+          <div className={`navbar-menu ${this.state.navToggle ? 'is-active' : ''}`}>
             <div className="navbar-end">
               <Link to="/" className="navbar-item">
                 Home

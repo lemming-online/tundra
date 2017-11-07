@@ -13,7 +13,7 @@ import PrivateRoute from '../components/PrivateRoute';
 // FIXME: add store to proptypes
 const Root = props => (
   <Provider store={props.store}>
-    <Router {...props}>
+    <Router basename="/tundra">
       <div>
         <Header />
         <Switch>
