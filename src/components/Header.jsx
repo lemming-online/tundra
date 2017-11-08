@@ -23,6 +23,11 @@ class Header extends React.Component {
     };
 
     this.toggleNav = this.toggleNav.bind(this);
+    this.hideNav = this.hideNav.bind(this);
+  }
+
+  hideNav() {
+    return this.setState({ navToggle: false });
   }
 
   toggleNav() {
@@ -51,8 +56,7 @@ class Header extends React.Component {
 
           <div
             className={`navbar-menu ${this.state.navToggle ? 'is-active' : ''}`}
-            onMouseLeave={this.toggleNav}
-            onScroll={this.toggleNav}
+            onMouseUp={this.hideNav}
           >
             <div className="navbar-end">
               <Link to="/" className="navbar-item">

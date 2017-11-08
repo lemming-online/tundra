@@ -41,7 +41,7 @@ class LoginView extends React.Component {
         <h1 className="title">Login</h1>
         <WarningNotification warn={this.props.loginMessage} />
         <form>
-          <InputComponent title="Email" name="email" onChange={this.onChange} />
+          <InputComponent title="Email" name="email" onChange={this.onChange} type="email" />
           <InputComponent
             title="Password"
             name="password"
