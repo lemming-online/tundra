@@ -43,7 +43,6 @@ class Header extends React.Component {
               <img src={logo} alt="Lemming logo" />
             </Link>
 
-            {/* TODO: toggle is-active */}
             <button
               className={`button navbar-burger ${this.state.navToggle ? 'is-active' : ''}`}
               onClick={this.toggleNav}
