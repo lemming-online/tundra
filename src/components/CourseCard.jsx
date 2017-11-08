@@ -4,16 +4,14 @@ import { Link } from 'react-router-dom';
 
 function CourseCard(props) {
   return (
-    <div className="tile is-ancestor is-4">
-      <div className="tile is-parent">
-        <article className="tile is-child box">
-          <div className="content">
-            <p className="title">
-              <Link to="/session/59fb8a073be55800b7b03546">CS 407</Link>
-            </p>
-            <p className="subtitle">Professor Dunsmore</p>
-          </div>
-        </article>
+    <div className="column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
+      <div className="box">
+        <div className="content">
+          <p className="title">
+            <Link to="/session/59fb8a073be55800b7b03546">CS 407</Link>
+          </p>
+          <p className="subtitle">Professor Dunsmore</p>
+        </div>
       </div>
     </div>
   );

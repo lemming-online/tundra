@@ -16,12 +16,16 @@ function loggedInPage(props) {
             </li>
             <li className="is-active">
               <a href="/" aria-current="page">
-                Your Courses
+                My Courses
               </a>
             </li>
           </ul>
         </nav>
-        <CourseCard />
+
+        <div className="columns is-multiline is-mobile">
+          <CourseCard />
+          <CourseCard />
+        </div>
       </div>
     </section>
   );
