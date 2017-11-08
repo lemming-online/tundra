@@ -3,6 +3,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import * as loginActions from '../actions/loginActions';
 import InputComponent from '../components/InputComponent';
 import WarningNotification from '../components/WarningNotification';
@@ -36,6 +37,9 @@ class LoginView extends React.Component {
   };
 
   render() {
+    if (this.props.isAuthenticated) {
+      return <Redirect to="/" />;
+    }
     return (
       <div className="tile is-child box">
         <h1 className="title">Login</h1>
@@ -69,6 +73,7 @@ function mapStateToProps(state) {
   return {
     loginMessage: state.loginReducer.loginMessage,
     loading: state.loginReducer.loading,
+    isAuthenticated: state.loginReducer.isAuthenticated,
   };
 }
 function mapDispatchToProps(dispatch) {

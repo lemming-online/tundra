@@ -22,6 +22,7 @@ export function logInUser(credentials) {
         localStorage.setItem('jwt', responseJson.token);
         dispatch(loginSuccess());
       })
+      .then()
       .catch((error) => {
         console.error(error);
         dispatch(loginFailure());
