@@ -3,8 +3,6 @@ import SessionEditorComponent from '../components/SessionEditorComponent';
 import AnnouncementForm from '../components/AnnouncementForm';
 import FeedbackForm from '../components/FeedbackForm';
 // eslint-disable-next-line
-import DraftCSS from 'draft-js';
-
 import QuestionCard from '../components/QuestionCard';
 
 class SessionPage extends React.Component {

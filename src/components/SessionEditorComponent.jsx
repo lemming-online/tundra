@@ -1,5 +1,8 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import InputComponent from '../components/InputComponent';
+import createHelpQuestion from '../actions/sessionActions';
 
 class SessionEditorComponent extends React.Component {
   constructor(props) {
@@ -21,6 +24,10 @@ class SessionEditorComponent extends React.Component {
     e.preventDefault();
     console.log(this.state.question.questionField);
     // push question to api through a session editor api class
+    const jwt = localStorage.jwt;
+    const sessionID = this.props.match.params.sessionID;
+    // SessionApi.addQuestionToQueue(jwt, sectionId, details);
+    this.props.createHelpQuestion(jwt, sessionID, this.state.question);
     this.formRef.reset(); // resets the form to be empty
   };
 
@@ -46,4 +53,13 @@ class SessionEditorComponent extends React.Component {
   }
 }
 
-export default SessionEditorComponent;
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(createHelpQuestion, dispatch),
+    createHelpQuestion: (jwt, sectionId, details) => {
+      dispatch(createHelpQuestion(jwt, sectionId, details));
+    },
+  };
+}
+
+export default connect(null, mapDispatchToProps)(SessionEditorComponent);
