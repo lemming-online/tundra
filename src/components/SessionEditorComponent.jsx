@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import InputComponent from '../components/InputComponent';
-import createHelpQuestion from '../actions/sessionActions';
+import { createHelpQuestion, deleteHelpQuestion } from '../actions/sessionActions';
 
 class SessionEditorComponent extends React.Component {
   constructor(props) {
@@ -37,6 +37,14 @@ class SessionEditorComponent extends React.Component {
     this.formRef.reset(); // resets the form to be empty
   };
 
+  onCancel = (e) => {
+    e.preventDefault();
+    console.log('click cancel request');
+    const sessionID = this.props.match.params.sessionID;
+    const userId = this.props.id;
+    this.props.deleteHelpQuestion(sessionID, userId);
+  };
+
   render() {
     return (
       <div>
@@ -52,6 +60,9 @@ class SessionEditorComponent extends React.Component {
           />
           <button onClick={this.onSubmit} className={'button is-primary'}>
             Submit Request
+          </button>
+          <button onClick={this.onCancel} className={'button is-primary'}>
+            Cancel Request
           </button>
         </form>
       </div>
@@ -70,6 +81,9 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(createHelpQuestion, dispatch),
     createHelpQuestion: (jwt, sectionId, details) => {
       dispatch(createHelpQuestion(jwt, sectionId, details));
+    },
+    deleteHelpQuestion: (sectionId, userId) => {
+      dispatch(deleteHelpQuestion(sectionId, userId));
     },
   };
 }

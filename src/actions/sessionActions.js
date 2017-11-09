@@ -9,7 +9,15 @@ function helpQuestionFailure() {
   return { type: types.HELP_QUESTION_FAILURE };
 }
 
-export default function createHelpQuestion(jwt, sectionId, details) {
+function deleteQuestionSuccess() {
+  return { type: types.DELETE_QUESTION_SUCCESS };
+}
+
+function deleteQuestionFailure() {
+  return { type: types.DELETE_QUESTION_FAILURE };
+}
+
+export function createHelpQuestion(jwt, sectionId, details) {
   return function goCreateHelpQuestion(dispatch) {
     return SessionApi.addQuestionToQueue(jwt, sectionId, details)
       .then((responseJson) => {
@@ -19,6 +27,20 @@ export default function createHelpQuestion(jwt, sectionId, details) {
       .catch((error) => {
         console.error(error);
         dispatch(helpQuestionFailure());
+      });
+  };
+}
+
+export function deleteHelpQuestion(sectionId, userId) {
+  return function goDeleteHelpQuestion(dispatch) {
+    return SessionApi.deleteQuestionFromQueue(sectionId, userId)
+      .then((responseJson) => {
+        console.log(responseJson);
+        dispatch(deleteQuestionSuccess());
+      })
+      .catch((error) => {
+        console.error(error);
+        dispatch(deleteQuestionFailure());
       });
   };
 }

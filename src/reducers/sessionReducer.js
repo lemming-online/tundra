@@ -13,8 +13,21 @@ export default function registrationReducer(state = INITIAL_STATE, action) {
         hasCreatedQuestion: true,
       };
 
-    case types.SECTION_FAILURE:
+    case types.HELP_QUESTION_FAILURE:
       console.log('Question was not created.');
+      return {
+        ...state,
+      };
+
+    case types.DELETE_QUESTION_SUCCESS:
+      console.log('Question was deleted successfully');
+      return {
+        hasCreatedQuestion: false,
+        ...state,
+      };
+
+    case types.DELETE_QUESTION_FAILURE:
+      console.log('Question was not deleted.');
       return {
         ...state,
       };
