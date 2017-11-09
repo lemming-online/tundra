@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginView from './LoginView';
+// import LoginView from './LoginView';
 import RegistrationView from './RegistrationView';
 
 function SignInUpPage() {

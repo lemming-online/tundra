@@ -37,9 +37,33 @@ function loggedInPage(props) {
 
 function loggedOutPage() {
   return (
-    <section className="section">
-      <div className="container">
-        <h1 className="title">Welcome to Lemming. Please sign in.</h1>
+    <section className="hero is-primary is-large is-bold ">
+      <div className="hero-body">
+        <div className="container has-text-centered">
+          <h1 className="title">Welcome to Lemming</h1>
+          <h2 className="subtitle">You are logged out.</h2>
+        </div>
+      </div>
+
+      <div className="hero-foot">
+        <nav className="tabs is-boxed is-fullwidth is-hidden-mobile">
+          <div className="container">
+            <ul>
+              <li className="is-active">
+                <a>Overview</a>
+              </li>
+              <li>
+                <a>For Students</a>
+              </li>
+              <li>
+                <a>For Instructors</a>
+              </li>
+              <li>
+                <a>For Events</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
       </div>
     </section>
   );

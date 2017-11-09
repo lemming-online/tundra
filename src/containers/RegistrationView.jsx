@@ -1,6 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import InputComponent from '../components/InputComponent';
 import registerUser from '../actions/registrationActions';
 import logo from '../images/logo2.png';
@@ -60,6 +61,9 @@ class RegistrationView extends React.Component {
             </div>
           </div>
         </form>
+        <p className="signup-link">
+          Already have an account? <Link to="/signin">Sign In.</Link>
+        </p>
       </div>
     );
   }
