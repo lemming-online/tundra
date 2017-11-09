@@ -7,7 +7,7 @@ class SessionApi {
     const request = new Request(`https://api.lemming.online/sessions/${sectionId}/add`, {
       method: 'POST',
       headers: new Headers({
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt}`,
       }),
       body: JSON.stringify(details),
