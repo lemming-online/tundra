@@ -1,6 +1,7 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 import { bindActionCreators } from 'redux';
 import InputComponent from '../components/InputComponent';
 import * as loginActions from '../actions/loginActions';
@@ -87,6 +88,12 @@ class UserProfile extends React.Component {
   // see first name and last name
   // change their email and password
   render() {
+    // this snippet below will kick the page off after
+    // it has logged off. idk, this isn't sustainable,
+    // but i don't have a better idea rn
+    if (!this.props.isAuthenticated) {
+      return <Redirect push to="/" />;
+    }
     return (
       <section className="section">
         <div className="container">
@@ -139,6 +146,7 @@ function mapStateToProps(state) {
     uid: state.loginReducer.uid,
     firstName: state.loginReducer.firstName,
     lastName: state.loginReducer.lastName,
+    isAuthenticated: state.loginReducer.isAuthenticated,
   };
 }
 

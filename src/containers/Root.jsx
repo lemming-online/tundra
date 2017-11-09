@@ -20,16 +20,6 @@ const Root = props => (
           <Route path="/signin" component={SignInUpPage} />
           <Route path="/admin" component={AdminPage} />
           {/* TODO: Make this into its own component like <PrivateRoute */}
-          <Route
-            exact
-            path="/user"
-            render={() =>
-              (props.store.getState().loginReducer.isAuthenticated ? (
-                <UserProfile />
-              ) : (
-                <Redirect to="/login" />
-              ))}
-          />
           <PrivateRoute path="/user" component={UserProfile} />
           <PrivateRoute path="/session/:sessionID" component={SessionPage} />
           <Route path="/" component={HomePage} />
