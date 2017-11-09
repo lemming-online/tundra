@@ -1,5 +1,9 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import InputComponent from '../components/InputComponent';
+import { createHelpQuestion, deleteHelpQuestion } from '../actions/sessionActions';
 
 class SessionEditorComponent extends React.Component {
   constructor(props) {
@@ -20,8 +24,25 @@ class SessionEditorComponent extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
     console.log(this.state.question.questionField);
+    console.log(`id:${this.props.id}`);
     // push question to api through a session editor api class
+    const jwt = localStorage.jwt;
+    const sessionID = this.props.match.params.sessionID;
+    // SessionApi.addQuestionToQueue(jwt, sectionId, details);
+    const details = {
+      question: this.state.question.questionField,
+      user: this.props.id,
+    };
+    this.props.createHelpQuestion(jwt, sessionID, details);
     this.formRef.reset(); // resets the form to be empty
+  };
+
+  onCancel = (e) => {
+    e.preventDefault();
+    console.log('click cancel request');
+    const sessionID = this.props.match.params.sessionID;
+    const userId = this.props.id;
+    this.props.deleteHelpQuestion(sessionID, userId);
   };
 
   render() {
@@ -40,10 +61,31 @@ class SessionEditorComponent extends React.Component {
           <button onClick={this.onSubmit} className={'button is-primary'}>
             Submit Request
           </button>
+          <button onClick={this.onCancel} className={'button is-primary'}>
+            Cancel Request
+          </button>
         </form>
       </div>
     );
   }
 }
 
-export default SessionEditorComponent;
+function mapStateToProps(state) {
+  return {
+    id: state.loginReducer.id,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(createHelpQuestion, dispatch),
+    createHelpQuestion: (jwt, sectionId, details) => {
+      dispatch(createHelpQuestion(jwt, sectionId, details));
+    },
+    deleteHelpQuestion: (sectionId, userId) => {
+      dispatch(deleteHelpQuestion(sectionId, userId));
+    },
+  };
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SessionEditorComponent));
