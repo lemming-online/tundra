@@ -1,6 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import InputComponent from '../components/InputComponent';
 import createHelpQuestion from '../actions/sessionActions';
 
@@ -23,11 +24,16 @@ class SessionEditorComponent extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
     console.log(this.state.question.questionField);
+    console.log(`id:${this.props.id}`);
     // push question to api through a session editor api class
     const jwt = localStorage.jwt;
     const sessionID = this.props.match.params.sessionID;
     // SessionApi.addQuestionToQueue(jwt, sectionId, details);
-    this.props.createHelpQuestion(jwt, sessionID, this.state.question);
+    const details = {
+      question: this.state.question.questionField,
+      user: this.props.id,
+    };
+    this.props.createHelpQuestion(jwt, sessionID, details);
     this.formRef.reset(); // resets the form to be empty
   };
 
@@ -53,6 +59,12 @@ class SessionEditorComponent extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    id: state.loginReducer.id,
+  };
+}
+
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(createHelpQuestion, dispatch),
@@ -62,4 +74,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(SessionEditorComponent);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SessionEditorComponent));

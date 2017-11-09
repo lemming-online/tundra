@@ -2,12 +2,12 @@ class SessionApi {
   static addQuestionToQueue(jwt, sectionId, details) {
     console.log(`jwt: ${jwt}`);
     console.log(`sectionId: ${sectionId}`);
-    console.log(`details: ${details}`);
+    console.log(details);
 
     const request = new Request(`https://api.lemming.online/sessions/${sectionId}/add`, {
       method: 'POST',
       headers: new Headers({
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
         Authorization: `Bearer ${jwt}`,
       }),
       body: JSON.stringify(details),
