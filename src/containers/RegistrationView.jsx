@@ -37,7 +37,7 @@ class RegistrationView extends React.Component {
         <img src={logo} alt="Lemming logo" className="image is-128x128 logo-img" />
         <h1 className="title">Sign Up</h1>
         <form>
-          <InputComponent title="Email" name="email" onChange={this.onChange} />
+          <InputComponent title="Email" name="email" onChange={this.onChange} type="email" />
           <InputComponent
             title="Password"
             name="password"

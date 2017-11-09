@@ -2,12 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function InputComponent(props) {
+  const iconClass = props.type !== 'text' ? 'has-icons-left' : '';
+  function icon(props) {
+    if (props.type === 'email') {
+      return (
+        <span className="icon is-small is-left">
+          <i className="fa fa-envelope" />
+        </span>
+      );
+    }
+
+    if (props.type === 'password') {
+      return (
+        <span className="icon is-small is-left">
+          <i className="fa fa-lock" />
+        </span>
+      );
+    }
+  }
   return (
     <div className="field">
       <label className="label" htmlFor={props.title}>
         {props.title}
       </label>
-      <div className="control">
+      <div className={`control ${iconClass}`}>
+        {icon(props)}
         <input
           id={props.title}
           name={props.name}
