@@ -1,12 +1,14 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import Header from '../components/Header';
 import HomePage from './HomePage';
 import SignInUpPage from './SignInUpPage';
+import SignUpPage from './SignUpPage';
 import UserProfile from './UserProfile';
 import SessionPage from './SessionPage';
+import CoursePage from './CoursePage';
 import AdminPage from './AdminPage';
 import PrivateRoute from '../components/PrivateRoute';
 
@@ -17,22 +19,14 @@ const Root = props => (
       <div>
         <Header />
         <Switch>
-          <Route path="/login" component={SignInUpPage} />
-          <Route path="/admin" component={AdminPage} />
-          {/* TODO: Make this into its own component like <PrivateRoute */}
-          <Route
-            exact
-            path="/user"
-            render={() =>
-              (props.store.getState().loginReducer.isAuthenticated ? (
-                <UserProfile />
-              ) : (
-                <Redirect to="/login" />
-              ))}
-          />
+          <Route path="/signin" component={SignInUpPage} />
+          <Route path="/signup" component={SignUpPage} />
           <PrivateRoute path="/user" component={UserProfile} />
           <PrivateRoute path="/session/:sessionID" component={SessionPage} />
+          <PrivateRoute path="/course/:courseID" component={CoursePage} />
           <Route path="/" component={HomePage} />
+
+          <PrivateRoute path="/admin" component={AdminPage} />
         </Switch>
       </div>
     </Router>

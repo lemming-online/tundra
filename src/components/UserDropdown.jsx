@@ -20,7 +20,9 @@ function UserDropdown(props) {
           <Link to="/user" className="navbar-item">
             My Profile
           </Link>
-
+          <Link to="/user" className="navbar-item">
+            Settings
+          </Link>
           <LogInOutLink />
           <hr className="navbar-divider" />
           <div className="navbar-item">About Lemming</div>
