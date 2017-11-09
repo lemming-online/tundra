@@ -27,7 +27,7 @@ class SessionEditorComponent extends React.Component {
     console.log(`id:${this.props.id}`);
     // push question to api through a session editor api class
     const jwt = localStorage.jwt;
-    const sessionID = this.props.match.params.sessionID;
+    const sessionID = this.props.match.params.courseID;
     // SessionApi.addQuestionToQueue(jwt, sectionId, details);
     const details = {
       question: this.state.question.questionField,
@@ -40,7 +40,7 @@ class SessionEditorComponent extends React.Component {
   onCancel = (e) => {
     e.preventDefault();
     console.log('click cancel request');
-    const sessionID = this.props.match.params.sessionID;
+    const sessionID = this.props.match.params.courseID;
     const userId = this.props.id;
     this.props.deleteHelpQuestion(sessionID, userId);
   };
@@ -58,11 +58,11 @@ class SessionEditorComponent extends React.Component {
             name="questionField"
             onChange={this.onChange}
           />
-          <button onClick={this.onSubmit} className={'button is-primary'}>
-            Submit Request
-          </button>
-          <button onClick={this.onCancel} className={'button is-primary'}>
-            Cancel Request
+          <button
+            onClick={this.props.hasQuestion ? this.onCancel : this.onSubmit}
+            className={'button is-primary'}
+          >
+            {this.props.hasQuestion ? 'Cancel Request' : 'Submit Request'}
           </button>
         </form>
       </div>
@@ -73,6 +73,7 @@ class SessionEditorComponent extends React.Component {
 function mapStateToProps(state) {
   return {
     id: state.loginReducer.id,
+    hasQuestion: state.sessionReducer.hasCreatedQuestion,
   };
 }
 

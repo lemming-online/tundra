@@ -22,8 +22,8 @@ export default function registrationReducer(state = INITIAL_STATE, action) {
     case types.DELETE_QUESTION_SUCCESS:
       console.log('Question was deleted successfully');
       return {
-        hasCreatedQuestion: false,
         ...state,
+        hasCreatedQuestion: false,
       };
 
     case types.DELETE_QUESTION_FAILURE:
