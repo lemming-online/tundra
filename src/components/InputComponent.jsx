@@ -16,6 +16,7 @@ function InputComponent(props) {
           autoComplete="off"
           onChange={props.onChange}
           style={{ display: 'block' }}
+          {...props}
         />
       </div>
     </div>

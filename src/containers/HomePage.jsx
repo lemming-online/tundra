@@ -25,6 +25,10 @@ function loggedInPage(props) {
         <div className="columns is-multiline is-mobile">
           <CourseCard />
           <CourseCard />
+          <CourseCard />
+          <CourseCard />
+          <CourseCard />
+          <CourseCard />
         </div>
       </div>
     </section>
@@ -35,7 +39,7 @@ function loggedOutPage() {
   return (
     <section className="section">
       <div className="container">
-        <h1 className="title">Welcome to Lemming. Please login.</h1>
+        <h1 className="title">Welcome to Lemming. Please sign in.</h1>
       </div>
     </section>
   );

@@ -3,10 +3,11 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import * as loginActions from '../actions/loginActions';
 import InputComponent from '../components/InputComponent';
 import WarningNotification from '../components/WarningNotification';
+import logo from '../images/logo2.png';
 
 class LoginView extends React.Component {
   constructor(props) {
@@ -41,8 +42,9 @@ class LoginView extends React.Component {
       return <Redirect to="/" />;
     }
     return (
-      <div className="tile is-child box">
-        <h1 className="title">Login</h1>
+      <div className="column is-4 box">
+        <img src={logo} alt="Lemming logo" className="image is-128x128 logo-img" />
+        <h1 className="title">Sign In</h1>
         <WarningNotification warn={this.props.loginMessage} />
         <form>
           <InputComponent title="Email" name="email" onChange={this.onChange} type="email" />
@@ -59,11 +61,15 @@ class LoginView extends React.Component {
                 onClick={this.onSave}
                 className={`button is-primary ${this.props.loading ? 'is-loading' : ''}`}
               >
-                Log In
+                Sign In
               </button>
             </div>
           </div>
         </form>
+
+        <p className="signup-link">
+          Are you new to Lemming? <Link to="/signup">Sign Up.</Link>
+        </p>
       </div>
     );
   }

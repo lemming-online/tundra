@@ -6,13 +6,8 @@ function SignInUpPage() {
   return (
     <section className="section">
       <div className="container">
-        <div className="tile is-ancestor">
-          <div className="tile is-parent is-4 ">
-            <LoginView />
-          </div>
-          <div className="tile is-parent">
-            <RegistrationView />
-          </div>
+        <div className="columns is-centered">
+          <LoginView />
         </div>
       </div>
     </section>

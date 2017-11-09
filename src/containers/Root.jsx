@@ -17,7 +17,7 @@ const Root = props => (
       <div>
         <Header />
         <Switch>
-          <Route path="/login" component={SignInUpPage} />
+          <Route path="/signin" component={SignInUpPage} />
           <Route path="/admin" component={AdminPage} />
           {/* TODO: Make this into its own component like <PrivateRoute */}
           <Route

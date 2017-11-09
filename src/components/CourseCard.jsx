@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function CourseCard(props) {
   return (
-    <div className="column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
+    <div className="course-card column is-2-desktop is-one-quarter-tablet is-half-mobile">
       <div className="box">
         <div className="content">
           <p className="title">

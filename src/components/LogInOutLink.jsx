@@ -16,22 +16,22 @@ function LogInOutLink(props) {
       return null;
     }
     return (
-      <Link to="/login" className="navbar-item">
-        Log In/Register
+      <Link to="/signin" className="navbar-item">
+        Sign In / Sign Up
       </Link>
     );
   }
 
   if (props.logged_in) {
     return (
-      <Link to="/logout" onClick={logOut} className="navbar-item">
-        Log Out
+      <Link to="/signout" onClick={logOut} className="navbar-item">
+        Sign Out
       </Link>
     );
   }
   return (
-    <Link to="/login" className="navbar-item">
-      Log In/Register
+    <Link to="/signin" className="navbar-item">
+      Sign In / Sign Up
     </Link>
   );
 }

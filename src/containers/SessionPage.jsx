@@ -12,20 +12,23 @@ function SessionPage() {
     <section className="section">
       <div className="container">
         <h1 className="title">CS 407</h1>
-        <nav className="breadcrumb" aria-label="breadcrumbs">
+        <h2 className="subtitle">
+          November 3, 2017 <br /> 12:30pm-2:20pm
+        </h2>
+        <nav className="breadcrumb is-hidden-mobile" aria-label="breadcrumbs">
           <ul>
             <li>
               <a href="/">Home</a>
             </li>
             <li>
-              <a href="/">Class Sessions</a>
+              <a href="/">My Courses</a>
             </li>
             <li>
               <a href="/">CS 407</a>
             </li>
             <li className="is-active">
               <a href="/" aria-current="page">
-                November 3, 2017 | 12:30pm-2:20pm
+                Today's Session
               </a>
             </li>
           </ul>
