@@ -8,6 +8,7 @@ import SignInUpPage from './SignInUpPage';
 import SignUpPage from './SignUpPage';
 import UserProfile from './UserProfile';
 import SessionPage from './SessionPage';
+import CoursePage from './CoursePage';
 import AdminPage from './AdminPage';
 import PrivateRoute from '../components/PrivateRoute';
 
@@ -22,6 +23,7 @@ const Root = props => (
           <Route path="/signup" component={SignUpPage} />
           <PrivateRoute path="/user" component={UserProfile} />
           <PrivateRoute path="/session/:sessionID" component={SessionPage} />
+          <PrivateRoute path="/course/:courseID" component={CoursePage} />
           <Route path="/" component={HomePage} />
 
           <PrivateRoute path="/admin" component={AdminPage} />
