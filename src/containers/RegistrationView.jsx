@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import InputComponent from '../components/InputComponent';
 import registerUser from '../actions/registrationActions';
+import logo from '../images/logo2.png';
 
 class RegistrationView extends React.Component {
   constructor(props) {
@@ -31,8 +32,9 @@ class RegistrationView extends React.Component {
 
   render() {
     return (
-      <div className="tile is-child box">
-        <h1 className="title">Register</h1>
+      <div className=" is-child column is-4 box">
+        <img src={logo} alt="Lemming logo" className="image is-128x128 logo-img" />
+        <h1 className="title">Sign Up</h1>
         <form>
           <InputComponent title="Email" name="email" onChange={this.onChange} />
           <InputComponent
@@ -50,7 +52,7 @@ class RegistrationView extends React.Component {
           <InputComponent title="First Name" name="first_name" onChange={this.onChange} />
           <InputComponent title="Last Name" name="last_name" onChange={this.onChange} />
 
-          <div className="field">
+          <div className="field is-grouped is-grouped-right">
             <div className="control">
               <button onClick={this.onSave} className="button is-primary">
                 Register

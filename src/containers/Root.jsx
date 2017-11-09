@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import Header from '../components/Header';
 import HomePage from './HomePage';
 import SignInUpPage from './SignInUpPage';
+import SignUpPage from './SignUpPage';
 import UserProfile from './UserProfile';
 import SessionPage from './SessionPage';
 import AdminPage from './AdminPage';
@@ -18,11 +19,12 @@ const Root = props => (
         <Header />
         <Switch>
           <Route path="/signin" component={SignInUpPage} />
-          <Route path="/admin" component={AdminPage} />
-          {/* TODO: Make this into its own component like <PrivateRoute */}
+          <Route path="/signup" component={SignUpPage} />
           <PrivateRoute path="/user" component={UserProfile} />
           <PrivateRoute path="/session/:sessionID" component={SessionPage} />
           <Route path="/" component={HomePage} />
+
+          <PrivateRoute path="/admin" component={AdminPage} />
         </Switch>
       </div>
     </Router>

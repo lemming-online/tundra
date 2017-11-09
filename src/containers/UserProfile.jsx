@@ -97,42 +97,46 @@ class UserProfile extends React.Component {
     return (
       <section className="section">
         <div className="container">
-          <div className="tile is-ancestor">
-            <div className="tile is-parent box is-7">
-              <div className="tile is-child is-4">
-                <h1 className="title">Update Profile</h1>
-                <div>
-                  <Dropzone multiple={false} accept="image/*" onDrop={files => this.onDrop(files)}>
-                    <img src={this.state.profilePicture} alt="user profile" />
-                  </Dropzone>
-                </div>
+          <h1 className="title">Settings</h1>
+          <div className="columns">
+            <div className="column is-3">
+              <nav className="panel">
+                <a className="panel-block is-active">
+                  <span className="panel-icon">
+                    <i className="fa fa-book" />
+                  </span>
+                  My Profile
+                </a>
+
+                <a className="panel-block">
+                  <span className="panel-icon">
+                    <i className="fa fa-cog" />
+                  </span>
+                  My Settings
+                </a>
+              </nav>
+            </div>
+
+            <div className="column box">
+              <div className="">
+                <Dropzone multiple={false} accept="image/*" onDrop={files => this.onDrop(files)}>
+                  <img src={this.state.profilePicture} alt="user profile" />
+                </Dropzone>
                 <h1 className="title subtitle">{`${this.props.firstName} ${this.props
                   .lastName}`}</h1>
                 <span className="uid">{`${this.props.uid}`}</span>
               </div>
-              <div className="tile is-child">
-                <div>
-                  <form onSubmit={this.updateUser}>
-                    <InputComponent
-                      title="First Name"
-                      name="first_name"
-                      onChange={this.handleChange}
-                    />
-                    <InputComponent
-                      title="Last Name"
-                      name="last_name"
-                      onChange={this.handleChange}
-                    />
-                    <InputComponent title="Password" name="password" onChange={this.handleChange} />
-                    <InputComponent title="Email" name="email" onChange={this.handleChange} />
-                    <div className="field">
-                      <div className="control">
-                        <button className="button is-primary">Update Settings</button>
-                      </div>
-                    </div>
-                  </form>
+              <form onSubmit={this.updateUser}>
+                <InputComponent title="First Name" name="first_name" onChange={this.handleChange} />
+                <InputComponent title="Last Name" name="last_name" onChange={this.handleChange} />
+                <InputComponent title="Password" name="password" onChange={this.handleChange} />
+                <InputComponent title="Email" name="email" onChange={this.handleChange} />
+                <div className="field">
+                  <div className="control">
+                    <button className="button is-primary">Update Settings</button>
+                  </div>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
