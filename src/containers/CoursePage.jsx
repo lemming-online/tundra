@@ -16,26 +16,31 @@ function SessionPage() {
           <div className="container">
             <h1 className="title">FCK 420</h1>
             <h2 className="subtitle">History of Dank</h2>
+            <h3> Section 1 </h3>
+            <h4> MWF 3:30-4:20 </h4>
           </div>
         </div>
+        <div className="hero-foot">
+          <nav className="tabs is-boxed">
+            <div className="container">
+              <ul>
+                <li className="is-active">
+                  <a>Sessions</a>
+                </li>
+                <li>
+                  <a>Resources</a>
+                </li>
+                <li>
+                  <a>People</a>
+                </li>
+                <li>
+                  <a>Admin</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
       </section>
-      <div className="container">
-        <nav className="breadcrumb is-hidden-mobile" aria-label="breadcrumbs">
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/">My Courses</Link>
-            </li>
-            <li className="is-active">
-              <Link to="/course/1" aria-current="page">
-                FCK 420
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
     </div>
   );
 }
