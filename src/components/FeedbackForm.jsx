@@ -111,6 +111,7 @@ function mapStateToProps(state) {
     id: state.loginReducer.uid,
   };
 }
+
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(feedbackSuccess, dispatch),
