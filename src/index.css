@@ -17,7 +17,28 @@ body {
 
 .is-circle {
   border-radius: 50%;
-  max-width: 90%;
+  border: 2px solid #fff;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+.avatar {
+  max-height: none !important;
+  max-width: none;
+}
+
+.instructor-component figure.image {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.instructor-component {
+  margin: 1rem;
+}
+
+.instructor-component p {
+  font-size: small;
 }
 
 .uid {
@@ -37,4 +58,9 @@ body {
   font-size: 10pt;
   text-align: center;
   margin-top: 15pt;
+}
+
+.course-info-block .title:not(:last-child),
+.subtitle:not(:last-child) {
+  margin-bottom: 1.5rem;
 }

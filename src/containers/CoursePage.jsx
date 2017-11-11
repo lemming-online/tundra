@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import DraftCSS from 'draft-js';
 
 import QuestionCard from '../components/QuestionCard';
+import InstuctorComponent from '../components/InstructorComponent';
 
 function SessionPage() {
   return (
@@ -14,10 +15,23 @@ function SessionPage() {
       <section className="hero is-primary">
         <div className="hero-body">
           <div className="container">
-            <h1 className="title">FCK 420</h1>
-            <h2 className="subtitle">History of Dank</h2>
-            <h3> Section 1 </h3>
-            <h4> MWF 3:30-4:20 </h4>
+            <div className="level is-mobile">
+              <div className="level-left">
+                <div className="level-item">
+                  <div className="course-info-block">
+                    <h1 className="title">FCK 420</h1>
+                    <h2 className="subtitle">History of Dank</h2>
+                    <h3> Section 1 </h3>
+                    <h4> MWF 3:30-4:20 </h4>
+                  </div>
+                </div>
+              </div>
+
+              <div className="level-right is-hidden-mobile">
+                <InstuctorComponent name="Jay" img_url="https://i.imgur.com/uDyELQj.jpg" />
+                <InstuctorComponent name="Jay" img_url="https://i.imgur.com/uDyELQj.jpg" />
+              </div>
+            </div>
           </div>
         </div>
         <div className="hero-foot">
