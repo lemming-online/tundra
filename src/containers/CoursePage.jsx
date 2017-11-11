@@ -28,8 +28,21 @@ function SessionPage() {
               </div>
 
               <div className="level-right is-hidden-mobile">
-                <InstuctorComponent name="Jay" img_url="https://i.imgur.com/uDyELQj.jpg" />
-                <InstuctorComponent name="Jay" img_url="https://i.imgur.com/uDyELQj.jpg" />
+                <div className="level-item">
+                  <div className="mentor-block has-text-centered">
+                    <h3> Your Mentors </h3>
+                    <div className="mentor-group">
+                      <InstuctorComponent
+                        name="Jay Hankins"
+                        img_url="https://i.imgur.com/uDyELQj.jpg"
+                      />
+                      <InstuctorComponent
+                        name="Matt Ess"
+                        img_url="https://i.imgur.com/yGciGxj.jpg"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

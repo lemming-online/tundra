@@ -5,9 +5,9 @@ function InstructorComponent(props) {
   return (
     <div className="instructor-component">
       <figure className="image is-64x64">
-        <img className="avatar is-circle" src="https://i.imgur.com/uDyELQj.jpg" />
+        <img className="avatar is-circle" src={props.img_url} />
       </figure>
-      <p className="has-text-centered">Jay Hankins</p>
+      <p className="has-text-centered">{props.name}</p>
     </div>
   );
 }
