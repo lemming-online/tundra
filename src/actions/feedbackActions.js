@@ -33,6 +33,12 @@ export function feedbackSuccess(content, sessionId, mentorId, jwt) {
   };
 }
 
+export function cancelFeedback() {
+  return function goCancelFeedback(dispatch) {
+    return dispatch(createFeedbackSuccess());
+  };
+}
+
 export function feedbackInProgress() {
   return function goFeedbackInProgress(dispatch) {
     dispatch(creatingFeedbackForm());
