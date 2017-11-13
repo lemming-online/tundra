@@ -35,7 +35,7 @@ export function feedbackSuccess(content, sessionId, mentorId, jwt) {
 
 export function cancelFeedback() {
   return function goCancelFeedback(dispatch) {
-    return dispatch(createFeedbackSuccess());
+    return dispatch(createFeedbackFailure());
   };
 }
 
@@ -44,12 +44,6 @@ export function feedbackInProgress() {
     dispatch(creatingFeedbackForm());
   };
 }
-
-// export function feedbackFailure() {
-//   return function goFeedbackFailure(dispatch) {
-
-//   };
-// }
 
 export function dropdownSelected() {
   return function goSelectDropdown(dispatch) {
