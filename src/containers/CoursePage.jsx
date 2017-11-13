@@ -1,12 +1,8 @@
 import React from 'react';
-import SessionEditorComponent from '../components/SessionEditorComponent';
-import AnnouncementForm from '../components/AnnouncementForm';
-import FeedbackForm from '../components/FeedbackForm';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 // eslint-disable-next-line
 import DraftCSS from 'draft-js';
 
-import QuestionCard from '../components/QuestionCard';
 import InstuctorComponent from '../components/InstructorComponent';
 
 function SessionPage() {

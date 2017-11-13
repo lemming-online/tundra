@@ -12,11 +12,7 @@ function UserDropdown(props) {
       <div className="navbar-item has-dropdown is-hoverable">
         <a className="navbar-link">
           <figure className="image is-32x32 ">
-            <img
-              alt="user profile pic"
-              src="https://i.imgur.com/uDyELQj.jpg"
-              className="avatar is-circle"
-            />
+            <img alt="user profile pic" src={userBlank} className="avatar is-circle" />
           </figure>
         </a>
 
