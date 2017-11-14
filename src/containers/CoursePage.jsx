@@ -3,7 +3,7 @@ import React from 'react';
 // eslint-disable-next-line
 import DraftCSS from 'draft-js';
 
-import InstuctorComponent from '../components/InstructorComponent';
+import InstructorComponent from '../components/InstructorComponent';
 
 function SessionPage() {
   return (
@@ -28,11 +28,11 @@ function SessionPage() {
                   <div className="mentor-block has-text-centered">
                     <h3> Your Mentors </h3>
                     <div className="mentor-group">
-                      <InstuctorComponent
+                      <InstructorComponent
                         name="Jay Hankins"
                         img_url="https://i.imgur.com/uDyELQj.jpg"
                       />
-                      <InstuctorComponent
+                      <InstructorComponent
                         name="Matt Ess"
                         img_url="https://i.imgur.com/yGciGxj.jpg"
                       />
