@@ -1,52 +1,70 @@
 import React from 'react';
-import SessionEditorComponent from '../components/SessionEditorComponent';
-import AnnouncementForm from '../components/AnnouncementForm';
-import FeedbackForm from '../components/FeedbackForm';
+// import { Link } from 'react-router-dom';
 // eslint-disable-next-line
 import DraftCSS from 'draft-js';
 
-import QuestionCard from '../components/QuestionCard';
+import InstructorComponent from '../components/InstructorComponent';
 
 function SessionPage() {
   return (
-    <section className="section">
-      <div className="container">
-        <h1 className="title">CS 407</h1>
-        <h2 className="subtitle">
-          November 3, 2017 <br /> 12:30pm-2:20pm
-        </h2>
-        <nav className="breadcrumb is-hidden-mobile" aria-label="breadcrumbs">
-          <ul>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/">My Courses</a>
-            </li>
-            <li>
-              <a href="/">CS 407</a>
-            </li>
-            <li className="is-active">
-              <a href="/" aria-current="page">
-                Today's Session
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <AnnouncementForm />
+    <div>
+      <section className="hero is-primary">
+        <div className="hero-body">
+          <div className="container">
+            <div className="level is-mobile">
+              <div className="level-left">
+                <div className="level-item">
+                  <div className="course-info-block">
+                    <h1 className="title">FCK 420</h1>
+                    <h2 className="subtitle">History of Dank</h2>
+                    <h3> Section 1 </h3>
+                    <h4> MWF 3:30-4:20 </h4>
+                  </div>
+                </div>
+              </div>
 
-        <section className="section">
-          <div className="container box">
-            <div className="control">
-              <SessionEditorComponent />
+              <div className="level-right is-hidden-mobile">
+                <div className="level-item">
+                  <div className="mentor-block has-text-centered">
+                    <h3> Your Mentors </h3>
+                    <div className="mentor-group">
+                      <InstructorComponent
+                        name="Jay Hankins"
+                        img_url="https://i.imgur.com/uDyELQj.jpg"
+                      />
+                      <InstructorComponent
+                        name="Matt Ess"
+                        img_url="https://i.imgur.com/yGciGxj.jpg"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-
-          <QuestionCard />
-        </section>
-        <FeedbackForm />
-      </div>
-    </section>
+        </div>
+        <div className="hero-foot">
+          <nav className="tabs is-boxed">
+            <div className="container">
+              <ul>
+                <li className="is-active">
+                  <a>Sessions</a>
+                </li>
+                <li>
+                  <a>Resources</a>
+                </li>
+                <li>
+                  <a>People</a>
+                </li>
+                <li>
+                  <a>Admin</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </section>
+    </div>
   );
 }
 
