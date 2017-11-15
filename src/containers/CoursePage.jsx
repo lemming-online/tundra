@@ -4,6 +4,7 @@ import React from 'react';
 import DraftCSS from 'draft-js';
 
 import InstructorComponent from '../components/InstructorComponent';
+import TabCollection from '../components/TabCollection';
 
 function SessionPage() {
   return (
@@ -44,24 +45,7 @@ function SessionPage() {
           </div>
         </div>
         <div className="hero-foot">
-          <nav className="tabs is-boxed">
-            <div className="container">
-              <ul>
-                <li className="is-active">
-                  <a>Sessions</a>
-                </li>
-                <li>
-                  <a>Resources</a>
-                </li>
-                <li>
-                  <a>People</a>
-                </li>
-                <li>
-                  <a>Admin</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
+          <TabCollection />
         </div>
       </section>
     </div>
