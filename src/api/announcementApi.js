@@ -8,7 +8,7 @@ class AnnouncementApi {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt}`,
       }),
-      body: JSON.stringify({ body: announcement }),
+      body: JSON.stringify(announcement),
     });
 
     return fetch(request)
