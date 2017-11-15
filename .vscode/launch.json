@@ -10,17 +10,13 @@
     },
     {
       "name": "Firefox",
+      "sourceMaps": "client",
       "type": "firefox",
       "request": "launch",
       // "reAttach": true,
       "url": "http://localhost:3000/",
+      "webRoot": "${workspaceFolder}/src",
       "pathMappings": [
-        {
-          // This may not be needed, or it may be a bug
-          // For some reason, Firefox is requesting the whole URLs, not ending in /
-          "url": "http://localhost:3000/Users/jhankins/dev/lemming/tundra/",
-          "path": "${workspaceFolder}/"
-        },
         {
           "url": "webpack:///",
           "path": "${workspaceFolder}/"
