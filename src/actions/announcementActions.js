@@ -1,4 +1,5 @@
 import * as types from './actionTypes';
+import announcementApi from '../api/announcementApi';
 
 function createAnnouncementSuccess() {
   return { type: types.CREATE_ANNOUNCEMENT_SUCCESS };
@@ -8,9 +9,9 @@ function announcementInProgress() {
   return { type: types.CREATING_ANNOUNCEMENT };
 }
 
-// function createAnnouncementFailure() {
-//   return { type: types.CREATE_ANNOUNCEMENT_FAILURE };
-// }
+function createAnnouncementFailure() {
+  return { type: types.CREATE_ANNOUNCEMENT_FAILURE };
+}
 
 export function createAnnouncement(announcement) {
   return function goCreateAnnouncement(dispatch) {
@@ -20,9 +21,18 @@ export function createAnnouncement(announcement) {
   };
 }
 
-export function closeAnnouncement(announcement) {
+export function closeAnnouncement(sessionId, announcement) {
   return function goCloseAnnouncementPopup(dispatch) {
-    dispatch(createAnnouncementSuccess());
-    console.log(`closing popup: ${announcement}`);
+    console.log(`111 -sessionId: ${sessionId} announcement: ${announcement}`);
+    return announcementApi
+      .createAnnouncement(sessionId, announcement)
+      .then((responseJson) => {
+        console.log(responseJson);
+        dispatch(createAnnouncementSuccess());
+      })
+      .catch((error) => {
+        console.log(error);
+        dispatch(createAnnouncementFailure());
+      });
   };
 }
