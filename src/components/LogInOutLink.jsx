@@ -1,13 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link, withRouter } from "react-router-dom";
 // import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as loginActions from '../actions/loginActions';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as loginActions from "../actions/loginActions";
 
 function LogInOutLink(props) {
   function logOut(event) {
     event.preventDefault();
+    props.history.push("/"); //adds browser push to redirect
     props.actions.logOutUser();
   }
 
@@ -40,8 +41,10 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(loginActions, dispatch),
+    actions: bindActionCreators(loginActions, dispatch)
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LogInOutLink);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(LogInOutLink)
+);

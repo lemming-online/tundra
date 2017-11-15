@@ -4,6 +4,7 @@ import AnnouncementForm from '../components/AnnouncementForm';
 import FeedbackForm from '../components/FeedbackForm';
 // eslint-disable-next-line
 import QuestionCard from '../components/QuestionCard';
+import ViewAnnouncementsComponent from '../components/ViewAnnouncementsComponent';
 
 class SessionPage extends React.Component {
   constructor(props) {
@@ -41,6 +42,7 @@ class SessionPage extends React.Component {
             </ul>
           </nav>
           <AnnouncementForm />
+          <ViewAnnouncementsComponent />
 
           <section className="section">
             <div className="container box">

@@ -68,3 +68,23 @@ body {
 .mentor-group {
   display: flex;
 }
+
+.hyphenate {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  /* -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto; */
+}
+
+.bordered > div {
+  background: white;
+  border-style: solid;
+  border-color: #fcfcfc;
+}
+
+.aspect-ratio {
+  padding-top: 100%;
+  position: relative;
+}

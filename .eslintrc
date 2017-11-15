@@ -1,7 +1,12 @@
 {
   "parser": "babel-eslint",
   "extends": "airbnb",
-  "plugins": ["react", "jsx-a11y", "import"],
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import",
+    "transform-object-rest-spread"
+  ],
   "env": {
     "jest": true,
     "browser": true

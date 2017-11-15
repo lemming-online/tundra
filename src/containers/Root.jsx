@@ -12,19 +12,21 @@ import CoursePage from './CoursePage';
 import AdminPage from './AdminPage';
 import PrivateRoute from '../components/PrivateRoute';
 
+const basename = '/tundra';
+
 // FIXME: add store to proptypes
 const Root = props => (
   <Provider store={props.store}>
-    <Router basename="/tundra">
+    <Router basename={basename}>
       <div>
         <Header />
         <Switch>
+          <Route exact path="/" component={HomePage} />
           <Route path="/signin" component={SignInUpPage} />
           <Route path="/signup" component={SignUpPage} />
           <PrivateRoute path="/user" component={UserProfile} />
           <PrivateRoute path="/session/:sessionID" component={SessionPage} />
           <PrivateRoute path="/course/:courseID" component={CoursePage} />
-          <Route path="/" component={HomePage} />
 
           <PrivateRoute path="/admin" component={AdminPage} />
         </Switch>
