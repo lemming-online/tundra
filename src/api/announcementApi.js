@@ -1,7 +1,6 @@
 class AnnouncementApi {
   static createAnnouncement(sessionId, announcement) {
     const jwt = localStorage.jwt;
-    console.log('hello world');
 
     const request = new Request(`https://api.lemming.online/sessions/${sessionId}/announcements`, {
       method: 'POST',

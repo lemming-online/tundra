@@ -4,7 +4,11 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import InputComponent from '../components/InputComponent';
-import { createAnnouncement, closeAnnouncement } from '../actions/announcementActions';
+import {
+  createAnnouncement,
+  submitAnnouncement,
+  cancelAnnouncement,
+} from '../actions/announcementActions';
 
 class AnnouncementForm extends React.Component {
   constructor(props) {
@@ -22,13 +26,11 @@ class AnnouncementForm extends React.Component {
 
   onSubmit = () => {
     const sessionID = this.props.match.params.sessionID;
-    console.log(`222 - sessionId: ${sessionID} announcement: ${this.state.announcement.content}`);
-    this.props.submitAnnouncement(sessionID, this.state.announcement.content);
+    this.props.submitAnnouncement(sessionID, { announcement: this.state.announcement.content });
   };
 
   onCancel = () => {
-    const sessionID = this.props.match.params.sessionID;
-    this.props.closeAnnouncement(sessionID, this.state.announcement.content);
+    this.props.cancelAnnouncement();
   };
 
   onSelect = () => {
@@ -86,10 +88,10 @@ function mapDispatchToProps(dispatch) {
       dispatch(createAnnouncement(announcement));
     },
     submitAnnouncement: (sessionId, announcement) => {
-      dispatch(closeAnnouncement(sessionId, announcement));
+      dispatch(submitAnnouncement(sessionId, announcement));
     },
-    closeAnnouncement: (sessionId, announcement) => {
-      dispatch(closeAnnouncement(sessionId, announcement));
+    cancelAnnouncement: () => {
+      dispatch(cancelAnnouncement());
     },
   };
 }

@@ -16,14 +16,14 @@ function createAnnouncementFailure() {
 export function createAnnouncement(announcement) {
   return function goCreateAnnouncement(dispatch) {
     dispatch(announcementInProgress());
-    console.log('After dispatch AnnouncementInProgress :)');
-    console.log(`your announcement: ${announcement}`);
+    console.log(`After dispatch AnnouncementInProgress: ${announcement}`);
   };
 }
 
-export function closeAnnouncement(sessionId, announcement) {
+export function submitAnnouncement(sessionId, announcement) {
   return function goCloseAnnouncementPopup(dispatch) {
-    console.log(`111 -sessionId: ${sessionId} announcement: ${announcement}`);
+    console.log('this is your announcement from action:');
+    console.log(announcement);
     return announcementApi
       .createAnnouncement(sessionId, announcement)
       .then((responseJson) => {
@@ -34,5 +34,11 @@ export function closeAnnouncement(sessionId, announcement) {
         console.log(error);
         dispatch(createAnnouncementFailure());
       });
+  };
+}
+
+export function cancelAnnouncement() {
+  return function goCancelAnnouncement(dispatch) {
+    dispatch(createAnnouncementFailure());
   };
 }
