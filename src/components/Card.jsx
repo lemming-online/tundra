@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function Card(props) {
   return (
-    <div className="card">
+    <div className="card-title">
       <div className="box">
         <div className="card-title">
           <strong>{props.title}</strong>
@@ -17,6 +17,13 @@ function Card(props) {
 
 Card.propTypes = {
   content: PropTypes.string.isRequired,
+  timestamp: PropTypes.string,
+  title: PropTypes.string,
+};
+
+Card.defaultProps = {
+  timestamp: '',
+  title: '',
 };
 
 export default Card;

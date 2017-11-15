@@ -4,7 +4,7 @@ import AnnouncementForm from '../components/AnnouncementForm';
 import FeedbackForm from '../components/FeedbackForm';
 // eslint-disable-next-line
 import QuestionCard from '../components/QuestionCard';
-import Card from '../components/Card';
+import ViewAnnouncementsComponent from '../components/ViewAnnouncementsComponent';
 
 class SessionPage extends React.Component {
   constructor(props) {
@@ -42,8 +42,7 @@ class SessionPage extends React.Component {
             </ul>
           </nav>
           <AnnouncementForm />
-          <Card content="Ankit goes" title="TITLE" timestamp="7:00 PM on a Tuesday" />
-          <Card content="2nd Card" title="No time for games" />
+          <ViewAnnouncementsComponent />
 
           <section className="section">
             <div className="container box">
