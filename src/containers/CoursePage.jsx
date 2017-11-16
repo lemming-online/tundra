@@ -1,15 +1,12 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 // eslint-disable-next-line
 import DraftCSS from 'draft-js';
 
 import InstructorComponent from '../components/InstructorComponent';
-<<<<<<< Updated upstream
-=======
 import TabCollection from '../components/TabCollection';
 import Tabs from '../components/Tabs';
 import Tab from '../components/Tab';
->>>>>>> Stashed changes
 
 function SessionPage() {
   return (
