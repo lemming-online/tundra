@@ -4,6 +4,12 @@ import React from 'react';
 import DraftCSS from 'draft-js';
 
 import InstructorComponent from '../components/InstructorComponent';
+<<<<<<< Updated upstream
+=======
+import TabCollection from '../components/TabCollection';
+import Tabs from '../components/Tabs';
+import Tab from '../components/Tab';
+>>>>>>> Stashed changes
 
 function SessionPage() {
   return (
@@ -44,24 +50,16 @@ function SessionPage() {
           </div>
         </div>
         <div className="hero-foot">
-          <nav className="tabs is-boxed">
-            <div className="container">
-              <ul>
-                <li className="is-active">
-                  <a>Sessions</a>
-                </li>
-                <li>
-                  <a>Resources</a>
-                </li>
-                <li>
-                  <a>People</a>
-                </li>
-                <li>
-                  <a>Admin</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
+          <TabCollection>
+            <Tabs>
+              <Tab isActive to="sessions">
+                Sessions
+              </Tab>
+              <Tab to="resources">Resources</Tab>
+              <Tab to="/">People</Tab>
+              <Tab to="/">Admin</Tab>
+            </Tabs>
+          </TabCollection>
         </div>
       </section>
     </div>
