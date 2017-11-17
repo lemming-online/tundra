@@ -12,10 +12,12 @@ import CoursePage from './CoursePage';
 import AdminPage from './AdminPage';
 import PrivateRoute from '../components/PrivateRoute';
 
+const basename = '/tundra';
+
 // FIXME: add store to proptypes
 const Root = props => (
   <Provider store={props.store}>
-    <Router basename="/tundra">
+    <Router basename={basename}>
       <div>
         <Header />
         <Switch>
