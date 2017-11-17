@@ -2,8 +2,10 @@ import React from 'react';
 
 import InstructorComponent from '../components/InstructorComponent';
 import TabCollection from '../components/TabCollection';
+
 import Tabs from '../components/Tabs';
 import Tab from '../components/Tab';
+
 
 import SessionSubPage from './SessionPage';
 import HomePage from './HomePage';
@@ -56,6 +58,7 @@ class SessionPage extends React.Component {
               </div>
             </div>
           </div>
+
           <div className="hero-foot">
             <TabCollection>
               <Tabs>
@@ -85,6 +88,7 @@ class SessionPage extends React.Component {
       </div>
     );
   }
+
 }
 
 

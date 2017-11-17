@@ -21,12 +21,12 @@ const Root = props => (
       <div>
         <Header />
         <Switch>
+          <Route exact path="/" component={HomePage} />
           <Route path="/signin" component={SignInUpPage} />
           <Route path="/signup" component={SignUpPage} />
           <PrivateRoute path="/user" component={UserProfile} />
           <PrivateRoute path="/session/:sessionID" component={SessionPage} />
           <PrivateRoute path="/course/:courseID" component={CoursePage} />
-          <Route path="/" component={HomePage} />
 
           <PrivateRoute path="/admin" component={AdminPage} />
         </Switch>
