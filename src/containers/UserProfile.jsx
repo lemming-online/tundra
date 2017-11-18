@@ -1,9 +1,11 @@
+
 import React from 'react';
 import Dropzone from 'react-dropzone';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import InputComponent from '../components/InputComponent';
 import * as loginActions from '../actions/loginActions';
+
 
 class UserProfile extends React.Component {
   constructor(props) {
