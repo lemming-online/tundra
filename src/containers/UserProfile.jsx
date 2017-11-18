@@ -1,7 +1,7 @@
 import React from "react";
 import Dropzone from "react-dropzone";
 import { connect } from "react-redux";
-import { Redirect } from "react-router";
+
 import { bindActionCreators } from "redux";
 import InputComponent from "../components/InputComponent";
 import * as loginActions from "../actions/loginActions";
