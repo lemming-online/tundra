@@ -47,7 +47,7 @@ class SessionEditorComponent extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container box">
         <form
           ref={(form) => {
             this.formRef = form;

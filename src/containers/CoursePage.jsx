@@ -1,25 +1,22 @@
+import React from 'react';
 
-import React from "react";
+import InstructorComponent from '../components/InstructorComponent';
+import TabCollection from '../components/TabCollection';
 
-import InstructorComponent from "../components/InstructorComponent";
-import TabCollection from "../components/TabCollection";
+import SessionSubPage from './SessionSubPage';
+import HomePage from './HomePage';
+import AdminPage from './AdminPage';
 
-import SessionSubPage from "./SessionPage";
-import HomePage from "./HomePage";
-import AdminPage from "./AdminPage";
-
-import CoursePeoplePage from "./CoursePeoplePage";
-import Tabs from "../components/Tabs";
-import Tab from "../components/Tab";
-
+import CoursePeoplePage from './CoursePeoplePage';
+import Tabs from '../components/Tabs';
+import Tab from '../components/Tab';
 
 class SessionPage extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      active: "session"
-
+      active: 'session',
     };
   }
   render() {
@@ -66,36 +63,43 @@ class SessionPage extends React.Component {
               <Tabs>
                 {/* TODO: refactor these into a single function */}
 
-                <Tab onClick={() => this.setState({ active: 'session' })} className={this.state.active === 'session' ? "is-active" : ''}>
+                <Tab
+                  onClick={() => this.setState({ active: 'session' })}
+                  className={this.state.active === 'session' ? 'is-active' : ''}
+                >
                   Sessions
                 </Tab>
-                <Tab onClick={() => this.setState({ active: 'resources' })} className={this.state.active === 'resources' ? "is-active" : ''}>
+                <Tab
+                  onClick={() => this.setState({ active: 'resources' })}
+                  className={this.state.active === 'resources' ? 'is-active' : ''}
+                >
                   Resources
                 </Tab>
-                <Tab onClick={() => this.setState({ active: 'people' })} className={this.state.active === 'people' ? "is-active" : ''}>
+                <Tab
+                  onClick={() => this.setState({ active: 'people' })}
+                  className={this.state.active === 'people' ? 'is-active' : ''}
+                >
                   People
                 </Tab>
-                <Tab onClick={() => this.setState({ active: 'admin' })} className={this.state.active === 'admin' ? "is-active" : ''}>
-
+                <Tab
+                  onClick={() => this.setState({ active: 'admin' })}
+                  className={this.state.active === 'admin' ? 'is-active' : ''}
+                >
                   Admin
                 </Tab>
               </Tabs>
             </TabCollection>
           </div>
         </section>
-        <section>
-          {this.state.active === "session" && <SessionSubPage />}
+        {this.state.active === 'session' && <SessionSubPage />}
 
-          {this.state.active === "resources" && <HomePage />}
-          {this.state.active === "people" && <CoursePeoplePage />}
+        {this.state.active === 'resources' && <HomePage />}
+        {this.state.active === 'people' && <CoursePeoplePage />}
 
-          {this.state.active === "admin" && <AdminPage />}
-
-        </section>
+        {this.state.active === 'admin' && <AdminPage />}
       </div>
     );
   }
 }
-
 
 export default SessionPage;

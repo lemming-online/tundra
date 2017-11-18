@@ -69,7 +69,7 @@ class FeedbackForm extends React.Component {
 
     const listOfInstructors = ['59fb49383be55800b7b03545', 'ankit', 'jay', 'jeremy', 'matt'];
     return (
-      <div>
+      <div className="container">
         <button className="button is-primary" onClick={this.onSelect}>
           Submit Feedback
         </button>

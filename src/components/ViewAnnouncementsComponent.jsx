@@ -11,10 +11,10 @@ class ViewAnnouncementsComponent extends React.Component {
   }
   render() {
     return (
-      <div>
-        {this.props.announcements.map((announcement) => {
-          return <Card content={announcement} />
-        })}
+      <div className="container">
+        {this.props.announcements.map((announcement, index) => (
+          <Card key={index} content={announcement} />
+        ))}
       </div>
     );
   }

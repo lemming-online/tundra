@@ -3,14 +3,8 @@ import PropTypes from 'prop-types';
 
 function Card(props) {
   return (
-    <div className="card-title">
-      <div className="box">
-        <div className="card-title">
-          <strong>{props.title}</strong>
-          <i>{props.timestamp != null ? ` - ${props.timestamp}` : ''}</i>
-        </div>
-        <div className="content">{props.content}</div>
-      </div>
+    <div className="notification is-warning">
+      <div className="content">{props.content}</div>
     </div>
   );
 }
