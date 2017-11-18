@@ -1,3 +1,4 @@
+
 import React from "react";
 
 import InstructorComponent from "../components/InstructorComponent";
@@ -11,12 +12,14 @@ import CoursePeoplePage from "./CoursePeoplePage";
 import Tabs from "../components/Tabs";
 import Tab from "../components/Tab";
 
+
 class SessionPage extends React.Component {
   constructor() {
     super();
 
     this.state = {
       active: "session"
+
     };
   }
   render() {
@@ -57,10 +60,12 @@ class SessionPage extends React.Component {
               </div>
             </div>
           </div>
+
           <div className="hero-foot">
             <TabCollection>
               <Tabs>
                 {/* TODO: refactor these into a single function */}
+
                 <Tab
                   onClick={() => this.setState({ active: "session" })}
                   className={this.state.active === "session" ? "is-active" : ""}
@@ -85,6 +90,7 @@ class SessionPage extends React.Component {
                   onClick={() => this.setState({ active: "admin" })}
                   className={this.state.active === "admin" ? "is-active" : ""}
                 >
+
                   Admin
                 </Tab>
               </Tabs>
@@ -98,10 +104,12 @@ class SessionPage extends React.Component {
           {this.state.active === "people" && <CoursePeoplePage />}
 
           {this.state.active === "admin" && <AdminPage />}
+
         </section>
       </div>
     );
   }
 }
+
 
 export default SessionPage;

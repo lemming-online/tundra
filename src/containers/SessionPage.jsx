@@ -6,6 +6,7 @@ import FeedbackForm from "../components/FeedbackForm";
 import QuestionCard from "../components/QuestionCard";
 import ViewAnnouncementsComponent from "../components/ViewAnnouncementsComponent";
 
+
 class SessionPage extends React.Component {
   constructor(props) {
     super(props);
