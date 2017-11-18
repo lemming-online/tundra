@@ -4,8 +4,7 @@
   "plugins": [
     "react",
     "jsx-a11y",
-    "import",
-    "transform-object-rest-spread"
+    "import"
   ],
   "env": {
     "jest": true,

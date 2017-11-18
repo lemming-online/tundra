@@ -3,6 +3,10 @@ import * as types from '../actions/actionTypes';
 const INITIAL_STATE = {
   popup: false,
   message: '',
+  loading: false,
+  announcementFetchError: false,
+  announcementFetchMessage: '',
+  announcements: [],
 };
 
 export default function loginReducer(state = INITIAL_STATE, action) {
@@ -20,6 +24,25 @@ export default function loginReducer(state = INITIAL_STATE, action) {
 
     case types.CREATE_ANNOUNCEMENT_FAILURE:
       console.log('Announcement failed to be created');
+      return INITIAL_STATE;
+
+    case types.GET_ANNOUNCEMENTS_FETCH:
+      console.log('Getting announcements');
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case types.GET_ANNOUNCEMENTS_SUCCESS:
+      console.log('Fetched announcements');
+      return {
+        ...state,
+        announcements: action.announcements,
+        loading: false,
+      };
+
+    case types.GET_ANNOUNCEMENTS_FAILURE:
+      console.log('Could not fetch announcements');
       return INITIAL_STATE;
 
     default:
