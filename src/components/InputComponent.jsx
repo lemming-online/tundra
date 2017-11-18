@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function InputComponent(props) {
   const iconClass = props.type !== 'text' ? 'has-icons-left' : '';
-  function icon(props) {
+  function icon() {
     if (props.type === 'email') {
       return (
         <span className="icon is-small is-left">
@@ -19,6 +19,8 @@ function InputComponent(props) {
         </span>
       );
     }
+
+    return null;
   }
   return (
     <div className="field">

@@ -1,25 +1,22 @@
+import React from 'react';
 
-import React from "react";
+import InstructorComponent from '../components/InstructorComponent';
+import TabCollection from '../components/TabCollection';
 
-import InstructorComponent from "../components/InstructorComponent";
-import TabCollection from "../components/TabCollection";
+import SessionSubPage from './SessionPage';
+import AdminPage from './AdminPage';
+import ResourcesPage from './ResourcesPage';
 
-import SessionSubPage from "./SessionPage";
-import HomePage from "./HomePage";
-import AdminPage from "./AdminPage";
-
-import CoursePeoplePage from "./CoursePeoplePage";
-import Tabs from "../components/Tabs";
-import Tab from "../components/Tab";
-
+import CoursePeoplePage from './CoursePeoplePage';
+import Tabs from '../components/Tabs';
+import Tab from '../components/Tab';
 
 class SessionPage extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      active: "session"
-
+      active: 'session',
     };
   }
   render() {
@@ -67,30 +64,27 @@ class SessionPage extends React.Component {
                 {/* TODO: refactor these into a single function */}
 
                 <Tab
-                  onClick={() => this.setState({ active: "session" })}
-                  className={this.state.active === "session" ? "is-active" : ""}
+                  onClick={() => this.setState({ active: 'session' })}
+                  className={this.state.active === 'session' ? 'is-active' : ''}
                 >
                   Sessions
                 </Tab>
                 <Tab
-                  onClick={() => this.setState({ active: "resources" })}
-                  className={
-                    this.state.active === "resources" ? "is-active" : ""
-                  }
+                  onClick={() => this.setState({ active: 'resources' })}
+                  className={this.state.active === 'resources' ? 'is-active' : ''}
                 >
                   Resources
                 </Tab>
                 <Tab
-                  onClick={() => this.setState({ active: "people" })}
-                  className={this.state.active === "people" ? "is-active" : ""}
+                  onClick={() => this.setState({ active: 'people' })}
+                  className={this.state.active === 'people' ? 'is-active' : ''}
                 >
                   People
                 </Tab>
                 <Tab
-                  onClick={() => this.setState({ active: "admin" })}
-                  className={this.state.active === "admin" ? "is-active" : ""}
+                  onClick={() => this.setState({ active: 'admin' })}
+                  className={this.state.active === 'admin' ? 'is-active' : ''}
                 >
-
                   Admin
                 </Tab>
               </Tabs>
@@ -98,18 +92,16 @@ class SessionPage extends React.Component {
           </div>
         </section>
         <section>
-          {this.state.active === "session" && <SessionSubPage />}
+          {this.state.active === 'session' && <SessionSubPage />}
 
-          {this.state.active === "resources" && <HomePage />}
-          {this.state.active === "people" && <CoursePeoplePage />}
+          {this.state.active === 'resources' && <ResourcesPage />}
+          {this.state.active === 'people' && <CoursePeoplePage />}
 
-          {this.state.active === "admin" && <AdminPage />}
-
+          {this.state.active === 'admin' && <AdminPage />}
         </section>
       </div>
     );
   }
 }
-
 
 export default SessionPage;

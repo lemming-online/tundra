@@ -1,5 +1,5 @@
-import * as types from "./actionTypes";
-import loginApi from "../api/loginApi";
+import * as types from './actionTypes';
+import loginApi from '../api/loginApi';
 
 function loginSuccess() {
   return { type: types.LOG_IN_SUCCESS };
@@ -18,12 +18,12 @@ export function logInUser(credentials) {
     dispatch(fetchLogin());
     return loginApi
       .login(credentials)
-      .then(responseJson => {
-        localStorage.setItem("jwt", responseJson.token);
+      .then((responseJson) => {
+        localStorage.setItem('jwt', responseJson.token);
         dispatch(loginSuccess());
       })
       .then()
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
         dispatch(loginFailure());
       });
@@ -31,6 +31,6 @@ export function logInUser(credentials) {
 }
 
 export function logOutUser() {
-  localStorage.removeItem("jwt");
+  localStorage.removeItem('jwt');
   return { type: types.LOG_OUT };
 }
