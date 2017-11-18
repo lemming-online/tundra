@@ -66,30 +66,16 @@ class SessionPage extends React.Component {
               <Tabs>
                 {/* TODO: refactor these into a single function */}
 
-                <Tab
-                  onClick={() => this.setState({ active: "session" })}
-                  className={this.state.active === "session" ? "is-active" : ""}
-                >
+                <Tab onClick={() => this.setState({ active: 'session' })} className={this.state.active === 'session' ? "is-active" : ''}>
                   Sessions
                 </Tab>
-                <Tab
-                  onClick={() => this.setState({ active: "resources" })}
-                  className={
-                    this.state.active === "resources" ? "is-active" : ""
-                  }
-                >
+                <Tab onClick={() => this.setState({ active: 'resources' })} className={this.state.active === 'resources' ? "is-active" : ''}>
                   Resources
                 </Tab>
-                <Tab
-                  onClick={() => this.setState({ active: "people" })}
-                  className={this.state.active === "people" ? "is-active" : ""}
-                >
+                <Tab onClick={() => this.setState({ active: 'people' })} className={this.state.active === 'people' ? "is-active" : ''}>
                   People
                 </Tab>
-                <Tab
-                  onClick={() => this.setState({ active: "admin" })}
-                  className={this.state.active === "admin" ? "is-active" : ""}
-                >
+                <Tab onClick={() => this.setState({ active: 'admin' })} className={this.state.active === 'admin' ? "is-active" : ''}>
 
                   Admin
                 </Tab>

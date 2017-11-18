@@ -25,7 +25,8 @@ class AnnouncementForm extends React.Component {
   }
 
   onSubmit = () => {
-    const sessionID = this.props.match.params.sessionID;
+    console.log(this.props);
+    const sessionID = this.props.match.params.courseID;
     this.props.submitAnnouncement(sessionID, { announcement: this.state.announcement.content });
   };
 

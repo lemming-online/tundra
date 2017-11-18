@@ -1,23 +1,34 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import Card from './Card';
+import * as announcementActions from '../actions/announcementActions';
 
 class ViewAnnouncementsComponent extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      announcementContent: {},
-    };
+  componentDidMount() {
+    this.props.actions.getAnnouncements(this.props.match.params.courseID);
   }
-
   render() {
     return (
       <div>
-        <Card content="Ankit goes" title="TITLE" timestamp="7:00 PM on a Tuesday" />
-        <Card content="2nd Card" title="No time for games" />
+        {this.props.announcements.map((announcement) => {
+          return <Card content={announcement} />
+        })}
       </div>
     );
   }
 }
 
-export default ViewAnnouncementsComponent;
+function mapStateToProps(state) {
+  return {
+    announcements: state.announcementReducer.announcements,
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(announcementActions, dispatch),
+  };
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ViewAnnouncementsComponent));
