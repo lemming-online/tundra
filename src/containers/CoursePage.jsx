@@ -3,20 +3,13 @@ import React from "react";
 import InstructorComponent from "../components/InstructorComponent";
 import TabCollection from "../components/TabCollection";
 
-<<<<<<< HEAD
-=======
-import Tabs from "../components/Tabs";
-import Tab from "../components/Tab";
-
->>>>>>> 5113bb2... verbose peopple
 import SessionSubPage from "./SessionPage";
 import HomePage from "./HomePage";
-import UserProfile from "./UserProfile";
 import AdminPage from "./AdminPage";
-<<<<<<< HEAD
-=======
-import CoursePeople from "./CoursePeople";
->>>>>>> 5113bb2... verbose peopple
+
+import CoursePeoplePage from "./CoursePeoplePage";
+import Tabs from "../components/Tabs";
+import Tab from "../components/Tab";
 
 class SessionPage extends React.Component {
   constructor() {
@@ -100,14 +93,10 @@ class SessionPage extends React.Component {
         </section>
         <section>
           {this.state.active === "session" && <SessionSubPage />}
-          {this.state.active === "resources" && <HomePage />}{" "}
-          {/* TODO: placeholder */}
-<<<<<<< HEAD
-          {this.state.active === "people" && <UserProfile />}{" "}
-=======
-          {this.state.active === "people" && <CoursePeople />}{" "}
->>>>>>> 5113bb2... verbose peopple
-          {/* TODO: placeholder */}
+
+          {this.state.active === "resources" && <HomePage />}
+          {this.state.active === "people" && <CoursePeoplePage />}
+
           {this.state.active === "admin" && <AdminPage />}
         </section>
       </div>

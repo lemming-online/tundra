@@ -1,6 +1,5 @@
 import * as types from "./actionTypes";
 import loginApi from "../api/loginApi";
-import { withRouter } from "react-router-dom";
 
 function loginSuccess() {
   return { type: types.LOG_IN_SUCCESS };

@@ -1,29 +1,34 @@
 import React from "react";
 import PropTypes from "prop-types";
+import userBlank from "../images/user-blank.png";
 
 function PersonComponent(props) {
   return (
-    <div className="instructor-component">
-      <figure className="image is-64x64">
-        <img
-          alt="instructor avatar"
-          className="avatar is-circle"
-          src={props.img_url}
-        />
-      </figure>
-      <p className="has-text-centered hyphenate">{props.name}</p>
+    <div class="column is-2-desktop is-2-tablet is-half-mobile">
+      <div className="instructor-component">
+        <figure className="image is-64x64">
+          <img
+            alt="instructor avatar"
+            className="avatar is-circle"
+            src={props.imgUrl}
+          />
+        </figure>
+        <p className="has-text-centered hyphenate">{`${props.firstName} ${props.lastName}`}</p>
+      </div>
     </div>
   );
 }
 
 PersonComponent.propTypes = {
-  name: PropTypes.string.isRequired,
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
   img_url: PropTypes.string.isRequired
 };
 
 PersonComponent.defaultProps = {
-  name: "Stephen Fuckenstein",
-  img_url: "https://i.imgur.com/uDyELQj.jpg"
+  firstName: "Name",
+  lastName: "Unknown",
+  imgUrl: userBlank
 };
 
 export default PersonComponent;
