@@ -4,8 +4,8 @@ import InstructorComponent from '../components/InstructorComponent';
 import TabCollection from '../components/TabCollection';
 
 import SessionSubPage from './SessionSubPage';
-import HomePage from './HomePage';
 import AdminPage from './AdminPage';
+import ResourcesPage from './ResourcesPage';
 
 import CoursePeoplePage from './CoursePeoplePage';
 import Tabs from '../components/Tabs';
@@ -91,12 +91,14 @@ class SessionPage extends React.Component {
             </TabCollection>
           </div>
         </section>
-        {this.state.active === 'session' && <SessionSubPage />}
+        <section>
+          {this.state.active === 'session' && <SessionSubPage />}
 
-        {this.state.active === 'resources' && <HomePage />}
-        {this.state.active === 'people' && <CoursePeoplePage />}
+          {this.state.active === 'resources' && <ResourcesPage />}
+          {this.state.active === 'people' && <CoursePeoplePage />}
 
-        {this.state.active === 'admin' && <AdminPage />}
+          {this.state.active === 'admin' && <AdminPage />}
+        </section>
       </div>
     );
   }
