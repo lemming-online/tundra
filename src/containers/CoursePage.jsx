@@ -67,7 +67,7 @@ class SessionPage extends React.Component {
                   onClick={() => this.setState({ active: 'session' })}
                   className={this.state.active === 'session' ? 'is-active' : ''}
                 >
-                  Sessions
+                  Session
                 </Tab>
                 <Tab
                   onClick={() => this.setState({ active: 'resources' })}
