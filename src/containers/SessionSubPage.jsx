@@ -1,10 +1,5 @@
 import React from 'react';
-import SessionEditorComponent from '../components/SessionEditorComponent';
-import AnnouncementForm from '../components/AnnouncementForm';
-import FeedbackForm from '../components/FeedbackForm';
-// eslint-disable-next-line
-import QuestionCard from '../components/QuestionCard';
-import ViewAnnouncementsComponent from '../components/ViewAnnouncementsComponent';
+import { Link } from 'react-router-dom';
 
 class SessionPage extends React.Component {
   constructor(props) {
@@ -20,24 +15,31 @@ class SessionPage extends React.Component {
       <div>
         <section className="section">
           <div className="container">
-            <h1 className="title">CS 407</h1>
-            <h2 className="subtitle">
-              November 3, 2017 <br /> 12:30pm-2:20pm
-            </h2>
+            <h1 className="title">
+              Meetings <span className="tag is-danger">LIVE</span>
+            </h1>
+            <ul>
+              <Link to="/meeting/59fb8a073be55800b7b03546">
+                <li>Lab 3: Beginner Vaporization</li>
+              </Link>
+            </ul>
           </div>
         </section>
         <section className="section">
-          <AnnouncementForm />
-        </section>
-        <section className="section">
-          <ViewAnnouncementsComponent />
-        </section>
-        <SessionEditorComponent />
-        <section className="section">
-          <QuestionCard />
-        </section>
-        <section className="section">
-          <FeedbackForm />
+          <div className="container">
+            <h1 className="title">Archive</h1>
+            <ul>
+              <Link to="/">
+                <li>Lab 2: Budding Out</li>
+              </Link>
+              <Link to="/">
+                <li>Lab 1: Lab Preparation</li>
+              </Link>
+              <Link to="/">
+                <li>Lab 0: Hello World</li>
+              </Link>
+            </ul>
+          </div>
         </section>
       </div>
     );

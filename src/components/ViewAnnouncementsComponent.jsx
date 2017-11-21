@@ -12,6 +12,7 @@ class ViewAnnouncementsComponent extends React.Component {
   render() {
     return (
       <div className="container">
+        {/* TODO: add section element here conditionally  */}
         {this.props.announcements.map((announcement, index) => (
           <Card key={index} content={announcement} />
         ))}

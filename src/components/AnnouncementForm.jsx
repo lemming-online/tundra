@@ -55,22 +55,20 @@ class AnnouncementForm extends React.Component {
 
         <div id="announcement-form-popup" className={`${modalActive}`}>
           <div className="modal-background" />
-          <section className="section">
-            <div className="container box">
-              <InputComponent name="content" title="New Announcement" onChange={this.onChange} />
-              <div className="field is-grouped is-grouped-right">
-                <div className="control">
-                  <button onClick={this.onSubmit} className="button is-primary">
-                    Create
-                  </button>
-                  <button onClick={this.onCancel} className="button is-primary">
-                    Cancel
-                  </button>
-                </div>
+          <div className="container box">
+            <InputComponent name="content" title="New Announcement" onChange={this.onChange} />
+            <div className="field is-grouped is-grouped-right">
+              <div className="control">
+                <button onClick={this.onSubmit} className="button is-primary">
+                  Create
+                </button>
+                <button onClick={this.onCancel} className="button is-primary">
+                  Cancel
+                </button>
               </div>
-              <button className="modal-close" />
             </div>
-          </section>
+            <button className="modal-close" />
+          </div>
         </div>
       </div>
     );
