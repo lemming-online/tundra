@@ -88,3 +88,7 @@ body {
   padding-top: 100%;
   position: relative;
 }
+
+.tab-delete {
+  margin-left: 15px;
+}
