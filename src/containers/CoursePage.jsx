@@ -8,6 +8,7 @@ import AdminPage from './AdminPage';
 import ResourcesPage from './ResourcesPage';
 
 import CoursePeoplePage from './CoursePeoplePage';
+import MeetingPage from './MeetingPage';
 import Tabs from '../components/Tabs';
 import Tab from '../components/Tab';
 
@@ -87,6 +88,12 @@ class SessionPage extends React.Component {
                 >
                   Admin
                 </Tab>
+                <Tab
+                  onClick={() => this.setState({ active: 'open' })}
+                  className={this.state.active === 'open' ? 'is-active' : ''}
+                >
+                  Lab 3: Beginner Vaporization<button className="delete is-small tab-delete" />
+                </Tab>
               </Tabs>
             </TabCollection>
           </div>
@@ -98,6 +105,7 @@ class SessionPage extends React.Component {
           {this.state.active === 'people' && <CoursePeoplePage />}
 
           {this.state.active === 'admin' && <AdminPage />}
+          {this.state.active === 'open' && <MeetingPage />}
         </section>
       </div>
     );
