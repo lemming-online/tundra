@@ -76,33 +76,31 @@ class FeedbackForm extends React.Component {
 
         <div id="announcement-form-popup" className={`${modalActive}`}>
           <div className="modal-background" />
-          <section className="section">
-            <div className="container box">
-              <div onClick={this.onPress}>
-                <DropDownMenu
-                  list={listOfInstructors}
-                  isDroppedDown={this.props.dropdown}
-                  onClick={this.onClick1}
-                />
-              </div>
-              <InputComponent
-                name="content"
-                title="Enter your feedback here"
-                onChange={this.onChange}
+          <div className="container box">
+            <div onClick={this.onPress}>
+              <DropDownMenu
+                list={listOfInstructors}
+                isDroppedDown={this.props.dropdown}
+                onClick={this.onClick1}
               />
-              <div className="field is-grouped is-grouped-right">
-                <div className="control">
-                  <button onClick={this.onSubmit} className="button is-primary">
-                    Submit
-                  </button>
-                  <button onClick={this.onCancel} className="button is-primary">
-                    Cancel
-                  </button>
-                </div>
-              </div>
-              <button className="modal-close" />
             </div>
-          </section>
+            <InputComponent
+              name="content"
+              title="Enter your feedback here"
+              onChange={this.onChange}
+            />
+            <div className="field is-grouped is-grouped-right">
+              <div className="control">
+                <button onClick={this.onSubmit} className="button is-primary">
+                  Submit
+                </button>
+                <button onClick={this.onCancel} className="button is-primary">
+                  Cancel
+                </button>
+              </div>
+            </div>
+            <button className="modal-close" />
+          </div>
         </div>
       </div>
     );
