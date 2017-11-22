@@ -51,6 +51,12 @@ class MischiefClient {
       this.makeRequest('POST', resource, body);
     return this.doFetch(req);
   }
+  static delete(resource, auth = false) {
+    const req = auth ?
+      this.makeAuthRequest('DELETE', resource, undefined) :
+      this.makeRequest('DELETE', resource, undefined);
+    return this.doFetch(req);
+  }
 }
 
 export default MischiefClient;
