@@ -3,27 +3,17 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as loginActions from '../actions/loginActions';
 import CourseCard from '../components/CourseCard';
+import InstructorCourseButtons from '../components/InstructorCourseButtons';
 
 function loggedInPage(props) {
   return (
     <section className="section">
       <div className="container">
-        <h1 className="title">Welcome to Lemming, {`${props.firstName}`}! </h1>
-        <nav className="breadcrumb" aria-label="breadcrumbs">
-          <ul>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li className="is-active">
-              <a href="/" aria-current="page">
-                My Courses
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <h1 className="title">My Groups</h1>
+        <InstructorCourseButtons />
 
         <div className="columns is-multiline is-mobile">
-          <CourseCard courseName="FCK 420" professorName="Professor Fuckenstein" courseID="1" />
+          <CourseCard groupName="FCK 420" professorName="Professor Fuckenstein" courseID="1" />
           <CourseCard />
         </div>
       </div>

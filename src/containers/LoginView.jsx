@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import * as loginActions from '../actions/loginActions';
 import InputComponent from '../components/InputComponent';
-import WarningNotification from '../components/WarningNotification';
+import Notification from '../components/Notification';
 import logo from '../images/logo2.png';
 
 class LoginView extends React.Component {
@@ -42,10 +42,10 @@ class LoginView extends React.Component {
       return <Redirect to="/" />;
     }
     return (
-      <div className="column is-4 box">
+      <div className="login-box column is-4 box">
         <img src={logo} alt="Lemming logo" className="image is-128x128 logo-img" />
         <h1 className="title">Sign In</h1>
-        <WarningNotification warn={this.props.loginMessage} />
+        <Notification warn={this.props.loginMessage} />
         <form>
           <InputComponent title="Email" name="email" onChange={this.onChange} type="email" />
           <InputComponent

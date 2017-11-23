@@ -9,17 +9,19 @@ function registrationFailure() {
   return { type: types.REGISTER_FAILURE };
 }
 
+function registrationFetch() {
+  return { type: types.REGISTER_FETCH };
+}
+
 export default function registerUser(credentials) {
-  return function goRegisterApi(dispatch) {
-    return (
-      registerApi
-        .register(credentials)
-        .then(dispatch(registrationSuccess()))
-        // TODO: add thens here
-        .catch((error) => {
-          console.error(error);
-          dispatch(registrationFailure());
-        })
-    );
+  return (dispatch) => {
+    dispatch(registrationFetch());
+    registerApi
+      .register(credentials)
+      .then(json => dispatch(registrationSuccess()))
+      .catch((error) => {
+        console.error(error);
+        dispatch(registrationFailure());
+      });
   };
 }

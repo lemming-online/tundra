@@ -27,7 +27,6 @@ const Root = props => (
           <PrivateRoute path="/user" component={UserProfile} />
           <PrivateRoute path="/meeting/:meetingID" component={MeetingPage} />
           <PrivateRoute path="/course/:courseID" component={CoursePage} />
-
           <PrivateRoute path="/admin" component={AdminPage} />
         </Switch>
       </div>

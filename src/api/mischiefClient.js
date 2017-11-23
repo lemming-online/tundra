@@ -1,4 +1,4 @@
-const BASE_URL = 'https://api.lemming.online/';
+const BASE_URL = 'https://mischief.nutt.men/';
 
 function maybeStringify(json) {
   if (json === undefined) {

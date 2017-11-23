@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import InputComponent from '../components/InputComponent';
 import registerUser from '../actions/registrationActions';
 import logo from '../images/logo2.png';
+import Notification from '../components/Notification';
 
 class RegistrationView extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class RegistrationView extends React.Component {
       credentials: {
         email: '',
         password: '',
+        confirm_password: '',
         first_name: '',
         last_name: '',
       },
@@ -33,9 +35,11 @@ class RegistrationView extends React.Component {
 
   render() {
     return (
-      <div className=" is-child column is-4 box">
+      <div className="login-box is-child column is-5 box">
         <img src={logo} alt="Lemming logo" className="image is-128x128 logo-img" />
         <h1 className="title">Sign Up</h1>
+        <Notification warn={this.props.failMessage} />
+        <Notification succ={this.props.successMessage} />
         <form>
           <InputComponent title="Email" name="email" onChange={this.onChange} type="email" />
           <InputComponent
@@ -55,7 +59,10 @@ class RegistrationView extends React.Component {
 
           <div className="field is-grouped is-grouped-right">
             <div className="control">
-              <button onClick={this.onSave} className="button is-primary">
+              <button
+                onClick={this.onSave}
+                className={`button is-primary ${this.props.loading ? 'is-loading' : ''}`}
+              >
                 Register
               </button>
             </div>
@@ -69,12 +76,19 @@ class RegistrationView extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    successMessage: state.registrationReducer.successMessage,
+    failMessage: state.registrationReducer.failMessage,
+    loading: state.registrationReducer.loading,
+  };
+}
+
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(registerUser, dispatch),
     registerUser: (credentials) => {
       dispatch(registerUser(credentials));
     },
   };
 }
-export default connect(null, mapDispatchToProps)(RegistrationView);
+export default connect(mapStateToProps, mapDispatchToProps)(RegistrationView);

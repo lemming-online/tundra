@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import InstructorMeetingButtons from '../components/InstructorMeetingButtons';
 
 class SessionPage extends React.Component {
   constructor(props) {
@@ -15,9 +16,20 @@ class SessionPage extends React.Component {
       <div>
         <section className="section">
           <div className="container">
-            <h1 className="title">
-              Meetings <span className="tag is-danger">LIVE</span>
-            </h1>
+            <div className="level is-mobile">
+              <div className="level-left">
+                <div className="level-item">
+                  <h1 className="title">
+                    Meetings <span className="tag is-danger">LIVE</span>
+                  </h1>
+                </div>
+              </div>
+
+              <div className="level-right">
+                <InstructorMeetingButtons />
+              </div>
+            </div>
+
             <ul>
               <Link to="/meeting/59fb8a073be55800b7b03546">
                 <li>Lab 3: Beginner Vaporization</li>
