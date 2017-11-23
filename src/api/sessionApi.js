@@ -4,7 +4,7 @@ class SessionApi {
     console.log(`sectionId: ${sectionId}`);
     console.log(details);
 
-    const request = new Request(`https://api.lemming.online/sessions/${sectionId}/add`, {
+    const request = new Request(`https://mischief.nutt.men/sessions/${sectionId}/add`, {
       method: 'POST',
       headers: new Headers({
         'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ class SessionApi {
     console.log(`sectionId: ${sectionId}`);
 
     const request = new Request(
-      `https://api.lemming.online/sessions/${sectionId}/remove/${userId}`,
+      `https://mischief.nutt.men/sessions/${sectionId}/remove/${userId}`,
       {
         method: 'DELETE',
         headers: new Headers({

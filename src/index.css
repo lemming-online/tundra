@@ -90,5 +90,10 @@ body {
 }
 
 .tab-delete {
-  margin-left: 15px;
+  margin-left: 9px;
+  margin-right: -5px;
+}
+
+.login-box {
+  padding: 25px 25px 10px 25px;
 }

@@ -52,6 +52,7 @@ class Header extends React.Component {
               <span />
             </button>
           </div>
+
           <div
             className={`navbar-menu ${this.state.navToggle ? 'is-active' : ''}`}
             onMouseUp={this.hideNav}

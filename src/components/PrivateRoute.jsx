@@ -1,6 +1,6 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
-import PropTypes from "prop-types";
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 // TODO: Abstract this out somewhere
 function isAuthenticated() {
@@ -14,17 +14,13 @@ function PrivateRoute({ component: Component, ...rest }) {
       exact
       {...rest}
       render={props =>
-        isAuthenticated() ? (
-          <Component {...props} />
-        ) : (
-          <Redirect push to="/signin" />
-        )}
+        (isAuthenticated() ? <Component {...props} /> : <Redirect push to="/signin" />)}
     />
   );
 }
 
 PrivateRoute.propTypes = {
-  path: PropTypes.string.isRequired
+  path: PropTypes.string.isRequired,
 };
 
 export default PrivateRoute;

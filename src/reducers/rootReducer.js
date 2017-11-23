@@ -5,6 +5,7 @@ import announcementReducer from './announcementReducer';
 import feedbackReducer from './feedbackReducer';
 import sectionReducer from './sectionReducer';
 import sessionReducer from './sessionReducer';
+import tabReducer from './tabReducer';
 
 const rootReducer = combineReducers({
   loginReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   feedbackReducer,
   sectionReducer,
   sessionReducer,
+  tabReducer,
 });
 
 export default rootReducer;

@@ -2,7 +2,7 @@ class RegistrationApi {
   static register(credentials) {
     console.log('registerUser');
 
-    const request = new Request('https://api.lemming.online/users', {
+    const request = new Request('https://mischief.nutt.men/users', {
       method: 'POST',
       headers: new Headers({
         Accept: 'application/json',
@@ -20,7 +20,7 @@ class RegistrationApi {
       })
       .then((responseJson) => {
         // TODO: add good comments to explain this
-        const postActivation = new Request('https://api.lemming.online/activation', {
+        const postActivation = new Request('https://mischief.nutt.men/activation', {
           method: 'POST',
           headers: new Headers({
             Accept: 'application/json',
