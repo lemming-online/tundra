@@ -37,19 +37,25 @@ function CourseTabs(props) {
         >
           Admin
         </Tab>
-        <Tab
-          onClick={() => props.actions.changeTab('open')}
-          className={props.pane === 'open' ? 'is-active' : ''}
-        >
-          Lab 3: Beginner Vaporization<button className="delete is-small tab-delete" />
-        </Tab>
+
+        {props.tabs.map(tab => (
+          <Tab
+            onClick={() => props.actions.changeTab(tab.pane)}
+            className={props.pane === tab.pane ? 'is-active' : ''}
+          >
+            {tab.title} <button className="delete is-small tab-delete" />
+          </Tab>
+        ))}
       </Tabs>
     </TabCollection>
   );
 }
 
 function mapStateToProps(state) {
-  return { pane: state.tabReducer.pane };
+  return {
+    pane: state.tabReducer.pane,
+    tabs: state.tabReducer.tabs,
+  };
 }
 function mapDispatchToProps(dispatch) {
   return {
