@@ -24,7 +24,7 @@ class SessionPage extends React.Component {
           {this.props.pane === 'people' && <CoursePeoplePage />}
 
           {this.props.pane === 'admin' && <AdminPage />}
-          {this.props.pane === 'open' && <MeetingPage />}
+          {this.props.pane === 'lab3' && <MeetingPage />}
         </section>
       </div>
     );
@@ -32,7 +32,10 @@ class SessionPage extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { pane: state.tabReducer.pane };
+  return {
+    pane: state.tabReducer.pane,
+    tabs: state.tabReducer.tabs,
+  };
 }
 function mapDispatchToProps(dispatch) {
   return {

@@ -1,6 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import InstructorMeetingButtons from '../components/InstructorMeetingButtons';
+import * as tabActions from '../actions/tabActions';
 
 class SessionPage extends React.Component {
   constructor(props) {
@@ -31,9 +34,13 @@ class SessionPage extends React.Component {
             </div>
 
             <ul>
-              <Link to="/meeting/59fb8a073be55800b7b03546">
+              <a
+                role="link"
+                tabIndex={0}
+                onClick={() => this.props.actions.openTab('lab3', 'Lab 3: Beginner Vaporization')}
+              >
                 <li>Lab 3: Beginner Vaporization</li>
-              </Link>
+              </a>
             </ul>
           </div>
         </section>
@@ -41,9 +48,13 @@ class SessionPage extends React.Component {
           <div className="container">
             <h1 className="title">Archive</h1>
             <ul>
-              <Link to="/">
+              <a
+                role="link"
+                tabIndex={0}
+                onClick={() => this.props.actions.openTab('Lab 2: Budding Out', 'lab2')}
+              >
                 <li>Lab 2: Budding Out</li>
-              </Link>
+              </a>
               <Link to="/">
                 <li>Lab 1: Lab Preparation</li>
               </Link>
@@ -58,4 +69,13 @@ class SessionPage extends React.Component {
   }
 }
 
-export default SessionPage;
+function mapStateToProps(state) {
+  return { tabs: state.tabReducer.tabs };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(tabActions, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SessionPage);
