@@ -3,17 +3,15 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as loginActions from '../actions/loginActions';
 import CourseCard from '../components/CourseCard';
-import InstructorCourseButtons from '../components/InstructorCourseButtons';
 
 function loggedInPage(props) {
   return (
     <section className="section">
       <div className="container">
         <h1 className="title">My Groups</h1>
-        <InstructorCourseButtons />
 
         <div className="columns is-multiline is-mobile">
-          <CourseCard groupName="FCK 420" professorName="Professor Fuckenstein" courseID="1" />
+          <CourseCard groupName="CS 193" professorName="Professor Hankins" courseID="1" />
           <CourseCard />
         </div>
       </div>

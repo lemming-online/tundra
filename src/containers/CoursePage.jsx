@@ -24,6 +24,11 @@ class SessionPage extends React.Component {
           {this.props.pane === 'people' && <CoursePeoplePage />}
 
           {this.props.pane === 'admin' && <AdminPage />}
+          {/* TODO: This has to be changed so it's dynamic. Idk how to make that happen, unfortunately. */}
+          {/* Probably it will be something like, MeetingPage with props passed down to it. 
+          Or Maybe MeetingPage will just open for all meetings, using the redux state?
+          But probably will have to have its own props pushed b.c. how do you handle different tabs without that?
+          Anyway, yeah. Conditonally render based on this.props.pane */}
           {this.props.pane === 'lab3' && <MeetingPage />}
         </section>
       </div>
