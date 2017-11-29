@@ -1,26 +1,11 @@
 import jwtDecode from 'jwt-decode';
 import * as types from '../actions/actionTypes';
 
-// FIXME: THIS IS HACKY AF. Come up with a better solution that works with redux
-function isAuth() {
-  if (localStorage.jwt != null && localStorage.jwt !== 'undefined') {
-    return true;
-  }
-  return false;
-}
-
-function authAndID() {
-  if (isAuth()) {
-    return jwtDecode(localStorage.jwt).uid;
-  }
-  return '';
-}
-
 const INITIAL_STATE = {
-  isAuthenticated: isAuth(),
+  isAuthenticated: false,
   firstName: '',
   lastName: '',
-  id: authAndID(),
+  id: null,
   loginError: false,
   loginMessage: '',
   loading: false,

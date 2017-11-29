@@ -1,7 +1,7 @@
 import React from 'react';
 
-import InstructorComponent from '../components/InstructorComponent';
 import CourseTabs from '../components/CourseTabs';
+import InstructorComponent from '../components/InstructorComponent';
 
 class CourseHeader extends React.Component {
   constructor() {
@@ -31,7 +31,7 @@ class CourseHeader extends React.Component {
               <div className="level-right is-hidden-mobile">
                 <div className="level-item">
                   <div className="mentor-block has-text-centered">
-                    <h3> Your Mentors </h3>
+                    <h3> Group Leaders </h3>
                     <div className="mentor-group">
                       <InstructorComponent
                         name="Jay Hankins"
