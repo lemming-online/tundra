@@ -5,7 +5,11 @@ function createSectionAction() {
   return { type: types.CREATE_SECTION };
 }
 
-export default function createSection(details, id) {
+function displayCreateSectionFormAction() {
+  return { type: types.DISPLAY_CREATE_GROUP_FORM };
+}
+
+export function createSection(details, id) {
   return function goCreateSection(dispatch) {
     return sectionApi
       .createSection(details, id)
@@ -16,5 +20,11 @@ export default function createSection(details, id) {
       .catch((error) => {
         console.error(error);
       });
+  };
+}
+
+export function displayCreateSectionForm() {
+  return function goDisplaySectionForm(dispatch) {
+    return dispatch(displayCreateSectionFormAction());
   };
 }

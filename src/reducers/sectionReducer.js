@@ -2,6 +2,7 @@ import * as types from '../actions/actionTypes';
 
 const INITIAL_STATE = {
   sectionsCreatedCount: 0,
+  popup: false,
 };
 
 export default function registrationReducer(state = INITIAL_STATE, action) {
@@ -18,6 +19,12 @@ export default function registrationReducer(state = INITIAL_STATE, action) {
       console.log('Section creation failure.');
       return {
         ...state,
+      };
+
+    case types.DISPLAY_CREATE_GROUP_FORM:
+      return {
+        ...state,
+        popup: true,
       };
 
     default:
