@@ -3,7 +3,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import InputComponent from '../components/InputComponent';
-import createSection from '../actions/sectionActions';
+import { createSection } from '../actions/sectionActions';
 
 class AdminPage extends React.Component {
   constructor(props) {
