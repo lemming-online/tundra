@@ -9,6 +9,10 @@ function displayCreateSectionFormAction() {
   return { type: types.DISPLAY_CREATE_GROUP_FORM };
 }
 
+function cancelCreateSectionFormAction() {
+  return { type: types.CLOSE_CREATE_GROUP_FORM };
+}
+
 export function createSection(details, id) {
   return function goCreateSection(dispatch) {
     return sectionApi
@@ -26,5 +30,11 @@ export function createSection(details, id) {
 export function displayCreateSectionForm() {
   return function goDisplaySectionForm(dispatch) {
     return dispatch(displayCreateSectionFormAction());
+  };
+}
+
+export function cancelCreateSectionForm() {
+  return function goCancelSectionForm(dispatch) {
+    return dispatch(cancelCreateSectionFormAction());
   };
 }

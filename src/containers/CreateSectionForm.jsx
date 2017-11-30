@@ -3,9 +3,9 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import InputComponent from '../components/InputComponent';
-import { createSection, cancelCreateSectionForm } from '../actions/sectionActions';
+import { createSection } from '../actions/sectionActions';
 
-class AdminPage extends React.Component {
+class CreateSectionForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -32,12 +32,6 @@ class AdminPage extends React.Component {
     return this.setState({ details: nextDetails });
   };
 
-  onCancel = (event) => {
-    event.preventDefault();
-    this.props.closeSectionForm();
-    console.log('cancel');
-  };
-
   render() {
     return (
       <section className="section">
@@ -56,9 +50,6 @@ class AdminPage extends React.Component {
                   <div className="control">
                     <button onClick={this.onSave} className="button is-primary">
                       Create Section
-                    </button>
-                    <button onClick={this.onCancel} className="button">
-                      Cancel
                     </button>
                   </div>
                 </div>
@@ -83,9 +74,6 @@ function mapDispatchToProps(dispatch) {
     createSection: (details, id) => {
       dispatch(createSection(details, id));
     },
-    closeSectionForm: () => {
-      dispatch(cancelCreateSectionForm());
-    },
   };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(AdminPage);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateSectionForm);

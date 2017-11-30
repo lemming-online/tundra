@@ -7,7 +7,6 @@ import AdminPage from '../containers/AdminPage';
 
 class CreateGroupButton extends React.Component {
   onClick = () => {
-    console.log('temp');
     this.props.displayCreateSectionForm();
   };
 
@@ -15,8 +14,10 @@ class CreateGroupButton extends React.Component {
     const modalActive = this.props.popup ? 'modal is-active' : 'modal';
 
     return (
-      <div className="button" onClick={this.onClick}>
-        <h1 className="title">Create New Group</h1>
+      <div>
+        <div className="button" onClick={this.onClick}>
+          <h1 className="title">Create New Group</h1>
+        </div>
         <div id="announcement-form-popup" className={`${modalActive}`}>
           <AdminPage />
         </div>
