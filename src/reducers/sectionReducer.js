@@ -27,6 +27,12 @@ export default function registrationReducer(state = INITIAL_STATE, action) {
         popup: true,
       };
 
+    case types.CLOSE_CREATE_GROUP_FORM:
+      return {
+        ...state,
+        popup: false,
+      };
+
     default:
       return state;
   }
