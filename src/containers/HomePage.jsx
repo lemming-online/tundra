@@ -3,12 +3,16 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as loginActions from '../actions/loginActions';
 import CourseCard from '../components/CourseCard';
+import SectionLevelBar from '../components/SectionLevelBar';
+import GroupActionButtons from '../components/GroupActionButtons';
 
 function loggedInPage(props) {
   return (
     <section className="section">
       <div className="container">
-        <h1 className="title">My Groups</h1>
+        <SectionLevelBar title="My Groups">
+          <GroupActionButtons />
+        </SectionLevelBar>
 
         <div className="columns is-multiline is-mobile">
           <CourseCard groupName="CS 193" professorName="Professor Hankins" courseID="1" />

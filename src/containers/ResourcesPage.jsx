@@ -1,10 +1,14 @@
 import React from 'react';
+import SectionLevelBar from '../components/SectionLevelBar';
+import ResourcesActionButtons from '../components/ResourcesActionButtons';
 
 function ResourcesPage() {
   return (
     <section className="section">
       <div className="container">
-        <h1 className="title">Resources</h1>
+        <SectionLevelBar title="Resources">
+          <ResourcesActionButtons />
+        </SectionLevelBar>
         <table className="table is-striped is-hoverable is-fullwidth">
           <thead>
             <tr>

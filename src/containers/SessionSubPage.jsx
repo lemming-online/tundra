@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import InstructorMeetingButtons from '../components/InstructorMeetingButtons';
 import * as tabActions from '../actions/tabActions';
+import SectionLevelBar from '../components/SectionLevelBar';
 
 class SessionPage extends React.Component {
   constructor(props) {
@@ -19,19 +20,9 @@ class SessionPage extends React.Component {
       <div>
         <section className="section">
           <div className="container">
-            <div className="level is-mobile">
-              <div className="level-left">
-                <div className="level-item">
-                  <h1 className="title">
-                    Meetings <span className="tag is-danger">LIVE</span>
-                  </h1>
-                </div>
-              </div>
-
-              <div className="level-right">
-                <InstructorMeetingButtons />
-              </div>
-            </div>
+            <SectionLevelBar title="Meetings" live>
+              <InstructorMeetingButtons />
+            </SectionLevelBar>
 
             <ul>
               <a
@@ -51,7 +42,7 @@ class SessionPage extends React.Component {
               <a
                 role="link"
                 tabIndex={0}
-                onClick={() => this.props.actions.openTab('Lab 2: Budding Out', 'lab2')}
+                onClick={() => this.props.actions.openTab('lab2', 'Lab 2: Yeup')}
               >
                 <li>Lab 2: Budding Out</li>
               </a>
