@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 import * as loginActions from '../actions/loginActions';
 import CourseCard from '../components/CourseCard';
 import SectionLevelBar from '../components/SectionLevelBar';
 import GroupActionButtons from '../components/GroupActionButtons';
+import CreateGroupButton from '../components/CreateGroupButton';
 
 function loggedInPage(props) {
   return (
@@ -19,6 +21,8 @@ function loggedInPage(props) {
           <CourseCard />
         </div>
       </div>
+      <br />
+      <CreateGroupButton />
     </section>
   );
 }
