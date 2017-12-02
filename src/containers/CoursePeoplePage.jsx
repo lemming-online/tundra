@@ -1,11 +1,15 @@
 import React from 'react';
 import PersonComponent from '../components/PersonComponent';
+import SectionLevelBar from '../components/SectionLevelBar';
+import MentorActionButtons from '../components/MentorActionButtons';
 
 function SessionPage() {
   return (
     <section className="section">
       <div className="container">
-        <h1 className="title">Mentors</h1>
+        <SectionLevelBar title="Mentors">
+          <MentorActionButtons />
+        </SectionLevelBar>
         <div className="columns is-multiline is-mobile bordered">
           <PersonComponent />
 
