@@ -1,24 +1,8 @@
-class SectionApi {
-  static createSection(details, id) {
-    const request = new Request('https://api.lemming.online/sections', {
-      method: 'POST',
-      headers: new Headers({
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${id}`,
-      }),
-      body: JSON.stringify(details),
-    });
+import client from './mischiefClient';
 
-    return fetch(request)
-      .then((response) => {
-        if (!response.ok) {
-          throw Error(response);
-        }
-        return response.json();
-      })
-      .catch((error) => {
-        throw error;
-      });
+class SectionApi {
+  static createSection(details) {
+    return client.post('sections', details, true);
   }
 }
 
