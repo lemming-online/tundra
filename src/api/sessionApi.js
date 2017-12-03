@@ -1,17 +1,17 @@
 import client from './mischiefClient';
 
 class SessionApi {
-  static addQuestionToQueue(sectionId, details) {
-    console.log(`sectionId: ${sectionId}`);
+  static addQuestionToQueue(groupId, details) {
+    console.log(`groupId: ${groupId}`);
     console.log(details);
 
-    return client.post(`sessions/${sectionId}/add`, details, true);
+    return client.post(`sessions/${groupId}/add`, details, true);
   }
 
-  static deleteQuestionFromQueue(sectionId, userId) {
-    console.log(`sectionId: ${sectionId}`);
+  static deleteQuestionFromQueue(groupId, userId) {
+    console.log(`groupId: ${groupId}`);
 
-    return client.delete(`sessions/${sectionId}/remove/${userId}`, true);
+    return client.delete(`sessions/${groupId}/remove/${userId}`, true);
   }
 }
 

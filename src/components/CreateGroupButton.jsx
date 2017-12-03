@@ -2,12 +2,12 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { displayCreateSectionForm } from '../actions/sectionActions';
+import { displayCreateGroupForm } from '../actions/groupActions';
 import AdminPage from '../containers/AdminPage';
 
 class CreateGroupButton extends React.Component {
   onClick = () => {
-    this.props.displayCreateSectionForm();
+    this.props.displayCreateGroupForm();
   };
 
   render() {
@@ -25,15 +25,15 @@ class CreateGroupButton extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    popup: state.sectionReducer.popup,
+    popup: state.groupReducer.popup,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(displayCreateSectionForm, dispatch),
-    displayCreateSectionForm: () => {
-      dispatch(displayCreateSectionForm());
+    actions: bindActionCreators(displayCreateGroupForm, dispatch),
+    displayCreateGroupForm: () => {
+      dispatch(displayCreateGroupForm());
     },
   };
 }

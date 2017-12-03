@@ -3,7 +3,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import InputComponent from '../components/InputComponent';
-import { createSection, cancelCreateSectionForm } from '../actions/sectionActions';
+import { createGroup, cancelCreateGroupForm } from '../actions/groupActions';
 
 class AdminPage extends React.Component {
   constructor(props) {
@@ -12,7 +12,6 @@ class AdminPage extends React.Component {
     this.state = {
       details: {
         name: '',
-        mentor_id: '',
         location: '',
         description: '',
         website: '',
@@ -23,7 +22,7 @@ class AdminPage extends React.Component {
   onSave = (event) => {
     event.preventDefault();
     const jwt = localStorage.jwt;
-    this.props.createSection(this.state.details, jwt);
+    this.props.createGroup(this.state.details, jwt);
   };
 
   onChange = (event) => {
@@ -34,7 +33,7 @@ class AdminPage extends React.Component {
 
   onCancel = (event) => {
     event.preventDefault();
-    this.props.closeSectionForm();
+    this.props.closeGroupForm();
     console.log('cancel');
   };
 
@@ -44,11 +43,10 @@ class AdminPage extends React.Component {
         <div className="modal-background" />
         <div className="container">
           <div className="columns is-centered">
-            <div className="column is-4 box">
-              <h1 className="title">Create a Section</h1>
+            <div className="column is-half-desktop is-12-tablet is-12-mobile box">
+              <h1 className="title">Create a Group</h1>
               <form>
                 <InputComponent title="Name" name="name" onChange={this.onChange} />
-                <InputComponent title="Mentor" name="mentor_id" onChange={this.onChange} />
                 <InputComponent title="Location" name="location" onChange={this.onChange} />
                 <InputComponent title="Description" name="description" onChange={this.onChange} />
                 <InputComponent title="Website" name="website" onChange={this.onChange} />
@@ -61,7 +59,7 @@ class AdminPage extends React.Component {
                   </div>
                   <div className="control">
                     <button onClick={this.onSave} className="button is-primary">
-                      Create Section
+                      Create Group
                     </button>
                   </div>
                 </div>
@@ -82,12 +80,12 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(createSection, dispatch),
-    createSection: (details, id) => {
-      dispatch(createSection(details, id));
+    actions: bindActionCreators(createGroup, dispatch),
+    createGroup: (details, id) => {
+      dispatch(createGroup(details, id));
     },
-    closeSectionForm: () => {
-      dispatch(cancelCreateSectionForm());
+    closeGroupForm: () => {
+      dispatch(cancelCreateGroupForm());
     },
   };
 }

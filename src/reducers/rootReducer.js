@@ -3,7 +3,7 @@ import loginReducer from './loginReducer';
 import registrationReducer from './registrationReducer';
 import announcementReducer from './announcementReducer';
 import feedbackReducer from './feedbackReducer';
-import sectionReducer from './sectionReducer';
+import groupReducer from './groupReducer';
 import sessionReducer from './sessionReducer';
 import tabReducer from './tabReducer';
 
@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
   registrationReducer,
   announcementReducer,
   feedbackReducer,
-  sectionReducer,
+  groupReducer,
   sessionReducer,
   tabReducer,
 });

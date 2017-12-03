@@ -3,9 +3,9 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import InputComponent from '../components/InputComponent';
-import { createSection } from '../actions/sectionActions';
+import { createGroup } from '../actions/groupActions';
 
-class CreateSectionForm extends React.Component {
+class CreateGroupForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -23,7 +23,7 @@ class CreateSectionForm extends React.Component {
   onSave = (event) => {
     event.preventDefault();
     const jwt = localStorage.jwt;
-    this.props.createSection(this.state.details, jwt);
+    this.props.createGroup(this.state.details, jwt);
   };
 
   onChange = (event) => {
@@ -34,11 +34,11 @@ class CreateSectionForm extends React.Component {
 
   render() {
     return (
-      <section className="section">
+      <group className="group">
         <div className="container">
           <div className="tile is-ancestor">
             <div className="tile is-child box">
-              <h1 className="title">Create a Section</h1>
+              <h1 className="title">Create a Group</h1>
               <form>
                 <InputComponent title="Name" name="name" onChange={this.onChange} />
                 <InputComponent title="Mentor" name="mentor_id" onChange={this.onChange} />
@@ -49,7 +49,7 @@ class CreateSectionForm extends React.Component {
                 <div className="field">
                   <div className="control">
                     <button onClick={this.onSave} className="button is-primary">
-                      Create Section
+                      Create Group
                     </button>
                   </div>
                 </div>
@@ -57,7 +57,7 @@ class CreateSectionForm extends React.Component {
             </div>
           </div>
         </div>
-      </section>
+      </group>
     );
   }
 }
@@ -70,10 +70,10 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(createSection, dispatch),
-    createSection: (details, id) => {
-      dispatch(createSection(details, id));
+    actions: bindActionCreators(createGroup, dispatch),
+    createGroup: (details, id) => {
+      dispatch(createGroup(details, id));
     },
   };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(CreateSectionForm);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateGroupForm);

@@ -28,7 +28,7 @@ class SessionEditorComponent extends React.Component {
     // push question to api through a session editor api class
     const jwt = localStorage.jwt;
     const sessionID = this.props.match.params.courseID;
-    // SessionApi.addQuestionToQueue(jwt, sectionId, details);
+    // SessionApi.addQuestionToQueue(jwt, groupId, details);
     const details = {
       question: this.state.question.questionField,
       user: this.props.id,
@@ -80,11 +80,11 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(createHelpQuestion, dispatch),
-    createHelpQuestion: (jwt, sectionId, details) => {
-      dispatch(createHelpQuestion(jwt, sectionId, details));
+    createHelpQuestion: (jwt, groupId, details) => {
+      dispatch(createHelpQuestion(jwt, groupId, details));
     },
-    deleteHelpQuestion: (sectionId, userId) => {
-      dispatch(deleteHelpQuestion(sectionId, userId));
+    deleteHelpQuestion: (groupId, userId) => {
+      dispatch(deleteHelpQuestion(groupId, userId));
     },
   };
 }

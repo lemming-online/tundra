@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { displayCreateSectionForm } from '../actions/sectionActions';
+import { displayCreateGroupForm } from '../actions/groupActions';
 
 function GroupActionButtons(props) {
   const onClick = () => {
-    props.displayCreateSectionForm();
+    props.displayCreateGroupForm();
   };
 
   return (
@@ -21,15 +21,15 @@ function GroupActionButtons(props) {
 
 function mapStateToProps(state) {
   return {
-    popup: state.sectionReducer.popup,
+    popup: state.groupReducer.popup,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(displayCreateSectionForm, dispatch),
-    displayCreateSectionForm: () => {
-      dispatch(displayCreateSectionForm());
+    actions: bindActionCreators(displayCreateGroupForm, dispatch),
+    displayCreateGroupForm: () => {
+      dispatch(displayCreateGroupForm());
     },
   };
 }

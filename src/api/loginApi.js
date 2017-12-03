@@ -1,8 +1,9 @@
-import client from './mischiefClient';
+import client from './localhostClient';
 
 class LoginApi {
   static login(credentials) {
-    return client.post('authentication', credentials);
+    console.log(credentials);
+    return client.post('users/login', credentials);
   }
 }
 

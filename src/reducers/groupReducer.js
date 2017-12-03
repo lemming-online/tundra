@@ -1,22 +1,22 @@
 import * as types from '../actions/actionTypes';
 
 const INITIAL_STATE = {
-  sectionsCreatedCount: 0,
+  groupsCreatedCount: 0,
   popup: false,
 };
 
 export default function registrationReducer(state = INITIAL_STATE, action) {
-  const count = state.sectionsCreatedCount + 1;
+  const count = state.groupsCreatedCount + 1;
   switch (action.type) {
-    case types.CREATE_SECTION:
-      console.log('Section creation successful.');
+    case types.CREATE_GROUP:
+      console.log('Group creation successful.');
       return {
         ...state,
-        sectionsCreatedCount: count,
+        groupsCreatedCount: count,
       };
 
-    case types.SECTION_FAILURE:
-      console.log('Section creation failure.');
+    case types.GROUP_FAILURE:
+      console.log('Group creation failure.');
       return {
         ...state,
       };

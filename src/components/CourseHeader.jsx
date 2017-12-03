@@ -22,7 +22,7 @@ class CourseHeader extends React.Component {
                   <div className="course-info-block">
                     <h1 className="title">Test</h1>
                     <h2 className="subtitle">History of Dank</h2>
-                    <h3> Section 1 </h3>
+                    <h3> Group 1 </h3>
                     <h4> MWF 3:30-4:20 </h4>
                   </div>
                 </div>
