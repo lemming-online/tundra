@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 
 function CourseCard(props) {
   return (
-    <div className="course-card column is-2-desktop is-one-quarter-tablet is-half-mobile">
+    <div className="course-card column is-3-desktop is-one-quarter-tablet is-half-mobile">
       <div className="box">
         <div className="content">
           <p className="title">
-            <Link to={`/course/${props.courseID}`}>{props.groupName}</Link>
+            <Link to={`/course/${props.groupID}`}>{props.groupName}</Link>
           </p>
-          <p className="subtitle">{props.professorName}</p>
+          <p className="subtitle">{props.description}</p>
         </div>
       </div>
     </div>
@@ -25,7 +25,7 @@ CourseCard.propTypes = {
 CourseCard.defaultProps = {
   groupName: 'CS 407',
   professorName: 'Professor Dunsmore',
-  courseID: '59fb8a073be55800b7b03546',
+  groupID: '59fb8a073be55800b7b03546',
 };
 
 export default CourseCard;

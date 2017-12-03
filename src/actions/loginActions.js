@@ -13,6 +13,18 @@ function loginFetch() {
   return { type: types.LOG_IN_FETCH };
 }
 
+function userDetailsFetch() {
+  return { type: types.USER_DETAILS_FETCH };
+}
+
+function userDetailsSuccess(groups) {
+  return { type: types.USER_DETAILS_SUCCESS, groups };
+}
+
+function userDetailsFailure() {
+  return { type: types.USER_DETAILS_FAILURE };
+}
+
 export function logInUser(credentials) {
   return (dispatch) => {
     dispatch(loginFetch());
@@ -22,7 +34,6 @@ export function logInUser(credentials) {
         localStorage.setItem('jwt', json.token);
         dispatch(loginSuccess());
       })
-      .then()
       .catch((error) => {
         console.error(error);
         dispatch(loginFailure());
@@ -33,4 +44,21 @@ export function logInUser(credentials) {
 export function logOutUser() {
   localStorage.removeItem('jwt');
   return { type: types.LOG_OUT };
+}
+
+export function getMyDetails() {
+  return (dispatch) => {
+    dispatch(userDetailsFetch());
+    return loginApi
+      .getMyDetails()
+      .then((json) => {
+        // TODO: fuck
+        console.log(json);
+        dispatch(userDetailsSuccess(json.groups));
+      })
+      .catch((error) => {
+        console.error(error);
+        dispatch(userDetailsFailure());
+      });
+  };
 }

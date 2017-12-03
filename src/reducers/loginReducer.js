@@ -11,6 +11,7 @@ const INITIAL_STATE = {
   loading: false,
   uid: '',
   email: '',
+  groups: [],
 };
 
 export default function loginReducer(state = INITIAL_STATE, action) {
@@ -23,7 +24,6 @@ export default function loginReducer(state = INITIAL_STATE, action) {
     case types.LOG_IN_FETCH:
       console.log('Login fetch.');
       return {
-        // ...state == the non explicitly stated parts of the state
         ...state,
         loading: true,
       };
@@ -31,7 +31,6 @@ export default function loginReducer(state = INITIAL_STATE, action) {
     case types.LOG_IN_SUCCESS:
       console.log('Login successful.');
       return {
-        // ...state == the non explicitly stated parts of the state
         ...state,
         loading: false,
         isAuthenticated: true,
@@ -44,7 +43,6 @@ export default function loginReducer(state = INITIAL_STATE, action) {
     case types.LOG_IN_FAILURE:
       console.log('Login failed.');
       return {
-        // ...state == the non explicitly stated parts of the state
         ...state,
         loading: false,
         loginError: true,
@@ -55,9 +53,23 @@ export default function loginReducer(state = INITIAL_STATE, action) {
     case types.LOG_OUT:
       console.log('Log out.');
       return {
-        // ...state == the non explicitly stated parts of the state
         ...state,
         isAuthenticated: false,
+      };
+
+    case types.USER_DETAILS_FETCH:
+      console.log('User details fetch.');
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case types.USER_DETAILS_SUCCESS:
+      console.log('User details success.');
+      return {
+        ...state,
+        loading: false,
+        groups: action.groups,
       };
 
     default:
