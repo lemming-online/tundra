@@ -40,10 +40,11 @@ class AdminPage extends React.Component {
 
   render() {
     return (
-      <section className="section">
+      <div>
+        <div className="modal-background" />
         <div className="container">
-          <div className="tile is-ancestor">
-            <div className="tile is-child box">
+          <div className="columns is-centered">
+            <div className="column is-4 box">
               <h1 className="title">Create a Section</h1>
               <form>
                 <InputComponent title="Name" name="name" onChange={this.onChange} />
@@ -52,13 +53,15 @@ class AdminPage extends React.Component {
                 <InputComponent title="Description" name="description" onChange={this.onChange} />
                 <InputComponent title="Website" name="website" onChange={this.onChange} />
 
-                <div className="field">
+                <div className="field is-grouped is-grouped-right">
+                  <div className="control">
+                    <button onClick={this.onCancel} className="button">
+                      Cancel
+                    </button>
+                  </div>
                   <div className="control">
                     <button onClick={this.onSave} className="button is-primary">
                       Create Section
-                    </button>
-                    <button onClick={this.onCancel} className="button">
-                      Cancel
                     </button>
                   </div>
                 </div>
@@ -66,7 +69,7 @@ class AdminPage extends React.Component {
             </div>
           </div>
         </div>
-      </section>
+      </div>
     );
   }
 }

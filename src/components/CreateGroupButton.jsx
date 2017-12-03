@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { displayCreateSectionForm } from '../actions/sectionActions';
@@ -15,9 +15,6 @@ class CreateGroupButton extends React.Component {
 
     return (
       <div>
-        <div className="button" onClick={this.onClick}>
-          <h1 className="title">Create New Group</h1>
-        </div>
         <div id="announcement-form-popup" className={`${modalActive}`}>
           <AdminPage />
         </div>
