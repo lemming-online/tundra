@@ -5,7 +5,7 @@ const INITIAL_STATE = {
   popup: false,
 };
 
-export default function registrationReducer(state = INITIAL_STATE, action) {
+export default function groupReducer(state = INITIAL_STATE, action) {
   const count = state.groupsCreatedCount + 1;
   switch (action.type) {
     case types.CREATE_GROUP:
@@ -31,6 +31,16 @@ export default function registrationReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         popup: false,
+      };
+
+    case types.ADD_MENTEE_TO_GROUP:
+      return {
+        ...state,
+      };
+
+    case types.ADD_MENTOR_TO_GROUP:
+      return {
+        ...state,
       };
 
     default:

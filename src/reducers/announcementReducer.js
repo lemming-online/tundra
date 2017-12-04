@@ -9,7 +9,7 @@ const INITIAL_STATE = {
   announcements: [],
 };
 
-export default function loginReducer(state = INITIAL_STATE, action) {
+export default function announcementReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case types.CREATE_ANNOUNCEMENT_SUCCESS:
       console.log('Announcement was created successfully');
