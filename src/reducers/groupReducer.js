@@ -3,6 +3,7 @@ import * as types from '../actions/actionTypes';
 const INITIAL_STATE = {
   groupsCreatedCount: 0,
   popup: false,
+  loading: true,
 };
 
 export default function registrationReducer(state = INITIAL_STATE, action) {
@@ -31,6 +32,19 @@ export default function registrationReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         popup: false,
+      };
+
+    case types.GROUP_FETCH:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case types.GROUP_FETCH_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        group: action.group,
       };
 
     default:

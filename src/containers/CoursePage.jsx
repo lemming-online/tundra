@@ -10,7 +10,7 @@ import MeetingPage from './MeetingPage';
 import CourseHeader from '../components/CourseHeader';
 
 import * as tabActions from '../actions/tabActions';
-import * as loginActions from '../actions/loginActions';
+import * as groupActions from '../actions/groupActions';
 
 // eslint-disable-next-line
 class SessionPage extends React.Component {
@@ -20,7 +20,7 @@ class SessionPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.loginActions.getMyDetails();
+    this.props.groupActions.fetchGroup(this.groupID);
   }
 
   render() {
@@ -29,8 +29,8 @@ class SessionPage extends React.Component {
         <div>
           {/* TODO: pass an ID into the header. */}
           <CourseHeader
-            groupName={this.props.groups[this.groupID - 1].name}
-            description={this.props.groups[this.groupID - 1].description}
+            groupName={this.props.group.name}
+            description={this.props.group.description}
           />
           <section>
             {this.props.pane === 'session' && <SessionSubPage />}
@@ -56,14 +56,14 @@ function mapStateToProps(state) {
   return {
     pane: state.tabReducer.pane,
     tabs: state.tabReducer.tabs,
-    groups: state.loginReducer.groups,
-    loading: state.loginReducer.loading,
+    group: state.groupReducer.group,
+    loading: state.groupReducer.loading,
   };
 }
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(tabActions, dispatch),
-    loginActions: bindActionCreators(loginActions, dispatch),
+    groupActions: bindActionCreators(groupActions, dispatch),
   };
 }
 

@@ -13,6 +13,14 @@ function cancelCreateGroupFormAction() {
   return { type: types.CLOSE_CREATE_GROUP_FORM };
 }
 
+function fetchGroupByID(id) {
+  return { type: types.GROUP_FETCH, id };
+}
+
+function fetchGroupByIDSuccess(group) {
+  return { type: types.GROUP_FETCH_SUCCESS, group };
+}
+
 export function createGroup(details, id) {
   return function goCreateGroup(dispatch) {
     return groupApi
@@ -20,6 +28,22 @@ export function createGroup(details, id) {
       .then((responseJson) => {
         console.log(responseJson);
         dispatch(createGroupAction());
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+}
+
+export function fetchGroup(id) {
+  console.log('now in fetchGroup()');
+  return (dispatch) => {
+    dispatch(fetchGroupByID(id));
+    groupApi
+      .fetchGroup(id)
+      .then((responseJson) => {
+        console.log(responseJson);
+        dispatch(fetchGroupByIDSuccess(responseJson));
       })
       .catch((error) => {
         console.error(error);
