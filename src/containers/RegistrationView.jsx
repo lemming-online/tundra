@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import InputComponent from '../components/InputComponent';
-import registerUser from '../actions/registrationActions';
+import { registerUser, registrationFailure } from '../actions/registrationActions';
 import logo from '../images/logo2.png';
 import Notification from '../components/Notification';
 
@@ -23,7 +23,15 @@ class RegistrationView extends React.Component {
 
   onSave = (event) => {
     event.preventDefault();
-    this.props.registerUser(this.state.credentials);
+    const password = this.state.credentials.password;
+    const confirmedPassword = this.state.credentials.confirm_password;
+    if (password === confirmedPassword) {
+      console.log('Passwords are equal');
+      this.props.registerUser(this.state.credentials);
+    } else {
+      console.log('Passwords do not match');
+      this.props.registrationFailure();
+    }
   };
 
   onChange = (event) => {
@@ -87,6 +95,9 @@ function mapDispatchToProps(dispatch) {
   return {
     registerUser: (credentials) => {
       dispatch(registerUser(credentials));
+    },
+    registrationFailure: () => {
+      dispatch(registrationFailure());
     },
   };
 }
