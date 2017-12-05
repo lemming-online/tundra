@@ -70,6 +70,7 @@ export default function loginReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         loading: false,
+        detailError: '',
         groups: action.groups,
       };
 

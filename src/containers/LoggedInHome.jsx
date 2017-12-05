@@ -28,7 +28,6 @@ class LoggedInHome extends React.Component {
           >
             <GroupActionButtons />
           </SectionLevelBar>
-
           <div className="columns is-multiline is-mobile">
             {this.props.groups.map((group, index) => (
               <CourseCard

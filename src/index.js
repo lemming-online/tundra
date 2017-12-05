@@ -5,7 +5,7 @@ import '../node_modules/bulma/css/bulma.css';
 import '../node_modules/animate.css/animate.min.css';
 import './index.css';
 
-import { LOG_IN_SUCCESS } from './actions/actionTypes';
+import { LOG_IN_SUCCESS, USER_DETAILS_FETCH } from './actions/actionTypes';
 
 import Root from './containers/Root';
 
@@ -16,6 +16,7 @@ const store = configureStore();
 const jwt = localStorage.getItem('jwt');
 if (jwt) {
   store.dispatch({ type: LOG_IN_SUCCESS });
+  store.dispatch({ type: USER_DETAILS_FETCH });
 }
 
 // eslint-disable-next-line
