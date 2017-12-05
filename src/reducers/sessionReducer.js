@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   hasCreatedQuestion: false,
 };
 
-export default function registrationReducer(state = INITIAL_STATE, action) {
+export default function sessionReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case types.HELP_QUESTION_SUCCESS:
       console.log('Successfully created question');
