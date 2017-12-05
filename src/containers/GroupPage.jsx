@@ -12,7 +12,7 @@ import * as tabActions from '../actions/tabActions';
 import * as groupActions from '../actions/groupActions';
 
 // eslint-disable-next-line
-class SessionPage extends React.Component {
+class GroupPage extends React.Component {
   constructor(props) {
     super(props);
     this.groupID = this.props.match.params.groupID;
@@ -65,4 +65,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SessionPage);
+export default connect(mapStateToProps, mapDispatchToProps)(GroupPage);

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
-function CourseCard(props) {
+function QuestionCard(props) {
   return (
     <div className="container">
       <div className="tile is-ancestor is-4">
@@ -26,4 +26,4 @@ function CourseCard(props) {
 //   professorName: PropTypes.string.isRequired,
 // };
 
-export default CourseCard;
+export default QuestionCard;

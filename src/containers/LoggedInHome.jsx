@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 // import { Link } from 'react-router-dom';
 import * as loginActions from '../actions/loginActions';
-import CourseCard from '../components/CourseCard';
+import GroupCard from '../components/GroupCard';
 import SectionLevelBar from '../components/SectionLevelBar';
 import GroupActionButtons from '../components/GroupActionButtons';
 import CreateGroupButton from '../components/CreateGroupButton';
@@ -30,10 +30,10 @@ class LoggedInHome extends React.Component {
           </SectionLevelBar>
           <div className="columns is-multiline is-mobile">
             {this.props.groups.map((group, index) => (
-              <CourseCard
+              <GroupCard
                 key={index}
                 groupName={group.name}
-                groupID={group.id}
+                groupID={group.group}
                 description={group.description}
               />
             ))}

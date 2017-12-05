@@ -34,7 +34,7 @@ class AddUserToGroupButtons extends React.Component {
   };
 
   onAddMenteesSubmit = () => {
-    const groupID = this.props.match.params.courseID;
+    const groupID = this.props.match.params.groupID;
     const body = this.splitAtComma(this.state.groupDetails.menteeList, 'mentee');
     console.log(body);
     this.props.addMenteeToGroup(body, groupID);

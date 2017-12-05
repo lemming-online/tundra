@@ -8,7 +8,7 @@ import SignInUpPage from './SignInUpPage';
 import SignUpPage from './SignUpPage';
 import UserProfile from './UserProfile';
 import MeetingPage from './MeetingPage';
-import CoursePage from './CoursePage';
+import GroupPage from './GroupPage';
 import AdminPage from './AdminPage';
 import PrivateRoute from '../components/PrivateRoute';
 
@@ -26,7 +26,7 @@ const Root = props => (
           <Route path="/signup" component={SignUpPage} />
           <PrivateRoute path="/user" component={UserProfile} />
           <PrivateRoute path="/meeting/:meetingID" component={MeetingPage} />
-          <PrivateRoute path="/course/:groupID" component={CoursePage} />
+          <PrivateRoute path="/group/:groupID" component={GroupPage} />
           <PrivateRoute path="/admin" component={AdminPage} />
         </Switch>
       </div>

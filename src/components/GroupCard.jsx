@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // import gradient from 'random-gradient';
 
-function CourseCard(props) {
+function GroupCard(props) {
   return (
-    <div className="course-card column is-3-desktop is-one-quarter-tablet is-half-mobile">
+    <div className="group-card column is-3-desktop is-one-quarter-tablet is-half-mobile">
       <div className="box">
         <div className="content">
           <p className="title">
-            <Link to={`/course/${props.groupID}`}>{props.groupName}</Link>
+            <Link to={`/group/${props.groupID}`}>{props.groupName}</Link>
           </p>
           <p className="subtitle">{props.description}</p>
         </div>
@@ -18,15 +18,15 @@ function CourseCard(props) {
   );
 }
 
-CourseCard.propTypes = {
+GroupCard.propTypes = {
   groupName: PropTypes.string.isRequired,
   professorName: PropTypes.string.isRequired,
 };
 
-CourseCard.defaultProps = {
-  groupName: 'CS 407',
+GroupCard.defaultProps = {
+  groupName: 'CS 999',
   professorName: 'Professor Dunsmore',
-  groupID: '59fb8a073be55800b7b03546',
+  groupID: '999',
 };
 
-export default CourseCard;
+export default GroupCard;
