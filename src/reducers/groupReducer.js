@@ -13,6 +13,7 @@ export default function registrationReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         groupsCreatedCount: count,
+        popup: false,
       };
 
     case types.GROUP_FAILURE:
