@@ -13,10 +13,15 @@ import * as tabActions from '../actions/tabActions';
 
 // eslint-disable-next-line
 class SessionPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.groupID = this.props.match.params.groupID;
+  }
+
   render() {
     return (
       <div>
-        <CourseHeader />
+        <CourseHeader groupName="fuk" />
         <section>
           {this.props.pane === 'session' && <SessionSubPage />}
 
@@ -25,7 +30,7 @@ class SessionPage extends React.Component {
 
           {this.props.pane === 'admin' && <AdminPage />}
           {/* TODO: This has to be changed so it's dynamic. Idk how to make that happen, unfortunately. */}
-          {/* Probably it will be something like, MeetingPage with props passed down to it. 
+          {/* Probably it will be something like, MeetingPage with props passed down to it.
           Or Maybe MeetingPage will just open for all meetings, using the redux state?
           But probably will have to have its own props pushed b.c. how do you handle different tabs without that?
           Anyway, yeah. Conditonally render based on this.props.pane */}
@@ -40,6 +45,7 @@ function mapStateToProps(state) {
   return {
     pane: state.tabReducer.pane,
     tabs: state.tabReducer.tabs,
+    groups: state.loginReducer.groups,
   };
 }
 function mapDispatchToProps(dispatch) {

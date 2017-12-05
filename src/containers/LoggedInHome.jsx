@@ -21,7 +21,11 @@ class LoggedInHome extends React.Component {
     return (
       <section className="section">
         <div className="container">
-          <SectionLevelBar title="My Groups" loading={this.props.loading}>
+          <SectionLevelBar
+            title="My Groups"
+            loading={this.props.loading}
+            error={this.props.detailError}
+          >
             <GroupActionButtons />
           </SectionLevelBar>
 
@@ -51,6 +55,7 @@ function mapStateToProps(state) {
     lastName: state.loginReducer.lastName,
     loading: state.loginReducer.loading,
     groups: state.loginReducer.groups,
+    detailError: state.loginReducer.detailError,
   };
 }
 

@@ -2,15 +2,19 @@ import React from 'react';
 
 import CourseTabs from '../components/CourseTabs';
 import InstructorComponent from '../components/InstructorComponent';
+// import gradient from 'random-gradient';
 
 class CourseHeader extends React.Component {
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
+    // this.props = props;
     this.state = {
       active: 'session',
     };
+
+    // this.grad = name => ({ background: gradient(this.props.groupID) });
   }
+
   render() {
     return (
       <section className="hero is-primary">
@@ -20,7 +24,7 @@ class CourseHeader extends React.Component {
               <div className="level-left">
                 <div className="level-item">
                   <div className="course-info-block">
-                    <h1 className="title">Test</h1>
+                    <h1 className="title">{this.props.groupName}</h1>
                     <h2 className="subtitle">History of Dank</h2>
                     <h3> Group 1 </h3>
                     <h4> MWF 3:30-4:20 </h4>
