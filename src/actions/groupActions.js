@@ -55,13 +55,23 @@ export function cancelCreateGroupForm() {
   };
 }
 
-export function addMentorToGroup() {
+export function addMentorToGroup(body, groupID) {
+  console.log(`groupID in Mentor: ${groupID}`);
   return function goAddMentorToGroup(dispatch) {
-    return dispatch(addMentorToGroupAction());
+    return groupApi
+      .addMentorToGroup(body, groupID)
+      .then((responseJson) => {
+        console.log(responseJson);
+        dispatch(addMentorToGroupAction());
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 }
 
 export function addMenteeToGroup(body, groupID) {
+  console.log(`groupID in Mentee: ${groupID}`);
   return function goAddMenteeToGroup(dispatch) {
     return groupApi
       .addMenteeToGroup(body, groupID)

@@ -5,8 +5,8 @@ class GroupApi {
     return client.post('groups', details, true);
   }
 
-  static addMentorToGroup(details) {
-    return client.post('people', details, true);
+  static addMentorToGroup(body, groupID) {
+    return client.post(`groups/${groupID}/people`, body, true);
   }
 
   static addMenteeToGroup(body, groupID) {

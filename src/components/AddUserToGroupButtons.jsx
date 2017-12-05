@@ -46,7 +46,8 @@ class AddUserToGroupButtons extends React.Component {
     const groupID = this.props.match.params.courseID;
     const body = this.splitAtComma(this.state.groupDetails.mentorList, 'mentor');
     console.log(body);
-    // api call
+    console.log(`GROUPID: ${groupID}`);
+    this.props.addMentorToGroup(body, groupID);
     console.log('Submiting Mentors');
   };
 
@@ -90,31 +91,6 @@ class AddUserToGroupButtons extends React.Component {
                     Cancel
                   </button>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="control">
-          <button className="button" onClick={this.addUserPopup}>
-            Add Mentors
-          </button>
-        </div>
-        <div id="announcement-form-popup" className={`${modalActive}`}>
-          <div className="modal-background" />
-          <div className="container box">
-            <InputComponent
-              name="menteeList"
-              title="Enter a comma seperated list of emails you wish to invite as mentors."
-              onChange={this.onChange}
-            />
-            <div className="field is-grouped">
-              <div className="control">
-                <button className="button" onClick={this.onAddMentorsSubmit}>
-                  Invite
-                </button>
-                <button className="button" onClick={this.onCancel}>
-                  Cancel
-                </button>
               </div>
             </div>
           </div>
