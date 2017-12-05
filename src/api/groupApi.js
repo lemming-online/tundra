@@ -9,8 +9,8 @@ class GroupApi {
     return client.post('people', details, true);
   }
 
-  static addMenteeToGroup(details) {
-    return client.post('people', details, true);
+  static addMenteeToGroup(body, groupID) {
+    return client.post(`groups/${groupID}/people`, body, true);
   }
 }
 

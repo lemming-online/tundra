@@ -61,9 +61,17 @@ export function addMentorToGroup() {
   };
 }
 
-export function addMenteeToGroup() {
+export function addMenteeToGroup(body, groupID) {
   return function goAddMenteeToGroup(dispatch) {
-    return dispatch(addMenteeToGroupAction());
+    return groupApi
+      .addMenteeToGroup(body, groupID)
+      .then((responseJson) => {
+        console.log(responseJson);
+        dispatch(addMenteeToGroupAction());
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 }
 
