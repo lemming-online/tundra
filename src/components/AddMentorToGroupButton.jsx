@@ -3,20 +3,19 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {
-  addMenteeToGroup,
-  addMenteesToGroupInProgress,
+  addMentorToGroup,
+  addMentorsToGroupInProgress,
   cancelInvite,
 } from '../actions/groupActions';
 import InputComponent from '../components/InputComponent';
 
-class AddUserToGroupButtons extends React.Component {
+class AddMentorToGroupButton extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       groupDetails: {
         mentorList: '',
-        menteeList: '',
       },
     };
 
@@ -33,12 +32,13 @@ class AddUserToGroupButtons extends React.Component {
     this.props.cancelInvite();
   };
 
-  onAddMenteesSubmit = () => {
+  onAddMentorsSubmit = () => {
     const groupID = this.props.match.params.courseID;
-    const body = this.splitAtComma(this.state.groupDetails.menteeList, 'mentee');
+    const body = this.splitAtComma(this.state.groupDetails.mentorList, 'mentor');
     console.log(body);
-    this.props.addMenteeToGroup(body, groupID);
-    console.log('Submitting Mentees');
+    console.log(`GROUPID: ${groupID}`);
+    this.props.addMentorToGroup(body, groupID);
+    console.log('Submiting Mentors2222');
   };
 
   splitAtComma = (list, role) => {
@@ -53,7 +53,7 @@ class AddUserToGroupButtons extends React.Component {
 
   addUserPopup = () => {
     this.props.addingUsers();
-    console.log('pop goes the weasel');
+    console.log('pop goes the weasel222');
   };
 
   render() {
@@ -62,19 +62,19 @@ class AddUserToGroupButtons extends React.Component {
       <div className="field is-grouped">
         <div className="control">
           <button onClick={this.addUserPopup} className="button">
-            Add Mentees
+            Add Mentors
           </button>
           <div id="announcement-form-popup" className={`${modalActive}`}>
             <div className="modal-background" />
             <div className="container box">
               <InputComponent
-                name="menteeList"
-                title="Enter a comma seperated list of emails you wish to invite as mentees."
+                name="mentorList"
+                title="Enter a comma seperated list of emails you wish to invite as mentors."
                 onChange={this.onChange}
               />
               <div className="field is-grouped">
                 <div className="control">
-                  <button className="button" onClick={this.onAddMenteesSubmit}>
+                  <button className="button" onClick={this.onAddMentorsSubmit}>
                     Invite
                   </button>
                   <button className="button" onClick={this.onCancel}>
@@ -92,18 +92,18 @@ class AddUserToGroupButtons extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    popup: state.groupReducer.menteePopup,
+    popup: state.groupReducer.mentorPopup,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(addMenteeToGroup, dispatch),
-    addMenteeToGroup: (body, groupID) => {
-      dispatch(addMenteeToGroup(body, groupID));
+    actions: bindActionCreators(addMentorToGroup, dispatch),
+    addMentorToGroup: () => {
+      dispatch(addMentorToGroup());
     },
     addingUsers: () => {
-      dispatch(addMenteesToGroupInProgress());
+      dispatch(addMentorsToGroupInProgress());
     },
     cancelInvite: () => {
       dispatch(cancelInvite());
@@ -111,4 +111,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddUserToGroupButtons));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddMentorToGroupButton));
