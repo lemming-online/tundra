@@ -9,7 +9,7 @@ function PersonComponent(props) {
     <div className="column is-2-desktop is-2-tablet is-half-mobile">
       <div className="instructor-component">
         <figure
-          className="image is-64x64 tooltip is-tooltip-right is-tooltip-multiline"
+          className="image is-64x64 tooltip is-tooltip-right"
           data-tooltip={'Location: Seat 3'}
         >
           <img alt="instructor avatar" className="avatar is-circle" src={props.imgUrl} />
