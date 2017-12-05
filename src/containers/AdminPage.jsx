@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import InputComponent from '../components/InputComponent';
 import { createGroup, cancelCreateGroupForm } from '../actions/groupActions';
+import { getMyDetails } from '../actions/loginActions';
 
 class AdminPage extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class AdminPage extends React.Component {
     event.preventDefault();
     const jwt = localStorage.jwt;
     this.props.createGroup(this.state.details, jwt);
+    this.props.getMyDetails();
   };
 
   onChange = (event) => {
@@ -86,6 +88,9 @@ function mapDispatchToProps(dispatch) {
     },
     closeGroupForm: () => {
       dispatch(cancelCreateGroupForm());
+    },
+    getMyDetails: () => {
+      dispatch(getMyDetails());
     },
   };
 }
