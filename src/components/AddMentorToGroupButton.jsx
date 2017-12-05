@@ -99,8 +99,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(addMentorToGroup, dispatch),
-    addMentorToGroup: () => {
-      dispatch(addMentorToGroup());
+    addMentorToGroup: (body, groupID) => {
+      dispatch(addMentorToGroup(body, groupID));
     },
     addingUsers: () => {
       dispatch(addMentorsToGroupInProgress());
