@@ -21,6 +21,14 @@ function addMenteeToGroupAction() {
   return { type: types.ADD_MENTEE_TO_GROUP };
 }
 
+function addingUserToGroupAction() {
+  return { type: types.ADDING_USERS_TO_GROUP_IN_PROGRESS };
+}
+
+function cancelInviteAction() {
+  return { type: types.CANCEL_INVITE_TO_GROUP };
+}
+
 export function createGroup(details, id) {
   return function goCreateGroup(dispatch) {
     return groupApi
@@ -56,5 +64,17 @@ export function addMentorToGroup() {
 export function addMenteeToGroup() {
   return function goAddMenteeToGroup(dispatch) {
     return dispatch(addMenteeToGroupAction());
+  };
+}
+
+export function addUsersToGroupInProgress() {
+  return function goAddUsersToGroupInProgress(dispatch) {
+    return dispatch(addingUserToGroupAction());
+  };
+}
+
+export function cancelInvite() {
+  return function goCancelInvite(dispatch) {
+    return dispatch(cancelInviteAction());
   };
 }

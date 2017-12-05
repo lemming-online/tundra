@@ -2,7 +2,8 @@ import * as types from '../actions/actionTypes';
 
 const INITIAL_STATE = {
   groupsCreatedCount: 0,
-  popup: false,
+  popup: false, // for creating groups
+  addUserPopup: false, // for adding users
 };
 
 export default function groupReducer(state = INITIAL_STATE, action) {
@@ -33,14 +34,27 @@ export default function groupReducer(state = INITIAL_STATE, action) {
         popup: false,
       };
 
+    case types.CANCEL_INVITE_TO_GROUP:
+      return {
+        ...state,
+        addUserPopup: false,
+      };
+
     case types.ADD_MENTEE_TO_GROUP:
       return {
         ...state,
+        addUserPopup: false,
       };
 
     case types.ADD_MENTOR_TO_GROUP:
       return {
         ...state,
+        addUserPopup: false,
+      };
+    case types.ADDING_USERS_TO_GROUP_IN_PROGRESS:
+      return {
+        ...state,
+        addUserPopup: true,
       };
 
     default:
