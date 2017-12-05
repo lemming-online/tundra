@@ -10,7 +10,7 @@ function SectionLevelBar(props) {
           </h1>
         </div>
       </div>
-
+      {props.error ? <span className="tag is-danger">{props.error}</span> : ''}
       <div className="level-right">{props.children}</div>
     </div>
   );

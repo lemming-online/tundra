@@ -12,6 +12,7 @@ const INITIAL_STATE = {
   uid: '',
   email: '',
   groups: [],
+  detailError: '',
 };
 
 export default function loginReducer(state = INITIAL_STATE, action) {
@@ -69,7 +70,16 @@ export default function loginReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         loading: false,
+        detailError: '',
         groups: action.groups,
+      };
+
+    case types.USER_DETAILS_FAILURE:
+      console.log('User details failed.');
+      return {
+        ...state,
+        loading: false,
+        detailError: "Oops! We couldn't load your groups. Please try again.",
       };
 
     default:

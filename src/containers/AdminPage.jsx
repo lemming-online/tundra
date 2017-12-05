@@ -53,12 +53,12 @@ class AdminPage extends React.Component {
 
                 <div className="field is-grouped is-grouped-right">
                   <div className="control">
-                    <button onClick={this.onCancel} className="button">
+                    <button onClick={this.onCancel} className="button" type="button">
                       Cancel
                     </button>
                   </div>
                   <div className="control">
-                    <button onClick={this.onSave} className="button is-primary">
+                    <button onClick={this.onSave} className="button is-primary" type="submit">
                       Create Group
                     </button>
                   </div>

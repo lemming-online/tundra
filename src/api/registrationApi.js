@@ -5,7 +5,7 @@ class RegistrationApi {
     console.log('registerUser');
     return client
       .post('users', credentials)
-      .then(json => client.post('activation', { email: json.email }));
+      .then(json => client.post('/users/activation', { email: json.email }));
   }
 }
 
