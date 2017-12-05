@@ -49,7 +49,6 @@ export default function groupReducer(state = INITIAL_STATE, action) {
         loading: false,
         group: action.group,
       };
-
     case types.CANCEL_INVITE_TO_GROUP:
       return {
         ...state,
