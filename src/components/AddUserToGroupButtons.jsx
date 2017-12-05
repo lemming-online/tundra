@@ -42,6 +42,14 @@ class AddUserToGroupButtons extends React.Component {
     console.log('Submitting Mentees');
   };
 
+  onAddMentorsSubmit = () => {
+    const groupID = this.props.match.params.courseID;
+    const body = this.splitAtComma(this.state.groupDetails.mentorList, 'mentor');
+    console.log(body);
+    // api call
+    console.log('Submiting Mentors');
+  };
+
   splitAtComma = (list, role) => {
     const body = [];
     const splitList = list.split(',');
@@ -70,7 +78,7 @@ class AddUserToGroupButtons extends React.Component {
             <div className="container box">
               <InputComponent
                 name="menteeList"
-                title="Enter a comma seperated list of emails you wish to invite."
+                title="Enter a comma seperated list of emails you wish to invite as mentees."
                 onChange={this.onChange}
               />
               <div className="field is-grouped">
@@ -87,7 +95,29 @@ class AddUserToGroupButtons extends React.Component {
           </div>
         </div>
         <div className="control">
-          <button className="button">Add Mentors</button>
+          <button className="button" onClick={this.addUserPopup}>
+            Add Mentors
+          </button>
+        </div>
+        <div id="announcement-form-popup" className={`${modalActive}`}>
+          <div className="modal-background" />
+          <div className="container box">
+            <InputComponent
+              name="menteeList"
+              title="Enter a comma seperated list of emails you wish to invite as mentors."
+              onChange={this.onChange}
+            />
+            <div className="field is-grouped">
+              <div className="control">
+                <button className="button" onClick={this.onAddMentorsSubmit}>
+                  Invite
+                </button>
+                <button className="button" onClick={this.onCancel}>
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

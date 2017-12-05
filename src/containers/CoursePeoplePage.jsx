@@ -13,7 +13,9 @@ function SessionPage() {
         <div className="columns is-multiline is-mobile bordered">
           <PersonComponent />
         </div>
-        <h1 className="title">Mentees</h1>
+        <SectionLevelBar title="Mentees">
+          <AddUserToGroupButtons />
+        </SectionLevelBar>
         <div className="columns is-multiline is-mobile bordered">
           <PersonComponent firstName="Stephen" lastName="Supercalifgailisticexpealodocious" />
 
