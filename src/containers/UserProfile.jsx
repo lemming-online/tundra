@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import InputComponent from '../components/InputComponent';
 import * as loginActions from '../actions/loginActions';
+// import * as client from '../api/mischiefClient';
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -25,23 +26,7 @@ class UserProfile extends React.Component {
       image.append('image', acceptedFile[0]);
       console.log(image);
 
-      // make api call to send image up to server
-      fetch(`https://mischief.nutt.men/users/${this.props.uid}/set_image`, {
-        method: 'POST',
-        body: image,
-        mode: 'cors',
-        headers: new Headers({
-          Authorization: `Bearer ${localStorage.jwt}`,
-        }),
-      })
-        .then(response => response.json())
-        .then((responseJSON) => {
-          this.setState({ profilePicture: responseJSON.image });
-          console.log(`Success! Your photo is here: ${responseJSON.image}`);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+      this.props.actions.postMyImage({ image });
 
       console.log(acceptedFile[0].preview);
     }
@@ -119,8 +104,9 @@ class UserProfile extends React.Component {
                 <Dropzone multiple={false} accept="image/*" onDrop={files => this.onDrop(files)}>
                   <img src={this.state.profilePicture} alt="user profile" />
                 </Dropzone>
-                <h1 className="title subtitle">{`${this.props.firstName} ${this.props
-                  .lastName}`}</h1>
+                <h1 className="title subtitle">{`${this.props.firstName} ${
+                  this.props.lastName
+                }`}</h1>
                 <span className="uid">{`${this.props.uid}`}</span>
               </div>
               <form onSubmit={this.updateUser}>
@@ -148,6 +134,7 @@ function mapStateToProps(state) {
     firstName: state.loginReducer.firstName,
     lastName: state.loginReducer.lastName,
     isAuthenticated: state.loginReducer.isAuthenticated,
+    image: state.loginReducer.image,
   };
 }
 

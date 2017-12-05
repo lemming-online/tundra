@@ -8,6 +8,10 @@ class LoginApi {
   static getMyDetails() {
     return client.get('users/', true);
   }
+
+  static postMyImage(image) {
+    return client.post('users/image', image, true);
+  }
 }
 
 export default LoginApi;
