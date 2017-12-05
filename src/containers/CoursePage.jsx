@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import SessionSubPage from './SessionSubPage';
-import AdminPage from './AdminPage';
 import ResourcesPage from './ResourcesPage';
 import CoursePeoplePage from './CoursePeoplePage';
 import MeetingPage from './MeetingPage';
@@ -38,7 +37,6 @@ class SessionPage extends React.Component {
             {this.props.pane === 'resources' && <ResourcesPage />}
             {this.props.pane === 'people' && <CoursePeoplePage />}
 
-            {this.props.pane === 'admin' && <AdminPage />}
             {/* TODO: This has to be changed so it's dynamic. Idk how to make that happen, unfortunately. */}
             {/* Probably it will be something like, MeetingPage with props passed down to it.
           Or Maybe MeetingPage will just open for all meetings, using the redux state?

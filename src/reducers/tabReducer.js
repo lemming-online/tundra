@@ -21,6 +21,12 @@ export default function tabReducer(state = INITIAL_STATE, action) {
         tabs: state.tabs,
         pane: action.pane,
       };
+    case types.CLOSE_TAB:
+      state.tabs.pop();
+      return {
+        ...state,
+        pane: 'session',
+      };
     default:
       return state;
   }

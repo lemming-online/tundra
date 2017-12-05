@@ -31,19 +31,20 @@ function CourseTabs(props) {
         >
           People
         </Tab>
-        <Tab
-          onClick={() => props.actions.changeTab('admin')}
-          className={props.pane === 'admin' ? 'is-active' : ''}
-        >
-          Admin
-        </Tab>
 
         {props.tabs.map(tab => (
           <Tab
             onClick={() => props.actions.changeTab(tab.pane)}
             className={props.pane === tab.pane ? 'is-active' : ''}
           >
-            {tab.title} <button className="delete is-small tab-delete" />
+            {tab.title}{' '}
+            <button
+              onClick={(event) => {
+                event.stopPropagation();
+                props.actions.closeTab(tab.pane);
+              }}
+              className="delete is-small tab-delete"
+            />
           </Tab>
         ))}
       </Tabs>

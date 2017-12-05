@@ -8,6 +8,10 @@ function createOpenTab(pane, title) {
   return { type: types.OPEN_TAB, pane, title };
 }
 
+function createCloseTab(pane) {
+  return { type: types.CLOSE_TAB, pane };
+}
+
 export function changeTab(pane) {
   return (dispatch) => {
     dispatch(createChangeTab(pane));
@@ -21,5 +25,7 @@ export function openTab(pane, title) {
 }
 
 export function closeTab(pane) {
-  return pane;
+  return (dispatch) => {
+    dispatch(createCloseTab(pane));
+  };
 }
