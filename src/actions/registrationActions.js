@@ -5,7 +5,7 @@ function registrationSuccess() {
   return { type: types.REGISTER_SUCCESS };
 }
 
-function registrationFailure() {
+function registrationFailureAction() {
   return { type: types.REGISTER_FAILURE };
 }
 
@@ -13,7 +13,7 @@ function registrationFetch() {
   return { type: types.REGISTER_FETCH };
 }
 
-export default function registerUser(credentials) {
+export function registerUser(credentials) {
   return (dispatch) => {
     dispatch(registrationFetch());
     registerApi
@@ -21,7 +21,13 @@ export default function registerUser(credentials) {
       .then(json => dispatch(registrationSuccess()))
       .catch((error) => {
         console.error(error);
-        dispatch(registrationFailure());
+        dispatch(registrationFailureAction());
       });
+  };
+}
+
+export function registrationFailure() {
+  return (dispatch) => {
+    dispatch(registrationFailureAction());
   };
 }
