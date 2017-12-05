@@ -7,7 +7,7 @@ const INITIAL_STATE = {
   dropdown: false,
 };
 
-export default function loginReducer(state = INITIAL_STATE, action) {
+export default function feedbackReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case types.FEEDBACK_SUCCESS:
       console.log('Feedback was created successfully');
