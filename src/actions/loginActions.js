@@ -17,20 +17,20 @@ function userDetailsFetch() {
   return { type: types.USER_DETAILS_FETCH };
 }
 
-function userDetailsSuccess(groups) {
-  return { type: types.USER_DETAILS_SUCCESS, groups };
+function userDetailsSuccess(json) {
+  return { type: types.USER_DETAILS_SUCCESS, json };
 }
 
 function userDetailsFailure() {
   return { type: types.USER_DETAILS_FAILURE };
 }
 
-function userImagePost(image) {
-  return { type: types.USER_IMAGE_POST, image };
+function userImagePost() {
+  return { type: types.USER_IMAGE_POST };
 }
 
-function userImagePostSuccess(imageURL) {
-  return { type: types.USER_IMAGE_POST_SUCCESS, imageURL };
+function userImagePostSuccess(image) {
+  return { type: types.USER_IMAGE_POST_SUCCESS, image };
 }
 
 function userImagePostFailure() {
@@ -66,7 +66,7 @@ export function getMyDetails() {
       .then((json) => {
         // TODO: fuck
         console.log(json);
-        dispatch(userDetailsSuccess(json.groups));
+        dispatch(userDetailsSuccess(json));
       })
       .catch((error) => {
         console.error(error);
@@ -83,7 +83,7 @@ export function postMyImage(image) {
       .postMyImage(image)
       .then((json) => {
         console.log(json);
-        dispatch(userImagePostSuccess(json.image));
+        dispatch(userImagePostSuccess(json.url));
       })
       .catch((error) => {
         console.error(error);

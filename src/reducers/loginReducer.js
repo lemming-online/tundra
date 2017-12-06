@@ -72,7 +72,8 @@ export default function loginReducer(state = INITIAL_STATE, action) {
         ...state,
         loading: false,
         detailError: '',
-        groups: action.groups,
+        groups: action.json.groups,
+        image: action.json.user.image,
       };
 
     case types.USER_DETAILS_FAILURE:
@@ -87,6 +88,13 @@ export default function loginReducer(state = INITIAL_STATE, action) {
       console.log('Entered user image post.');
       return {
         ...state,
+      };
+
+    case types.USER_IMAGE_POST_SUCCESS:
+      console.log('Entered user image post.');
+      return {
+        ...state,
+        image: action.image,
       };
 
     default:

@@ -64,7 +64,7 @@ class Header extends React.Component {
               </Link>
               <LogInOutLink loginOnly />
             </div>
-            <UserDropdown />
+            <UserDropdown image={this.props.image} />
           </div>
         </div>
       </nav>
@@ -73,7 +73,10 @@ class Header extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { isAuthenticated: state.loginReducer.isAuthenticated };
+  return {
+    isAuthenticated: state.loginReducer.isAuthenticated,
+    image: state.loginReducer.image,
+  };
 }
 function mapDispatchToProps(dispatch) {
   return {
