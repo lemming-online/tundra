@@ -11,9 +11,9 @@ class MischiefClient {
   static makeAuthRequest(method, resource, body) {
     return new Request(BASE_URL + resource, {
       method,
-      body: maybeStringify(body),
+      // TODO: re-add maybeStringify
+      body,
       headers: new Headers({
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.jwt}`,
       }),
     });

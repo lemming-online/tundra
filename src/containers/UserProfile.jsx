@@ -24,11 +24,7 @@ class UserProfile extends React.Component {
       const image = new FormData();
       // console.log(acceptedFile);
       image.append('image', acceptedFile[0]);
-      console.log(image);
-
-      this.props.actions.postMyImage({ image });
-
-      console.log(acceptedFile[0].preview);
+      this.props.actions.postMyImage(image);
     }
   };
 
@@ -102,7 +98,7 @@ class UserProfile extends React.Component {
             <div className="column box">
               <div className="">
                 <Dropzone multiple={false} accept="image/*" onDrop={files => this.onDrop(files)}>
-                  <img src={this.state.profilePicture} alt="user profile" />
+                  <img src={`//${this.props.image}`} alt="user profile" />
                 </Dropzone>
                 <h1 className="title subtitle">{`${this.props.firstName} ${
                   this.props.lastName
