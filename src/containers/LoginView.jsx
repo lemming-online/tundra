@@ -69,8 +69,7 @@ class LoginView extends React.Component {
 
         <p className="signup-link">
           Are you new to Lemming? <Link to="/signup">Sign Up.</Link>
-        </p>
-        <p className="signup-link">
+          <br />
           <Link to="/forgotyourpassword">Forgot your password? </Link>
         </p>
       </div>

@@ -25,6 +25,10 @@ function userDetailsFailure() {
   return { type: types.USER_DETAILS_FAILURE };
 }
 
+function resetPasswordSuccessAction() {
+  return { type: types.RESET_PASSWORD_SUCCESS };
+}
+
 export function logInUser(credentials) {
   return (dispatch) => {
     dispatch(loginFetch());
@@ -61,4 +65,17 @@ export function getMyDetails() {
         dispatch(userDetailsFailure());
       });
   };
+}
+
+export function resetPassword(email) {
+  return dispatch =>
+    loginApi
+      .resetPassword(email)
+      .then((json) => {
+        console.log(json);
+        dispatch(resetPasswordSuccessAction());
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 }
