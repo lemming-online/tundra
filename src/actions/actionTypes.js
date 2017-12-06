@@ -2,6 +2,7 @@ export const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS';
 export const LOG_IN_FAILURE = 'LOG_IN_FAILURE';
 export const LOG_IN_FETCH = 'LOG_IN_FETCH';
 export const LOG_OUT = 'LOG_OUT';
+export const RESET_PASSWORD_SUCCESS = 'RESET_PASSWORD_SUCCESS';
 
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FETCH = 'REGISTER_FETCH';
