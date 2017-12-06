@@ -18,12 +18,12 @@ class MischiefClient {
       }),
     });
   }
-  static makeRequest(method, resource, body) {
+  static makeRequest(method, resource, body, contentType = 'application/json') {
     return new Request(BASE_URL + resource, {
       method,
       body: maybeStringify(body),
       headers: new Headers({
-        'Content-Type': 'application/json',
+        'Content-Type': contentType,
       }),
     });
   }

@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   firstName: '',
   lastName: '',
   id: null,
+  image: '',
   loginError: false,
   loginMessage: '',
   loading: false,
@@ -80,6 +81,12 @@ export default function loginReducer(state = INITIAL_STATE, action) {
         ...state,
         loading: false,
         detailError: "Oops! We couldn't load your groups. Please try again.",
+      };
+
+    case types.USER_IMAGE_POST:
+      console.log('Entered user image post.');
+      return {
+        ...state,
       };
 
     default:

@@ -40,21 +40,21 @@ class MischiefClient {
       });
   }
   static get(resource, auth = false) {
-    const req = auth ?
-      this.makeAuthRequest('GET', resource, undefined) :
-      this.makeRequest('GET', resource, undefined);
+    const req = auth
+      ? this.makeAuthRequest('GET', resource, undefined)
+      : this.makeRequest('GET', resource, undefined);
     return this.doFetch(req);
   }
   static post(resource, body, auth = false) {
-    const req = auth ?
-      this.makeAuthRequest('POST', resource, body) :
-      this.makeRequest('POST', resource, body);
+    const req = auth
+      ? this.makeAuthRequest('POST', resource, body)
+      : this.makeRequest('POST', resource, body);
     return this.doFetch(req);
   }
   static delete(resource, auth = false) {
-    const req = auth ?
-      this.makeAuthRequest('DELETE', resource, undefined) :
-      this.makeRequest('DELETE', resource, undefined);
+    const req = auth
+      ? this.makeAuthRequest('DELETE', resource, undefined)
+      : this.makeRequest('DELETE', resource, undefined);
     return this.doFetch(req);
   }
 }

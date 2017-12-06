@@ -25,6 +25,18 @@ function userDetailsFailure() {
   return { type: types.USER_DETAILS_FAILURE };
 }
 
+function userImagePost(image) {
+  return { type: types.USER_IMAGE_POST, image };
+}
+
+function userImagePostSuccess(imageURL) {
+  return { type: types.USER_IMAGE_POST_SUCCESS, imageURL };
+}
+
+function userImagePostFailure() {
+  return { type: types.USER_IMAGE_FAILURE };
+}
+
 export function logInUser(credentials) {
   return (dispatch) => {
     dispatch(loginFetch());
@@ -59,6 +71,23 @@ export function getMyDetails() {
       .catch((error) => {
         console.error(error);
         dispatch(userDetailsFailure());
+      });
+  };
+}
+
+export function postMyImage(image) {
+  console.log(image);
+  return (dispatch) => {
+    dispatch(userImagePost());
+    return loginApi
+      .postMyImage(image)
+      .then((json) => {
+        console.log(json);
+        dispatch(userImagePostSuccess(json.image));
+      })
+      .catch((error) => {
+        console.error(error);
+        dispatch(userImagePostFailure());
       });
   };
 }
