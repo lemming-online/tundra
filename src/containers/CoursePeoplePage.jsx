@@ -32,21 +32,32 @@ class CoursePeoplePage extends React.Component {
             <AddMentorToGroupButton />
           </SectionLevelBar>
           <div className="columns is-multiline is-mobile bordered">
-            <PersonComponent firstName="Prof" lastName="Drizzy" />
             {/* this.getMentors(this.props.people, 'mentor') */}
-            {this.props.people.map((person, index) => (
-              <PersonComponent
-                key={index}
-                firstName={person.first_name}
-                lastName={person.first_name}
-              />
-            ))}
+            {this.props.people.map(
+              (person, index) =>
+                (person.title === 'mentor' ? (
+                  <PersonComponent
+                    key={index}
+                    firstName={person.first_name}
+                    lastName={person.last_name}
+                  />
+                ) : null),
+            )}
           </div>
           <SectionLevelBar title="Mentees">
             <AddUserToGroupButtons />
           </SectionLevelBar>
           <div className="columns is-multiline is-mobile bordered">
-            <PersonComponent firstName="Temp" lastName="Temp" />
+            {this.props.people.map(
+              (person, index) =>
+                (person.title === 'mentee' ? (
+                  <PersonComponent
+                    key={index}
+                    firstName={person.first_name}
+                    lastName={person.last_name}
+                  />
+                ) : null),
+            )}
           </div>
         </div>
       </section>
