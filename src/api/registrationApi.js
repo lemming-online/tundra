@@ -1,4 +1,4 @@
-import client from './mischiefClient';
+import client from './localhostClient';
 
 class RegistrationApi {
   static register(credentials) {
