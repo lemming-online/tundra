@@ -10,6 +10,7 @@ import UserProfile from './UserProfile';
 import MeetingPage from './MeetingPage';
 import GroupPage from './GroupPage';
 import AdminPage from './AdminPage';
+import ForgotPasswordPage from './ForgotPasswordPage';
 import PrivateRoute from '../components/PrivateRoute';
 
 const basename = '/';
@@ -24,6 +25,7 @@ const Root = props => (
           <Route exact path="/" component={HomePage} />
           <Route path="/signin" component={SignInUpPage} />
           <Route path="/signup" component={SignUpPage} />
+          <Route path="/forgotyourpassword" component={ForgotPasswordPage} />
           <PrivateRoute path="/user" component={UserProfile} />
           <PrivateRoute path="/meeting/:meetingID" component={MeetingPage} />
           <PrivateRoute path="/group/:groupID" component={GroupPage} />
