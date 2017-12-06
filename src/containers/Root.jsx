@@ -12,7 +12,7 @@ import GroupPage from './GroupPage';
 import AdminPage from './AdminPage';
 import PrivateRoute from '../components/PrivateRoute';
 
-const basename = '/tundra';
+const basename = '/';
 
 // FIXME: add store to proptypes
 const Root = props => (
