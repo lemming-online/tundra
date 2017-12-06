@@ -5,6 +5,10 @@ class SessionApi {
     return client.post('sessions', groupId, true);
   }
 
+  static archiveSession(groupId) {
+    return client.post(`sessions/${groupId}`, true);
+  }
+
   static addQuestionToQueue(groupId, details) {
     console.log(`groupId: ${groupId}`);
     console.log(details);
