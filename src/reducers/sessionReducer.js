@@ -2,10 +2,23 @@ import * as types from '../actions/actionTypes';
 
 const INITIAL_STATE = {
   hasCreatedQuestion: false,
+  sessionFormPopup: false,
 };
 
 export default function sessionReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case types.DISPLAY_CREATE_SESSION_FORM:
+      return {
+        ...state,
+        sessionFormPopup: true,
+      };
+
+    case types.CLOSE_CREATE_SESSION_FORM:
+      return {
+        ...state,
+        sessionFormPopup: false,
+      };
+
     case types.HELP_QUESTION_SUCCESS:
       console.log('Successfully created question');
       return {

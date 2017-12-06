@@ -1,6 +1,18 @@
 import * as types from './actionTypes';
 import SessionApi from '../api/sessionApi';
 
+function createSessionAction() {
+  return { type: types.CREATE_SESSION };
+}
+
+function displayCreateSessionFormAction() {
+  return { type: types.DISPLAY_CREATE_SESSION_FORM };
+}
+
+function closeCreateSessionFormAction() {
+  return { type: types.CLOSE_CREATE_SESSION_FORM };
+}
+
 function helpQuestionSuccess() {
   return { type: types.HELP_QUESTION_SUCCESS };
 }
@@ -42,5 +54,17 @@ export function deleteHelpQuestion(groupId, userId) {
         console.error(error);
         dispatch(deleteQuestionFailure());
       });
+  };
+}
+
+export function displayCreateSessionForm() {
+  return function goDisplayCreatSessionFormAction(dispatch) {
+    dispatch(displayCreateSessionFormAction());
+  };
+}
+
+export function closeCreateSessionForm() {
+  return function goCloseCreatSessionFormAction(dispatch) {
+    dispatch(closeCreateSessionFormAction());
   };
 }

@@ -1,6 +1,10 @@
 import client from './mischiefClient';
 
 class SessionApi {
+  static createSession(groupId) {
+    return client.post('sessions', groupId, true);
+  }
+
   static addQuestionToQueue(groupId, details) {
     console.log(`groupId: ${groupId}`);
     console.log(details);
