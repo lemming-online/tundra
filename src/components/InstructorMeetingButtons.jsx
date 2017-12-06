@@ -36,8 +36,11 @@ class InstructorCourseButtons extends React.Component {
 
   onSubmit = () => {
     const groupID = this.props.match.params.groupID;
-    console.log(groupID);
-    const body = { group_id: `${groupID}` };
+    const sessionTitle = this.state.sessionDetails.sessionTitle;
+    const body = {
+      title: sessionTitle,
+      group_id: `${groupID}`,
+    };
     console.log(body);
     this.props.createSession(body);
   };
