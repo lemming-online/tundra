@@ -64,7 +64,7 @@ class InstructorCourseButtons extends React.Component {
               <div className="field is-grouped">
                 <div className="control">
                   <button className="button" onClick={this.onSubmit}>
-                    Invite
+                    Create
                   </button>
                   <button className="button" onClick={this.onCancel}>
                     Cancel
