@@ -2,7 +2,11 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { displayCreateSessionForm, closeCreateSessionForm } from '../actions/sessionActions';
+import {
+  createSession,
+  displayCreateSessionForm,
+  closeCreateSessionForm,
+} from '../actions/sessionActions';
 import InputComponent from '../components/InputComponent';
 
 class InstructorCourseButtons extends React.Component {
@@ -31,7 +35,11 @@ class InstructorCourseButtons extends React.Component {
   };
 
   onSubmit = () => {
-    console.log('onSubmit function currently does nothing, add api call action');
+    const groupID = this.props.match.params.groupID;
+    console.log(groupID);
+    const body = { group_id: `${groupID}` };
+    console.log(body);
+    this.props.createSession(body);
   };
 
   render() {
@@ -82,6 +90,9 @@ function mapDispatchToProps(dispatch) {
     },
     closeCreateSessionForm: () => {
       dispatch(closeCreateSessionForm());
+    },
+    createSession: (body) => {
+      dispatch(createSession(body));
     },
   };
 }

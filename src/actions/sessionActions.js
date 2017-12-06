@@ -57,6 +57,19 @@ export function deleteHelpQuestion(groupId, userId) {
   };
 }
 
+export function createSession(body) {
+  return function goCreateSession(dispatch) {
+    return SessionApi.createSession(body)
+      .then((responseJson) => {
+        console.log(responseJson);
+        dispatch(createSessionAction());
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+}
+
 export function displayCreateSessionForm() {
   return function goDisplayCreatSessionFormAction(dispatch) {
     dispatch(displayCreateSessionFormAction());
