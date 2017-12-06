@@ -27,6 +27,15 @@ class MischiefClient {
       }),
     });
   }
+  static makeFileRequest(method, resource, body) {
+    return new Request(BASE_URL + resource, {
+      method,
+      body,
+      headers: new Headers({
+        Authorization: `Bearer ${localStorage.jwt}`,
+      }),
+    });
+  }
   static doFetch(request) {
     return fetch(request)
       .then((response) => {
@@ -55,6 +64,10 @@ class MischiefClient {
     const req = auth
       ? this.makeAuthRequest('DELETE', resource, undefined)
       : this.makeRequest('DELETE', resource, undefined);
+    return this.doFetch(req);
+  }
+  static postFile(resource, body) {
+    const req = this.makeFileRequest('POST', resource, body);
     return this.doFetch(req);
   }
 }

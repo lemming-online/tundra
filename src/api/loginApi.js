@@ -10,7 +10,7 @@ class LoginApi {
   }
 
   static postMyImage(image) {
-    return client.post('users/image', image, true);
+    return client.postFile('users/image', image);
   }
 }
 
