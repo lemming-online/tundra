@@ -13,7 +13,7 @@ class GroupApi {
     return client.post(`groups/${groupID}/people`, body, true);
   }
 
-  static addMenteeToGroup(body, groupID) {
+  static addMenteesToGroup(body, groupID) {
     return client.post(`groups/${groupID}/people`, body, true);
   }
 }

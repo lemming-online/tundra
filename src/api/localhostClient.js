@@ -8,12 +8,13 @@ function maybeStringify(json) {
 }
 
 class MischiefClient {
-  static makeAuthRequest(method, resource, body) {
+  static makeAuthRequest(method, resource, body, contentType = 'application/json') {
     return new Request(BASE_URL + resource, {
       method,
       // TODO: re-add maybeStringify
-      body,
+      body: maybeStringify(body),
       headers: new Headers({
+        'Content-Type': contentType,
         Authorization: `Bearer ${localStorage.jwt}`,
       }),
     });

@@ -98,11 +98,11 @@ export function addMentorToGroup(body, groupID) {
   };
 }
 
-export function addMenteeToGroup(body, groupID) {
+export function addMenteesToGroup(body, groupID) {
   console.log(`groupID in Mentee: ${groupID}`);
-  return function goAddMenteeToGroup(dispatch) {
+  return function goAddMenteesToGroup(dispatch) {
     return groupApi
-      .addMenteeToGroup(body, groupID)
+      .addMenteesToGroup(body, groupID)
       .then((responseJson) => {
         console.log(responseJson);
         dispatch(addMenteeToGroupAction());

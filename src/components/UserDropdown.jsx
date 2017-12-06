@@ -14,7 +14,7 @@ function UserDropdown(props) {
           <figure className="image is-32x32 ">
             <img
               alt="user profile pic"
-              src={`//${props.image}` || userBlank}
+              src={props.image ? `//${props.image}` : userBlank}
               className="avatar is-circle"
             />
           </figure>

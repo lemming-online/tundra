@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {
-  addMenteeToGroup,
+  addMenteesToGroup,
   addMenteesToGroupInProgress,
   cancelInvite,
 } from '../actions/groupActions';
@@ -35,21 +35,25 @@ class AddUserToGroupButtons extends React.Component {
 
   onAddMenteesSubmit = () => {
     const groupID = this.props.match.params.groupID;
-    const body = this.splitAtComma(this.state.groupDetails.menteeList, 'mentee');
+    const body = {
+      emails: this.state.groupDetails.menteeList,
+      role: 'mentee',
+    };
+
     console.log(body);
-    this.props.addMenteeToGroup(body, groupID);
+    this.props.addMenteesToGroup(body, groupID);
     console.log('Submitting Mentees');
   };
 
-  splitAtComma = (list, role) => {
-    const body = [];
-    const splitList = list.split(',');
-    splitList.forEach((email) => {
-      const jsonUser = { email, role };
-      body.push(jsonUser);
-    });
-    return body;
-  };
+  // splitAtComma = (list, role) => {
+  //   const body = [];
+  //   const splitList = list.split(',');
+  //   splitList.forEach((email) => {
+  //     const jsonUser = { email, role };
+  //     body.push(jsonUser);
+  //   });
+  //   return body;
+  // };
 
   addUserPopup = () => {
     this.props.addingUsers();
@@ -98,9 +102,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(addMenteeToGroup, dispatch),
-    addMenteeToGroup: (body, groupID) => {
-      dispatch(addMenteeToGroup(body, groupID));
+    actions: bindActionCreators(addMenteesToGroup, dispatch),
+    addMenteesToGroup: (body, groupID) => {
+      dispatch(addMenteesToGroup(body, groupID));
     },
     addingUsers: () => {
       dispatch(addMenteesToGroupInProgress());
