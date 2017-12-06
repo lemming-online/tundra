@@ -27,7 +27,11 @@ const Root = props => (
           <Route path="/signin" component={SignInUpPage} />
           <Route path="/signup" component={SignUpPage} />
           <Route path="/forgotyourpassword" component={ForgotPasswordPage} />
+<<<<<<< HEAD
           <Route path="/resetpassword/:token" component={ResetPasswordPage} />
+=======
+          <Route path="/resetpassword" component={ResetPasswordPage} />
+>>>>>>> static reset password page
           <PrivateRoute path="/user" component={UserProfile} />
           <PrivateRoute path="/meeting/:meetingID" component={MeetingPage} />
           <PrivateRoute path="/group/:groupID" component={GroupPage} />
