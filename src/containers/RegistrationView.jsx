@@ -77,8 +77,7 @@ class RegistrationView extends React.Component {
         </form>
         <p className={`signup-link ${this.props.successMessage ? 'is-hidden' : ''}`}>
           Already have an account? <Link to="/signin">Sign In.</Link>
-        </p>
-        <p className="signup-link">
+          <br />
           <Link to="/forgotyourpassword">Forgot your password? </Link>
         </p>
       </div>

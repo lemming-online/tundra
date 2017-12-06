@@ -12,6 +12,10 @@ class LoginApi {
   static postMyImage(image) {
     return client.postFile('users/image', image);
   }
+
+  static resetPassword(credentials) {
+    return client.post('users/reset', credentials);
+  }
 }
 
 export default LoginApi;
