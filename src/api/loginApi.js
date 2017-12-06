@@ -1,4 +1,4 @@
-import client from './localhostClient';
+import client from './mischiefClient';
 
 class LoginApi {
   static login(credentials) {
