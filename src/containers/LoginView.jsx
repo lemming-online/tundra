@@ -72,9 +72,6 @@ class LoginView extends React.Component {
           <br />
           <Link to="/forgotyourpassword">Forgot your password? </Link>
         </p>
-        <p className="signup-link">
-          <Link to="/forgotyourpassword">Forgot your password? </Link>
-        </p>
       </div>
     );
   }
