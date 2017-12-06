@@ -47,7 +47,7 @@ class RegistrationView extends React.Component {
         <h1 className="title">Sign Up</h1>
         <Notification warn={this.props.failMessage} />
         <Notification succ={this.props.successMessage} />
-        <form>
+        <form className={`${this.props.successMessage ? 'is-hidden' : ''}`}>
           <InputComponent title="Email" name="email" onChange={this.onChange} type="email" />
           <InputComponent
             title="Password"
@@ -68,14 +68,14 @@ class RegistrationView extends React.Component {
             <div className="control">
               <button
                 onClick={this.onSave}
-                className={`button is-primary ${this.props.loading ? 'is-loading' : ''}`}
+                className={`button is-primary ${this.props.successMessage ? 'is-hidden' : ''}`}
               >
                 Register
               </button>
             </div>
           </div>
         </form>
-        <p className="signup-link">
+        <p className={`signup-link ${this.props.successMessage ? 'is-hidden' : ''}`}>
           Already have an account? <Link to="/signin">Sign In.</Link>
         </p>
       </div>
