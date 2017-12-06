@@ -1,4 +1,4 @@
-import client from './mischiefClient';
+import client from './localhostClient';
 
 class GroupApi {
   static createGroup(details) {
@@ -15,6 +15,10 @@ class GroupApi {
 
   static addMenteesToGroup(body, groupID) {
     return client.post(`groups/${groupID}/people`, body, true);
+  }
+
+  static getPeopleInGroup(groupID) {
+    return client.get(`groups/${groupID}/people`, true);
   }
 }
 

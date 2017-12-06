@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   popup: false, // for creating groups
   menteePopup: false, // for adding users
   mentorPopup: false, // for adding mentors
+  people: [],
 };
 
 export default function groupReducer(state = INITIAL_STATE, action) {
@@ -76,6 +77,14 @@ export default function groupReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         mentorPopup: true,
+      };
+
+    case types.GET_PEOPLE_IN_GROUP:
+      console.log('from inside reducer');
+      console.log(action.json);
+      return {
+        ...state,
+        people: action.json,
       };
 
     default:

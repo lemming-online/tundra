@@ -41,6 +41,10 @@ function cancelInviteAction() {
   return { type: types.CANCEL_INVITE_TO_GROUP };
 }
 
+function getPeopleInGroupAction(json) {
+  return { type: types.GET_PEOPLE_IN_GROUP, json };
+}
+
 export function createGroup(details, id) {
   return function goCreateGroup(dispatch) {
     return groupApi
@@ -128,5 +132,20 @@ export function addMentorsToGroupInProgress() {
 export function cancelInvite() {
   return function goCancelInvite(dispatch) {
     return dispatch(cancelInviteAction());
+  };
+}
+
+export function getPeopleInGroup(groupId) {
+  return function goGetPeopleInGroup(dispatch) {
+    return groupApi
+      .getPeopleInGroup(groupId)
+      .then((responseJson) => {
+        console.log(responseJson);
+        dispatch(getPeopleInGroupAction(responseJson));
+        return responseJson;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 }
