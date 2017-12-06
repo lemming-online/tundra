@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import InstructorMeetingButtons from '../components/InstructorMeetingButtons';
+import ArchiveSessionButton from '../components/ArchiveSessionButton';
 import * as tabActions from '../actions/tabActions';
 import SectionLevelBar from '../components/SectionLevelBar';
 
@@ -37,7 +38,9 @@ class SessionPage extends React.Component {
         </section>
         <section className="section">
           <div className="container">
-            <h1 className="title">Archive</h1>
+            <SectionLevelBar title="Archive">
+              <ArchiveSessionButton />
+            </SectionLevelBar>
             <ul>
               <a
                 role="link"

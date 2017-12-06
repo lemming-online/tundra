@@ -48,7 +48,7 @@ class InstructorCourseButtons extends React.Component {
       <div className="field is-grouped">
         <div className="control">
           <button className="button" onClick={this.onClick}>
-            New Meeting
+            Create New Meeting
           </button>
           <div id="announcement-form-popup" className={`${modalActive}`}>
             <div className="modal-background" />
