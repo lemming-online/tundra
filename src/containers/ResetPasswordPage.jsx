@@ -5,13 +5,14 @@ import { resetPassword } from '../actions/loginActions';
 import InputComponent from '../components/InputComponent';
 import logo from '../images/logo2.png';
 
-class ForgotPasswordPage extends React.Component {
+class ResetPasswordPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       credentials: {
-        email: '',
+        password: '',
+        confirmed_password: '',
       },
     };
   }
@@ -25,7 +26,7 @@ class ForgotPasswordPage extends React.Component {
   onSubmit = (event) => {
     event.preventDefault();
     console.log(`email: ${this.state.credentials.email}`);
-    this.props.resetPassword({ email: this.state.credentials.email });
+    // this.props.resetPassword({ email: this.state.credentials.email });
   };
 
   render() {
@@ -33,15 +34,21 @@ class ForgotPasswordPage extends React.Component {
       <section className="section">
         <div className="container">
           <div className="columns is-centered">
-            <div className="login-box column is-6 box">
+            <div className="login-box column is-5 box">
               <img src={logo} alt="Lemming logo" className="image is-128x128 logo-img" />
               <form>
-                <h1 className="title">Forgot your password?</h1>
+                <h1 className="title">Enter your email.</h1>
                 <InputComponent
-                  title="Enter your email."
-                  name="email"
+                  title="Enter your new password."
+                  name="password"
                   onChange={this.onChange}
-                  type="email"
+                  type="password"
+                />
+                <InputComponent
+                  title="Confirm your new password."
+                  name="confirmed_password"
+                  onChange={this.onChange}
+                  type="password"
                 />
                 {/* TODO: figure out if we need submit or button */}
                 <div className="field is-grouped is-grouped-right">
@@ -74,10 +81,10 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    resetPassword: (email) => {
-      dispatch(resetPassword(email));
+    resetPassword: () => {
+      console.log('hello');
     },
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ForgotPasswordPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ResetPasswordPage);
