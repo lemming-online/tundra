@@ -140,7 +140,7 @@ export function getPeopleInGroup(groupId) {
     return groupApi
       .getPeopleInGroup(groupId)
       .then((responseJson) => {
-        console.log(responseJson);
+        // console.log(responseJson);
         dispatch(getPeopleInGroupAction(responseJson));
         return responseJson;
       })

@@ -19,9 +19,10 @@ class CoursePeoplePage extends React.Component {
 
   componentDidMount() {
     // only run once
-    console.log(this.props.match.params.groupID);
     this.props.getPeopleInGroup(`${this.props.match.params.groupID}`);
   }
+
+  getMentors(peopleJson, role) {}
 
   render() {
     return (
@@ -31,17 +32,21 @@ class CoursePeoplePage extends React.Component {
             <AddMentorToGroupButton />
           </SectionLevelBar>
           <div className="columns is-multiline is-mobile bordered">
-            <PersonComponent />
+            <PersonComponent firstName="Prof" lastName="Drizzy" />
+            {/* this.getMentors(this.props.people, 'mentor') */}
+            {this.props.people.map((person, index) => (
+              <PersonComponent
+                key={index}
+                firstName={person.first_name}
+                lastName={person.first_name}
+              />
+            ))}
           </div>
           <SectionLevelBar title="Mentees">
             <AddUserToGroupButtons />
           </SectionLevelBar>
           <div className="columns is-multiline is-mobile bordered">
-            <PersonComponent firstName="Stephen" lastName="Supercalifgailisticexpealodocious" />
-
-            <PersonComponent />
-
-            <PersonComponent />
+            <PersonComponent firstName="Temp" lastName="Temp" />
           </div>
         </div>
       </section>
@@ -50,7 +55,9 @@ class CoursePeoplePage extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    people: state.groupReducer.people,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -62,4 +69,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(CoursePeoplePage));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CoursePeoplePage));

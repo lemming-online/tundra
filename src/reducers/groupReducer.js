@@ -80,8 +80,6 @@ export default function groupReducer(state = INITIAL_STATE, action) {
       };
 
     case types.GET_PEOPLE_IN_GROUP:
-      console.log('from inside reducer');
-      console.log(action.json);
       return {
         ...state,
         people: action.json,
