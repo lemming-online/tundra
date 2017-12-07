@@ -37,6 +37,14 @@ function userImagePostFailure() {
   return { type: types.USER_IMAGE_FAILURE };
 }
 
+function resetPasswordSuccess() {
+  return { type: types.RESET_PASSWORD_SUCCESS };
+}
+
+function updatePasswordSuccess() {
+  return { type: types.UPDATE_PASSWORD };
+}
+
 export function logInUser(credentials) {
   return (dispatch) => {
     dispatch(loginFetch());
@@ -88,6 +96,33 @@ export function postMyImage(image) {
       .catch((error) => {
         console.error(error);
         dispatch(userImagePostFailure());
+      });
+  };
+}
+
+export function resetPassword(email) {
+  return dispatch =>
+    loginApi
+      .resetPassword(email)
+      .then((json) => {
+        console.log(json);
+        dispatch(resetPasswordSuccess());
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+}
+
+export function updatePassword(token, credentials) {
+  return (dispatch) => {
+    loginApi
+      .updatePassword(token, credentials)
+      .then((json) => {
+        console.log(json);
+        dispatch(updatePasswordSuccess());
+      })
+      .catch((error) => {
+        console.error(error);
       });
   };
 }
