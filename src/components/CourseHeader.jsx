@@ -17,7 +17,7 @@ class CourseHeader extends React.Component {
 
   render() {
     return (
-      <section className="hero is-primary">
+      <section className="hero is-primary is-bold">
         <div className="hero-body">
           <div className="container">
             <div className="level is-mobile">

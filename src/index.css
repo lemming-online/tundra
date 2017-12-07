@@ -111,3 +111,26 @@ div.section-level-bar.level.is-mobile > div.level-left.is-loading::after {
   left: calc(50% - (1em / 2));
   top: calc(50% - (1em / 2));
 }
+
+.card .media {
+  padding: 1rem 1rem 0rem 1rem;
+  border-top: 1px solid #dbdbdb;
+}
+
+.question-card-media .media-content {
+  margin-top: 0.3rem;
+}
+
+.question-card-media .media-content .name {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.question-card-media .media-content .location {
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+nav > div > ul > li.is-active > a {
+  color: #2e1ab5;
+}

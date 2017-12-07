@@ -33,7 +33,13 @@ class SessionPage extends React.Component {
         </section>
 
         <section className="section">
-          <QuestionCard />
+          <div className="container">
+            <div className="columns is-multiline is-mobile">
+              <QuestionCard />
+              <QuestionCard />
+              <QuestionCard />
+            </div>
+          </div>
         </section>
 
         <section className="section">

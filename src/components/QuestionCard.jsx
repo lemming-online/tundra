@@ -1,21 +1,55 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import userBlank from '../images/user-blank.png';
 // import PropTypes from 'prop-types';
 
 function QuestionCard(props) {
   return (
-    <div className="container">
-      <div className="tile is-ancestor is-4">
-        <div className="tile is-parent">
-          <article className="tile is-child box">
-            <div className="content">
-              <p className="title">
-                <Link to="/session/59fb8a073be55800b7b03546">My project won&apos;t compile</Link>
-              </p>
-              <p>I need some help because javac won&apos;t compile my Main.class.</p>
-            </div>
-          </article>
+    <div className="column is-4-desktop is-6-tablet is-12-mobile">
+      <div className="card">
+        <header className="card-header">
+          <p className="card-header-title">Question Title</p>
+          <a href="#" className="card-header-icon" aria-label="more options">
+            <span className="icon">
+              <i className="fa fa-angle-down" aria-hidden="true" />
+            </span>
+          </a>
+        </header>
+        <div className="card-content">
+          <div className="content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+            <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
+          </div>
         </div>
+        <div className="media question-card-media">
+          <div className="media-left">
+            <figure className="image is-48x48">
+              <img
+                src={props.image ? `//${props.image}` : userBlank}
+                className="avatar is-circle"
+                alt="Placeholder "
+              />
+            </figure>
+          </div>
+          <div className="media-content">
+            <p className="name is-4">John Smith</p>
+            <p className="location is-6">Seat H9</p>
+          </div>
+        </div>
+        <footer className="card-footer">
+          <a href="#" className="card-footer-item">
+            Save
+          </a>
+          <a href="#" className="card-footer-item">
+            Edit
+          </a>
+          <a href="#" className="card-footer-item">
+            Edit
+          </a>
+          <a href="#" className="card-footer-item">
+            Delete
+          </a>
+        </footer>
       </div>
     </div>
   );

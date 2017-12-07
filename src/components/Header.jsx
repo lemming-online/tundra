@@ -25,6 +25,10 @@ class Header extends React.Component {
     this.toggleNav = this.toggleNav.bind(this);
     this.hideNav = this.hideNav.bind(this);
   }
+  componentDidMount() {
+    // only run once]
+    this.props.actions.getMyDetails();
+  }
 
   hideNav() {
     return this.setState({ navToggle: false });

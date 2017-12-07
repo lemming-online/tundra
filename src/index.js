@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import jwtDecode from 'jwt-decode';
 import configureStore from './store/configureStore';
-import '../node_modules/bulma/css/bulma.css';
+import '../node_modules/bulma/css/newbulma.css';
 import '../node_modules/animate.css/animate.min.css';
 import './index.css';
 
