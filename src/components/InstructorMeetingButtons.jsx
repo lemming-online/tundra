@@ -58,7 +58,7 @@ class InstructorCourseButtons extends React.Component {
             <div className="container box">
               <InputComponent
                 name="sessionTitle"
-                title="Give this session a name!"
+                title="Give this meeting a name!"
                 onChange={this.onChange}
               />
               <div className="field is-grouped">

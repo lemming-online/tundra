@@ -62,7 +62,7 @@ class SessionPage extends React.Component {
                     tabIndex={0}
                     onClick={() => this.props.actions.openTab('lab2', 'Lab 2: Yeup')}
                   >
-                    <li>{`${session.data.title}`}</li>
+                    <li>{session.data.title}</li>
                   </a>
                 ))
                 : null}
