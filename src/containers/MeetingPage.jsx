@@ -1,9 +1,13 @@
 import React from 'react';
+import io from 'socket.io-client';
 import SessionEditorComponent from '../components/SessionEditorComponent';
 import AnnouncementForm from '../components/AnnouncementForm';
 import FeedbackForm from '../components/FeedbackForm';
 import QuestionCard from '../components/QuestionCard';
 import ViewAnnouncementsComponent from '../components/ViewAnnouncementsComponent';
+import { BASE_URL } from '../api/mischiefClient';
+
+const socket = io(BASE_URL);
 
 class MeetingPage extends React.Component {
   constructor(props) {
@@ -13,6 +17,20 @@ class MeetingPage extends React.Component {
       sessionDetails: {},
     };
   }
+
+  componentDidMount() {
+    console.log('helloooo');
+    this.socket();
+  }
+
+  socket = () => {
+    socket.on('connect', () => {
+      console.log('socket: connected');
+    });
+    socket.on('disconnect', () => {
+      console.log('socket: disconnected');
+    });
+  };
 
   render() {
     return (

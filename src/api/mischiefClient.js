@@ -1,4 +1,4 @@
-const BASE_URL = 'https://api.lemming.online/';
+export const BASE_URL = 'https://api.lemming.online/';
 
 function maybeStringify(json) {
   if (json === undefined) {
