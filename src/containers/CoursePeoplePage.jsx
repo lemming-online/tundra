@@ -1,32 +1,83 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PersonComponent from '../components/PersonComponent';
 import SectionLevelBar from '../components/SectionLevelBar';
 import AddUserToGroupButtons from '../components/AddUserToGroupButtons';
 import AddMentorToGroupButton from '../components/AddMentorToGroupButton';
+import { getPeopleInGroup } from '../actions/groupActions';
 
-function SessionPage() {
-  return (
-    <section className="section">
-      <div className="container">
-        <SectionLevelBar title="Mentors">
-          <AddMentorToGroupButton />
-        </SectionLevelBar>
-        <div className="columns is-multiline is-mobile bordered">
-          <PersonComponent />
+class CoursePeoplePage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      id: '',
+    };
+  }
+
+  componentDidMount() {
+    // only run once
+    this.props.getPeopleInGroup(`${this.props.match.params.groupID}`);
+  }
+
+  getMentors(peopleJson, role) {}
+
+  render() {
+    return (
+      <section className="section">
+        <div className="container">
+          <SectionLevelBar title="Mentors">
+            <AddMentorToGroupButton />
+          </SectionLevelBar>
+          <div className="columns is-multiline is-mobile bordered">
+            {/* this.getMentors(this.props.people, 'mentor') */}
+            {this.props.people.map(
+              (person, index) =>
+                (person.title === 'mentor' ? (
+                  <PersonComponent
+                    key={index}
+                    firstName={person.first_name}
+                    lastName={person.last_name}
+                  />
+                ) : null),
+            )}
+          </div>
+          <SectionLevelBar title="Mentees">
+            <AddUserToGroupButtons />
+          </SectionLevelBar>
+          <div className="columns is-multiline is-mobile bordered">
+            {this.props.people.map(
+              (person, index) =>
+                (person.title === 'mentee' ? (
+                  <PersonComponent
+                    key={index}
+                    firstName={person.first_name}
+                    lastName={person.last_name}
+                  />
+                ) : null),
+            )}
+          </div>
         </div>
-        <SectionLevelBar title="Mentees">
-          <AddUserToGroupButtons />
-        </SectionLevelBar>
-        <div className="columns is-multiline is-mobile bordered">
-          <PersonComponent firstName="Stephen" lastName="Supercalifgailisticexpealodocious" />
-
-          <PersonComponent />
-
-          <PersonComponent />
-        </div>
-      </div>
-    </section>
-  );
+      </section>
+    );
+  }
 }
 
-export default SessionPage;
+function mapStateToProps(state) {
+  return {
+    people: state.groupReducer.people,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(getPeopleInGroup, dispatch),
+    getPeopleInGroup: (groupId) => {
+      dispatch(getPeopleInGroup(groupId));
+    },
+  };
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CoursePeoplePage));
