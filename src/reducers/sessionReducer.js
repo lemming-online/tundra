@@ -3,6 +3,7 @@ import * as types from '../actions/actionTypes';
 const INITIAL_STATE = {
   hasCreatedQuestion: false,
   sessionFormPopup: false,
+  hasSession: false,
 };
 
 export default function sessionReducer(state = INITIAL_STATE, action) {
@@ -11,6 +12,7 @@ export default function sessionReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         sessionFormPopup: true,
+        hasSession: true,
       };
 
     case types.CLOSE_CREATE_SESSION_FORM:
@@ -43,6 +45,12 @@ export default function sessionReducer(state = INITIAL_STATE, action) {
       console.log('Question was not deleted.');
       return {
         ...state,
+      };
+
+    case types.ARCHIVE_SESSION:
+      return {
+        ...state,
+        hasSession: false,
       };
 
     default:

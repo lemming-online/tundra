@@ -5,6 +5,7 @@ import {
   createSession,
   displayCreateSessionForm,
   closeCreateSessionForm,
+  archiveSession,
 } from '../actions/sessionActions';
 
 class ArchiveSessionButton extends React.Component {
@@ -17,6 +18,12 @@ class ArchiveSessionButton extends React.Component {
       },
     };
   }
+
+  onClick = () => {
+    const groupID = this.props.match.params.groupID;
+    this.props.archiveSession(groupID);
+    console.log('onClick Archive');
+  };
 
   render() {
     return (
@@ -49,6 +56,9 @@ function mapDispatchToProps(dispatch) {
     },
     createSession: (body) => {
       dispatch(createSession(body));
+    },
+    archiveSession: (groupId) => {
+      dispatch(archiveSession(groupId));
     },
   };
 }

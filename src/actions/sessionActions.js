@@ -29,6 +29,10 @@ function deleteQuestionFailure() {
   return { type: types.DELETE_QUESTION_FAILURE };
 }
 
+function archiveSessionAction() {
+  return { type: types.ARCHIVE_SESSION };
+}
+
 export function createHelpQuestion(jwt, groupId, details) {
   return function goCreateHelpQuestion(dispatch) {
     return SessionApi.addQuestionToQueue(jwt, groupId, details)
@@ -79,5 +83,11 @@ export function displayCreateSessionForm() {
 export function closeCreateSessionForm() {
   return function goCloseCreatSessionFormAction(dispatch) {
     dispatch(closeCreateSessionFormAction());
+  };
+}
+
+export function archiveSession(groupId) {
+  return function goArchiveSession(dispatch) {
+    dispatch(archiveSessionAction(groupId));
   };
 }
