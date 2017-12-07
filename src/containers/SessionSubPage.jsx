@@ -32,7 +32,7 @@ class SessionPage extends React.Component {
       <div>
         <section className="section">
           <div className="container">
-            <SectionLevelBar title="Meetings" live>
+            <SectionLevelBar title="Meetings" live={this.props.liveSession}>
               <InstructorMeetingButtons />
             </SectionLevelBar>
 
