@@ -12,6 +12,10 @@ class LoginApi {
   static resetPassword(credentials) {
     return client.post('users/reset', credentials);
   }
+
+  static updatePassword(token) {
+    return client.post(`users/reset/${token}`);
+  }
 }
 
 export default LoginApi;

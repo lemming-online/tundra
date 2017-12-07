@@ -82,6 +82,12 @@ export default function loginReducer(state = INITIAL_STATE, action) {
         detailError: "Oops! We couldn't load your groups. Please try again.",
       };
 
+    case types.UPDATE_PASSWORD:
+      console.log('password was updated');
+      return {
+        ...state,
+      };
+
     default:
       return state;
   }

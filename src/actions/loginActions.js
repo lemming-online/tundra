@@ -29,6 +29,10 @@ function resetPasswordSuccessAction() {
   return { type: types.RESET_PASSWORD_SUCCESS };
 }
 
+function updatePasswordAction() {
+  return { type: types.UPDATE_PASSWORD };
+}
+
 export function logInUser(credentials) {
   return (dispatch) => {
     dispatch(loginFetch());
@@ -78,4 +82,18 @@ export function resetPassword(email) {
       .catch((error) => {
         console.log(error);
       });
+}
+
+export function updatePassword(token) {
+  return (dispatch) => {
+    loginApi
+      .updatePassword(token)
+      .then((json) => {
+        console.log(json);
+        dispatch(updatePasswordAction());
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 }
