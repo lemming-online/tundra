@@ -17,15 +17,10 @@ class SessionApi {
     return client.get(`sessions/${groupId}/archived`, true);
   }
   static addQuestionToQueue(groupId, details) {
-    console.log(`groupId: ${groupId}`);
-    console.log(details);
-
     return client.post(`sessions/${groupId}/add`, details, true);
   }
 
   static deleteQuestionFromQueue(groupId, userId) {
-    console.log(`groupId: ${groupId}`);
-
     return client.delete(`sessions/${groupId}/remove/${userId}`, true);
   }
 }

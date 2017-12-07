@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import InstructorMeetingButtons from '../components/InstructorMeetingButtons';
 import ArchiveSessionButton from '../components/ArchiveSessionButton';
 import * as tabActions from '../actions/tabActions';
@@ -33,13 +33,13 @@ class SessionPage extends React.Component {
             </SectionLevelBar>
 
             <ul>
-              {this.props.hasSession === true ? (
+              {this.props.liveSession !== undefined ? (
                 <a
                   role="link"
                   tabIndex={0}
                   onClick={() => this.props.actions.openTab('lab3', 'Lab 3: Beginner Vaporization')}
                 >
-                  <li>{this.props.liveSession.session.title}</li>
+                  <li>{this.props.liveSession.title}</li>
                 </a>
               ) : null}
             </ul>
@@ -57,7 +57,7 @@ class SessionPage extends React.Component {
                   tabIndex={0}
                   onClick={() => this.props.actions.openTab('lab2', 'Lab 2: Yeup')}
                 >
-                  <li>{`${session.data.title} ${session.data.date}`}</li>
+                  <li>{`${session.data.title}`}</li>
                 </a>
               ))}
             </ul>
@@ -71,7 +71,7 @@ class SessionPage extends React.Component {
 function mapStateToProps(state) {
   return {
     tabs: state.tabReducer.tabs,
-    liveSession: state.sessionReducer.liveSession,
+    liveSession: state.sessionReducer.liveSession.session,
     archivedSessions: state.sessionReducer.archivedSessions,
     hasSession: state.sessionReducer.hasSession,
   };
