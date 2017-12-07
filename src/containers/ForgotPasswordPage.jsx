@@ -33,7 +33,7 @@ class ForgotPasswordPage extends React.Component {
       <section className="section">
         <div className="container">
           <div className="columns is-centered">
-            <div className="login-box column is-6F box">
+            <div className="login-box column is-6 box">
               <img src={logo} alt="Lemming logo" className="image is-128x128 logo-img" />
               <form>
                 <h1 className="title">Forgot your password?</h1>

@@ -113,10 +113,10 @@ export function resetPassword(email) {
       });
 }
 
-export function updatePassword(token) {
+export function updatePassword(token, credentials) {
   return (dispatch) => {
     loginApi
-      .updatePassword(token)
+      .updatePassword(token, credentials)
       .then((json) => {
         console.log(json);
         dispatch(updatePasswordSuccess());

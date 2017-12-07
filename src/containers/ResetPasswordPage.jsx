@@ -27,7 +27,7 @@ class ResetPasswordPage extends React.Component {
     event.preventDefault();
     const token = this.props.match.params.token;
     if (this.checkIfPasswordsEqual() === true) {
-      this.props.updatePassword(token);
+      this.props.updatePassword(token, { new_password: this.state.credentials.password });
     }
   };
 
@@ -94,8 +94,8 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    updatePassword: (token) => {
-      dispatch(updatePassword(token));
+    updatePassword: (token, credentials) => {
+      dispatch(updatePassword(token, credentials));
     },
   };
 }

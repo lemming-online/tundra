@@ -17,8 +17,8 @@ class LoginApi {
     return client.post('users/reset', credentials);
   }
 
-  static updatePassword(token) {
-    return client.post(`users/reset/${token}`);
+  static updatePassword(token, credentials) {
+    return client.post(`users/reset/${token}`, credentials);
   }
 }
 
