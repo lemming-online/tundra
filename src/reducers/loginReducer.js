@@ -90,6 +90,12 @@ export default function loginReducer(state = INITIAL_STATE, action) {
         ...state,
       };
 
+    case types.UPDATE_PASSWORD:
+      console.log('password was updated');
+      return {
+        ...state,
+      };
+
     case types.USER_IMAGE_POST_SUCCESS:
       console.log('Entered user image post.');
       return {
