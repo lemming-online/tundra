@@ -38,10 +38,7 @@ function QuestionCard(props) {
         </div>
         <footer className="card-footer">
           <a href="#" className="card-footer-item">
-            Save
-          </a>
-          <a href="#" className="card-footer-item">
-            Edit
+            Claim
           </a>
           <a href="#" className="card-footer-item">
             Edit
