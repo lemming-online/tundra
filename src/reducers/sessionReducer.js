@@ -56,10 +56,13 @@ export default function sessionReducer(state = INITIAL_STATE, action) {
       };
 
     case types.ARCHIVE_SESSION:
+      console.log('archive session reducer');
+      console.log(action.json);
       return {
         ...state,
         hasSession: false,
         liveSession: [],
+        archivedSessions: action.json,
       };
 
     case types.GET_LIVE_SESSION:

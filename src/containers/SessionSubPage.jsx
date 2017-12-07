@@ -19,7 +19,12 @@ class SessionPage extends React.Component {
 
   componentDidMount() {
     const groupID = this.props.match.params.groupID;
-    this.props.getArchivedSessions(groupID);
+    if (this.props.archivedSessions.length === 0) {
+      this.props.getArchivedSessions(groupID);
+    }
+    if (this.props.liveSession === null) {
+      this.props.getLiveSession(groupID);
+    }
   }
 
   render() {
@@ -50,15 +55,17 @@ class SessionPage extends React.Component {
               <ArchiveSessionButton />
             </SectionLevelBar>
             <ul>
-              {this.props.archivedSessions.reverse().map((session, index) => (
-                <a
-                  role="link"
-                  tabIndex={0}
-                  onClick={() => this.props.actions.openTab('lab2', 'Lab 2: Yeup')}
-                >
-                  <li>{`${session.data.title}`}</li>
-                </a>
-              ))}
+              {this.props.archivedSessions !== undefined
+                ? this.props.archivedSessions.reverse().map((session, index) => (
+                  <a
+                    role="link"
+                    tabIndex={0}
+                    onClick={() => this.props.actions.openTab('lab2', 'Lab 2: Yeup')}
+                  >
+                    <li>{`${session.data.title}`}</li>
+                  </a>
+                ))
+                : null}
             </ul>
           </div>
         </section>
@@ -72,7 +79,6 @@ function mapStateToProps(state) {
     tabs: state.tabReducer.tabs,
     liveSession: state.sessionReducer.liveSession.session,
     archivedSessions: state.sessionReducer.archivedSessions,
-    hasSession: state.sessionReducer.hasSession,
   };
 }
 function mapDispatchToProps(dispatch) {

@@ -29,8 +29,8 @@ function deleteQuestionFailure() {
   return { type: types.DELETE_QUESTION_FAILURE };
 }
 
-function archiveSessionAction() {
-  return { type: types.ARCHIVE_SESSION };
+function archiveSessionAction(json) {
+  return { type: types.ARCHIVE_SESSION, json };
 }
 
 function getLiveSessionAction(json) {
@@ -98,8 +98,9 @@ export function archiveSession(groupId) {
   return function goArchiveSession(dispatch) {
     return SessionApi.archiveSession(groupId)
       .then((responseJson) => {
+        console.log('from action call:');
         console.log(responseJson);
-        dispatch(archiveSessionAction());
+        dispatch(archiveSessionAction(responseJson));
       })
       .catch((error) => {
         console.error(error);
