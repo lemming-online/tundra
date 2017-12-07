@@ -18,17 +18,12 @@ class SessionPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getLiveSession(this.props.match.params.groupID);
-    if (this.props.archivedSessions === 0) {
-      this.props.getArchivedSessions(this.props.match.params.groupID);
-    }
+    const groupID = this.props.match.params.groupID;
+    this.props.getLiveSession(groupID);
+    this.props.getArchivedSessions(groupID);
   }
 
   render() {
-    console.log('in render:');
-    console.log(this.props.liveSession);
-    console.log(this.props.archivedSessions);
-    console.log('in 315251:');
     return (
       <div>
         <section className="section">
@@ -56,13 +51,13 @@ class SessionPage extends React.Component {
               <ArchiveSessionButton />
             </SectionLevelBar>
             <ul>
-              {this.props.archivedSessions.map((session, index) => (
+              {this.props.archivedSessions.reverse().map((session, index) => (
                 <a
                   role="link"
                   tabIndex={0}
                   onClick={() => this.props.actions.openTab('lab2', 'Lab 2: Yeup')}
                 >
-                  <li>Lab 2: Budding Out</li>
+                  <li>{`${session.data.title} ${session.data.date}`}</li>
                 </a>
               ))}
             </ul>

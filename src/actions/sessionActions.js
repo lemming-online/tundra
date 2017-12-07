@@ -37,8 +37,8 @@ function getLiveSessionAction(json) {
   return { type: types.GET_LIVE_SESSION, json };
 }
 
-function getArchivedSessionsAction() {
-  return { type: types.GET_ARCHIVED_SESSIONS };
+function getArchivedSessionsAction(json) {
+  return { type: types.GET_ARCHIVED_SESSIONS, json };
 }
 
 export function createHelpQuestion(jwt, groupId, details) {
@@ -126,7 +126,7 @@ export function getArchivedSessions(groupId) {
       .then((responseJson) => {
         console.log('archive session action');
         console.log(responseJson);
-        dispatch(getArchivedSessionsAction(groupId));
+        dispatch(getArchivedSessionsAction(responseJson));
       })
       .catch((error) => {
         console.error(error);
