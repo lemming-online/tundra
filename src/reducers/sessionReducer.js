@@ -53,6 +53,16 @@ export default function sessionReducer(state = INITIAL_STATE, action) {
         hasSession: false,
       };
 
+    case types.GET_LIVE_SESSION:
+      return {
+        ...state,
+      };
+
+    case types.GET_ARCHIVED_SESSIONS:
+      return {
+        ...state,
+      };
+
     default:
       return state;
   }

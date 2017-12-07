@@ -33,6 +33,14 @@ function archiveSessionAction() {
   return { type: types.ARCHIVE_SESSION };
 }
 
+function getLiveSessionAction() {
+  return { type: types.GET_LIVE_SESSION };
+}
+
+function getArchivedSessionsAction() {
+  return { type: types.GET_ARCHIVED_SESSIONS };
+}
+
 export function createHelpQuestion(jwt, groupId, details) {
   return function goCreateHelpQuestion(dispatch) {
     return SessionApi.addQuestionToQueue(jwt, groupId, details)
@@ -88,6 +96,25 @@ export function closeCreateSessionForm() {
 
 export function archiveSession(groupId) {
   return function goArchiveSession(dispatch) {
-    dispatch(archiveSessionAction(groupId));
+    return SessionApi.archiveSession(groupId)
+      .then((responseJson) => {
+        console.log(responseJson);
+        dispatch(archiveSessionAction());
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+}
+
+export function getLiveSession(groupId) {
+  return function goGetLiveSession(dispatch) {
+    dispatch(getLiveSessionAction());
+  };
+}
+
+export function getArchivedSessions(groupId) {
+  return function goGetArchivedSessions(dispatch) {
+    dispatch(getArchivedSessions());
   };
 }

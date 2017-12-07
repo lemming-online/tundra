@@ -1,12 +1,16 @@
 import client from './localhostClient';
 
 class SessionApi {
-  static createSession(groupId) {
-    return client.post('sessions', groupId, true);
+  static createSession(body) {
+    return client.post('sessions', body, true);
   }
 
   static archiveSession(groupId) {
-    return client.post(`sessions/${groupId}`, true);
+    return client.delete(`sessions/${groupId}`, true);
+  }
+
+  static getLiveSession(groupId) {
+    return client.get();
   }
 
   static addQuestionToQueue(groupId, details) {
