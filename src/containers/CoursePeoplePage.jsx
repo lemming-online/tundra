@@ -28,7 +28,7 @@ class CoursePeoplePage extends React.Component {
     return (
       <section className="section">
         <div className="container">
-          <SectionLevelBar title="Mentors">
+          <SectionLevelBar title="Mentors" loading={this.props.peopleLoading}>
             <AddMentorToGroupButton />
           </SectionLevelBar>
           <div className="columns is-multiline is-mobile bordered">
@@ -44,7 +44,7 @@ class CoursePeoplePage extends React.Component {
                 ) : null),
             )}
           </div>
-          <SectionLevelBar title="Mentees">
+          <SectionLevelBar title="Mentees" loading={this.props.peopleLoading}>
             <AddUserToGroupButtons />
           </SectionLevelBar>
           <div className="columns is-multiline is-mobile bordered">
@@ -68,6 +68,7 @@ class CoursePeoplePage extends React.Component {
 function mapStateToProps(state) {
   return {
     people: state.groupReducer.people,
+    peopleLoading: state.groupReducer.peopleLoading,
   };
 }
 
