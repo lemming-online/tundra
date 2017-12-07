@@ -100,7 +100,7 @@ export default function loginReducer(state = INITIAL_STATE, action) {
       console.log('Entered user image post.');
       return {
         ...state,
-        image: action.image,
+        image: `//${action.image}`,
       };
 
     default:
