@@ -5,15 +5,20 @@ const INITIAL_STATE = {
   sessionFormPopup: false,
   hasSession: false,
   liveSession: [],
+  archivedSessions: [],
 };
 
 export default function sessionReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case types.CREATE_SESSION:
+      return {
+        ...state,
+        hasSession: true,
+      };
     case types.DISPLAY_CREATE_SESSION_FORM:
       return {
         ...state,
         sessionFormPopup: true,
-        hasSession: true,
       };
 
     case types.CLOSE_CREATE_SESSION_FORM:
@@ -63,6 +68,7 @@ export default function sessionReducer(state = INITIAL_STATE, action) {
     case types.GET_ARCHIVED_SESSIONS:
       return {
         ...state,
+        archivedSessions: action.json,
       };
 
     default:

@@ -13,6 +13,9 @@ class SessionApi {
     return client.get(`sessions/${groupId}`, true);
   }
 
+  static getArchivedSessions(groupId) {
+    return client.get(`sessions/${groupId}/archived`, true);
+  }
   static addQuestionToQueue(groupId, details) {
     console.log(`groupId: ${groupId}`);
     console.log(details);

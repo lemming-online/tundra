@@ -122,6 +122,14 @@ export function getLiveSession(groupId) {
 
 export function getArchivedSessions(groupId) {
   return function goGetArchivedSessions(dispatch) {
-    dispatch(getArchivedSessions());
+    return SessionApi.getArchivedSessions(groupId)
+      .then((responseJson) => {
+        console.log('archive session action');
+        console.log(responseJson);
+        dispatch(getArchivedSessionsAction(groupId));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 }
