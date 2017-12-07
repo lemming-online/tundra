@@ -56,7 +56,7 @@ class SessionPage extends React.Component {
             </SectionLevelBar>
             <ul>
               {this.props.archivedSessions !== undefined
-                ? this.props.archivedSessions.reverse().map((session, index) => (
+                ? Object.values(this.props.archivedSessions).map((session, index) => (
                   <a
                     role="link"
                     tabIndex={0}
