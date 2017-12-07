@@ -41,13 +41,10 @@ function resetPasswordSuccess() {
   return { type: types.RESET_PASSWORD_SUCCESS };
 }
 
-<<<<<<< HEAD
-function updatePasswordAction() {
+function updatePasswordSuccess() {
   return { type: types.UPDATE_PASSWORD };
 }
 
-=======
->>>>>>> successfully make password reset call and receive email
 export function logInUser(credentials) {
   return (dispatch) => {
     dispatch(loginFetch());
@@ -109,19 +106,6 @@ export function resetPassword(email) {
       .resetPassword(email)
       .then((json) => {
         console.log(json);
-        dispatch(resetPasswordSuccessAction());
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-}
-
-export function resetPassword(email) {
-  return dispatch =>
-    loginApi
-      .resetPassword(email)
-      .then((json) => {
-        console.log(json);
         dispatch(resetPasswordSuccess());
       })
       .catch((error) => {
@@ -135,7 +119,7 @@ export function updatePassword(token) {
       .updatePassword(token)
       .then((json) => {
         console.log(json);
-        dispatch(updatePasswordAction());
+        dispatch(updatePasswordSuccess());
       })
       .catch((error) => {
         console.error(error);
