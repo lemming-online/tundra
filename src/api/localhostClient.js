@@ -8,23 +8,31 @@ function maybeStringify(json) {
 }
 
 class MischiefClient {
-  static makeAuthRequest(method, resource, body, contentType = 'application/json') {
+  static makeAuthRequest(method, resource, body) {
     return new Request(BASE_URL + resource, {
       method,
-      // TODO: re-add maybeStringify
       body: maybeStringify(body),
       headers: new Headers({
-        'Content-Type': contentType,
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.jwt}`,
       }),
     });
   }
-  static makeRequest(method, resource, body, contentType = 'application/json') {
+  static makeRequest(method, resource, body) {
     return new Request(BASE_URL + resource, {
       method,
       body: maybeStringify(body),
       headers: new Headers({
-        'Content-Type': contentType,
+        'Content-Type': 'application/json',
+      }),
+    });
+  }
+  static makeFileRequest(method, resource, body) {
+    return new Request(BASE_URL + resource, {
+      method,
+      body,
+      headers: new Headers({
+        Authorization: `Bearer ${localStorage.jwt}`,
       }),
     });
   }
@@ -56,6 +64,10 @@ class MischiefClient {
     const req = auth
       ? this.makeAuthRequest('DELETE', resource, undefined)
       : this.makeRequest('DELETE', resource, undefined);
+    return this.doFetch(req);
+  }
+  static postFile(resource, body) {
+    const req = this.makeFileRequest('POST', resource, body);
     return this.doFetch(req);
   }
 }
