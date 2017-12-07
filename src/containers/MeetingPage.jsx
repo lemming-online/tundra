@@ -1,5 +1,6 @@
 import React from 'react';
 import io from 'socket.io-client';
+import { withRouter } from 'react-router-dom';
 import SessionEditorComponent from '../components/SessionEditorComponent';
 import AnnouncementForm from '../components/AnnouncementForm';
 import FeedbackForm from '../components/FeedbackForm';
@@ -7,7 +8,7 @@ import QuestionCard from '../components/QuestionCard';
 import ViewAnnouncementsComponent from '../components/ViewAnnouncementsComponent';
 import { BASE_URL } from '../api/mischiefClient';
 
-const socket = io(BASE_URL);
+let socket = null;
 
 class MeetingPage extends React.Component {
   constructor(props) {
@@ -24,8 +25,11 @@ class MeetingPage extends React.Component {
   }
 
   socket = () => {
+    socket = io(BASE_URL);
     socket.on('connect', () => {
+      const groupID = this.props.match.params.groupID;
       console.log('socket: connected');
+      socket.emit('room', groupID);
     });
     socket.on('disconnect', () => {
       console.log('socket: disconnected');
@@ -69,4 +73,4 @@ class MeetingPage extends React.Component {
   }
 }
 
-export default MeetingPage;
+export default withRouter(MeetingPage);
