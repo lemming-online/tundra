@@ -16,6 +16,10 @@ class GroupApi {
   static addMenteesToGroup(body, groupID) {
     return client.post(`groups/${groupID}/people`, body, true);
   }
+
+  static getPeopleInGroup(groupID) {
+    return client.get(`groups/${groupID}/people`, true);
+  }
 }
 
 export default GroupApi;

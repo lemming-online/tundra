@@ -32,7 +32,7 @@ class SessionPage extends React.Component {
       <div>
         <section className="section">
           <div className="container">
-            <SectionLevelBar title="Meetings" live>
+            <SectionLevelBar title="Meetings" live={this.props.liveSession}>
               <InstructorMeetingButtons />
             </SectionLevelBar>
 
@@ -56,13 +56,13 @@ class SessionPage extends React.Component {
             </SectionLevelBar>
             <ul>
               {this.props.archivedSessions !== undefined
-                ? this.props.archivedSessions.reverse().map((session, index) => (
+                ? Object.values(this.props.archivedSessions).map((session, index) => (
                   <a
                     role="link"
                     tabIndex={0}
                     onClick={() => this.props.actions.openTab('lab2', 'Lab 2: Yeup')}
                   >
-                    <li>{`${session.data.title}`}</li>
+                    <li>{session.data.title}</li>
                   </a>
                 ))
                 : null}

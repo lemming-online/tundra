@@ -98,7 +98,7 @@ class UserProfile extends React.Component {
             <div className="column box">
               <div className="">
                 <Dropzone multiple={false} accept="image/*" onDrop={files => this.onDrop(files)}>
-                  <img src={`//${this.props.image}`} alt="user profile" />
+                  <img src={`${this.props.image}`} alt="user profile" />
                 </Dropzone>
                 <h1 className="title subtitle">{`${this.props.firstName} ${
                   this.props.lastName

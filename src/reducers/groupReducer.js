@@ -3,9 +3,11 @@ import * as types from '../actions/actionTypes';
 const INITIAL_STATE = {
   groupsCreatedCount: 0,
   loading: true,
+  peopleLoading: true,
   popup: false, // for creating groups
   menteePopup: false, // for adding users
   mentorPopup: false, // for adding mentors
+  people: [],
 };
 
 export default function groupReducer(state = INITIAL_STATE, action) {
@@ -76,6 +78,19 @@ export default function groupReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         mentorPopup: true,
+      };
+
+    case types.GET_PEOPLE_IN_GROUP_FETCH:
+      return {
+        ...state,
+        peopleLoading: true,
+      };
+
+    case types.GET_PEOPLE_IN_GROUP:
+      return {
+        ...state,
+        peopleLoading: false,
+        people: action.json,
       };
 
     default:

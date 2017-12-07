@@ -6,6 +6,7 @@ import AnnouncementForm from '../components/AnnouncementForm';
 import FeedbackForm from '../components/FeedbackForm';
 import QuestionCard from '../components/QuestionCard';
 import ViewAnnouncementsComponent from '../components/ViewAnnouncementsComponent';
+import SectionLevelBar from '../components/SectionLevelBar';
 import { BASE_URL } from '../api/mischiefClient';
 
 let socket = null;
@@ -41,12 +42,14 @@ class MeetingPage extends React.Component {
       <div>
         <section className="section">
           <div className="container">
-            <h1 className="title">Lab 3: Beginner Vaporization</h1>
+            <SectionLevelBar
+              title="Meeting Title"
+              loading={this.props.loading}
+              error={this.props.detailError}
+            >
+              <AnnouncementForm />
+            </SectionLevelBar>
           </div>
-        </section>
-
-        <section className="section">
-          <AnnouncementForm />
         </section>
 
         <ViewAnnouncementsComponent />

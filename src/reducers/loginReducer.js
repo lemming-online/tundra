@@ -27,6 +27,7 @@ export default function loginReducer(state = INITIAL_STATE, action) {
       console.log('Login fetch.');
       return {
         ...state,
+        detailError: '',
         loading: true,
       };
 
@@ -73,7 +74,7 @@ export default function loginReducer(state = INITIAL_STATE, action) {
         loading: false,
         detailError: '',
         groups: action.json.groups,
-        image: action.json.user.image,
+        image: `//${action.json.user.image}`,
       };
 
     case types.USER_DETAILS_FAILURE:
@@ -90,11 +91,17 @@ export default function loginReducer(state = INITIAL_STATE, action) {
         ...state,
       };
 
+    case types.UPDATE_PASSWORD:
+      console.log('password was updated');
+      return {
+        ...state,
+      };
+
     case types.USER_IMAGE_POST_SUCCESS:
       console.log('Entered user image post.');
       return {
         ...state,
-        image: action.image,
+        image: `//${action.image}`,
       };
 
     default:
