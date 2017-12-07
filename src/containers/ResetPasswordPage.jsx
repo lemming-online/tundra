@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { resetPassword } from '../actions/loginActions';
+import { updatePassword } from '../actions/loginActions';
 import InputComponent from '../components/InputComponent';
 import logo from '../images/logo2.png';
 
@@ -25,8 +25,23 @@ class ResetPasswordPage extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    console.log(`email: ${this.state.credentials.email}`);
-    // this.props.resetPassword({ email: this.state.credentials.email });
+
+    if (this.checkIfPasswordsEqual() === true) {
+      this.props.updatePassword(
+        'b%27eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImFua2l0LnBhdGFuYWlrQGdtYWlsLmNvbSJ9.Xvy3KxApqn2BW4GnqNYw6wCMushXK7G38f5hcTbGjw8%27',
+      );
+    }
+  };
+
+  checkIfPasswordsEqual = () => {
+    const password = this.state.credentials.password;
+    const confirmedPassword = this.state.credentials.confirmed_password;
+    if (password === confirmedPassword) {
+      console.log('Passwords are equal');
+      return true;
+    }
+    console.log('Passwords do not match');
+    return false;
   };
 
   render() {
@@ -37,7 +52,7 @@ class ResetPasswordPage extends React.Component {
             <div className="login-box column is-5 box">
               <img src={logo} alt="Lemming logo" className="image is-128x128 logo-img" />
               <form>
-                <h1 className="title">Enter your email.</h1>
+                <h1 className="title">Password Reset.</h1>
                 <InputComponent
                   title="Enter your new password."
                   name="password"
@@ -81,8 +96,8 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    resetPassword: () => {
-      console.log('hello');
+    updatePassword: (token) => {
+      dispatch(updatePassword(token));
     },
   };
 }

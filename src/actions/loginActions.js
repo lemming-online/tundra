@@ -41,6 +41,10 @@ function resetPasswordSuccess() {
   return { type: types.RESET_PASSWORD_SUCCESS };
 }
 
+function updatePasswordSuccess() {
+  return { type: types.UPDATE_PASSWORD };
+}
+
 export function logInUser(credentials) {
   return (dispatch) => {
     dispatch(loginFetch());
@@ -79,7 +83,6 @@ export function getMyDetails() {
   };
 }
 
-<<<<<<< HEAD
 export function postMyImage(image) {
   console.log(image);
   return (dispatch) => {
@@ -95,17 +98,31 @@ export function postMyImage(image) {
         dispatch(userImagePostFailure());
       });
   };
-=======
+}
+
 export function resetPassword(email) {
   return dispatch =>
     loginApi
       .resetPassword(email)
       .then((json) => {
         console.log(json);
-        dispatch(resetPasswordSuccessAction());
+        dispatch(resetPasswordSuccess());
       })
       .catch((error) => {
         console.log(error);
       });
->>>>>>> successfully make password reset call and receive email
+}
+
+export function updatePassword(token) {
+  return (dispatch) => {
+    loginApi
+      .updatePassword(token)
+      .then((json) => {
+        console.log(json);
+        dispatch(updatePasswordSuccess());
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 }
