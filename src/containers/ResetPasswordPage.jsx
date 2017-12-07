@@ -25,11 +25,9 @@ class ResetPasswordPage extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-
+    const token = this.props.match.params.token;
     if (this.checkIfPasswordsEqual() === true) {
-      this.props.updatePassword(
-        'b%27eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImFua2l0LnBhdGFuYWlrQGdtYWlsLmNvbSJ9.Xvy3KxApqn2BW4GnqNYw6wCMushXK7G38f5hcTbGjw8%27',
-      );
+      this.props.updatePassword(token);
     }
   };
 
