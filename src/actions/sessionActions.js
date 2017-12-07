@@ -1,8 +1,8 @@
 import * as types from './actionTypes';
 import SessionApi from '../api/sessionApi';
 
-function createSessionAction() {
-  return { type: types.CREATE_SESSION };
+function createSessionAction(json) {
+  return { type: types.CREATE_SESSION, json };
 }
 
 function displayCreateSessionFormAction() {
@@ -74,7 +74,7 @@ export function createSession(body) {
     return SessionApi.createSession(body)
       .then((responseJson) => {
         console.log(responseJson);
-        dispatch(createSessionAction());
+        dispatch(createSessionAction(responseJson));
       })
       .catch((error) => {
         console.log(error);

@@ -14,6 +14,8 @@ export default function sessionReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         hasSession: true,
+        liveSession: action.json,
+        sessionFormPopup: false,
       };
     case types.DISPLAY_CREATE_SESSION_FORM:
       return {

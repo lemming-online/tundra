@@ -19,7 +19,6 @@ class SessionPage extends React.Component {
 
   componentDidMount() {
     const groupID = this.props.match.params.groupID;
-    this.props.getLiveSession(groupID);
     this.props.getArchivedSessions(groupID);
   }
 
