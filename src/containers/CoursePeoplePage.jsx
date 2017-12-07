@@ -40,7 +40,7 @@ class CoursePeoplePage extends React.Component {
                     key={index}
                     firstName={person.first_name}
                     lastName={person.last_name}
-                    imgUrl={person.image}
+                    imgUrl={`//${person.image}`}
                   />
                 ) : null),
             )}
@@ -56,6 +56,7 @@ class CoursePeoplePage extends React.Component {
                     key={index}
                     firstName={person.first_name}
                     lastName={person.last_name}
+                    imgUrl={`//${person.image}`}
                   />
                 ) : null),
             )}

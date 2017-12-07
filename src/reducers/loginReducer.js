@@ -27,6 +27,7 @@ export default function loginReducer(state = INITIAL_STATE, action) {
       console.log('Login fetch.');
       return {
         ...state,
+        detailError: '',
         loading: true,
       };
 
