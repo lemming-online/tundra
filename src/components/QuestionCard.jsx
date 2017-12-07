@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import userBlank from '../images/user-blank.png';
 // import PropTypes from 'prop-types';
 
@@ -9,7 +9,7 @@ function QuestionCard(props) {
       <div className="card">
         <header className="card-header">
           <p className="card-header-title">Question Title</p>
-          <a href="#" className="card-header-icon" aria-label="more options">
+          <a role="button" className="card-header-icon" aria-label="more options">
             <span className="icon">
               <i className="fa fa-angle-down" aria-hidden="true" />
             </span>
@@ -18,7 +18,6 @@ function QuestionCard(props) {
         <div className="card-content">
           <div className="content">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-            <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
           </div>
         </div>
         <div className="media question-card-media">
@@ -37,13 +36,13 @@ function QuestionCard(props) {
           </div>
         </div>
         <footer className="card-footer">
-          <a href="#" className="card-footer-item">
+          <a role="button" className="card-footer-item">
             Claim
           </a>
-          <a href="#" className="card-footer-item">
+          <a role="button" className="card-footer-item">
             Edit
           </a>
-          <a href="#" className="card-footer-item">
+          <a role="button" className="card-footer-item">
             Delete
           </a>
         </footer>

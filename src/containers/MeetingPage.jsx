@@ -20,11 +20,7 @@ class MeetingPage extends React.Component {
       <div>
         <section className="section">
           <div className="container">
-            <SectionLevelBar
-              title="Meeting Title"
-              loading={this.props.loading}
-              error={this.props.detailError}
-            >
+            <SectionLevelBar title="Meeting Title" loading={this.props.loading}>
               <AnnouncementForm />
             </SectionLevelBar>
           </div>
