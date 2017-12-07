@@ -98,8 +98,6 @@ export function archiveSession(groupId) {
   return function goArchiveSession(dispatch) {
     return SessionApi.archiveSession(groupId)
       .then((responseJson) => {
-        console.log('from action call:');
-        console.log(responseJson);
         dispatch(archiveSessionAction(responseJson));
       })
       .catch((error) => {
@@ -125,8 +123,6 @@ export function getArchivedSessions(groupId) {
   return function goGetArchivedSessions(dispatch) {
     return SessionApi.getArchivedSessions(groupId)
       .then((responseJson) => {
-        console.log('archive session action');
-        console.log(responseJson);
         dispatch(getArchivedSessionsAction(responseJson));
       })
       .catch((error) => {
