@@ -30,23 +30,7 @@ class CourseHeader extends React.Component {
                 </div>
               </div>
 
-              <div className="level-right is-hidden-mobile">
-                <div className="level-item">
-                  <div className="mentor-block has-text-centered">
-                    <h3> Group Leaders </h3>
-                    <div className="mentor-group">
-                      <InstructorComponent
-                        name="Jay Hankins"
-                        img_url="https://i.imgur.com/uDyELQj.jpg"
-                      />
-                      <InstructorComponent
-                        name="Matt Ess"
-                        img_url="https://i.imgur.com/yGciGxj.jpg"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div className="level-right is-hidden-mobile" />
             </div>
           </div>
         </div>
