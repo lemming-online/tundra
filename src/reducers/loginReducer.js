@@ -73,7 +73,7 @@ export default function loginReducer(state = INITIAL_STATE, action) {
         loading: false,
         detailError: '',
         groups: action.json.groups,
-        image: action.json.user.image,
+        image: `//${action.json.user.image}`,
       };
 
     case types.USER_DETAILS_FAILURE:

@@ -40,6 +40,7 @@ class CoursePeoplePage extends React.Component {
                     key={index}
                     firstName={person.first_name}
                     lastName={person.last_name}
+                    imgUrl={person.image}
                   />
                 ) : null),
             )}
