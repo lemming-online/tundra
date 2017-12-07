@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import InstructorMeetingButtons from '../components/InstructorMeetingButtons';
 import ArchiveSessionButton from '../components/ArchiveSessionButton';
 import * as tabActions from '../actions/tabActions';
 import SectionLevelBar from '../components/SectionLevelBar';
+import { getLiveSession } from '../actions/sessionActions';
 
 class SessionPage extends React.Component {
   constructor(props) {
@@ -14,6 +15,10 @@ class SessionPage extends React.Component {
     this.state = {
       sessionDetails: {},
     };
+  }
+
+  componentDidMount() {
+    this.props.getLiveSession(this.props.match.params.groupID);
   }
 
   render() {
@@ -26,13 +31,15 @@ class SessionPage extends React.Component {
             </SectionLevelBar>
 
             <ul>
-              <a
-                role="link"
-                tabIndex={0}
-                onClick={() => this.props.actions.openTab('lab3', 'Lab 3: Beginner Vaporization')}
-              >
-                <li>Lab 3: Beginner Vaporization</li>
-              </a>
+              {this.props.hasSession === true ? (
+                <a
+                  role="link"
+                  tabIndex={0}
+                  onClick={() => this.props.actions.openTab('lab3', 'Lab 3: Beginner Vaporization')}
+                >
+                  <li>{this.props.liveSession.session.title}</li>
+                </a>
+              ) : null}
             </ul>
           </div>
         </section>
@@ -64,12 +71,19 @@ class SessionPage extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { tabs: state.tabReducer.tabs };
+  return {
+    tabs: state.tabReducer.tabs,
+    liveSession: state.sessionReducer.liveSession,
+    hasSession: state.sessionReducer.hasSession,
+  };
 }
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(tabActions, dispatch),
+    getLiveSession: (groupID) => {
+      dispatch(getLiveSession(groupID));
+    },
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SessionPage);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SessionPage));

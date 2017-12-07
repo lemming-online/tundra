@@ -33,8 +33,8 @@ function archiveSessionAction() {
   return { type: types.ARCHIVE_SESSION };
 }
 
-function getLiveSessionAction() {
-  return { type: types.GET_LIVE_SESSION };
+function getLiveSessionAction(json) {
+  return { type: types.GET_LIVE_SESSION, json };
 }
 
 function getArchivedSessionsAction() {
@@ -109,7 +109,14 @@ export function archiveSession(groupId) {
 
 export function getLiveSession(groupId) {
   return function goGetLiveSession(dispatch) {
-    dispatch(getLiveSessionAction());
+    return SessionApi.getLiveSession(groupId)
+      .then((responseJson) => {
+        console.log(responseJson);
+        dispatch(getLiveSessionAction(responseJson));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 }
 

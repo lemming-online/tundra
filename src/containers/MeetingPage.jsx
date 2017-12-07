@@ -5,7 +5,7 @@ import FeedbackForm from '../components/FeedbackForm';
 import QuestionCard from '../components/QuestionCard';
 import ViewAnnouncementsComponent from '../components/ViewAnnouncementsComponent';
 
-class SessionPage extends React.Component {
+class MeetingPage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -13,6 +13,7 @@ class SessionPage extends React.Component {
       sessionDetails: {},
     };
   }
+
   render() {
     return (
       <div>
@@ -44,4 +45,4 @@ class SessionPage extends React.Component {
   }
 }
 
-export default SessionPage;
+export default MeetingPage;

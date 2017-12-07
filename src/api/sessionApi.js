@@ -10,7 +10,7 @@ class SessionApi {
   }
 
   static getLiveSession(groupId) {
-    return client.get();
+    return client.get(`sessions/${groupId}`, true);
   }
 
   static addQuestionToQueue(groupId, details) {

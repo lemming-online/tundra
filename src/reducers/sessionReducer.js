@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   hasCreatedQuestion: false,
   sessionFormPopup: false,
   hasSession: false,
+  liveSession: [],
 };
 
 export default function sessionReducer(state = INITIAL_STATE, action) {
@@ -56,6 +57,7 @@ export default function sessionReducer(state = INITIAL_STATE, action) {
     case types.GET_LIVE_SESSION:
       return {
         ...state,
+        liveSession: action.json,
       };
 
     case types.GET_ARCHIVED_SESSIONS:
