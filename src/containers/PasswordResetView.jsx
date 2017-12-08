@@ -25,7 +25,7 @@ class PasswordResetView extends React.Component {
 
   render() {
     return (
-      <div className="login-box is-child column is-5 box">
+      <div className="login-box column is-5 box">
         <h1 className="title">Forgot your Password?</h1>
         <form onSubmit={this.sendReset}>
           <InputComponent title="Email" name="email" onChange={this.handleChange} />
