@@ -48,7 +48,7 @@ class AnnouncementForm extends React.Component {
   render() {
     const modalActive = this.props.popup ? 'modal is-active' : 'modal';
     return (
-      <div>
+      <div className="control">
         <button className="button" onClick={this.onSelect}>
           Create Announcement
         </button>

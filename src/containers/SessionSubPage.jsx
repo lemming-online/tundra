@@ -62,7 +62,7 @@ class SessionPage extends React.Component {
                   <a
                     role="link"
                     tabIndex={0}
-                    onClick={() => this.props.actions.openTab('lab2', 'Lab 2: Yeup')}
+                    onClick={() => this.props.actions.openTab('archive', 'Archive')}
                   >
                     <li>{session.data.title}</li>
                   </a>

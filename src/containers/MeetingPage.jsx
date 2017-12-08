@@ -62,7 +62,10 @@ class MeetingPage extends React.Component {
         <section className="section">
           <div className="container">
             <SectionLevelBar title="Meeting Title" loading={this.props.loading}>
-              <AnnouncementForm />
+              <div className="field is-grouped is-grouped-right">
+                <AnnouncementForm />
+                <FeedbackForm />
+              </div>
             </SectionLevelBar>
           </div>
         </section>
@@ -81,10 +84,6 @@ class MeetingPage extends React.Component {
               <QuestionCard />
             </div>
           </div>
-        </section>
-
-        <section className="section">
-          <FeedbackForm />
         </section>
       </div>
     );
