@@ -21,8 +21,8 @@ function helpQuestionFailure() {
   return { type: types.HELP_QUESTION_FAILURE };
 }
 
-function deleteQuestionSuccess() {
-  return { type: types.DELETE_QUESTION_SUCCESS };
+function deleteQuestionSuccess(userId) {
+  return { type: types.DELETE_QUESTION_SUCCESS, userId };
 }
 
 function deleteQuestionFailure() {
@@ -62,7 +62,7 @@ export function deleteHelpQuestion(groupId, userId) {
     return SessionApi.deleteQuestionFromQueue(groupId, userId)
       .then((responseJson) => {
         console.log(responseJson);
-        dispatch(deleteQuestionSuccess());
+        dispatch(deleteQuestionSuccess(userId));
       })
       .catch((error) => {
         console.error(error);
