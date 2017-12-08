@@ -41,9 +41,11 @@ function getArchivedSessionsAction(json) {
   return { type: types.GET_ARCHIVED_SESSIONS, json };
 }
 
-export function createHelpQuestion(jwt, groupId, details) {
+export function createHelpQuestion(groupId, details) {
+  console.log(`groupId:${groupId}`);
+  console.log(details);
   return function goCreateHelpQuestion(dispatch) {
-    return SessionApi.addQuestionToQueue(jwt, groupId, details)
+    return SessionApi.addQuestionToQueue(groupId, details)
       .then((responseJson) => {
         console.log(responseJson);
         dispatch(helpQuestionSuccess());
