@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   hasSession: false,
   liveSession: [],
   archivedSessions: [],
+  queue: [],
 };
 
 export default function sessionReducer(state = INITIAL_STATE, action) {
@@ -34,6 +35,7 @@ export default function sessionReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         hasCreatedQuestion: true,
+        queue: action.json,
       };
 
     case types.HELP_QUESTION_FAILURE:

@@ -7,6 +7,7 @@ import FeedbackForm from '../components/FeedbackForm';
 import QuestionCard from '../components/QuestionCard';
 import ViewAnnouncementsComponent from '../components/ViewAnnouncementsComponent';
 import SectionLevelBar from '../components/SectionLevelBar';
+import Queue from '../components/QueueComponent';
 import { BASE_URL } from '../api/mischiefClient';
 
 let socket = null;
@@ -16,7 +17,7 @@ class MeetingPage extends React.Component {
     super(props);
 
     this.state = {
-      sessionDetails: {},
+      queue: {},
     };
   }
 
@@ -43,6 +44,7 @@ class MeetingPage extends React.Component {
     socket.on('queue', (data) => {
       console.log('socket queue: ');
       console.log(data.queue);
+      this.setState({ queue: data.queue });
       console.log('queue is above');
     });
 
@@ -68,7 +70,9 @@ class MeetingPage extends React.Component {
         </section>
 
         <ViewAnnouncementsComponent />
-
+        <section className="section">
+          <Queue />
+        </section>
         <section className="section">
           <SessionEditorComponent />
         </section>
