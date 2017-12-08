@@ -6,18 +6,9 @@ function QuestionCard(props) {
   return (
     <div className="column is-4-desktop is-6-tablet is-12-mobile">
       <div className="card">
-        <header className="card-header">
-          <p className="card-header-title">Question Title</p>
-          <a href="#" className="card-header-icon" aria-label="more options">
-            <span className="icon">
-              <i className="fa fa-angle-down" aria-hidden="true" />
-            </span>
-          </a>
-        </header>
         <div className="card-content">
           <div className="content">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-            <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
           </div>
         </div>
         <div className="media question-card-media">
@@ -36,13 +27,13 @@ function QuestionCard(props) {
           </div>
         </div>
         <footer className="card-footer">
-          <a href="#" className="card-footer-item">
+          <a role="button" className="card-footer-item">
             Claim
           </a>
-          <a href="#" className="card-footer-item">
+          <a role="button" className="card-footer-item">
             Edit
           </a>
-          <a href="#" className="card-footer-item">
+          <a role="button" className="card-footer-item">
             Delete
           </a>
         </footer>

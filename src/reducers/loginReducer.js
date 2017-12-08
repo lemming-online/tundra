@@ -56,7 +56,7 @@ export default function loginReducer(state = INITIAL_STATE, action) {
     case types.LOG_OUT:
       console.log('Log out.');
       return {
-        ...state,
+        INITIAL_STATE,
         isAuthenticated: false,
       };
 

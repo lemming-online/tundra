@@ -33,7 +33,7 @@ class AddMentorToGroupButton extends React.Component {
   };
 
   onAddMentorsSubmit = () => {
-    const groupID = this.props.match.params.courseID;
+    const groupID = this.props.match.params.groupID;
     const body = this.splitAtComma(this.state.groupDetails.mentorList, 'mentor');
     console.log(body);
     console.log(`GROUPID: ${groupID}`);

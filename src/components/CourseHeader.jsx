@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CourseTabs from '../components/CourseTabs';
-import InstructorComponent from '../components/InstructorComponent';
 // import gradient from 'random-gradient';
 
 class CourseHeader extends React.Component {
@@ -30,23 +29,7 @@ class CourseHeader extends React.Component {
                 </div>
               </div>
 
-              <div className="level-right is-hidden-mobile">
-                <div className="level-item">
-                  <div className="mentor-block has-text-centered">
-                    <h3> Group Leaders </h3>
-                    <div className="mentor-group">
-                      <InstructorComponent
-                        name="Jay Hankins"
-                        img_url="https://i.imgur.com/uDyELQj.jpg"
-                      />
-                      <InstructorComponent
-                        name="Matt Ess"
-                        img_url="https://i.imgur.com/yGciGxj.jpg"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div className="level-right is-hidden-mobile" />
             </div>
           </div>
         </div>

@@ -12,7 +12,11 @@ function PersonComponent(props) {
           className="image is-64x64 tooltip is-tooltip-right"
           data-tooltip={'Location: Seat 3'}
         >
-          <img alt="instructor avatar" className="avatar is-circle" src={props.imgUrl} />
+          <img
+            alt="instructor avatar"
+            className="avatar is-circle"
+            src={props.imgUrl ? props.imgUrl : userBlank}
+          />
         </figure>
         <p className="has-text-centered hyphenate">{`${props.firstName} ${props.lastName}`}</p>
       </div>

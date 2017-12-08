@@ -42,7 +42,7 @@ class GroupPage extends React.Component {
           Or Maybe MeetingPage will just open for all meetings, using the redux state?
           But probably will have to have its own props pushed b.c. how do you handle different tabs without that?
           Anyway, yeah. Conditonally render based on this.props.pane */}
-            {this.props.pane === 'lab3' && <MeetingPage />}
+            {this.props.pane === 'meeting' && <MeetingPage />}
           </section>
         </div>
       )
