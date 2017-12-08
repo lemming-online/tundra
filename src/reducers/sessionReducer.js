@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   hasSession: false,
   liveSession: [],
   archivedSessions: [],
+  queue: [],
 };
 
 export default function sessionReducer(state = INITIAL_STATE, action) {
@@ -31,9 +32,11 @@ export default function sessionReducer(state = INITIAL_STATE, action) {
 
     case types.HELP_QUESTION_SUCCESS:
       console.log('Successfully created question');
+      console.log(action.json);
       return {
         ...state,
         hasCreatedQuestion: true,
+        queue: state.queue.concat(action.json),
       };
 
     case types.HELP_QUESTION_FAILURE:
@@ -43,6 +46,8 @@ export default function sessionReducer(state = INITIAL_STATE, action) {
       };
 
     case types.DELETE_QUESTION_SUCCESS:
+      // action.userId;
+
       console.log('Question was deleted successfully');
       return {
         ...state,
