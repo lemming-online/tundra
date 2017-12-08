@@ -29,8 +29,16 @@ function addMenteeToGroupAction() {
   return { type: types.ADD_MENTEE_TO_GROUP };
 }
 
+function addResourceToGroupAction() {
+  return { type: types.ADD_RESOURCE_TO_GROUP };
+}
+
 function addingMenteeToGroupAction() {
   return { type: types.ADDING_MENTEES_TO_GROUP_IN_PROGRESS };
+}
+
+function addingResourceToGroupAction() {
+  return { type: types.ADDING_RESOURCE_TO_GROUP_IN_PROGRESS };
 }
 
 function addingMentorToGroupAction() {
@@ -41,8 +49,16 @@ function cancelInviteAction() {
   return { type: types.CANCEL_INVITE_TO_GROUP };
 }
 
+function cancelResourceAction() {
+  return { type: types.CANCEL_RESOURCE_TO_GROUP };
+}
+
 function getPeopleInGroupAction(json) {
   return { type: types.GET_PEOPLE_IN_GROUP, json };
+}
+
+function getResourcesInGroupAction(json) {
+  return { type: types.GET_RESOURCES_IN_GROUP, json };
 }
 
 export function createGroup(details, id) {
@@ -102,6 +118,21 @@ export function addMentorToGroup(body, groupID) {
   };
 }
 
+export function addResourceToGroup(body, groupID) {
+  console.log(`groupID in Resource: ${groupID}`);
+  return function goAddResourceToGroup(dispatch) {
+    return groupApi
+      .addResourceToGroup(body, groupID)
+      .then((responseJson) => {
+        console.log(responseJson);
+        dispatch(addResourceToGroupAction());
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+}
+
 export function addMenteesToGroup(body, groupID) {
   console.log(`groupID in Mentee: ${groupID}`);
   return function goAddMenteesToGroup(dispatch) {
@@ -129,9 +160,21 @@ export function addMentorsToGroupInProgress() {
   };
 }
 
+export function addResourceToGroupInProgress() {
+  return function goAddResourceToGroupInProgress(dispatch) {
+    return dispatch(addingResourceToGroupAction());
+  };
+}
+
 export function cancelInvite() {
   return function goCancelInvite(dispatch) {
     return dispatch(cancelInviteAction());
+  };
+}
+
+export function cancelResource() {
+  return function goCancelResource(dispatch) {
+    return dispatch(cancelResourceAction());
   };
 }
 
@@ -142,6 +185,21 @@ export function getPeopleInGroup(groupId) {
       .then((responseJson) => {
         // console.log(responseJson);
         dispatch(getPeopleInGroupAction(responseJson));
+        return responseJson;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+}
+
+export function getResourcesInGroup(groupId) {
+  return function goGetResourcesInGroup(dispatch) {
+    return groupApi
+      .getResourcesInGroup(groupId)
+      .then((responseJson) => {
+        // console.log(responseJson);
+        dispatch(getResourcesInGroupAction(responseJson));
         return responseJson;
       })
       .catch((error) => {

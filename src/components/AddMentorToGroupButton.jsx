@@ -72,11 +72,13 @@ class AddMentorToGroupButton extends React.Component {
                 title="Enter a comma seperated list of emails you wish to invite as mentors."
                 onChange={this.onChange}
               />
-              <div className="field is-grouped">
+              <div className="field is-grouped is-grouped-right">
                 <div className="control">
                   <button className="button" onClick={this.onAddMentorsSubmit}>
                     Invite
                   </button>
+                </div>
+                <div className="control">
                   <button className="button" onClick={this.onCancel}>
                     Cancel
                   </button>

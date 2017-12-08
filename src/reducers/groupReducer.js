@@ -6,8 +6,10 @@ const INITIAL_STATE = {
   peopleLoading: true,
   popup: false, // for creating groups
   menteePopup: false, // for adding users
-  mentorPopup: false, // for adding mentors
+  mentorPopup: false, // for adding mentors,
+  resourcePopup: false,
   people: [],
+  resources: [],
 };
 
 export default function groupReducer(state = INITIAL_STATE, action) {
@@ -51,11 +53,18 @@ export default function groupReducer(state = INITIAL_STATE, action) {
         loading: false,
         group: action.group,
       };
+
     case types.CANCEL_INVITE_TO_GROUP:
       return {
         ...state,
         menteePopup: false,
         mentorPopup: false,
+      };
+
+    case types.CANCEL_RESOURCE_TO_GROUP:
+      return {
+        ...state,
+        resourcePopup: false,
       };
 
     case types.ADD_MENTEE_TO_GROUP:
@@ -69,6 +78,13 @@ export default function groupReducer(state = INITIAL_STATE, action) {
         ...state,
         mentorPopup: false,
       };
+
+    case types.ADD_RESOURCE_TO_GROUP:
+      return {
+        ...state,
+        resourcePopup: false,
+      };
+
     case types.ADDING_MENTEES_TO_GROUP_IN_PROGRESS:
       return {
         ...state,
@@ -78,6 +94,12 @@ export default function groupReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         mentorPopup: true,
+      };
+
+    case types.ADDING_RESOURCE_TO_GROUP_IN_PROGRESS:
+      return {
+        ...state,
+        resourcePopup: true,
       };
 
     case types.GET_PEOPLE_IN_GROUP_FETCH:
@@ -91,6 +113,13 @@ export default function groupReducer(state = INITIAL_STATE, action) {
         ...state,
         peopleLoading: false,
         people: action.json,
+      };
+
+    case types.GET_RESOURCES_IN_GROUP:
+      return {
+        ...state,
+        resourcesLoading: false,
+        resources: action.json,
       };
 
     default:
