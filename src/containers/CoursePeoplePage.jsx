@@ -6,6 +6,7 @@ import PersonComponent from '../components/PersonComponent';
 import SectionLevelBar from '../components/SectionLevelBar';
 import AddUserToGroupButtons from '../components/AddUserToGroupButtons';
 import AddMentorToGroupButton from '../components/AddMentorToGroupButton';
+import ViewIfMentor from '../components/ViewIfMentor';
 import { getPeopleInGroup } from '../actions/groupActions';
 
 class CoursePeoplePage extends React.Component {
@@ -29,7 +30,9 @@ class CoursePeoplePage extends React.Component {
       <div className="container">
         <section className="section">
           <SectionLevelBar title="Mentors" loading={this.props.peopleLoading}>
-            <AddMentorToGroupButton />
+            <ViewIfMentor isMentor={this.props.isMentor}>
+              <AddMentorToGroupButton />
+            </ViewIfMentor>
           </SectionLevelBar>
           <div className="columns is-multiline is-mobile bordered">
             {/* this.getMentors(this.props.people, 'mentor') */}
@@ -48,7 +51,9 @@ class CoursePeoplePage extends React.Component {
         </section>
         <section className="section">
           <SectionLevelBar title="Mentees" loading={this.props.peopleLoading}>
-            <AddUserToGroupButtons />
+            <ViewIfMentor isMentor={this.props.isMentor}>
+              <AddUserToGroupButtons />
+            </ViewIfMentor>
           </SectionLevelBar>
           <div className="columns is-multiline is-mobile bordered">
             {this.props.people.map(
@@ -73,6 +78,7 @@ function mapStateToProps(state) {
   return {
     people: state.groupReducer.people,
     peopleLoading: state.groupReducer.peopleLoading,
+    isMentor: state.groupReducer.people.title,
   };
 }
 

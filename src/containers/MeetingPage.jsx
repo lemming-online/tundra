@@ -7,6 +7,7 @@ import FeedbackForm from '../components/FeedbackForm';
 import QuestionCard from '../components/QuestionCard';
 import ViewAnnouncementsComponent from '../components/ViewAnnouncementsComponent';
 import SectionLevelBar from '../components/SectionLevelBar';
+import ViewIfMentor from '../components/ViewIfMentor';
 import { BASE_URL } from '../api/mischiefClient';
 
 let socket = null;
