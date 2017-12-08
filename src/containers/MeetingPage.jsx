@@ -42,7 +42,8 @@ class MeetingPage extends React.Component {
 
     socket.on('queue', (data) => {
       console.log('socket queue: ');
-      console.log(data);
+      console.log(data.queue);
+      console.log('queue is above');
     });
 
     socket.on('join', (data) => {
