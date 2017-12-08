@@ -6,7 +6,11 @@ import AnnouncementForm from '../components/AnnouncementForm';
 import FeedbackForm from '../components/FeedbackForm';
 import ViewAnnouncementsComponent from '../components/ViewAnnouncementsComponent';
 import SectionLevelBar from '../components/SectionLevelBar';
+
+import ViewIfMentor from '../components/ViewIfMentor';
+
 import Queue from '../components/QueueComponent';
+
 import { BASE_URL } from '../api/mischiefClient';
 
 let socket = null;
