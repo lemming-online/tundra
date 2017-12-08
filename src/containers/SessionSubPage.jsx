@@ -24,10 +24,10 @@ class SessionPage extends React.Component {
     if (this.props.archivedSessions.length === 0) {
       this.props.getArchivedSessions(groupID);
     }
-    // if (this.props.liveSession === null) {
     this.props.getLiveSession(groupID);
+
     this.props.getPeopleInGroup(`${this.props.match.params.groupID}`);
-    // }
+
   }
 
   render() {

@@ -13,16 +13,16 @@ function closeCreateSessionFormAction() {
   return { type: types.CLOSE_CREATE_SESSION_FORM };
 }
 
-function helpQuestionSuccess() {
-  return { type: types.HELP_QUESTION_SUCCESS };
+function helpQuestionSuccess(json) {
+  return { type: types.HELP_QUESTION_SUCCESS, json };
 }
 
 function helpQuestionFailure() {
   return { type: types.HELP_QUESTION_FAILURE };
 }
 
-function deleteQuestionSuccess() {
-  return { type: types.DELETE_QUESTION_SUCCESS };
+function deleteQuestionSuccess(userId) {
+  return { type: types.DELETE_QUESTION_SUCCESS, userId };
 }
 
 function deleteQuestionFailure() {
@@ -48,7 +48,7 @@ export function createHelpQuestion(groupId, details) {
     return SessionApi.addQuestionToQueue(groupId, details)
       .then((responseJson) => {
         console.log(responseJson);
-        dispatch(helpQuestionSuccess());
+        dispatch(helpQuestionSuccess(responseJson));
       })
       .catch((error) => {
         console.error(error);
@@ -62,7 +62,7 @@ export function deleteHelpQuestion(groupId, userId) {
     return SessionApi.deleteQuestionFromQueue(groupId, userId)
       .then((responseJson) => {
         console.log(responseJson);
-        dispatch(deleteQuestionSuccess());
+        dispatch(deleteQuestionSuccess(userId));
       })
       .catch((error) => {
         console.error(error);
