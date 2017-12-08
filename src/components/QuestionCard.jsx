@@ -23,7 +23,6 @@ function QuestionCard(props) {
           </div>
           <div className="media-content">
             <p className="name is-4">John Smith</p>
-            <p className="location is-6">Seat H9</p>
           </div>
         </div>
         <footer className="card-footer">
