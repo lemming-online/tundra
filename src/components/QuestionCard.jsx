@@ -7,9 +7,7 @@ function QuestionCard(props) {
     <div className="column is-4-desktop is-6-tablet is-12-mobile">
       <div className="card">
         <div className="card-content">
-          <div className="content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-          </div>
+          <div className="content">{props.question}</div>
         </div>
         <div className="media question-card-media">
           <div className="media-left">
@@ -22,8 +20,8 @@ function QuestionCard(props) {
             </figure>
           </div>
           <div className="media-content">
-            <p className="name is-4">John Smith</p>
-            <p className="location is-6">Seat H9</p>
+            <p className="name is-4">{`${props.firstName} ${props.lastName}`}</p>
+            <p className="location is-6">{props.location}</p>
           </div>
         </div>
         <footer className="card-footer">

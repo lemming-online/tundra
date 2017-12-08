@@ -35,7 +35,7 @@ export default function sessionReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         hasCreatedQuestion: true,
-        queue: action.json,
+        queue: state.queue.concat(action.json),
       };
 
     case types.HELP_QUESTION_FAILURE:
