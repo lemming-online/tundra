@@ -23,6 +23,7 @@ class SessionPage extends React.Component {
       this.props.getArchivedSessions(groupID);
     }
     this.props.getLiveSession(groupID);
+
   }
 
   render() {
