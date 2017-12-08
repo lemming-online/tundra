@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CourseTabs from '../components/CourseTabs';
-import InstructorComponent from '../components/InstructorComponent';
 // import gradient from 'random-gradient';
 
 class CourseHeader extends React.Component {

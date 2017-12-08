@@ -1,5 +1,5 @@
-import React from 'react'
-import InputComponent from '../components/InputComponent'
+import React from 'react';
+import InputComponent from '../components/InputComponent';
 
 class PasswordResetView extends React.Component {
   constructor() {
@@ -20,12 +20,12 @@ class PasswordResetView extends React.Component {
 
   sendReset = (e) => {
     e.preventDefault();
-    //make api call to send link to email
-  }
+    // make api call to send link to email
+  };
 
   render() {
     return (
-      <div className="tile is-child box">
+      <div className="login-box is-child column is-5 box">
         <h1 className="title">Forgot your Password?</h1>
         <form onSubmit={this.sendReset}>
           <InputComponent title="Email" name="email" onChange={this.handleChange} />

@@ -26,8 +26,8 @@ class CoursePeoplePage extends React.Component {
 
   render() {
     return (
-      <section className="section">
-        <div className="container">
+      <div className="container">
+        <section className="section">
           <SectionLevelBar title="Mentors" loading={this.props.peopleLoading}>
             <AddMentorToGroupButton />
           </SectionLevelBar>
@@ -44,7 +44,9 @@ class CoursePeoplePage extends React.Component {
                   />
                 ) : null),
             )}
-          </div>
+          </div>\
+        </section>
+        <section className="section">
           <SectionLevelBar title="Mentees" loading={this.props.peopleLoading}>
             <AddUserToGroupButtons />
           </SectionLevelBar>
@@ -61,8 +63,8 @@ class CoursePeoplePage extends React.Component {
                 ) : null),
             )}
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     );
   }
 }
