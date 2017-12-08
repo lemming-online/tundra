@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import SectionLevelBar from '../components/SectionLevelBar';
 import ResourcesActionButtons from '../components/ResourcesActionButtons';
 import { getResourcesInGroup } from '../actions/groupActions';
+import ViewIfMentor from '../components/ViewIfMentor';
 
 class ResourcesPage extends React.Component {
   componentDidMount() {
@@ -54,7 +55,9 @@ class ResourcesPage extends React.Component {
       <section className="section">
         <div className="container">
           <SectionLevelBar title="Resources">
-            <ResourcesActionButtons />
+            <ViewIfMentor isMentor={this.props.isMentor}>
+              <ResourcesActionButtons />
+            </ViewIfMentor>
           </SectionLevelBar>
           No resources.
         </div>
@@ -64,9 +67,18 @@ class ResourcesPage extends React.Component {
 }
 
 function mapStateToProps(state) {
+  const mentors = state.groupReducer.people.map(
+    (person, index) =>
+      (state.loginReducer.uid === person.user && person.title === 'mentor' ? person.user : ''),
+  );
+
+  const isMentorValue = !!mentors.filter(mentor => mentor !== '').length;
+  console.log(isMentorValue);
+
   return {
     resources: state.groupReducer.resources,
     resourcesLoading: state.groupReducer.resourcesLoading,
+    isMentor: isMentorValue,
   };
 }
 
