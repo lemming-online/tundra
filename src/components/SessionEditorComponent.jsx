@@ -28,6 +28,8 @@ class SessionEditorComponent extends React.Component {
     const details = {
       question: this.state.question.questionField,
       user: `${this.props.id}`,
+      fName: `${this.props.fName}`,
+      lName: `${this.props.lName}`,
     };
     this.props.createHelpQuestion(sessionID, details);
     this.formRef.reset(); // resets the form to be empty
@@ -69,6 +71,8 @@ class SessionEditorComponent extends React.Component {
 function mapStateToProps(state) {
   return {
     id: state.loginReducer.uid,
+    fName: state.loginReducer.firstName,
+    lName: state.loginReducer.lastName,
     hasQuestion: state.sessionReducer.hasCreatedQuestion,
   };
 }
