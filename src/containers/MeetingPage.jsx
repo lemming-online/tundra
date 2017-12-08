@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import SessionEditorComponent from '../components/SessionEditorComponent';
 import AnnouncementForm from '../components/AnnouncementForm';
 import FeedbackForm from '../components/FeedbackForm';
-import QuestionCard from '../components/QuestionCard';
 import ViewAnnouncementsComponent from '../components/ViewAnnouncementsComponent';
 import SectionLevelBar from '../components/SectionLevelBar';
 import Queue from '../components/QueueComponent';
@@ -76,17 +75,6 @@ class MeetingPage extends React.Component {
         <section className="section">
           <SessionEditorComponent />
         </section>
-
-        <section className="section">
-          <div className="container">
-            <div className="columns is-multiline is-mobile">
-              <QuestionCard />
-              <QuestionCard />
-              <QuestionCard />
-            </div>
-          </div>
-        </section>
-
         <section className="section">
           <FeedbackForm />
         </section>
