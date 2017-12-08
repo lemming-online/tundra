@@ -22,7 +22,7 @@ class CoursePeoplePage extends React.Component {
     this.props.getPeopleInGroup(`${this.props.match.params.groupID}`);
   }
 
-  getMentors(peopleJson, role) {}
+  // getMentors(peopleJson, role) {}
 
   render() {
     return (

@@ -85,18 +85,11 @@ class UserProfile extends React.Component {
                   </span>
                   My Profile
                 </a>
-
-                <a className="panel-block">
-                  <span className="panel-icon">
-                    <i className="fa fa-cog" />
-                  </span>
-                  My Settings
-                </a>
               </nav>
             </div>
 
-            <div className="column box">
-              <div className="">
+            <div className="columns column box">
+              <div className="column is-3">
                 <Dropzone multiple={false} accept="image/*" onDrop={files => this.onDrop(files)}>
                   <img src={`${this.props.image}`} alt="user profile" />
                 </Dropzone>
@@ -105,17 +98,23 @@ class UserProfile extends React.Component {
                 }`}</h1>
                 <span className="uid">{`${this.props.uid}`}</span>
               </div>
-              <form onSubmit={this.updateUser}>
-                <InputComponent title="First Name" name="first_name" onChange={this.handleChange} />
-                <InputComponent title="Last Name" name="last_name" onChange={this.handleChange} />
-                <InputComponent title="Password" name="password" onChange={this.handleChange} />
-                <InputComponent title="Email" name="email" onChange={this.handleChange} />
-                <div className="field">
-                  <div className="control">
-                    <button className="button is-primary">Update Settings</button>
+              <div className="column">
+                <form onSubmit={this.updateUser}>
+                  <InputComponent
+                    title="First Name"
+                    name="first_name"
+                    onChange={this.handleChange}
+                  />
+                  <InputComponent title="Last Name" name="last_name" onChange={this.handleChange} />
+                  <InputComponent title="Password" name="password" onChange={this.handleChange} />
+                  <InputComponent title="Email" name="email" onChange={this.handleChange} />
+                  <div className="field">
+                    <div className="control">
+                      <button className="button is-primary">Update Settings</button>
+                    </div>
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>

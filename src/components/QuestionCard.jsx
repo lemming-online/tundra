@@ -21,7 +21,7 @@ function QuestionCard(props) {
           </div>
           <div className="media-content">
             <p className="name is-4">{`${props.firstName} ${props.lastName}`}</p>
-            <p className="location is-6">{props.location}</p>
+
           </div>
         </div>
         <footer className="card-footer">
