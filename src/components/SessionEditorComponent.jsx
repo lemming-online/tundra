@@ -27,7 +27,7 @@ class SessionEditorComponent extends React.Component {
     const sessionID = this.props.match.params.groupID;
     const details = {
       question: this.state.question.questionField,
-      user: this.props.id,
+      user: `${this.props.id}`,
     };
     this.props.createHelpQuestion(sessionID, details);
     this.formRef.reset(); // resets the form to be empty
@@ -36,7 +36,7 @@ class SessionEditorComponent extends React.Component {
   onCancel = (e) => {
     e.preventDefault();
     console.log('click cancel request');
-    const sessionID = this.props.match.params.courseID;
+    const sessionID = this.props.match.params.groupID;
     const userId = this.props.id;
     this.props.deleteHelpQuestion(sessionID, userId);
   };
