@@ -23,17 +23,13 @@ class SessionEditorComponent extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.question.questionField);
-    console.log(`id:${this.props.id}`);
     // push question to api through a session editor api class
-    const jwt = localStorage.jwt;
-    const sessionID = this.props.match.params.courseID;
-    // SessionApi.addQuestionToQueue(jwt, groupId, details);
+    const sessionID = this.props.match.params.groupID;
     const details = {
       question: this.state.question.questionField,
       user: this.props.id,
     };
-    this.props.createHelpQuestion(jwt, sessionID, details);
+    this.props.createHelpQuestion(sessionID, details);
     this.formRef.reset(); // resets the form to be empty
   };
 
@@ -72,7 +68,7 @@ class SessionEditorComponent extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    id: state.loginReducer.id,
+    id: state.loginReducer.uid,
     hasQuestion: state.sessionReducer.hasCreatedQuestion,
   };
 }
@@ -80,8 +76,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(createHelpQuestion, dispatch),
-    createHelpQuestion: (jwt, groupId, details) => {
-      dispatch(createHelpQuestion(jwt, groupId, details));
+    createHelpQuestion: (groupId, details) => {
+      dispatch(createHelpQuestion(groupId, details));
     },
     deleteHelpQuestion: (groupId, userId) => {
       dispatch(deleteHelpQuestion(groupId, userId));

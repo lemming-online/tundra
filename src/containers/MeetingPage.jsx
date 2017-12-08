@@ -26,12 +26,30 @@ class MeetingPage extends React.Component {
   }
 
   socket = () => {
+    const groupID = this.props.match.params.groupID;
     socket = io(BASE_URL);
+
     socket.on('connect', () => {
-      const groupID = this.props.match.params.groupID;
       console.log('socket: connected');
-      socket.emit('room', groupID);
+      socket.emit('join', { group_id: groupID });
+      console.log('after join emit');
     });
+
+    socket.on('test_response', (data) => {
+      console.log('test Response stuff');
+      console.log(data);
+    });
+
+    socket.on('queue', (data) => {
+      console.log('socket queue: ');
+      console.log(data);
+    });
+
+    socket.on('join', (data) => {
+      console.log('successfully joined room');
+      console.log(data);
+    });
+
     socket.on('disconnect', () => {
       console.log('socket: disconnected');
     });
