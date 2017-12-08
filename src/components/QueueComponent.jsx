@@ -24,7 +24,11 @@ class QueueComponent extends React.Component {
         {Object.values(this.props.queue).map(
           (q, index) =>
             (q.question !== undefined ? (
-              <QuestionCard question={q.question.question} firstName={index} lasName="Patanaik" />
+              <QuestionCard
+                question={q.question.question}
+                firstName={q.question.fName}
+                lastName={q.question.lName}
+              />
             ) : null),
         )}
         {console.log('props:')}
@@ -37,8 +41,6 @@ class QueueComponent extends React.Component {
 function mapStateToProps(state) {
   return {
     queue: state.sessionReducer.queue,
-    firstName: state.loginReducer.firstName,
-    lastName: state.loginReducer.lastName,
   };
 }
 
