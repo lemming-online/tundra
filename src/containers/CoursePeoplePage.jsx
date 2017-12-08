@@ -75,10 +75,17 @@ class CoursePeoplePage extends React.Component {
 }
 
 function mapStateToProps(state) {
+  const mentors = state.groupReducer.people.map(
+    (person, index) =>
+      (state.loginReducer.uid === person.user && person.title === 'mentor' ? person.user : ''),
+  );
+
+  const isMentorValue = !!mentors.filter(mentor => mentor !== '').length;
+
   return {
     people: state.groupReducer.people,
     peopleLoading: state.groupReducer.peopleLoading,
-    isMentor: state.groupReducer.people.title,
+    isMentor: isMentorValue,
   };
 }
 
