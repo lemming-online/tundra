@@ -11,12 +11,25 @@ class QueueComponent extends React.Component {
 
   render() {
     // {/*iterate over array of questions with these details */}
-    return <QuestionCard question="hi" firstName="Ankit" lastName="Patanaik" />;
+    return (
+      <div>
+        <div />
+        {console.log(this.props.queue)}
+        {Object.values(this.props.queue).map(
+          (q, index) =>
+            (q.question !== null ? (
+              <QuestionCard question={q.question} firstName={index} lasName="Patanaik" />
+            ) : null),
+        )}
+      </div>
+    );
   }
 }
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    queue: state.sessionReducer.queue,
+  };
 }
 
 export default connect(mapStateToProps, null)(QueueComponent);
