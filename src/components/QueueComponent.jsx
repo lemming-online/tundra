@@ -14,11 +14,11 @@ class QueueComponent extends React.Component {
     return (
       <div>
         <div />
-        {Object.values(this.props.queue).map((q, index) => {
+        {/* Object.values(this.props.queue).map((q, index) => {
           console.log(`this is q${index}`);
           console.log(q.question);
           console.log('----');
-        })}
+        }) */}
 
         {console.log(this.props.queue)}
         {Object.values(this.props.queue).map(
