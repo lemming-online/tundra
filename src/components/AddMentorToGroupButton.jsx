@@ -6,6 +6,7 @@ import {
   addMentorToGroup,
   addMentorsToGroupInProgress,
   cancelInvite,
+  getPeopleInGroup
 } from '../actions/groupActions';
 import InputComponent from '../components/InputComponent';
 
@@ -30,30 +31,29 @@ class AddMentorToGroupButton extends React.Component {
 
   onCancel = () => {
     this.props.cancelInvite();
+    this.clearInput();
   };
 
   onAddMentorsSubmit = () => {
     const groupID = this.props.match.params.groupID;
-    const body = this.splitAtComma(this.state.groupDetails.mentorList, 'mentor');
-    console.log(body);
-    console.log(`GROUPID: ${groupID}`);
-    this.props.addMentorToGroup(body, groupID);
-    console.log('Submiting Mentors2222');
-  };
+    const body = {
+      emails: this.state.groupDetails.mentorList,
+      role: 'mentor',
+    };
 
-  splitAtComma = (list, role) => {
-    const body = [];
-    const splitList = list.split(',');
-    splitList.forEach((email) => {
-      const jsonUser = { email, role };
-      body.push(jsonUser);
-    });
-    return body;
+    this.props.addMentorToGroup(body, groupID);
+    this.props.getPeopleInGroup(groupID);
+    this.clearInput();
   };
 
   addUserPopup = () => {
     this.props.addingUsers();
-    console.log('pop goes the weasel222');
+  };
+
+  clearInput = () => {
+    const nextGroupDetails = this.state.groupDetails;
+    nextGroupDetails['mentorList'] = '';
+    this.setState({ groupDetails: nextGroupDetails });
   };
 
   render() {
@@ -70,11 +70,12 @@ class AddMentorToGroupButton extends React.Component {
               <InputComponent
                 name="mentorList"
                 title="Enter a comma seperated list of emails you wish to invite as mentors."
+                value={this.state.groupDetails.mentorList}
                 onChange={this.onChange}
               />
-              <div className="field is-grouped is-grouped-right">
+              <div className="field is-grouped">
                 <div className="control">
-                  <button className="button" onClick={this.onAddMentorsSubmit}>
+                  <button className="button is-primary" onClick={this.onAddMentorsSubmit}>
                     Invite
                   </button>
                 </div>
@@ -110,6 +111,9 @@ function mapDispatchToProps(dispatch) {
     cancelInvite: () => {
       dispatch(cancelInvite());
     },
+    getPeopleInGroup: (groupId) => {
+      dispatch(getPeopleInGroup(groupId));
+    }
   };
 }
 

@@ -8,9 +8,14 @@ function PersonComponent(props) {
   return (
     <div className="column is-2-desktop is-2-tablet is-half-mobile">
       <div className="instructor-component">
+        <a className="button">
+          <span className="icon">
+            <i className="far fa-edit"></i>
+          </span>
+        </a>
         <figure
           className="image is-64x64 tooltip is-tooltip-right"
-          data-tooltip={'Location: Seat 3'}
+          data-tooltip={props.location}
         >
           <img
             alt="instructor avatar"
@@ -27,7 +32,7 @@ function PersonComponent(props) {
 PersonComponent.propTypes = {
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
-  imgUrl: PropTypes.string.isRequired,
+  imgUrl: PropTypes.string
 };
 
 PersonComponent.defaultProps = {

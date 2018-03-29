@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 // import PropTypes from 'prop-types';
+import { clearActivation } from '../actions/registrationActions';
 import LogInOutLink from './LogInOutLink';
 import UserDropdown from './UserDropdown';
 import logo from '../images/lemming-nocirc.png';
@@ -43,7 +44,7 @@ class Header extends React.Component {
       <nav className="navbar header" aria-label="main navigation">
         <div className="container">
           <div className="navbar-brand">
-            <Link className="navbar-item" to="/">
+            <Link className="navbar-item" onClick={this.props.clearActivation} to="/">
               <img src={logo} alt="Lemming logo" />
             </Link>
 
@@ -63,7 +64,7 @@ class Header extends React.Component {
           >
             {' '}
             <div className="navbar-end">
-              <Link to="/" className="navbar-item">
+              <Link to="/" onClick={this.props.clearActivation} className="navbar-item">
                 Home
               </Link>
               <LogInOutLink loginOnly />
@@ -85,6 +86,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(loginActions, dispatch),
+    clearActivation: () => {
+      dispatch(clearActivation());
+    }
   };
 }
 

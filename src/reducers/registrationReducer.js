@@ -5,6 +5,8 @@ const INITIAL_STATE = {
   successMessage: '',
   failMessage: '',
   loading: false,
+  failedActivation: false,
+  successfulActivation: false
 };
 
 export default function registrationReducer(state = INITIAL_STATE, action) {
@@ -23,7 +25,7 @@ export default function registrationReducer(state = INITIAL_STATE, action) {
         isRegistered: true,
         loading: false,
         successMessage:
-          'Great! Check your email for an activation link, then come back to lemming.online.',
+          'Great! Check your email for an activation link, then come back to lemming.',
       };
 
     case types.REGISTER_FAILURE:
@@ -34,6 +36,29 @@ export default function registrationReducer(state = INITIAL_STATE, action) {
         loading: false,
         failMessage: "Oops! We couldn't register this account. Please try again.",
       };
+
+    case types.ACTIVATE_EMAIL_SUCCESS:
+      return {
+        ...state,
+        successMessage: 'Email successfully activated.',
+        successfulActivation: true
+      }
+
+    case types.ACTIVATE_EMAIL_FAILURE:
+      return {
+        ...state,
+        failMessage: 'Email activation failed.',
+        failedActivation: true
+      }
+
+    case types.CLEAR_EMAIL_ACTIVATION:
+      return {
+        ...state,
+        failedActivation: false,
+        successfulActivation: false,
+        successMessage: '',
+        failMessage: ''
+      }
 
     default:
       return state;

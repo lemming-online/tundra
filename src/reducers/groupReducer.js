@@ -10,6 +10,7 @@ const INITIAL_STATE = {
   resourcePopup: false,
   people: [],
   resources: [],
+  errorMessage: ''
 };
 
 export default function groupReducer(state = INITIAL_STATE, action) {
@@ -71,13 +72,30 @@ export default function groupReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         menteePopup: false,
+        errorMessage: ''
       };
 
     case types.ADD_MENTOR_TO_GROUP:
       return {
         ...state,
         mentorPopup: false,
+        errorMessage: ''
       };
+
+    case types.ADD_MENTEE_TO_GROUP_FAILURE:
+      return {
+        ...state,
+        menteePopup: false,
+        errorMessage: 'Failed to add mentee(s) to group. Invalid or duplicate email address.'
+      }
+
+    case types.ADD_MENTOR_TO_GROUP_FAILURE: {
+      return {
+        ...state,
+        mentorPopup: false,
+        errorMessage: 'Failed to add mentor(s). Invalid or duplicate email address.'
+      }
+    }
 
     case types.ADD_RESOURCE_TO_GROUP:
       return {

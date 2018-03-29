@@ -7,6 +7,10 @@ class RegistrationApi {
       .post('users', credentials)
       .then(json => client.post('users/activation', { email: json.email }));
   }
+
+  static activate(token) {
+    return client.get(`users/activation/${token}`, true);
+  }
 }
 
 export default RegistrationApi;

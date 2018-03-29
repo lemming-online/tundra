@@ -22,6 +22,7 @@ function InputComponent(props) {
 
     return null;
   }
+
   return (
     <div className="field">
       <label className="label" htmlFor={props.title}>

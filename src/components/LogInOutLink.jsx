@@ -4,6 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as loginActions from "../actions/loginActions";
+import { clearActivation } from '../actions/registrationActions';
 
 function LogInOutLink(props) {
   function logOut(event) {
@@ -17,7 +18,7 @@ function LogInOutLink(props) {
       return null;
     }
     return (
-      <Link to="/signin" className="navbar-item">
+      <Link to="/signin" onClick={props.clearActivation} className="navbar-item">
         Sign In / Sign Up
       </Link>
     );
@@ -41,7 +42,10 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(loginActions, dispatch)
+    actions: bindActionCreators(loginActions, dispatch),
+    clearActivation: () => {
+      dispatch(clearActivation());
+    }
   };
 }
 

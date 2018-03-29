@@ -73,7 +73,6 @@ function mapStateToProps(state) {
   );
 
   const isMentorValue = !!mentors.filter(mentor => mentor !== '').length;
-  console.log(isMentorValue);
 
   return {
     resources: state.groupReducer.resources,

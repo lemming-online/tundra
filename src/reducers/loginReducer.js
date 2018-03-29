@@ -51,13 +51,11 @@ export default function loginReducer(state = INITIAL_STATE, action) {
         loginError: true,
         loginMessage: "Oops! We couldn't log you in. Please try again.",
       };
-    // return INITIAL_STATE;
 
     case types.LOG_OUT:
       console.log('Log out.');
       return {
-        INITIAL_STATE,
-        isAuthenticated: false,
+        ...state
       };
 
     case types.USER_DETAILS_FETCH:

@@ -7,6 +7,7 @@ import SectionLevelBar from '../components/SectionLevelBar';
 import AddUserToGroupButtons from '../components/AddUserToGroupButtons';
 import AddMentorToGroupButton from '../components/AddMentorToGroupButton';
 import ViewIfMentor from '../components/ViewIfMentor';
+import ErrorMessage from '../components/ErrorMessage';
 import { getPeopleInGroup } from '../actions/groupActions';
 
 class CoursePeoplePage extends React.Component {
@@ -29,13 +30,15 @@ class CoursePeoplePage extends React.Component {
     return (
       <div className="container">
         <section className="section">
+          <ErrorMessage warn={this.props.errorMessage} />
+        </section>
+        <section className="section">
           <SectionLevelBar title="Mentors" loading={this.props.peopleLoading}>
             <ViewIfMentor isMentor={this.props.isMentor}>
               <AddMentorToGroupButton />
             </ViewIfMentor>
           </SectionLevelBar>
           <div className="columns is-multiline is-mobile bordered">
-            {/* this.getMentors(this.props.people, 'mentor') */}
             {this.props.people.map(
               (person, index) =>
                 (person.title === 'mentor' ? (
@@ -44,6 +47,7 @@ class CoursePeoplePage extends React.Component {
                     firstName={person.first_name}
                     lastName={person.last_name}
                     imgUrl={person.image !== '' ? `//${person.image}` : null}
+                    location={person.location_classroom}
                   />
                 ) : null),
             )}
@@ -64,6 +68,7 @@ class CoursePeoplePage extends React.Component {
                     firstName={person.first_name}
                     lastName={person.last_name}
                     imgUrl={person.image !== '' ? `//${person.image}` : null}
+                    location={'Seat 4'}
                   />
                 ) : null),
             )}
@@ -86,6 +91,7 @@ function mapStateToProps(state) {
     people: state.groupReducer.people,
     peopleLoading: state.groupReducer.peopleLoading,
     isMentor: isMentorValue,
+    errorMessage: state.groupReducer.errorMessage
   };
 }
 

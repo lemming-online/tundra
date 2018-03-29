@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import InputComponent from '../components/InputComponent';
 import * as loginActions from '../actions/loginActions';
+import { BASE_URL } from '../api/mischiefClient';
 // import * as client from '../api/mischiefClient';
 
 class UserProfile extends React.Component {
@@ -39,7 +40,7 @@ class UserProfile extends React.Component {
   updateUser = (e) => {
     e.preventDefault();
 
-    fetch('https://api.lemming.online/users', {
+    fetch(BASE_URL + 'users', {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
@@ -95,7 +96,7 @@ class UserProfile extends React.Component {
                 </Dropzone>
                 <h1 className="title subtitle">{`${this.props.firstName} ${
                   this.props.lastName
-                }`}</h1>
+                  }`}</h1>
                 <span className="uid">{`${this.props.uid}`}</span>
               </div>
               <div className="column">

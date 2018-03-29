@@ -29,6 +29,14 @@ function addMenteeToGroupAction() {
   return { type: types.ADD_MENTEE_TO_GROUP };
 }
 
+function addMentorToGroupFailureAction() {
+  return { type: types.ADD_MENTOR_TO_GROUP_FAILURE };
+}
+
+function addMenteeToGroupFailureAction() {
+  return { type: types.ADD_MENTEE_TO_GROUP_FAILURE };
+}
+
 function addResourceToGroupAction() {
   return { type: types.ADD_RESOURCE_TO_GROUP };
 }
@@ -76,7 +84,6 @@ export function createGroup(details, id) {
 }
 
 export function fetchGroup(id) {
-  console.log('now in fetchGroup()');
   return (dispatch) => {
     dispatch(fetchGroupByID(id));
     groupApi
@@ -104,7 +111,6 @@ export function cancelCreateGroupForm() {
 }
 
 export function addMentorToGroup(body, groupID) {
-  console.log(`groupID in Mentor: ${groupID}`);
   return function goAddMentorToGroup(dispatch) {
     return groupApi
       .addMentorToGroup(body, groupID)
@@ -113,13 +119,13 @@ export function addMentorToGroup(body, groupID) {
         dispatch(addMentorToGroupAction());
       })
       .catch((error) => {
+        dispatch(addMentorToGroupFailureAction());
         console.error(error);
       });
   };
 }
 
 export function addResourceToGroup(body, groupID) {
-  console.log(`groupID in Resource: ${groupID}`);
   return function goAddResourceToGroup(dispatch) {
     return groupApi
       .addResourceToGroup(body, groupID)
@@ -134,7 +140,6 @@ export function addResourceToGroup(body, groupID) {
 }
 
 export function addMenteesToGroup(body, groupID) {
-  console.log(`groupID in Mentee: ${groupID}`);
   return function goAddMenteesToGroup(dispatch) {
     return groupApi
       .addMenteesToGroup(body, groupID)
@@ -143,6 +148,7 @@ export function addMenteesToGroup(body, groupID) {
         dispatch(addMenteeToGroupAction());
       })
       .catch((error) => {
+        dispatch(addMenteeToGroupFailureAction());
         console.error(error);
       });
   };
@@ -183,7 +189,6 @@ export function getPeopleInGroup(groupId) {
     return groupApi
       .getPeopleInGroup(groupId)
       .then((responseJson) => {
-        // console.log(responseJson);
         dispatch(getPeopleInGroupAction(responseJson));
         return responseJson;
       })
@@ -198,7 +203,6 @@ export function getResourcesInGroup(groupId) {
     return groupApi
       .getResourcesInGroup(groupId)
       .then((responseJson) => {
-        // console.log(responseJson);
         dispatch(getResourcesInGroupAction(responseJson));
         return responseJson;
       })

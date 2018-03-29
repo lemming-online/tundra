@@ -12,12 +12,12 @@ class LoggedInHome extends React.Component {
   componentDidMount() {
     // only run once
     if (this.props.groups.length === 0) {
-      console.log('go!!');
       this.props.actions.getMyDetails();
     }
   }
 
   render() {
+    console.log(this.props);
     return (
       <section className="section">
         <div className="container">
