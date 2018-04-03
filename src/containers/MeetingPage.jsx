@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import io from 'socket.io-client';
 import { withRouter } from 'react-router-dom';
 import SessionEditorComponent from '../components/SessionEditorComponent';
@@ -6,8 +7,7 @@ import AnnouncementForm from '../components/AnnouncementForm';
 import FeedbackForm from '../components/FeedbackForm';
 import ViewAnnouncementsComponent from '../components/ViewAnnouncementsComponent';
 import SectionLevelBar from '../components/SectionLevelBar';
-
-import ViewIfMentor from '../components/ViewIfMentor';
+import { getLiveSession, updateQueue } from '../actions/sessionActions';
 
 import Queue from '../components/QueueComponent';
 
@@ -16,16 +16,9 @@ import { BASE_URL } from '../api/mischiefClient';
 let socket = null;
 
 class MeetingPage extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      queue: {},
-    };
-  }
-
   componentDidMount() {
-    console.log('helloooo');
+    const groupID = this.props.match.params.groupID;
+    this.props.getLiveSession(groupID);
     this.socket();
   }
 
@@ -39,16 +32,10 @@ class MeetingPage extends React.Component {
       console.log('after join emit');
     });
 
-    socket.on('test_response', (data) => {
-      console.log('test Response stuff');
-      console.log(data);
-    });
-
     socket.on('queue', (data) => {
       console.log('socket queue: ');
       console.log(data.queue);
-      this.setState({ queue: data.queue });
-      console.log('queue is above');
+      this.props.updateQueue(data);
     });
 
     socket.on('join', (data) => {
@@ -66,7 +53,7 @@ class MeetingPage extends React.Component {
       <div>
         <section className="section">
           <div className="container">
-            <SectionLevelBar title="Meeting Title" loading={this.props.loading}>
+            <SectionLevelBar title={this.props.liveSession.session.title} loading={this.props.loading}>
               <div className="field is-grouped is-grouped-right">
                 <AnnouncementForm />
                 <FeedbackForm />
@@ -87,4 +74,22 @@ class MeetingPage extends React.Component {
   }
 }
 
-export default withRouter(MeetingPage);
+function mapStateToProps(state) {
+  return {
+    liveSession: state.sessionReducer.liveSession,
+    id: state.loginReducer.uid,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getLiveSession: (groupID) => {
+      dispatch(getLiveSession(groupID));
+    },
+    updateQueue: (newQueue) => {
+      dispatch(updateQueue(newQueue));
+    }
+  };
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MeetingPage));

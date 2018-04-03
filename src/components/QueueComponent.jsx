@@ -10,7 +10,6 @@ class QueueComponent extends React.Component {
   }
 
   render() {
-    // {/*iterate over array of questions with these details */}
     return (
       <div>
         <div />
@@ -28,11 +27,11 @@ class QueueComponent extends React.Component {
                 question={q.question.question}
                 firstName={q.question.fName}
                 lastName={q.question.lName}
+                image={this.props.userImage}
+                key={q.question.user}
               />
             ) : null),
         )}
-        {console.log('props:')}
-        {console.log(this.props)}
       </div>
     );
   }
@@ -41,6 +40,7 @@ class QueueComponent extends React.Component {
 function mapStateToProps(state) {
   return {
     queue: state.sessionReducer.queue,
+    userImage: state.loginReducer.image
   };
 }
 

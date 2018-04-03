@@ -22,26 +22,19 @@ class ArchiveSessionButton extends React.Component {
   onClick = () => {
     const groupID = this.props.match.params.groupID;
     this.props.archiveSession(groupID);
-    console.log('onClick Archive');
   };
 
   render() {
     return (
-      <div className="field is-grouped">
-        <div className="control">
-          <button className="button" onClick={this.onClick}>
-            Archive Meeting
-          </button>
-        </div>
-      </div>
+      <button className="button is-pulled-right" onClick={this.onClick}>Archive Meeting</button>
     );
   }
 }
 
-// this is not legit, just a placeholder
 function mapStateToProps(state) {
   return {
     popup: state.sessionReducer.sessionFormPopup,
+    liveSession: state.sessionReducer.liveSession.session
   };
 }
 

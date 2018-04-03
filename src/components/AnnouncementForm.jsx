@@ -26,12 +26,14 @@ class AnnouncementForm extends React.Component {
 
   onSubmit = () => {
     console.log(this.props);
-    const sessionID = this.props.match.params.courseID;
+    const sessionID = this.props.match.params.groupID;
     this.props.submitAnnouncement(sessionID, { announcement: this.state.announcement.content });
+    this.setState((state) => ({ announcement: { content: '' } }));
   };
 
   onCancel = () => {
     this.props.cancelAnnouncement();
+    this.setState((state) => ({ announcement: { content: '' } }));
   };
 
   onSelect = () => {
@@ -56,13 +58,15 @@ class AnnouncementForm extends React.Component {
         <div id="announcement-form-popup" className={`${modalActive}`}>
           <div className="modal-background" />
           <div className="container box">
-            <InputComponent name="content" title="New Announcement" onChange={this.onChange} />
-            <div className="field is-grouped is-grouped-right">
+            <InputComponent name="content" title="New Announcement" value={this.state.announcement.content} onChange={this.onChange} />
+            <div className="field is-grouped is-grouped-left">
               <div className="control">
                 <button onClick={this.onSubmit} className="button is-primary">
                   Create
                 </button>
-                <button onClick={this.onCancel} className="button is-primary">
+              </div>
+              <div className="control">
+                <button onClick={this.onCancel} className="button">
                   Cancel
                 </button>
               </div>

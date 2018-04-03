@@ -134,3 +134,7 @@ div.section-level-bar.level.is-mobile > div.level-left.is-loading::after {
 nav > div > ul > li.is-active > a {
   color: #2e1ab5;
 }
+
+.dropZone {
+  margin-bottom: 20px;
+}

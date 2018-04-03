@@ -38,34 +38,47 @@ class SessionEditorComponent extends React.Component {
 
   onCancel = (e) => {
     e.preventDefault();
-    console.log('click cancel request');
     const sessionID = this.props.match.params.groupID;
     const userId = this.props.id;
     this.props.deleteHelpQuestion(sessionID, userId);
   };
 
   render() {
-    return (
-      <div className="container box">
-        <form
-          ref={(form) => {
-            this.formRef = form;
-          }}
-        >
-          <InputComponent
-            title="What do you need help with?"
-            name="questionField"
-            onChange={this.onChange}
-          />
+    if (!this.props.inQueue) {
+      return (
+        <div className="container box">
+          <form
+            ref={(form) => {
+              this.formRef = form;
+            }}
+          >
+            <InputComponent
+              title="What do you need help with?"
+              name="questionField"
+              onChange={this.onChange}
+            />
+            <button
+              onClick={this.onSubmit}
+              className={'button is-primary'}
+            >
+              {'Submit Request'}
+            </button>
+          </form>
+        </div>
+      );
+    }
+    else {
+      return (
+        <div className="container box">
           <button
-            onClick={this.props.hasQuestion ? this.onCancel : this.onSubmit}
+            onClick={this.onCancel}
             className={'button is-primary'}
           >
-            {this.props.hasQuestion ? 'Cancel Request' : 'Submit Request'}
+            {'Cancel Request'}
           </button>
-        </form>
-      </div>
-    );
+        </div>
+      );
+    }
   }
 }
 
@@ -77,6 +90,7 @@ function mapStateToProps(state) {
     hasQuestion: state.sessionReducer.hasCreatedQuestion,
     firstName: state.loginReducer.firstName,
     lastName: state.loginReducer.lastName,
+    inQueue: state.sessionReducer.inQueue
   };
 }
 
@@ -88,7 +102,7 @@ function mapDispatchToProps(dispatch) {
     },
     deleteHelpQuestion: (groupId, userId) => {
       dispatch(deleteHelpQuestion(groupId, userId));
-    },
+    }
   };
 }
 

@@ -61,6 +61,12 @@ class MischiefClient {
       : this.makeRequest('POST', resource, body);
     return this.doFetch(req);
   }
+  static put(resource, body, auth = false) {
+    const req = auth
+      ? this.makeAuthRequest('PUT', resource, body)
+      : this.makeRequest('PUT', resource, body);
+    return this.doFetch(req);
+  }
   static delete(resource, auth = false) {
     const req = auth
       ? this.makeAuthRequest('DELETE', resource, undefined)

@@ -35,46 +35,60 @@ class SessionPage extends React.Component {
       <div>
         <section className="section">
           <div className="container">
-            <SectionLevelBar title="Meetings" live={this.props.liveSession}>
+            <SectionLevelBar title="Meeting" live={this.props.liveSession}>
               <ViewIfMentor isMentor={this.props.isMentor}>
                 <InstructorMeetingButtons />
               </ViewIfMentor>
             </SectionLevelBar>
 
-            <ul>
-              {this.props.liveSession !== undefined ? (
-                <a
-                  role="link"
-                  tabIndex={0}
-                  onClick={() =>
-                    this.props.actions.openTab('meeting', this.props.liveSession.title)}
-                >
-                  <li>{this.props.liveSession.title}</li>
-                </a>
-              ) : null}
-            </ul>
+            <article className="message is-dark">
+              <div className="message-header">
+                <p>Current Meeting</p>
+              </div>
+              <div className="message-body">
+                {!this.props.liveSession ?
+                  'No current meeting.'
+                  : ''}
+                {this.props.liveSession !== undefined ?
+                  <div className="field">
+                    <div className="control">
+                      <button className="button is-primary is-outlined" onClick={() =>
+                        this.props.actions.openTab('meeting', this.props.liveSession.title, 'live')}>
+                        {this.props.liveSession.title}
+                      </button>
+                      {this.props.isMentor ?
+                        <ArchiveSessionButton />
+                        : ''}
+                    </div>
+                  </div>
+                  : null}
+              </div>
+            </article>
           </div>
         </section>
         <section className="section">
           <div className="container">
-            <SectionLevelBar title="Archive">
-              <ViewIfMentor isMentor={this.props.isMentor}>
-                <ArchiveSessionButton />
-              </ViewIfMentor>
-            </SectionLevelBar>
-            <ul>
-              {this.props.archivedSessions !== undefined
-                ? Object.values(this.props.archivedSessions).map((session, index) => (
-                  <a
-                    role="link"
-                    tabIndex={0}
-                    onClick={() => this.props.actions.openTab('archive', 'Archive')}
-                  >
-                    <li>{session.data.title}</li>
-                  </a>
-                ))
-                : null}
-            </ul>
+            <div className="columns">
+              <div className="column is-3">
+                <SectionLevelBar title="Archive">
+                </SectionLevelBar>
+                <ul>
+                  {this.props.archivedSessions !== undefined
+                    ? Object.values(this.props.archivedSessions).map((session, index) => (
+                      <a
+                        key={session.id}
+                        role="link"
+                        tabIndex={0}
+                        onClick={() => this.props.actions.openTab('archive', session.data.title, session.id)}
+                      >
+                        <li>{session.data.title}</li>
+                      </a>
+                    ))
+                    : null}
+                </ul>
+              </div>
+            </div>
+
           </div>
         </section>
       </div>
@@ -90,14 +104,15 @@ function mapStateToProps(state) {
 
   const isMentorValue = !!mentors.filter(mentor => mentor !== '').length;
 
-  console.log(isMentorValue);
   return {
     tabs: state.tabReducer.tabs,
     liveSession: state.sessionReducer.liveSession.session,
     archivedSessions: state.sessionReducer.archivedSessions,
     isMentor: isMentorValue,
+    id: state.loginReducer.uid,
   };
 }
+
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(tabActions, dispatch),

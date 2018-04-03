@@ -84,7 +84,7 @@ class ResourcesActionButtons extends React.Component {
                     Add Resource
                   </button>
                 </div>
-                <div classname="control">
+                <div className="control">
                   <button className="button" onClick={this.onCancel}>
                     Cancel
                   </button>

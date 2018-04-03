@@ -48,6 +48,7 @@ class CoursePeoplePage extends React.Component {
                     lastName={person.last_name}
                     imgUrl={person.image !== '' ? `//${person.image}` : null}
                     location={person.location_classroom}
+                    isMe={person.user === this.props.uid}
                   />
                 ) : null),
             )}
@@ -69,6 +70,7 @@ class CoursePeoplePage extends React.Component {
                     lastName={person.last_name}
                     imgUrl={person.image !== '' ? `//${person.image}` : null}
                     location={'Seat 4'}
+                    isMe={person.user === this.props.uid}
                   />
                 ) : null),
             )}
@@ -91,7 +93,8 @@ function mapStateToProps(state) {
     people: state.groupReducer.people,
     peopleLoading: state.groupReducer.peopleLoading,
     isMentor: isMentorValue,
-    errorMessage: state.groupReducer.errorMessage
+    errorMessage: state.groupReducer.errorMessage,
+    uid: state.loginReducer.uid
   };
 }
 

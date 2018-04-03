@@ -49,33 +49,35 @@ class InstructorCourseButtons extends React.Component {
     const modalActive = this.props.popup ? 'modal is-active' : 'modal';
     return (
       <div className="field is-grouped">
-        <div className="control">
-          <button className="button" onClick={this.onClick}>
-            Create New Meeting
-          </button>
-          <div id="announcement-form-popup" className={`${modalActive}`}>
-            <div className="modal-background" />
-            <div className="container box">
-              <InputComponent
-                name="sessionTitle"
-                title="Give this meeting a name!"
-                onChange={this.onChange}
-              />
-              <div className="field is-grouped">
-                <div className="control">
-                  <button className="button is-primary" onClick={this.onSubmit}>
-                    Create
-                  </button>
-                </div>
-                <div className="control">
-                  <button className="button" onClick={this.onCancel}>
-                    Cancel
-                  </button>
+        {!this.props.liveSession ?
+          <div className="control">
+            <button className="button" onClick={this.onClick}>
+              Create New Meeting
+            </button>
+            <div id="announcement-form-popup" className={`${modalActive}`}>
+              <div className="modal-background" />
+              <div className="container box">
+                <InputComponent
+                  name="sessionTitle"
+                  title="Give this meeting a name!"
+                  onChange={this.onChange}
+                />
+                <div className="field is-grouped">
+                  <div className="control">
+                    <button className="button is-primary" onClick={this.onSubmit}>
+                      Create
+                    </button>
+                  </div>
+                  <div className="control">
+                    <button className="button" onClick={this.onCancel}>
+                      Cancel
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+          : ''}
       </div>
     );
   }
@@ -84,6 +86,7 @@ class InstructorCourseButtons extends React.Component {
 function mapStateToProps(state) {
   return {
     popup: state.sessionReducer.sessionFormPopup,
+    liveSession: state.sessionReducer.liveSession.session
   };
 }
 

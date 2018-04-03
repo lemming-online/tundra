@@ -1,8 +1,8 @@
 import * as types from './actionTypes';
 import announcementApi from '../api/announcementApi';
 
-function createAnnouncementSuccess() {
-  return { type: types.CREATE_ANNOUNCEMENT_SUCCESS };
+function createAnnouncementSuccess(announcement) {
+  return { type: types.CREATE_ANNOUNCEMENT_SUCCESS, announcement };
 }
 
 function announcementInProgress() {
@@ -28,19 +28,15 @@ function getAnnouncementsFailure() {
 export function createAnnouncement(announcement) {
   return function goCreateAnnouncement(dispatch) {
     dispatch(announcementInProgress());
-    console.log(`After dispatch AnnouncementInProgress: ${announcement}`);
   };
 }
 
 export function submitAnnouncement(sessionId, announcement) {
   return function goCloseAnnouncementPopup(dispatch) {
-    console.log('this is your announcement from action:');
-    console.log(announcement, sessionId);
     return announcementApi
       .createAnnouncement(sessionId, announcement)
       .then((json) => {
-        console.log(json);
-        dispatch(createAnnouncementSuccess());
+        dispatch(createAnnouncementSuccess(announcement.announcement));
       })
       .catch((error) => {
         console.log(error);
@@ -57,12 +53,10 @@ export function cancelAnnouncement() {
 
 export function getAnnouncements(sessionId) {
   return function goGetAnnouncements(dispatch) {
-    console.log('Fetching announcements');
     dispatch(fetchAnnouncements());
     return announcementApi
       .getAnnouncements(sessionId)
       .then(({ announcements }) => {
-        // console.log(json);
         dispatch(getAnnouncementsSuccess(announcements));
       })
       .catch((error) => {

@@ -41,9 +41,11 @@ function getArchivedSessionsAction(json) {
   return { type: types.GET_ARCHIVED_SESSIONS, json };
 }
 
+function updateQueueAction(newQueue) {
+  return { type: types.UPDATE_QUEUE, newQueue };
+}
+
 export function createHelpQuestion(groupId, details) {
-  console.log(`groupId:${groupId}`);
-  console.log(details);
   return function goCreateHelpQuestion(dispatch) {
     return SessionApi.addQuestionToQueue(groupId, details)
       .then((responseJson) => {
@@ -112,7 +114,6 @@ export function getLiveSession(groupId) {
   return function goGetLiveSession(dispatch) {
     return SessionApi.getLiveSession(groupId)
       .then((responseJson) => {
-        console.log(responseJson);
         dispatch(getLiveSessionAction(responseJson));
       })
       .catch((error) => {
@@ -130,5 +131,11 @@ export function getArchivedSessions(groupId) {
       .catch((error) => {
         console.error(error);
       });
+  };
+}
+
+export function updateQueue(newQueue) {
+  return function goUpdateQueue(dispatch) {
+    dispatch(updateQueueAction(newQueue));
   };
 }

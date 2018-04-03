@@ -33,7 +33,7 @@ class ResourcesPage extends React.Component {
               </thead>
               <tbody>
                 {this.props.resources.map((resource, index) => (
-                  <tr>
+                  <tr key={resource.id}>
                     <td>{resource.title}</td>
                     <td>{resource.description}</td>
                     <td className="has-text-centered">

@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   liveSession: [],
   archivedSessions: [],
   queue: [],
+  inQueue: false
 };
 
 export default function sessionReducer(state = INITIAL_STATE, action) {
@@ -33,10 +34,11 @@ export default function sessionReducer(state = INITIAL_STATE, action) {
     case types.HELP_QUESTION_SUCCESS:
       console.log('Successfully created question');
       console.log(action.json);
+      console.log(state.queue);
       return {
         ...state,
         hasCreatedQuestion: true,
-        queue: state.queue.concat(action.json),
+        inQueue: true
       };
 
     case types.HELP_QUESTION_FAILURE:
@@ -46,12 +48,20 @@ export default function sessionReducer(state = INITIAL_STATE, action) {
       };
 
     case types.DELETE_QUESTION_SUCCESS:
-      // action.userId;
+      var i;
+      var newQueue = [];
 
-      console.log('Question was deleted successfully');
+      for (i = 0; i < state.queue.length; i++) {
+        if (state.queue[i].question.user !== action.userId) {
+          newQueue.push([state.queue[i]]);
+        }
+      }
+
       return {
         ...state,
         hasCreatedQuestion: false,
+        queue: newQueue,
+        inQueue: false
       };
 
     case types.DELETE_QUESTION_FAILURE:
@@ -61,25 +71,52 @@ export default function sessionReducer(state = INITIAL_STATE, action) {
       };
 
     case types.ARCHIVE_SESSION:
-      console.log('archive session reducer');
-      console.log(action.json);
       return {
         ...state,
         hasSession: false,
         liveSession: [],
         archivedSessions: action.json,
+        queue: [],
+        hasCreatedQuestion: false
       };
 
     case types.GET_LIVE_SESSION:
-      return {
-        ...state,
-        liveSession: action.json,
-      };
+      var waiting = false;
+
+      if (action.json.queue !== undefined) {
+        for (i = 0; i < action.json.queue.length; i++) {
+          if (action.json.uid === action.json.queue[i].question.user) {
+            waiting = true;
+            break;
+          }
+        }
+
+        return {
+          ...state,
+          liveSession: action.json,
+          queue: action.json.queue,
+          inQueue: waiting
+        };
+      }
+      else {
+        return {
+          ...state,
+          liveSession: action.json,
+          queue: [],
+          inQueue: waiting
+        };
+      }
 
     case types.GET_ARCHIVED_SESSIONS:
       return {
         ...state,
         archivedSessions: action.json,
+      };
+
+    case types.UPDATE_QUEUE:
+      return {
+        ...state,
+        queue: action.newQueue.queue
       };
 
     default:

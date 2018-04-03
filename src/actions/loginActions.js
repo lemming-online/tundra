@@ -45,6 +45,10 @@ function updatePasswordSuccess() {
   return { type: types.UPDATE_PASSWORD };
 }
 
+function updateUserSuccess(userInfo) {
+  return { type: types.UPDATE_USER_SUCCESS, userInfo };
+}
+
 export function logInUser(credentials) {
   return (dispatch) => {
     dispatch(loginFetch());
@@ -72,7 +76,6 @@ export function getMyDetails() {
     return loginApi
       .getMyDetails()
       .then((json) => {
-        // TODO: fuck
         console.log(json);
         dispatch(userDetailsSuccess(json));
       })
@@ -120,6 +123,19 @@ export function updatePassword(token, credentials) {
       .then((json) => {
         console.log(json);
         dispatch(updatePasswordSuccess());
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+}
+
+export function updateUser(userInfo) {
+  return (dispatch) => {
+    loginApi
+      .updateUser(userInfo)
+      .then((json) => {
+        dispatch(updateUserSuccess(userInfo));
       })
       .catch((error) => {
         console.error(error);

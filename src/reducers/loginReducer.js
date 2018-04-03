@@ -102,6 +102,14 @@ export default function loginReducer(state = INITIAL_STATE, action) {
         image: `//${action.image}`,
       };
 
+    case types.UPDATE_USER_SUCCESS:
+      return {
+        ...state,
+        firstName: action.userInfo.first_name,
+        lastName: action.userInfo.last_name,
+        email: action.userInfo.email
+      }
+
     default:
       return state;
   }

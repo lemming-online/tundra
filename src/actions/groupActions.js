@@ -69,6 +69,10 @@ function getResourcesInGroupAction(json) {
   return { type: types.GET_RESOURCES_IN_GROUP, json };
 }
 
+function removeErrorMessageAction() {
+  return { type: types.REMOVE_ERROR_MESSAGE };
+}
+
 export function createGroup(details, id) {
   return function goCreateGroup(dispatch) {
     return groupApi
@@ -120,6 +124,9 @@ export function addMentorToGroup(body, groupID) {
       })
       .catch((error) => {
         dispatch(addMentorToGroupFailureAction());
+        setTimeout(() => {
+          dispatch(removeErrorMessageAction());
+        }, 5000);
         console.error(error);
       });
   };
@@ -149,6 +156,9 @@ export function addMenteesToGroup(body, groupID) {
       })
       .catch((error) => {
         dispatch(addMenteeToGroupFailureAction());
+        setTimeout(() => {
+          dispatch(removeErrorMessageAction());
+        }, 5000);
         console.error(error);
       });
   };
@@ -210,4 +220,10 @@ export function getResourcesInGroup(groupId) {
         console.error(error);
       });
   };
+}
+
+export function removeErrorMessage() {
+  return function goRemoveErrorMessage(dispatch) {
+    return dispatch(removeErrorMessageAction());
+  }
 }

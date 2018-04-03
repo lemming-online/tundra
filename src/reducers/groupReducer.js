@@ -140,6 +140,12 @@ export default function groupReducer(state = INITIAL_STATE, action) {
         resources: action.json,
       };
 
+    case types.REMOVE_ERROR_MESSAGE:
+      return {
+        ...state,
+        errorMessage: ''
+      };
+
     default:
       return state;
   }

@@ -1,8 +1,9 @@
 import * as types from '../actions/actionTypes';
 
 const INITIAL_STATE = {
-  pane: 'session',
+  pane_type: 'session',
   tabs: [],
+  openTab: ''
 };
 
 export default function tabReducer(state = INITIAL_STATE, action) {
@@ -10,21 +11,20 @@ export default function tabReducer(state = INITIAL_STATE, action) {
     case types.CHANGE_TAB:
       return {
         ...state,
-        pane: action.pane,
+        pane_type: action.pane_type,
+        openTab: action.openTab
       };
     case types.OPEN_TAB:
-      state.tabs.push({
-        title: action.title,
-        pane: action.pane,
-      });
       return {
-        tabs: state.tabs,
-        pane: action.pane,
+        tabs: state.tabs.concat([{ title: action.title, id: action.openTab, pane_type: action.pane_type }]),
+        pane_type: action.pane_type,
+        openTab: action.openTab
       };
     case types.CLOSE_TAB:
-      state.tabs.pop();
       return {
-        ...state
+        tabs: state.tabs.slice(0, state.tabs.length - 1),
+        pane_type: state.tabs['session'],
+        openTab: 'session'
       };
     default:
       return state;

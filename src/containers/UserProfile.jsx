@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import InputComponent from '../components/InputComponent';
 import * as loginActions from '../actions/loginActions';
-import { BASE_URL } from '../api/mischiefClient';
 // import * as client from '../api/mischiefClient';
 
 class UserProfile extends React.Component {
@@ -23,7 +22,6 @@ class UserProfile extends React.Component {
   onDrop = (acceptedFile) => {
     if (acceptedFile.length > 0) {
       const image = new FormData();
-      // console.log(acceptedFile);
       image.append('image', acceptedFile[0]);
       this.props.actions.postMyImage(image);
     }
@@ -31,8 +29,6 @@ class UserProfile extends React.Component {
 
   handleChange = (event) => {
     const newState = {};
-    console.log(event);
-    // makes function reusuable, use name attribute as key to set
     newState[event.target.name] = event.target.value;
     this.setState(newState);
   };
@@ -40,43 +36,22 @@ class UserProfile extends React.Component {
   updateUser = (e) => {
     e.preventDefault();
 
-    fetch(BASE_URL + 'users', {
-      method: 'PUT',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password,
-        display_name: `${this.state.first_name} ${this.state.last_name}`,
-      }),
-    })
-      .then((response) => {
-        console.log(response.json.data);
-        return response.json();
-      })
-      .then((responseJson) => {
-        console.log('hello world');
-        console.log(responseJson);
-        return responseJson;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    const userInfo = {
+      first_name: this.state.first_name ? this.state.first_name : this.props.firstName,
+      last_name: this.state.last_name ? this.state.last_name : this.props.lastName,
+      email: this.state.email ? this.state.email : this.props.email
+    };
+
+    console.log(userInfo);
+
+    this.props.actions.updateUser(userInfo);
   };
 
-  // see first name and last name
-  // change their email and password
   render() {
-    // this snippet below will kick the page off after
-    // it has logged off. idk, this isn't sustainable,
-    // but i don't have a better idea rn
-
     return (
       <section className="section">
         <div className="container">
-          <h1 className="title">Settings</h1>
+          <h1 className="title">Profile</h1>
           <div className="columns">
             <div className="column is-3">
               <nav className="panel">
@@ -86,18 +61,35 @@ class UserProfile extends React.Component {
                   </span>
                   My Profile
                 </a>
+                <a className="panel-block is-active">
+                  <span className="panel-icon">
+                    <i className="fas fa-edit" />
+                  </span>
+                  Settings
+                </a>
               </nav>
             </div>
 
             <div className="columns column box">
-              <div className="column is-3">
-                <Dropzone multiple={false} accept="image/*" onDrop={files => this.onDrop(files)}>
-                  <img src={`${this.props.image}`} alt="user profile" />
-                </Dropzone>
-                <h1 className="title subtitle">{`${this.props.firstName} ${
-                  this.props.lastName
-                  }`}</h1>
-                <span className="uid">{`${this.props.uid}`}</span>
+              <div className="column is-5">
+                <div className="dropZone">
+                  <Dropzone multiple={false} accept="image/*" onDrop={files => this.onDrop(files)}>
+                    <img src={`${this.props.image}`} alt="user profile" />
+                  </Dropzone>
+                </div>
+                <div className="columns">
+                  <div className="column">
+                    <article class="message is-primary">
+                      <div class="message-body">
+                        <h1 className="title is-4">
+                          {`${this.props.firstName} ${this.props.lastName}`}
+                        </h1>
+                        <h1 className="title is-4">{this.props.email}</h1>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+
               </div>
               <div className="column">
                 <form onSubmit={this.updateUser}>
@@ -111,7 +103,7 @@ class UserProfile extends React.Component {
                   <InputComponent title="Email" name="email" onChange={this.handleChange} />
                   <div className="field">
                     <div className="control">
-                      <button className="button is-primary">Update Settings</button>
+                      <button className="button is-primary">Update Profile</button>
                     </div>
                   </div>
                 </form>
@@ -131,6 +123,7 @@ function mapStateToProps(state) {
     lastName: state.loginReducer.lastName,
     isAuthenticated: state.loginReducer.isAuthenticated,
     image: state.loginReducer.image,
+    email: state.loginReducer.email
   };
 }
 

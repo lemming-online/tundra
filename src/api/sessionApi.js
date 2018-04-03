@@ -21,7 +21,7 @@ class SessionApi {
   }
 
   static deleteQuestionFromQueue(groupId, userId) {
-    return client.delete(`sessions/${groupId}/remove/${userId}`, true);
+    return client.delete(`sessions/${groupId}/cancel/${userId}`, true);
   }
 }
 

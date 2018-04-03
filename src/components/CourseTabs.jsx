@@ -11,31 +11,29 @@ function CourseTabs(props) {
   return (
     <TabCollection>
       <Tabs>
-        {/* TODO: refactor these into a single function */}
-
         <Tab
-          onClick={() => props.actions.changeTab('session')}
-          className={props.pane === 'session' ? 'is-active' : ''}
+          onClick={() => props.actions.changeTab('session', 'session')}
+          className={props.pane_type === 'session' ? 'is-active' : ''}
         >
           Meetings
         </Tab>
         <Tab
-          onClick={() => props.actions.changeTab('resources')}
-          className={props.pane === 'resources' ? 'is-active' : ''}
+          onClick={() => props.actions.changeTab('resources', 'resources')}
+          className={props.pane_type === 'resources' ? 'is-active' : ''}
         >
           Resources
         </Tab>
         <Tab
-          onClick={() => props.actions.changeTab('people')}
-          className={props.pane === 'people' ? 'is-active' : ''}
+          onClick={() => props.actions.changeTab('people', 'people')}
+          className={props.pane_type === 'people' ? 'is-active' : ''}
         >
           People
         </Tab>
 
         {props.tabs.map(tab => (
-          <Tab
-            onClick={() => props.actions.changeTab(tab.pane)}
-            className={props.pane === tab.pane ? 'is-active' : ''}
+          <Tab key={tab.id}
+            onClick={() => props.actions.changeTab(tab.pane_type, tab.id)}
+            className={props.openTab === tab.id ? 'is-active' : ''}
           >
             {tab.title}{' '}
             <button
@@ -54,8 +52,9 @@ function CourseTabs(props) {
 
 function mapStateToProps(state) {
   return {
-    pane: state.tabReducer.pane,
+    pane_type: state.tabReducer.pane_type,
     tabs: state.tabReducer.tabs,
+    openTab: state.tabReducer.openTab
   };
 }
 function mapDispatchToProps(dispatch) {

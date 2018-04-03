@@ -1,31 +1,32 @@
 import * as types from './actionTypes';
 
-function createChangeTab(pane) {
-  return { type: types.CHANGE_TAB, pane };
+function createChangeTab(pane_type, openTab) {
+  return { type: types.CHANGE_TAB, pane_type, openTab };
 }
 
-function createOpenTab(pane, title) {
-  return { type: types.OPEN_TAB, pane, title };
+function createOpenTab(pane_type, title, openTab) {
+  return { type: types.OPEN_TAB, pane_type, title, openTab };
 }
 
-function createCloseTab(pane) {
-  return { type: types.CLOSE_TAB, pane };
+function createCloseTab(pane_type) {
+  return { type: types.CLOSE_TAB, pane_type };
 }
 
-export function changeTab(pane) {
+export function changeTab(pane_type, openTab) {
   return (dispatch) => {
-    dispatch(createChangeTab(pane));
+    dispatch(createChangeTab(pane_type, openTab));
   };
 }
 
-export function openTab(pane, title) {
+export function openTab(pane_type, title, openTab) {
   return (dispatch) => {
-    dispatch(createOpenTab(pane, title));
+    dispatch(createOpenTab(pane_type, title, openTab));
   };
 }
 
-export function closeTab(pane) {
+export function closeTab(pane_type) {
   return (dispatch) => {
-    dispatch(createCloseTab(pane));
+    dispatch(createCloseTab(pane_type));
+    dispatch(createChangeTab('session'));
   };
 }

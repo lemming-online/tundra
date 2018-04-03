@@ -6,6 +6,7 @@ import SessionSubPage from './SessionSubPage';
 import ResourcesPage from './ResourcesPage';
 import CoursePeoplePage from './CoursePeoplePage';
 import MeetingPage from './MeetingPage';
+import ArchivePage from '../components/ArchivePage';
 import CourseHeader from '../components/CourseHeader';
 
 import * as tabActions from '../actions/tabActions';
@@ -22,27 +23,26 @@ class GroupPage extends React.Component {
     this.props.groupActions.fetchGroup(this.groupID);
   }
 
+  findArchivedSession = () => {
+    return this.props.archivedSessions.find((session) => {
+      return session.id === this.props.openTab;
+    });
+  }
+
   render() {
     return (
       !this.props.loading && (
         <div>
-          {/* TODO: pass an ID into the header. */}
           <CourseHeader
             groupName={this.props.group.name}
             description={this.props.group.description}
           />
           <section>
-            {this.props.pane === 'session' && <SessionSubPage />}
-
-            {this.props.pane === 'resources' && <ResourcesPage />}
-            {this.props.pane === 'people' && <CoursePeoplePage />}
-
-            {/* TODO: This has to be changed so it's dynamic. Idk how to make that happen, unfortunately. */}
-            {/* Probably it will be something like, MeetingPage with props passed down to it.
-          Or Maybe MeetingPage will just open for all meetings, using the redux state?
-          But probably will have to have its own props pushed b.c. how do you handle different tabs without that?
-          Anyway, yeah. Conditonally render based on this.props.pane */}
-            {this.props.pane === 'meeting' && <MeetingPage />}
+            {this.props.pane_type === 'session' && <SessionSubPage />}
+            {this.props.pane_type === 'resources' && <ResourcesPage />}
+            {this.props.pane_type === 'people' && <CoursePeoplePage />}
+            {this.props.pane_type === 'meeting' && <MeetingPage />}
+            {this.props.pane_type === 'archive' && <ArchivePage session={this.findArchivedSession()} />}
           </section>
         </div>
       )
@@ -52,10 +52,12 @@ class GroupPage extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    pane: state.tabReducer.pane,
+    pane_type: state.tabReducer.pane_type,
     tabs: state.tabReducer.tabs,
     group: state.groupReducer.group,
     loading: state.groupReducer.loading,
+    openTab: state.tabReducer.openTab,
+    archivedSessions: state.sessionReducer.archivedSessions
   };
 }
 function mapDispatchToProps(dispatch) {
