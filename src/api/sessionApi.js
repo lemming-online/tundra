@@ -23,6 +23,10 @@ class SessionApi {
   static deleteQuestionFromQueue(groupId, userId) {
     return client.delete(`sessions/${groupId}/cancel/${userId}`, true);
   }
+
+  static removeQuestionFromQueue(groupId, userId) {
+    return client.delete(`sessions/${groupId}/remove/${userId}`, true)
+  }
 }
 
 export default SessionApi;

@@ -1,10 +1,14 @@
 import React from 'react';
 import userBlank from '../images/user-blank.png';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as sessionActions from '../actions/sessionActions';
 // import PropTypes from 'prop-types';
 
 function QuestionCard(props) {
+  console.log(props);
   return (
-    <div className="column is-4-desktop is-6-tablet is-12-mobile">
+    <div className="column">
       <div className="card">
         <div className="card-content">
           <div className="content">{props.question}</div>
@@ -24,20 +28,40 @@ function QuestionCard(props) {
 
           </div>
         </div>
-        <footer className="card-footer">
+        {props.isMentor ? <footer className="card-footer">
           <a role="button" className="card-footer-item">
             Claim
           </a>
           <a role="button" className="card-footer-item">
             Edit
           </a>
-          <a role="button" className="card-footer-item">
-            Delete
+          <a role="button" onClick={() => props.actions.removeHelpQuestion(props.sessionID, props.id)} className="card-footer-item">
+            Helped
           </a>
-        </footer>
+        </footer> : <footer className="card-footer"></footer>}
       </div>
     </div>
   );
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(sessionActions, dispatch)
+  };
+}
+
+function mapStateToProps(state) {
+  const mentors = state.groupReducer.people.map(
+    (person, index) =>
+      (state.loginReducer.uid === person.user && person.title === 'mentor' ? person.user : ''),
+  );
+
+  const isMentorValue = !!mentors.filter(mentor => mentor !== '').length;
+
+  return {
+    id: state.loginReducer.uid,
+    isMentor: isMentorValue
+  };
 }
 
 // CourseCard.propTypes = {
@@ -45,4 +69,4 @@ function QuestionCard(props) {
 //   professorName: PropTypes.string.isRequired,
 // };
 
-export default QuestionCard;
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionCard);

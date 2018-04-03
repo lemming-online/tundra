@@ -29,6 +29,14 @@ function deleteQuestionFailure() {
   return { type: types.DELETE_QUESTION_FAILURE };
 }
 
+function removeQuestionSuccess(userId) {
+  return { type: types.REMOVE_QUESTION_SUCCESS, userId };
+}
+
+function removeQuestionFailure() {
+  return { type: types.REMOVE_QUESTION_FAILURE };
+}
+
 function archiveSessionAction(json) {
   return { type: types.ARCHIVE_SESSION, json };
 }
@@ -71,6 +79,20 @@ export function deleteHelpQuestion(groupId, userId) {
         dispatch(deleteQuestionFailure());
       });
   };
+}
+
+export function removeHelpQuestion(groupId, userId) {
+  return function goRemoveHelpQuestion(dispatch) {
+    return SessionApi.removeQuestionFromQueue(groupId, userId)
+      .then((responseJson) => {
+        console.log(responseJson);
+        dispatch(removeQuestionSuccess(userId));
+      })
+      .catch((error) => {
+        console.log(error);
+        dispatch(removeQuestionFailure());
+      })
+  }
 }
 
 export function createSession(body) {

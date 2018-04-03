@@ -64,6 +64,28 @@ export default function sessionReducer(state = INITIAL_STATE, action) {
         inQueue: false
       };
 
+    case types.REMOVE_QUESTION_FAILURE:
+      console.log('Question was not deleted.');
+      return {
+        ...state,
+      };
+
+    case types.REMOVE_QUESTION_SUCCESS:
+      var newQueue = [];
+
+      for (i = 0; i < state.queue.length; i++) {
+        if (state.queue[i].question.user !== action.userId) {
+          newQueue.push([state.queue[i]]);
+        }
+      }
+
+      return {
+        ...state,
+        hasCreatedQuestion: false,
+        queue: newQueue,
+        inQueue: false
+      };
+
     case types.DELETE_QUESTION_FAILURE:
       console.log('Question was not deleted.');
       return {

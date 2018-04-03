@@ -55,7 +55,7 @@ class MeetingPage extends React.Component {
           <div className="container">
             <SectionLevelBar title={this.props.liveSession.session.title} loading={this.props.loading}>
               <div className="field is-grouped is-grouped-right">
-                <AnnouncementForm />
+                {this.props.isMentor ? <AnnouncementForm /> : ''}
                 <FeedbackForm />
               </div>
             </SectionLevelBar>
@@ -75,9 +75,17 @@ class MeetingPage extends React.Component {
 }
 
 function mapStateToProps(state) {
+  const mentors = state.groupReducer.people.map(
+    (person, index) =>
+      (state.loginReducer.uid === person.user && person.title === 'mentor' ? person.user : ''),
+  );
+
+  const isMentorValue = !!mentors.filter(mentor => mentor !== '').length;
+
   return {
     liveSession: state.sessionReducer.liveSession,
     id: state.loginReducer.uid,
+    isMentor: isMentorValue
   };
 }
 
